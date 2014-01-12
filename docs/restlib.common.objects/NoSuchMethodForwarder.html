@@ -1,0 +1,139 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>NoSuchMethodForwarder class / restlib.common.objects Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.objects" data-type="NoSuchMethodForwarder">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.common.objects.html">restlib.common.objects</a> &rsaquo; <a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>NoSuchMethodForwarder</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class NoSuchMethodForwarder implements Forwarder {
+ final dynamic delegate;
+ final InstanceMirror _delegateMirror;
+
+ NoSuchMethodForwarder(final dynamic delegate) :
+   this._delegateMirror = reflect(delegate), 
+   this.delegate = delegate;
+
+ noSuchMethod(final Invocation invocation) =&gt;
+     _delegateMirror.delegate(invocation);
+ 
+ String toString() =&gt; 
+     delegate.toString();
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/HttpDateTime.html">HttpDateTime</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.server/RoutableUri.html">RoutableUri</a></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.objects/Forwarder.html">Forwarder</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>NoSuchMethodForwarder</strong>(delegate) <a class="anchor-link" href="#"
+              title="Permalink to NoSuchMethodForwarder.NoSuchMethodForwarder">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+NoSuchMethodForwarder(final dynamic delegate) :
+ this._delegateMirror = reflect(delegate), 
+ this.delegate = delegate;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="delegate">
+<button class="show-code">Code</button>
+final         <strong>delegate</strong> <a class="anchor-link"
+            href="#delegate"
+            title="Permalink to NoSuchMethodForwarder.delegate">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final dynamic delegate
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="noSuchMethod">
+<button class="show-code">Code</button>
+dynamic <strong>noSuchMethod</strong>(Invocation invocation) <a class="anchor-link" href="#noSuchMethod"
+              title="Permalink to NoSuchMethodForwarder.noSuchMethod">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p><a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is invoked when users invoke a non-existent method
+on an object. The name of the method and the arguments of the
+invocation are passed to <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> in an <code>Invocation</code>.
+If <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> returns a value, that value becomes the result of
+the original invocation.</p>
+<p>The default behavior of <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is to throw a
+<code>NoSuchMethodError</code>.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+noSuchMethod(final Invocation invocation) =&gt;
+   _delegateMirror.delegate(invocation);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to NoSuchMethodForwarder.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; 
+   delegate.toString();
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:57.561</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

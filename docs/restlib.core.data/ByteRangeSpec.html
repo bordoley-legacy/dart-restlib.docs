@@ -1,0 +1,216 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ByteRangeSpec class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="ByteRangeSpec">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/ByteRangeSpec.html">ByteRangeSpec</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ByteRangeSpec</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class ByteRangeSpec {
+ final int firstBytePos;
+ final Option&lt;int&gt; lastBytePos;
+ 
+ factory ByteRangeSpec.startAt(int firstBytePos) =&gt;
+     new ByteRangeSpec._internal(firstBytePos, Option.NONE);
+ 
+ factory ByteRangeSpec.range(int firstBytePos, int lastBytePos) {
+   checkArgument(lastBytePos &gt; firstBytePos);
+   return  new ByteRangeSpec._internal(firstBytePos, new Option(lastBytePos));
+ }
+ 
+ const ByteRangeSpec._internal(this.firstBytePos, this.lastBytePos);
+ 
+ int get hashCode =&gt;
+     computeHashCode([firstBytePos, lastBytePos]);
+     
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is ByteRangeSpec) {
+     ByteRangeSpec that = other;
+     return this.firstBytePos == that.firstBytePos &amp;&amp;
+         this.lastBytePos == that.lastBytePos;
+   } else {
+     return false;
+   }
+ }
+ 
+ String toString() =&gt;
+     "$firstBytePos-${lastBytePos.orElse("")}";
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="range">
+<button class="show-code">Code</button>
+factory <strong>ByteRangeSpec.range</strong>(int firstBytePos, int lastBytePos) <a class="anchor-link" href="#range"
+              title="Permalink to ByteRangeSpec.ByteRangeSpec.range">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory ByteRangeSpec.range(int firstBytePos, int lastBytePos) {
+ checkArgument(lastBytePos &gt; firstBytePos);
+ return  new ByteRangeSpec._internal(firstBytePos, new Option(lastBytePos));
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="startAt">
+<button class="show-code">Code</button>
+factory <strong>ByteRangeSpec.startAt</strong>(int firstBytePos) <a class="anchor-link" href="#startAt"
+              title="Permalink to ByteRangeSpec.ByteRangeSpec.startAt">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory ByteRangeSpec.startAt(int firstBytePos) =&gt;
+   new ByteRangeSpec._internal(firstBytePos, Option.NONE);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="firstBytePos">
+<button class="show-code">Code</button>
+final int         <strong>firstBytePos</strong> <a class="anchor-link"
+            href="#firstBytePos"
+            title="Permalink to ByteRangeSpec.firstBytePos">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final int firstBytePos
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to ByteRangeSpec.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.core.data/ByteRangeSpec.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt;
+   computeHashCode([firstBytePos, lastBytePos]);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="lastBytePos">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;int&gt;         <strong>lastBytePos</strong> <a class="anchor-link"
+            href="#lastBytePos"
+            title="Permalink to ByteRangeSpec.lastBytePos">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Option&lt;int&gt; lastBytePos
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to ByteRangeSpec.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.core.data/ByteRangeSpec.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is ByteRangeSpec) {
+   ByteRangeSpec that = other;
+   return this.firstBytePos == that.firstBytePos &amp;&amp;
+       this.lastBytePos == that.lastBytePos;
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to ByteRangeSpec.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   "$firstBytePos-${lastBytePos.orElse("")}";
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:58.890</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

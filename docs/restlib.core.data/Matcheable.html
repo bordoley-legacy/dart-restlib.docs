@@ -1,0 +1,67 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Matcheable&lt;T&gt; abstract class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="Matcheable&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/Matcheable.html">Matcheable&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Matcheable&lt;T&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Matcheable&lt;T&gt; {
+ // Defines the quality of the match of this to that. For instance,
+ // for a MediaRange this text/* would match any that text/ 
+ // MediaRange, however text/html would not match text/*
+ // @param that
+ // @return The quality of the match. 0 is no match, 1000 is an exact match.
+ // Values in between are defined by the implementation.
+ int match(T that);
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/Charset.html">Charset</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/Language.html">Language</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/MediaRange.html">MediaRange</a></span></p>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="match">
+abstract int <strong>match</strong>(<a href="../restlib.core.data/Matcheable.html">T</a> that) <a class="anchor-link" href="#match"
+              title="Permalink to Matcheable&lt;T&gt;.match">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:59.003</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

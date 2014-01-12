@@ -1,0 +1,161 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RequestPreconditionsBuilder class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="RequestPreconditionsBuilder">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/RequestPreconditionsBuilder.html">RequestPreconditionsBuilder</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RequestPreconditionsBuilder</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class RequestPreconditionsBuilder {
+ MutableSet&lt;EntityTag&gt; _ifMatch = new MutableSet.hash();
+ Option&lt;DateTime&gt; _ifModifiedSince = Option.NONE;
+ MutableSet&lt;EntityTag&gt; _ifNoneMatch = new MutableSet.hash();
+ Option&lt;Either&lt;EntityTag,DateTime&gt;&gt; _ifRange = Option.NONE;
+ Option&lt;DateTime&gt; _ifUnmodifiedSince = Option.NONE;
+ 
+ set ifRangeDate(final DateTime date) =&gt;
+   _ifRange = new Option(new Either.rightValue(date));
+ 
+ set ifRangeTag(final EntityTag tag) =&gt;
+   _ifRange = new Option(new Either.leftValue(tag));
+ 
+ set ifUnmodifiedSince (final DateTime date) =&gt;
+   _ifUnmodifiedSince = new Option(date);
+ 
+ void addIfMatchTag(final EntityTag tag) { 
+   _ifMatch.add(tag);
+ }
+ 
+ set ifModifiedSince (final DateTime date) =&gt; 
+     _ifModifiedSince = new Option(date);
+ 
+ void addIfNoneMatchTag(final EntityTag tag) { 
+   _ifNoneMatch.add(tag);
+ }
+ 
+ RequestPreconditions build() =&gt; 
+     new _RequestPreconditionsImpl(this);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="method"><h4 id="ifModifiedSince=">
+<button class="show-code">Code</button>
+dynamic <strong>set ifModifiedSince</strong>(DateTime date) <a class="anchor-link" href="#ifModifiedSince="
+              title="Permalink to RequestPreconditionsBuilder.set ifModifiedSince">#</a></h4>
+<div class="doc">
+<pre class="source">
+set ifModifiedSince (final DateTime date) =&gt; 
+   _ifModifiedSince = new Option(date);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="ifRangeDate=">
+<button class="show-code">Code</button>
+dynamic <strong>set ifRangeDate</strong>(DateTime date) <a class="anchor-link" href="#ifRangeDate="
+              title="Permalink to RequestPreconditionsBuilder.set ifRangeDate">#</a></h4>
+<div class="doc">
+<pre class="source">
+set ifRangeDate(final DateTime date) =&gt;
+ _ifRange = new Option(new Either.rightValue(date));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="ifRangeTag=">
+<button class="show-code">Code</button>
+dynamic <strong>set ifRangeTag</strong>(<a href="../restlib.core.data/EntityTag.html">EntityTag</a> tag) <a class="anchor-link" href="#ifRangeTag="
+              title="Permalink to RequestPreconditionsBuilder.set ifRangeTag">#</a></h4>
+<div class="doc">
+<pre class="source">
+set ifRangeTag(final EntityTag tag) =&gt;
+ _ifRange = new Option(new Either.leftValue(tag));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="ifUnmodifiedSince=">
+<button class="show-code">Code</button>
+dynamic <strong>set ifUnmodifiedSince</strong>(DateTime date) <a class="anchor-link" href="#ifUnmodifiedSince="
+              title="Permalink to RequestPreconditionsBuilder.set ifUnmodifiedSince">#</a></h4>
+<div class="doc">
+<pre class="source">
+set ifUnmodifiedSince (final DateTime date) =&gt;
+ _ifUnmodifiedSince = new Option(date);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="addIfMatchTag">
+<button class="show-code">Code</button>
+void <strong>addIfMatchTag</strong>(<a href="../restlib.core.data/EntityTag.html">EntityTag</a> tag) <a class="anchor-link" href="#addIfMatchTag"
+              title="Permalink to RequestPreconditionsBuilder.addIfMatchTag">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addIfMatchTag(final EntityTag tag) { 
+ _ifMatch.add(tag);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addIfNoneMatchTag">
+<button class="show-code">Code</button>
+void <strong>addIfNoneMatchTag</strong>(<a href="../restlib.core.data/EntityTag.html">EntityTag</a> tag) <a class="anchor-link" href="#addIfNoneMatchTag"
+              title="Permalink to RequestPreconditionsBuilder.addIfNoneMatchTag">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addIfNoneMatchTag(final EntityTag tag) { 
+ _ifNoneMatch.add(tag);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="build">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>build</strong>() <a class="anchor-link" href="#build"
+              title="Permalink to RequestPreconditionsBuilder.build">#</a></h4>
+<div class="doc">
+<pre class="source">
+RequestPreconditions build() =&gt; 
+   new _RequestPreconditionsImpl(this);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.495</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

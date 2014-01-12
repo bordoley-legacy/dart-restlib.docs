@@ -1,0 +1,588 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.common.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.collections">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.common.collections.html">restlib.common.collections</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.common.collections</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="EMPTY_LIST">
+<button class="show-code">Code</button>
+const List         <strong>EMPTY_LIST</strong> <a class="anchor-link"
+            href="#EMPTY_LIST"
+            title="Permalink to EMPTY_LIST">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+const List EMPTY_LIST = const []
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="zipOptionally">
+<button class="show-code">Code</button>
+Iterable&lt;<a href="restlib.common.collections/Pair.html">Pair</a>&lt;<a href="restlib.common.collections/Option.html">Option</a>, <a href="restlib.common.collections/Option.html">Option</a>&gt;&gt; <strong>zipOptionally</strong>(Iterable fst, Iterable snd) <a class="anchor-link" href="#zipOptionally"
+              title="Permalink to zipOptionally">#</a></h4>
+<div class="doc">
+<pre class="source">
+Iterable&lt;Pair&lt;Option/*&lt;T1&gt;*/, Option/*&lt;T2&gt;*/&gt;&gt; zipOptionally(
+   final Iterable/*&lt;T1&gt;*/ fst, final Iterable/*&lt;T2&gt;*/ snd) =&gt;
+       new _ZippedOptionalIterable(fst, snd);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="lastWhere">
+<button class="show-code">Code</button>
+<a href="restlib.common.collections/Option.html">Option</a> <strong>lastWhere</strong>(Iterable itr, bool test(value)) <a class="anchor-link" href="#lastWhere"
+              title="Permalink to lastWhere">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option/*&lt;T&gt;*/ lastWhere(final Iterable/*&lt;T&gt;*/ itr, bool test(value)) {
+ try {
+   return new Option(itr.lastWhere(test));
+ } on StateError {
+   return Option.NONE;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="last">
+<button class="show-code">Code</button>
+<a href="restlib.common.collections/Option.html">Option</a> <strong>last</strong>(Iterable itr) <a class="anchor-link" href="#last"
+              title="Permalink to last">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option/*&lt;T&gt;*/ last(final Iterable/*&lt;T&gt;*/ itr) {
+ try {
+   return new Option(itr.last);
+ } on StateError {
+   return Option.NONE;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="firstWhere">
+<button class="show-code">Code</button>
+<a href="restlib.common.collections/Option.html">Option</a> <strong>firstWhere</strong>(Iterable itr, bool test(value)) <a class="anchor-link" href="#firstWhere"
+              title="Permalink to firstWhere">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option/*&lt;T&gt;*/ firstWhere(final Iterable/*&lt;T&gt;*/ itr, bool test(value)) {
+ try {
+   return new Option(itr.firstWhere(test));
+ } on StateError {
+   return Option.NONE;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="first">
+<button class="show-code">Code</button>
+<a href="restlib.common.collections/Option.html">Option</a> <strong>first</strong>(Iterable itr) <a class="anchor-link" href="#first"
+              title="Permalink to first">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option/*&lt;T&gt;*/ first(final Iterable/*&lt;T&gt;*/ itr) {
+ try {
+   return new Option(itr.first);
+ } on StateError {
+   return Option.NONE;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="equal">
+<button class="show-code">Code</button>
+bool <strong>equal</strong>(Iterable fst, Iterable snd) <a class="anchor-link" href="#equal"
+              title="Permalink to equal">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool equal(final Iterable fst, final Iterable snd) {
+ final Iterator itrFst = fst.iterator;
+ final Iterator itrSnd = snd.iterator;
+ 
+ bool fstMoveNext = itrFst.moveNext();
+ bool sndMoveNext = itrSnd.moveNext();
+ 
+ for (;fstMoveNext &amp;&amp; sndMoveNext; 
+     fstMoveNext = itrFst.moveNext(), sndMoveNext = itrSnd.moveNext()) {
+   if(itrFst.current != itrSnd.current) {
+     return false;
+   }
+ }
+ 
+ return fstMoveNext == sndMoveNext;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="elementAt">
+<button class="show-code">Code</button>
+<a href="restlib.common.collections/Option.html">Option</a> <strong>elementAt</strong>(Iterable itr, int index) <a class="anchor-link" href="#elementAt"
+              title="Permalink to elementAt">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option/*&lt;T&gt;*/ elementAt(final Iterable/*&lt;T&gt;*/ itr, final int index) {
+ try {
+   return new Option(itr.elementAt(index));
+ } on RangeError {
+   return Option.NONE;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="concat">
+<button class="show-code">Code</button>
+Iterable <strong>concat</strong>(Iterable fst, Iterable snd) <a class="anchor-link" href="#concat"
+              title="Permalink to concat">#</a></h4>
+<div class="doc">
+<pre class="source">
+Iterable/*&lt;T&gt;*/ concat(final Iterable/*&lt;T&gt;*/ fst, final Iterable/*&lt;T&gt;*/ snd) {
+   if (fst.isEmpty) {
+     return snd;
+   } else if (snd.isEmpty) {
+     return fst;
+   } else {
+     return new _ConcatIterable(fst, snd);
+   }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeIfNotEmpty">
+<button class="show-code">Code</button>
+void <strong>computeIfNotEmpty</strong>(Iterable itr, void compute(Iterable)) <a class="anchor-link" href="#computeIfNotEmpty"
+              title="Permalink to computeIfNotEmpty">#</a></h4>
+<div class="doc">
+<pre class="source">
+void computeIfNotEmpty(final Iterable/*&lt;T&gt;*/ itr, void compute(Iterable/*&lt;T&gt;*/)) {
+   if (itr.isNotEmpty) {
+     compute(itr);
+   }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeIfEmpty">
+<button class="show-code">Code</button>
+Iterable <strong>computeIfEmpty</strong>(Iterable itr1, Iterable compute()) <a class="anchor-link" href="#computeIfEmpty"
+              title="Permalink to computeIfEmpty">#</a></h4>
+<div class="doc">
+<pre class="source">
+Iterable computeIfEmpty(final Iterable itr1, Iterable compute()) =&gt;
+   itr1.isNotEmpty ? itr1 : compute();
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Associative.html"><strong>Associative&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/BiMap.html"><strong>BiMap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWrite.html"><strong>CopyOnWrite</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteCollectionBuilder.html"><strong>CopyOnWriteCollectionBuilder&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Dictionary.html"><strong>Dictionary&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/FiniteSet.html"><strong>FiniteSet&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingAssociative.html"><strong>ForwardingAssociative&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingBiMap.html"><strong>ForwardingBiMap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingDictionary.html"><strong>ForwardingDictionary&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingIterable.html"><strong>ForwardingIterable&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingMultimap.html"><strong>ForwardingMultimap&lt;K, V, I&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingMultiset.html"><strong>ForwardingMultiset&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingSequence.html"><strong>ForwardingSequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingSet.html"><strong>ForwardingSet&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ForwardingStack.html"><strong>ForwardingStack&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/GrowableSequence.html"><strong>GrowableSequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableAssociative.html"><strong>ImmutableAssociative&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableBiMap.html"><strong>ImmutableBiMap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableCollection.html"><strong>ImmutableCollection&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableDictionary.html"><strong>ImmutableDictionary&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableMultimap.html"><strong>ImmutableMultimap&lt;K, V, I&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableMultiset.html"><strong>ImmutableMultiset&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableMultisetMultimap.html"><strong>ImmutableMultisetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableSequence.html"><strong>ImmutableSequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableSequenceMultimap.html"><strong>ImmutableSequenceMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableSet.html"><strong>ImmutableSet&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableSetMultimap.html"><strong>ImmutableSetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/ImmutableStack.html"><strong>ImmutableStack&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Multimap.html"><strong>Multimap&lt;K, V, I&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Multiset.html"><strong>Multiset&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MultisetMultimap.html"><strong>MultisetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableAssociative.html"><strong>MutableAssociative&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableBiMap.html"><strong>MutableBiMap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableCollection.html"><strong>MutableCollection&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableDictionary.html"><strong>MutableDictionary&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableFixedSizeSequence.html"><strong>MutableFixedSizeSequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableMultimap.html"><strong>MutableMultimap&lt;K, V, I&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableMultiset.html"><strong>MutableMultiset&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableMultisetMultimap.html"><strong>MutableMultisetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableSequence.html"><strong>MutableSequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableSequenceMultimap.html"><strong>MutableSequenceMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableSet.html"><strong>MutableSet&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/MutableSetMultimap.html"><strong>MutableSetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Persistent.html"><strong>Persistent</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Sequence.html"><strong>Sequence&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/SequenceMultimap.html"><strong>SequenceMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/SetMultimap.html"><strong>SetMultimap&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Stack.html"><strong>Stack&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Array.html"><strong>Array&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteBiMapBuilder.html"><strong>CopyOnWriteBiMapBuilder&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteDictionaryBuilder.html"><strong>CopyOnWriteDictionaryBuilder&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteMultisetBuilder.html"><strong>CopyOnWriteMultisetBuilder&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteMultisetMultimapBuilder.html"><strong>CopyOnWriteMultisetMultimapBuilder&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteSequenceBuilder.html"><strong>CopyOnWriteSequenceBuilder&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html"><strong>CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteSetBuilder.html"><strong>CopyOnWriteSetBuilder&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/CopyOnWriteSetMultimapBuilder.html"><strong>CopyOnWriteSetMultimapBuilder&lt;K, V&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Either.html"><strong>Either&lt;L, R&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Option.html"><strong>Option&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/OptionArray.html"><strong>OptionArray&lt;E&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.collections/Pair.html"><strong>Pair&lt;T1, T2&gt;</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:50.669</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

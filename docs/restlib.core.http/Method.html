@@ -1,0 +1,917 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Method class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="Method">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/Method.html">Method</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Method</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Method {
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3744#section-8.1"&gt;[RFC3744], Section 8.1&lt;/a&gt;
+  */
+ static const Method ACL = const Method._internal("ACL");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-12.6"&gt;[RFC3253], Section 12.6&lt;/a&gt;
+  */
+ static const Method BASELINE_CONTROL = const Method._internal("BASELINE-CONTROL");
+
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc5842#section-4"&gt;[RFC5842], Section 4&lt;/a&gt;
+  */
+ static const Method BIND = const Method._internal("BIND");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.4"&gt;[RFC3253], Section 4.4&lt;/a&gt;
+  */
+ static const Method CHECKIN = const Method._internal("CHECKIN");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.3"&gt;[RFC3253], Section 4.3&lt;/a&gt;
+  */
+ static const Method CHECKOUT = const Method._internal("CHECKOUT");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.9"&gt;HTTP/1.1 CONNECT Method Definition&lt;/&gt;
+  */
+ static const Method CONNECT = const Method._internal("CONNECT");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.8"&gt;[RFC4918], Section 9.8 &lt;/a&gt;
+  */
+ static const Method COPY = const Method._internal("COPY");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.7"&gt;HTTP/1.1 DELETE Method Definition&lt;/a&gt;
+  */
+ static const Method DELETE = const Method._internal("DELETE");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.3"&gt;HTTP/1.1 GET Method Definition&lt;/a&gt;
+  */
+ static const Method GET = const Method._internal("GET");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.4"&gt;HTTP/1.1 HEADS Method Definition&lt;/a&gt;
+  */
+ static const Method HEAD = const Method._internal("HEAD");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-8.2"&gt;[RFC3253], Section 8.2&lt;/a&gt;
+  */
+ static const Method LABEL = const Method._internal("LABEL");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc2068#section-19.6.1.2"&gt;[RFC2068], Section 19.6.1.2&lt;/a&gt;
+  */
+ static const Method LINK = const Method._internal("LINK");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.10"&gt;[RFC4918], Section 9.10&lt;/a&gt;
+  */
+ static const Method LOCK = const Method._internal("LOCK");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-11.2"&gt;[RFC3253], Section 11.2&lt;/a&gt;
+  */
+ static const Method MERGE = const Method._internal("MERGE");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-13.5"&gt;[RFC3253], Section 13.5&lt;/a&gt;
+  */
+ static const Method MKACTIVITY = const Method._internal("MKACTIVITY");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4791#section-5.3.1"&gt;[RFC4791], Section 5.3.1&lt;/a&gt;
+  */
+ static const Method MKCALENDAR = const Method._internal("MKCALENDAR");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.3"&gt;[RFC4918], Section 9.3&lt;/a&gt;
+  */
+ static const Method MKCOL = const Method._internal("MKCOL");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4437#section-6"&gt;[RFC4437], Section 6&lt;/a&gt;
+  */
+ static const Method MKREDIRECTREF = const Method._internal("MKREDIRECTREF");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-6.3"&gt;[RFC3253], Section 6.3&lt;/a&gt;
+  */
+ static const Method MKWORKSPACE = const Method._internal("MKWORKSPACE");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.9"&gt;[RFC4918], Section 9.9&lt;/a&gt;
+  */
+ static const Method MOVE = const Method._internal("MOVE");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.2"&gt;HTTP/1.1 OPTIONS Method Definition&lt;/a&gt;
+  */
+ static const Method OPTIONS = const Method._internal("OPTIONS");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3648#section-7"&gt;[RFC3648], Section 7&lt;/a&gt;
+  */
+ static const Method ORDERPATCH = const Method._internal("ORDERPATCH");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc5789#section-2"&gt;[RFC5789], Section 2&lt;/a&gt;
+  */
+ static const Method PATCH = const Method._internal("PATCH");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.5"&gt;HTTP/1.1 POST Method Definition&lt;/a&gt;
+  */
+ static const Method POST = const Method._internal("POST");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.1"&gt;[RFC4918], Section 9.1&lt;/a&gt;
+  */
+ static const Method PROPFIND = const Method._internal("PROPFIND");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.2"&gt;[RFC4918], Section 9.2&lt;/a&gt;
+  */
+ static const Method PROPPATCH = const Method._internal("PROPPATCH");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.6"&gt;HTTP/1.1 PUT Method Definition&lt;/a&gt;
+  */
+ static const Method PUT = const Method._internal("PUT");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc5842#section-6"&gt;[RFC5842], Section 6&lt;/a&gt;
+  */
+ static const Method REBIND = const Method._internal("REBIND");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-3.6"&gt;[RFC3253], Section 3.6&lt;/a&gt;
+  */
+ static const Method REPORT = const Method._internal("REPORT");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc5323#section-2"&gt;[RFC5323], Section 2&lt;/a&gt;
+  */
+ static const Method SEARCH = const Method._internal("SEARCH");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.8"&gt;HTTP/1.1 TRACE Method Definition&lt;/&gt;
+  */
+ static const Method TRACE = const Method._internal("TRACE");   
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc5842#section-5"&gt;[RFC5842], Section 5&lt;/a&gt;
+  */
+ static const Method UNBIND = const Method._internal("UNBIND");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.5"&gt;[RFC3253], Section 4.5&lt;/a&gt;
+  */
+ static const Method UNCHECKOUT = const Method._internal("UNCHECKOUT");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc2068#section-19.6.1.3"&gt;[RFC2068], Section 19.6.1.3&lt;/a&gt;
+  */
+ static const Method UNLINK = const Method._internal("UNLINK");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.11"&gt;[RFC4918], Section 9.11&lt;/a&gt;
+  */
+ static const Method UNLOCK = const Method._internal("UNLOCK");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-7.1"&gt;[RFC3253], Section 7.1&lt;/a&gt;
+  */
+ static const Method UPDATE = const Method._internal("UPDATE");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc4437#section-7"&gt;[RFC4437], Section 7&lt;/a&gt;
+  */
+ static const Method UPDATEDIRECTREF = const Method._internal("UPDATEDIRECTREF");
+ 
+ /**
+  * @see &lt;a href="http://tools.ietf.org/html/rfc3253#section-3.5"&gt;[RFC3253], Section 3.5&lt;/a&gt;
+  */
+ static const Method VERSION_CONTROL = const Method._internal("VERSION-CONTROL");
+ 
+ static final MutableDictionary&lt;Method,Method&gt; _registry = 
+     (new MutableDictionary.hash()
+         ..insert(Method.ACL, Method.ACL)
+         ..insert(Method.BASELINE_CONTROL, Method.BASELINE_CONTROL)
+         ..insert(Method.BIND, Method.BIND)
+         ..insert(Method.CHECKIN, Method.CHECKIN)
+         ..insert(Method.CHECKOUT, Method.CHECKOUT)
+         ..insert(Method.CONNECT, Method.CONNECT)
+         ..insert(Method.COPY, Method.COPY)
+         ..insert(Method.DELETE, Method.DELETE)
+         ..insert(Method.GET, Method.GET)
+         ..insert(Method.HEAD, Method.HEAD)
+         ..insert(Method.LABEL, Method.LABEL)
+         ..insert(Method.LINK, Method.LINK)
+         ..insert(Method.LOCK, Method.LOCK)
+         ..insert(Method.MERGE, Method.MERGE)
+         ..insert(Method.MKACTIVITY, Method.MKACTIVITY)
+         ..insert(Method.MKCALENDAR, Method.MKCALENDAR)
+         ..insert(Method.MKCOL, Method.MKCOL)
+         ..insert(Method.MKREDIRECTREF, Method.MKREDIRECTREF)
+         ..insert(Method.MKWORKSPACE, Method.MKWORKSPACE)
+         ..insert(Method.MOVE, Method.MOVE)
+         ..insert(Method.OPTIONS, Method.OPTIONS)
+         ..insert(Method.ORDERPATCH, Method.ORDERPATCH)
+         ..insert(Method.PATCH, Method.PATCH)
+         ..insert(Method.POST, Method.POST)
+         ..insert(Method.PROPFIND, Method.PROPFIND)
+         ..insert(Method.PROPPATCH, Method.PROPPATCH)
+         ..insert(Method.PUT, Method.PUT)
+         ..insert(Method.REBIND, Method.REBIND)
+         ..insert(Method.REPORT, Method.REPORT)
+         ..insert(Method.SEARCH, Method.SEARCH)
+         ..insert(Method.TRACE, Method.TRACE)
+         ..insert(Method.UNBIND, Method.UNBIND)
+         ..insert(Method.UNCHECKOUT, Method.UNCHECKOUT)
+         ..insert(Method.UNLINK, Method.UNLINK)
+         ..insert(Method.UNLOCK, Method.UNLOCK)
+         ..insert(Method.UPDATE, Method.UPDATE)
+         ..insert(Method.UPDATEDIRECTREF, Method.UPDATEDIRECTREF)
+         ..insert(Method.VERSION_CONTROL, Method.VERSION_CONTROL));
+
+ factory Method.forName(String name) {
+   checkArgument(TCHAR.matchesAllOf(name));
+   final Method method = new Method._internal(name.toUpperCase());
+   return _registry[method]
+           .map((final Method method) =&gt; 
+               method)
+           .orElse(method);
+ }
+ 
+ final String name;
+ 
+ const Method._internal(this.name);
+ 
+ int get hashCode =&gt; computeHashCode([name]);
+ 
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is Method) {
+     return this.name == other.name;
+   } else {
+     return false;
+   }
+ }
+ 
+ String toString() =&gt; name;
+}
+</pre>
+</div>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="ACL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>ACL</strong> <a class="anchor-link"
+            href="#ACL"
+            title="Permalink to Method.ACL">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3744#section-8.1"><code>RFC3744</code>, Section 8.1&lt;/a></p>
+<pre class="source">
+static const Method ACL = const Method._internal("ACL")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="BASELINE_CONTROL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>BASELINE_CONTROL</strong> <a class="anchor-link"
+            href="#BASELINE_CONTROL"
+            title="Permalink to Method.BASELINE_CONTROL">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-12.6"><code>RFC3253</code>, Section 12.6&lt;/a></p>
+<pre class="source">
+static const Method BASELINE_CONTROL = const Method._internal("BASELINE-CONTROL")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="BIND">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>BIND</strong> <a class="anchor-link"
+            href="#BIND"
+            title="Permalink to Method.BIND">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc5842#section-4"><code>RFC5842</code>, Section 4&lt;/a></p>
+<pre class="source">
+static const Method BIND = const Method._internal("BIND")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHECKIN">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>CHECKIN</strong> <a class="anchor-link"
+            href="#CHECKIN"
+            title="Permalink to Method.CHECKIN">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.4"><code>RFC3253</code>, Section 4.4&lt;/a></p>
+<pre class="source">
+static const Method CHECKIN = const Method._internal("CHECKIN")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHECKOUT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>CHECKOUT</strong> <a class="anchor-link"
+            href="#CHECKOUT"
+            title="Permalink to Method.CHECKOUT">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.3"><code>RFC3253</code>, Section 4.3&lt;/a></p>
+<pre class="source">
+static const Method CHECKOUT = const Method._internal("CHECKOUT")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONNECT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>CONNECT</strong> <a class="anchor-link"
+            href="#CONNECT"
+            title="Permalink to Method.CONNECT">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.9">HTTP/1.1 CONNECT Method Definition&lt;/></p>
+<pre class="source">
+static const Method CONNECT = const Method._internal("CONNECT")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COPY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>COPY</strong> <a class="anchor-link"
+            href="#COPY"
+            title="Permalink to Method.COPY">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.8"><code>RFC4918</code>, Section 9.8 &lt;/a></p>
+<pre class="source">
+static const Method COPY = const Method._internal("COPY")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DELETE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>DELETE</strong> <a class="anchor-link"
+            href="#DELETE"
+            title="Permalink to Method.DELETE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.7">HTTP/1.1 DELETE Method Definition&lt;/a></p>
+<pre class="source">
+static const Method DELETE = const Method._internal("DELETE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GET">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>GET</strong> <a class="anchor-link"
+            href="#GET"
+            title="Permalink to Method.GET">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.3">HTTP/1.1 GET Method Definition&lt;/a></p>
+<pre class="source">
+static const Method GET = const Method._internal("GET")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HEAD">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>HEAD</strong> <a class="anchor-link"
+            href="#HEAD"
+            title="Permalink to Method.HEAD">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.4">HTTP/1.1 HEADS Method Definition&lt;/a></p>
+<pre class="source">
+static const Method HEAD = const Method._internal("HEAD")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LABEL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>LABEL</strong> <a class="anchor-link"
+            href="#LABEL"
+            title="Permalink to Method.LABEL">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-8.2"><code>RFC3253</code>, Section 8.2&lt;/a></p>
+<pre class="source">
+static const Method LABEL = const Method._internal("LABEL")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LINK">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>LINK</strong> <a class="anchor-link"
+            href="#LINK"
+            title="Permalink to Method.LINK">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc2068#section-19.6.1.2"><code>RFC2068</code>, Section 19.6.1.2&lt;/a></p>
+<pre class="source">
+static const Method LINK = const Method._internal("LINK")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LOCK">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>LOCK</strong> <a class="anchor-link"
+            href="#LOCK"
+            title="Permalink to Method.LOCK">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.10"><code>RFC4918</code>, Section 9.10&lt;/a></p>
+<pre class="source">
+static const Method LOCK = const Method._internal("LOCK")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MERGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MERGE</strong> <a class="anchor-link"
+            href="#MERGE"
+            title="Permalink to Method.MERGE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-11.2"><code>RFC3253</code>, Section 11.2&lt;/a></p>
+<pre class="source">
+static const Method MERGE = const Method._internal("MERGE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MKACTIVITY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MKACTIVITY</strong> <a class="anchor-link"
+            href="#MKACTIVITY"
+            title="Permalink to Method.MKACTIVITY">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-13.5"><code>RFC3253</code>, Section 13.5&lt;/a></p>
+<pre class="source">
+static const Method MKACTIVITY = const Method._internal("MKACTIVITY")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MKCALENDAR">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MKCALENDAR</strong> <a class="anchor-link"
+            href="#MKCALENDAR"
+            title="Permalink to Method.MKCALENDAR">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4791#section-5.3.1"><code>RFC4791</code>, Section 5.3.1&lt;/a></p>
+<pre class="source">
+static const Method MKCALENDAR = const Method._internal("MKCALENDAR")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MKCOL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MKCOL</strong> <a class="anchor-link"
+            href="#MKCOL"
+            title="Permalink to Method.MKCOL">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.3"><code>RFC4918</code>, Section 9.3&lt;/a></p>
+<pre class="source">
+static const Method MKCOL = const Method._internal("MKCOL")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MKREDIRECTREF">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MKREDIRECTREF</strong> <a class="anchor-link"
+            href="#MKREDIRECTREF"
+            title="Permalink to Method.MKREDIRECTREF">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4437#section-6"><code>RFC4437</code>, Section 6&lt;/a></p>
+<pre class="source">
+static const Method MKREDIRECTREF = const Method._internal("MKREDIRECTREF")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MKWORKSPACE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MKWORKSPACE</strong> <a class="anchor-link"
+            href="#MKWORKSPACE"
+            title="Permalink to Method.MKWORKSPACE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-6.3"><code>RFC3253</code>, Section 6.3&lt;/a></p>
+<pre class="source">
+static const Method MKWORKSPACE = const Method._internal("MKWORKSPACE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MOVE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>MOVE</strong> <a class="anchor-link"
+            href="#MOVE"
+            title="Permalink to Method.MOVE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.9"><code>RFC4918</code>, Section 9.9&lt;/a></p>
+<pre class="source">
+static const Method MOVE = const Method._internal("MOVE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OPTIONS">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>OPTIONS</strong> <a class="anchor-link"
+            href="#OPTIONS"
+            title="Permalink to Method.OPTIONS">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.2">HTTP/1.1 OPTIONS Method Definition&lt;/a></p>
+<pre class="source">
+static const Method OPTIONS = const Method._internal("OPTIONS")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ORDERPATCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>ORDERPATCH</strong> <a class="anchor-link"
+            href="#ORDERPATCH"
+            title="Permalink to Method.ORDERPATCH">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3648#section-7"><code>RFC3648</code>, Section 7&lt;/a></p>
+<pre class="source">
+static const Method ORDERPATCH = const Method._internal("ORDERPATCH")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PATCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>PATCH</strong> <a class="anchor-link"
+            href="#PATCH"
+            title="Permalink to Method.PATCH">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc5789#section-2"><code>RFC5789</code>, Section 2&lt;/a></p>
+<pre class="source">
+static const Method PATCH = const Method._internal("PATCH")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="POST">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>POST</strong> <a class="anchor-link"
+            href="#POST"
+            title="Permalink to Method.POST">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.5">HTTP/1.1 POST Method Definition&lt;/a></p>
+<pre class="source">
+static const Method POST = const Method._internal("POST")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROPFIND">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>PROPFIND</strong> <a class="anchor-link"
+            href="#PROPFIND"
+            title="Permalink to Method.PROPFIND">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.1"><code>RFC4918</code>, Section 9.1&lt;/a></p>
+<pre class="source">
+static const Method PROPFIND = const Method._internal("PROPFIND")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROPPATCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>PROPPATCH</strong> <a class="anchor-link"
+            href="#PROPPATCH"
+            title="Permalink to Method.PROPPATCH">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.2"><code>RFC4918</code>, Section 9.2&lt;/a></p>
+<pre class="source">
+static const Method PROPPATCH = const Method._internal("PROPPATCH")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PUT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>PUT</strong> <a class="anchor-link"
+            href="#PUT"
+            title="Permalink to Method.PUT">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.6">HTTP/1.1 PUT Method Definition&lt;/a></p>
+<pre class="source">
+static const Method PUT = const Method._internal("PUT")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="REBIND">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>REBIND</strong> <a class="anchor-link"
+            href="#REBIND"
+            title="Permalink to Method.REBIND">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc5842#section-6"><code>RFC5842</code>, Section 6&lt;/a></p>
+<pre class="source">
+static const Method REBIND = const Method._internal("REBIND")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="REPORT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>REPORT</strong> <a class="anchor-link"
+            href="#REPORT"
+            title="Permalink to Method.REPORT">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-3.6"><code>RFC3253</code>, Section 3.6&lt;/a></p>
+<pre class="source">
+static const Method REPORT = const Method._internal("REPORT")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SEARCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>SEARCH</strong> <a class="anchor-link"
+            href="#SEARCH"
+            title="Permalink to Method.SEARCH">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc5323#section-2"><code>RFC5323</code>, Section 2&lt;/a></p>
+<pre class="source">
+static const Method SEARCH = const Method._internal("SEARCH")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TRACE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>TRACE</strong> <a class="anchor-link"
+            href="#TRACE"
+            title="Permalink to Method.TRACE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-17#section-6.8">HTTP/1.1 TRACE Method Definition&lt;/></p>
+<pre class="source">
+static const Method TRACE = const Method._internal("TRACE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UNBIND">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UNBIND</strong> <a class="anchor-link"
+            href="#UNBIND"
+            title="Permalink to Method.UNBIND">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc5842#section-5"><code>RFC5842</code>, Section 5&lt;/a></p>
+<pre class="source">
+static const Method UNBIND = const Method._internal("UNBIND")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UNCHECKOUT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UNCHECKOUT</strong> <a class="anchor-link"
+            href="#UNCHECKOUT"
+            title="Permalink to Method.UNCHECKOUT">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-4.5"><code>RFC3253</code>, Section 4.5&lt;/a></p>
+<pre class="source">
+static const Method UNCHECKOUT = const Method._internal("UNCHECKOUT")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UNLINK">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UNLINK</strong> <a class="anchor-link"
+            href="#UNLINK"
+            title="Permalink to Method.UNLINK">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc2068#section-19.6.1.3"><code>RFC2068</code>, Section 19.6.1.3&lt;/a></p>
+<pre class="source">
+static const Method UNLINK = const Method._internal("UNLINK")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UNLOCK">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UNLOCK</strong> <a class="anchor-link"
+            href="#UNLOCK"
+            title="Permalink to Method.UNLOCK">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4918#section-9.11"><code>RFC4918</code>, Section 9.11&lt;/a></p>
+<pre class="source">
+static const Method UNLOCK = const Method._internal("UNLOCK")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UPDATE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UPDATE</strong> <a class="anchor-link"
+            href="#UPDATE"
+            title="Permalink to Method.UPDATE">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-7.1"><code>RFC3253</code>, Section 7.1&lt;/a></p>
+<pre class="source">
+static const Method UPDATE = const Method._internal("UPDATE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UPDATEDIRECTREF">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>UPDATEDIRECTREF</strong> <a class="anchor-link"
+            href="#UPDATEDIRECTREF"
+            title="Permalink to Method.UPDATEDIRECTREF">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc4437#section-7"><code>RFC4437</code>, Section 7&lt;/a></p>
+<pre class="source">
+static const Method UPDATEDIRECTREF = const Method._internal("UPDATEDIRECTREF")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VERSION_CONTROL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Method.html">Method</a>         <strong>VERSION_CONTROL</strong> <a class="anchor-link"
+            href="#VERSION_CONTROL"
+            title="Permalink to Method.VERSION_CONTROL">#</a>
+        </h4>
+        <div class="doc">
+<p>@see &lt;a href="http://tools.ietf.org/html/rfc3253#section-3.5"><code>RFC3253</code>, Section 3.5&lt;/a></p>
+<pre class="source">
+static const Method VERSION_CONTROL = const Method._internal("VERSION-CONTROL")
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="forName">
+<button class="show-code">Code</button>
+factory <strong>Method.forName</strong>(String name) <a class="anchor-link" href="#forName"
+              title="Permalink to Method.Method.forName">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Method.forName(String name) {
+ checkArgument(TCHAR.matchesAllOf(name));
+ final Method method = new Method._internal(name.toUpperCase());
+ return _registry[method]
+         .map((final Method method) =&gt; 
+             method)
+         .orElse(method);
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to Method.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.core.http/Method.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt; computeHashCode([name]);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="name">
+<button class="show-code">Code</button>
+final String         <strong>name</strong> <a class="anchor-link"
+            href="#name"
+            title="Permalink to Method.name">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String name
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to Method.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.core.http/Method.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is Method) {
+   return this.name == other.name;
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Method.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; name;
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.839</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

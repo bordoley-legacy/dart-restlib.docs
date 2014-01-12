@@ -1,0 +1,368 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RuneMatcher abstract class / restlib.parsing Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.parsing" data-type="RuneMatcher">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.parsing.html">restlib.parsing</a> &rsaquo; <a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RuneMatcher</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class RuneMatcher extends AbstractParser&lt;int&gt; {  
+ const RuneMatcher._internal();
+ 
+ /**
+  * Returns a {@code RuneMatcher} that matches any code point matched by both {@code this} matcher and {@code other}.
+  * @param other a non-null {@code RuneMatcher}
+  * @throws NullPointerException if {@code other} is null.
+  */
+ RuneMatcher operator &amp;(final RuneMatcher other) =&gt; 
+     new _AndRuneMatcher(this, other);
+ 
+ /**
+  * Returns a {@code RuneMatcher} that matches any code point matched by either {@code this} matcher or {@code other}.
+  * @param other a non-null {@code RuneMatcher}
+  * @throws NullPointerException if {@code other} is null.
+  */
+ RuneMatcher operator|(final RuneMatcher other) =&gt; 
+     new _OrRuneMatcher(this, other);
+ 
+ Option&lt;int&gt; doParse(final StringIterator itr) =&gt;
+     (itr.moveNext() &amp;&amp; matches(itr.current)) ? 
+         new Option(itr.current) : 
+           Option.NONE;
+         
+ Parser&lt;IterableString&gt; many() =&gt;
+     new _ManyRuneParser(this);    
+ 
+ Parser&lt;IterableString&gt; many1() =&gt;
+     super.many1();
+     
+ bool matches(int rune);
+ 
+ /**
+  * Returns true if a character sequence contains only matching code points.
+  * @param in a non-null {@code CharSequence}
+  * @throws NullPointerException if {@code in} is null.
+  */
+ bool matchesAllOf(final String val) =&gt; 
+     val.runes.every(this.matches);
+ 
+ /**
+  * Returns true if a character sequence contains no matching code points.
+  * @param in a non-null {@code CharSequence}
+  * @throws NullPointerException if {@code in} is null.
+  */
+ bool matchesNoneOf(final String val) =&gt; 
+     val.runes.every((final int rune) =&gt; 
+         !this.matches(rune));
+ 
+ /**
+  *  Returns a matcher that matches any code point not matched by this matcher.
+  */
+ RuneMatcher negate() =&gt; 
+     new _NegateRuneMatcher(this);
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/AbstractParser.html">AbstractParser&lt;int&gt;</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>RuneMatcher</strong></span></p>
+<div>
+<h3>Operators</h3>
+<div class="method inherited"><h4 id="+">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&gt; <strong>operator +</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#+"
+              title="Permalink to RuneMatcher.operator +">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;Iterable&gt; operator+(final Parser other) =&gt; 
+   new _ListParser.concat(this, other);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="&">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a> <strong>operator &</strong>(<a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a> other) <a class="anchor-link" href="#&"
+              title="Permalink to RuneMatcher.operator &">#</a></h4>
+<div class="doc">
+<p>Returns a {@code RuneMatcher} that matches any code point matched by both {@code this} matcher and {@code other}.
+@param other a non-null {@code RuneMatcher}
+@throws NullPointerException if {@code other} is null.</p>
+<pre class="source">
+RuneMatcher operator &amp;(final RuneMatcher other) =&gt; 
+   new _AndRuneMatcher(this, other);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="|">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a> <strong>operator |</strong>(<a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a> other) <a class="anchor-link" href="#|"
+              title="Permalink to RuneMatcher.operator |">#</a></h4>
+<div class="doc">
+<p>Returns a {@code RuneMatcher} that matches any code point matched by either {@code this} matcher or {@code other}.
+@param other a non-null {@code RuneMatcher}
+@throws NullPointerException if {@code other} is null.</p>
+<pre class="source">
+RuneMatcher operator|(final RuneMatcher other) =&gt; 
+   new _OrRuneMatcher(this, other);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="^">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>, dynamic&gt;&gt; <strong>operator ^</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#^"
+              title="Permalink to RuneMatcher.operator ^">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;Either&lt;T,dynamic&gt;&gt; operator^(final Parser other) =&gt;
+   new _OrParser(this, other);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="doParse">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;int&gt; <strong>doParse</strong>(<a href="../restlib.parsing/StringIterator.html">StringIterator</a> itr) <a class="anchor-link" href="#doParse"
+              title="Permalink to RuneMatcher.doParse">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option&lt;int&gt; doParse(final StringIterator itr) =&gt;
+   (itr.moveNext() &amp;&amp; matches(itr.current)) ? 
+       new Option(itr.current) : 
+         Option.NONE;
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="flatMap">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a> <strong>flatMap</strong>(<a href="../restlib.common.collections/Option.html">Option</a> f(<a href="../restlib.parsing/RuneMatcher.html">T</a> value)) <a class="anchor-link" href="#flatMap"
+              title="Permalink to RuneMatcher.flatMap">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser flatMap(Option f(T value)) =&gt;
+   new _FlatMappedParser(this, f);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="followedBy">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; <strong>followedBy</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> p) <a class="anchor-link" href="#followedBy"
+              title="Permalink to RuneMatcher.followedBy">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;T&gt; followedBy(final Parser p) =&gt;
+   new _FollowedByParser(this, p);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="many">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/IterableString.html">IterableString</a>&gt; <strong>many</strong>() <a class="anchor-link" href="#many"
+              title="Permalink to RuneMatcher.many">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>p* in EBNF.</p>
+<div class="docs-inherited-from">docs inherited from <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; </div></div>
+<pre class="source">
+Parser&lt;IterableString&gt; many() =&gt;
+   new _ManyRuneParser(this);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="many1">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/IterableString.html">IterableString</a>&gt; <strong>many1</strong>() <a class="anchor-link" href="#many1"
+              title="Permalink to RuneMatcher.many1">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>p+ in EBNF.</p>
+<div class="docs-inherited-from">docs inherited from <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; </div></div>
+<pre class="source">
+Parser&lt;IterableString&gt; many1() =&gt;
+   super.many1();
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="map">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a> <strong>map</strong>(f(<a href="../restlib.parsing/RuneMatcher.html">T</a> value)) <a class="anchor-link" href="#map"
+              title="Permalink to RuneMatcher.map">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser map(dynamic f(T value)) =&gt;
+   new _MappedParser(this, f);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="matches">
+abstract bool <strong>matches</strong>(int rune) <a class="anchor-link" href="#matches"
+              title="Permalink to RuneMatcher.matches">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="matchesAllOf">
+<button class="show-code">Code</button>
+bool <strong>matchesAllOf</strong>(String val) <a class="anchor-link" href="#matchesAllOf"
+              title="Permalink to RuneMatcher.matchesAllOf">#</a></h4>
+<div class="doc">
+<p>Returns true if a character sequence contains only matching code points.
+@param in a non-null {@code CharSequence}
+@throws NullPointerException if {@code in} is null.</p>
+<pre class="source">
+bool matchesAllOf(final String val) =&gt; 
+   val.runes.every(this.matches);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="matchesNoneOf">
+<button class="show-code">Code</button>
+bool <strong>matchesNoneOf</strong>(String val) <a class="anchor-link" href="#matchesNoneOf"
+              title="Permalink to RuneMatcher.matchesNoneOf">#</a></h4>
+<div class="doc">
+<p>Returns true if a character sequence contains no matching code points.
+@param in a non-null {@code CharSequence}
+@throws NullPointerException if {@code in} is null.</p>
+<pre class="source">
+bool matchesNoneOf(final String val) =&gt; 
+   val.runes.every((final int rune) =&gt; 
+       !this.matches(rune));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="negate">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a> <strong>negate</strong>() <a class="anchor-link" href="#negate"
+              title="Permalink to RuneMatcher.negate">#</a></h4>
+<div class="doc">
+<p> Returns a matcher that matches any code point not matched by this matcher.</p>
+<pre class="source">
+RuneMatcher negate() =&gt; 
+   new _NegateRuneMatcher(this);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="optional">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt;&gt; <strong>optional</strong>() <a class="anchor-link" href="#optional"
+              title="Permalink to RuneMatcher.optional">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;Option&lt;T&gt;&gt; optional() =&gt;
+   new _OptionalParser(this);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="orElse">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; <strong>orElse</strong>(<a href="../restlib.parsing/RuneMatcher.html">T</a> alternative) <a class="anchor-link" href="#orElse"
+              title="Permalink to RuneMatcher.orElse">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;T&gt; orElse(final T alternative) =&gt;
+ optional().map((final Option&lt;T&gt; opt) =&gt;
+     opt.orElse(alternative));
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="parse">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; <strong>parse</strong>(String str) <a class="anchor-link" href="#parse"
+              title="Permalink to RuneMatcher.parse">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Option&lt;T&gt; parse(final String str) =&gt;
+   (this + EOF)
+     .map((final Iterable e) =&gt; 
+       e.first)
+     .parseFrom(new StringIterator(str));
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="parseFrom">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt; <strong>parseFrom</strong>(<a href="../restlib.parsing/StringIterator.html">StringIterator</a> itr) <a class="anchor-link" href="#parseFrom"
+              title="Permalink to RuneMatcher.parseFrom">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Option&lt;T&gt; parseFrom(StringIterator itr) {
+ final int startIndex = itr.index;
+ final Option&lt;T&gt; token = doParse(itr);
+ if (token.isEmpty) {
+   itr.index = startIndex;
+ }
+ return token; 
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="sepBy">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt;&gt; <strong>sepBy</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> delim) <a class="anchor-link" href="#sepBy"
+              title="Permalink to RuneMatcher.sepBy">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;Iterable&lt;T&gt;&gt; sepBy(final Parser delim) {
+ final Parser&lt;Iterable&lt;T&gt;&gt; additional =
+     (delim + this)
+       .map((final Iterable e) =&gt;
+           e.elementAt(1))
+       .many();
+       
+ return (this + additional)
+           .map((final Iterable e) =&gt;
+               // FIXME: PersistentList should support push since it implements Stack
+               [e.elementAt(0)]..addAll(e.elementAt(1)));
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="sepBy1">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/RuneMatcher.html">T</a>&gt;&gt; <strong>sepBy1</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> delim) <a class="anchor-link" href="#sepBy1"
+              title="Permalink to RuneMatcher.sepBy1">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+Parser&lt;Iterable&lt;T&gt;&gt; sepBy1(final Parser delim) =&gt;
+ sepBy(delim).map((final Iterable&lt;T&gt; e) =&gt; 
+     e.isEmpty ? null : e);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:01.741</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

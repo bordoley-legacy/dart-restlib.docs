@@ -1,0 +1,223 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.server.connector Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server.connector">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.server.connector.html">restlib.server.connector</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.server.connector</strong> library</h2>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="processRequest">
+<button class="show-code">Code</button>
+Future <strong>processRequest</strong>(HttpRequest serverRequest, <a href="restlib.server.connector/IOApplicationSupplier.html">IOApplicationSupplier</a> applicationSupplier, String scheme) <a class="anchor-link" href="#processRequest"
+              title="Permalink to processRequest">#</a></h4>
+<div class="doc">
+<pre class="source">
+@visibleForTesting
+Future processRequest(final HttpRequest serverRequest, final IOApplicationSupplier applicationSupplier, final String scheme) {  
+ Future _writeResponse(final Request request, final Response response, Future write(Request request, Response response, StreamSink&lt;List&lt;int&gt;&gt; msgSink)) {
+   checkNotNull(response);
+   
+   _logger.finest(response.toString());
+   
+   writeHttpResponse(response, serverRequest.response);
+   
+   if (response.entity.isNotEmpty) {
+     return write(request, response, serverRequest.response);
+   } else {
+     return new Future.value();
+   }
+ }
+ 
+ Future _doProcessRequest(Request request) {
+   Future&lt;Response&gt; response;
+   
+   try {
+     final IOApplication application = applicationSupplier(request);
+     
+     try {
+       request = application.filterRequest(request);
+       final IOResource resource = application.route(request);
+       response = resource
+           .handle(request)
+           .then((final Response response) {
+             if (response.status != Status.INFORMATIONAL_CONTINUE) {
+               return response;
+             }
+               
+             return resource
+                 .parse(request, serverRequest)
+                 .then((final Request requestWithEntity) {
+                   request = requestWithEntity;
+                   return resource.acceptMessage(request);
+                 }, onError: (final e) =&gt; 
+                     CLIENT_ERROR_BAD_REQUEST);
+           }).then(application.filterResponse,
+               onError:(final e) =&gt;  
+                   // Catch any uncaught exceptions in the Future chain.
+                   application.filterResponse(_internalServerError(e)))
+           .catchError(_internalServerError)
+           .then((final Response response) =&gt;
+               _writeResponse(request, response, resource.write));
+     } catch (e) {
+       // Synchronous catch block for when application.filterReuqest(), application.route() or resource.handle() throw exceptions
+       // Still attempt to filter the response first.
+       try {
+         response = _writeResponse(request,_internalServerError(e), application.writeError);
+       } catch (e) {
+         response = new Future.error(e);
+       }
+     }
+   } catch (e) {
+     // Synchronous catch block for when applicationSupplier throws exception
+     // Also called if application.filterReuqest(), application.route() or resource.handle() throw exceptions and
+     // application.filterResponse throws an exception.
+     try {
+       response = _writeResponse(request,_internalServerError(e), writeString);
+     } catch (e) {
+       response = new Future.error(e);
+     }
+   }
+   
+   return response;
+ }
+ 
+ _logger.finest("Received request from ${serverRequest.connectionInfo.remoteAddress}");
+ 
+ final Request request = wrapHttpRequest(serverRequest, scheme);
+ _logger.finest(request.toString());
+ 
+ return _doProcessRequest(request)
+     .then((_) =&gt; 
+         serverRequest.response.close(),
+         onError: (final e) {
+           _logError(e);
+           serverRequest.response.close();
+         })
+     .catchError(_logError);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="httpServerListener">
+<button class="show-code">Code</button>
+<a href="restlib.server.connector/HttpServerListener.html">HttpServerListener</a> <strong>httpServerListener</strong>(<a href="restlib.server.connector/IOApplicationSupplier.html">IOApplicationSupplier</a> applicationSupplier, String scheme) <a class="anchor-link" href="#httpServerListener"
+              title="Permalink to httpServerListener">#</a></h4>
+<div class="doc">
+<pre class="source">
+HttpServerListener httpServerListener(final IOApplicationSupplier applicationSupplier, final String scheme) =&gt;
+   (final HttpServer server) {  
+     _logger.info("Listening on port: ${server.port}");
+
+     server.listen((final HttpRequest serverRequest) =&gt;
+         processRequest(serverRequest, applicationSupplier, scheme),
+         onError: _logError);
+   };
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="writeHttpResponse">
+<button class="show-code">Code</button>
+void <strong>writeHttpResponse</strong>(<a href="restlib.core.http/Response.html">Response</a> response, HttpResponse serverResponse) <a class="anchor-link" href="#writeHttpResponse"
+              title="Permalink to writeHttpResponse">#</a></h4>
+<div class="doc">
+<pre class="source">
+@visibleForTesting
+void writeHttpResponse(final Response response, final HttpResponse serverResponse) {
+ final HttpHeaders headers = serverResponse.headers;
+ 
+ void write(final String header, final value) {
+   final String valueAsString = Header.asHeaderValue(value);
+   if (valueAsString.isNotEmpty) {
+     headers.add(header, valueAsString);
+   }
+ }
+ 
+ serverResponse.statusCode = response.status.code;
+ serverResponse.reasonPhrase = response.status.reason;
+ response.contentInfo.length.map((final int length) =&gt; 
+     serverResponse.contentLength = length);
+ 
+ write(HttpHeaders.ACCEPT_RANGES, response.acceptedRangeUnits);
+ write(HttpHeaders.AGE, response.age);
+ write(HttpHeaders.ALLOW, response.allowedMethods); 
+ write(HttpHeaders.CACHE_CONTROL, response.cacheDirectives);
+ write(HttpHeaders.CONTENT_ENCODING, response.contentInfo.encodings);
+ write(HttpHeaders.CONTENT_LANGUAGE, response.contentInfo.languages);
+ write(HttpHeaders.CONTENT_LOCATION, response.contentInfo.location);
+ write(HttpHeaders.CONTENT_RANGE, response.contentInfo.range);
+ write(HttpHeaders.CONTENT_TYPE, response.contentInfo.mediaRange);
+ write(HttpHeaders.DATE, response.date);
+ write(HttpHeaders.ETAG, response.entityTag);
+ write(HttpHeaders.EXPIRES, response.expires);
+ write(HttpHeaders.LAST_MODIFIED, response.lastModified);
+ write(HttpHeaders.LOCATION, response.location);
+ write(HttpHeaders.PROXY_AUTHENTICATE, response.proxyAuthenticationChallenges);
+ write(HttpHeaders.RETRY_AFTER, response.retryAfter);
+ write(HttpHeaders.SERVER, response.server);
+ write(HttpHeaders.VARY, response.vary);
+ write(HttpHeaders.WARNING, response.warnings);
+ write(HttpHeaders.WWW_AUTHENTICATE, response.authenticationChallenges);  
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="wrapHttpRequest">
+<button class="show-code">Code</button>
+<a href="restlib.core.http/Request.html">Request</a> <strong>wrapHttpRequest</strong>(HttpRequest request, String scheme) <a class="anchor-link" href="#wrapHttpRequest"
+              title="Permalink to wrapHttpRequest">#</a></h4>
+<div class="doc">
+<pre class="source">
+@visibleForTesting
+Request wrapHttpRequest(final HttpRequest request, final String scheme) =&gt;
+   new _HttpRequestWrapper(request, scheme);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Typedefs</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.server.connector/HttpServerListener.html"><strong>HttpServerListener</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.connector/IOApplicationSupplier.html"><strong>IOApplicationSupplier</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.626</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

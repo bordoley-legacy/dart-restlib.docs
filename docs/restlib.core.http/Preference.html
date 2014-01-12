@@ -1,0 +1,392 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Preference&lt;T&gt; class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="Preference&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/Preference.html">Preference&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Preference&lt;T extends Matcheable&lt;T&gt;&gt;</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Preference&lt;T extends Matcheable&lt;T&gt;&gt; {
+ static Option/*&lt;T&gt;*/ bestMatch(Iterable&lt;Preference/*&lt;T&gt;*/&gt; preferred, Iterable/*&lt;T&gt;*/ available) {
+   int prefScore = 0;
+   var bestMatch = null;
+   
+   preferred.forEach((final Preference/*&lt;T&gt;*/ pref) =&gt;
+       available.forEach((var t) {
+         final int score = pref.value.match(t) * pref.qualityFactor ~/ 1000;
+         if (score &gt; prefScore) {
+           prefScore = score;
+           bestMatch = t;
+         }
+       }));
+   
+   return new Option(bestMatch);
+ }
+ 
+ static Parser&lt;Preference&gt; parser(final Parser&lt;Matcheable&gt; valueParser) {    
+   final Parser&lt;Iterable&lt;KeyValuePair&gt;&gt; KEY_VALUE_PAIRS =
+       (OWS_SEMICOLON_OWS + KVP.sepBy1(OWS_SEMICOLON_OWS))
+            .map((final Iterable e) =&gt; 
+                e.elementAt(1))
+            .orElse([]);
+   
+   final Parser&lt;int&gt; FRACTIONAL_PART = 
+       (PERIOD + DIGIT + DIGIT.orElse(0) + DIGIT.orElse(0))
+         .map((final Iterable e){
+           final int _100s = e.elementAt(1) * 100;
+           final int _10s = e.elementAt(2) * 10;
+           final int _1s = e.elementAt(3);
+           
+           return _100s + _10s + _1s;
+         }).orElse(0);
+   
+   final Parser&lt;int&gt; QF_PARSER =
+       (DIGIT + FRACTIONAL_PART).map((final Iterable&lt;int&gt; e){
+         final int _1000s = e.elementAt(0) * 1000;
+         final int retval = _1000s + e.elementAt(1);
+         
+         if (retval &gt; 1000) {
+           return null;
+         }
+         return retval;
+       });
+   
+   return (valueParser + KEY_VALUE_PAIRS)
+     .map((final Iterable e) {
+       final Matcheable value = e.elementAt(0);
+       final Iterable&lt;KeyValuePair&gt; parameters = e.elementAt(1);
+       
+       if (parameters.isEmpty) {
+         return new Preference(value);
+       } 
+       
+       final KeyValuePair qfPair = parameters.first;
+       if (qfPair.fst.toLowerCase() != "q") {
+         return null;
+       }
+       
+       final Option&lt;int&gt; qfValue = QF_PARSER.parse(qfPair.snd);
+       if (qfValue.isEmpty) {
+         return null;
+       }
+       
+       return new Preference(value, qualityFactor: qfValue.value, parameters: Persistent.EMPTY_SEQUENCE_MULTIMAP.insertAll(parameters.skip(1)));        
+     });
+       
+ }  
+
+ final T value;
+ final int qualityFactor;
+ final Multimap&lt;String, String, dynamic&gt; parameters;
+ 
+ Preference(T value, {int qualityFactor: 1000, Multimap&lt;String, String, dynamic&gt; parameters: Persistent.EMPTY_SEQUENCE_MULTIMAP}) :
+   this.value = value,
+   this.qualityFactor = qualityFactor,
+   this.parameters = parameters;
+ 
+ Preference._internal(this.value, this.qualityFactor, this.parameters);
+
+ int get hashCode =&gt; computeHashCode([value, qualityFactor, parameters]);
+ 
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is Preference) {
+     Preference that = other;
+     return this.value == that.value &amp;&amp;
+         this.qualityFactor == that.qualityFactor &amp;&amp;
+         this.parameters == that.parameters;
+   } else {
+     return false;
+   }
+ }
+ 
+ String toString() {
+   String qf = 
+       (qualityFactor == 1000) ? 1.toString() :
+         (qualityFactor == 0) ? 0.toString() :
+           (qualityFactor / 1000).toStringAsFixed(3);
+         
+   return "${value}; q=${qf}" + 
+       (parameters.isEmpty ? "" : "; " + 
+           pairIterableToString(this.parameters));
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Static Methods</h3>
+<div class="method"><h4 id="bestMatch">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a> <strong>bestMatch</strong>(Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&gt; preferred, Iterable available) <a class="anchor-link" href="#bestMatch"
+              title="Permalink to Preference&lt;T&gt;.bestMatch">#</a></h4>
+<div class="doc">
+<pre class="source">
+static Option/*&lt;T&gt;*/ bestMatch(Iterable&lt;Preference/*&lt;T&gt;*/&gt; preferred, Iterable/*&lt;T&gt;*/ available) {
+ int prefScore = 0;
+ var bestMatch = null;
+ 
+ preferred.forEach((final Preference/*&lt;T&gt;*/ pref) =&gt;
+     available.forEach((var t) {
+       final int score = pref.value.match(t) * pref.qualityFactor ~/ 1000;
+       if (score &gt; prefScore) {
+         prefScore = score;
+         bestMatch = t;
+       }
+     }));
+ 
+ return new Option(bestMatch);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="parser">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&gt; <strong>parser</strong>(<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.core.data/Matcheable.html">Matcheable</a>&gt; valueParser) <a class="anchor-link" href="#parser"
+              title="Permalink to Preference&lt;T&gt;.parser">#</a></h4>
+<div class="doc">
+<pre class="source">
+static Parser&lt;Preference&gt; parser(final Parser&lt;Matcheable&gt; valueParser) {    
+ final Parser&lt;Iterable&lt;KeyValuePair&gt;&gt; KEY_VALUE_PAIRS =
+     (OWS_SEMICOLON_OWS + KVP.sepBy1(OWS_SEMICOLON_OWS))
+          .map((final Iterable e) =&gt; 
+              e.elementAt(1))
+          .orElse([]);
+ 
+ final Parser&lt;int&gt; FRACTIONAL_PART = 
+     (PERIOD + DIGIT + DIGIT.orElse(0) + DIGIT.orElse(0))
+       .map((final Iterable e){
+         final int _100s = e.elementAt(1) * 100;
+         final int _10s = e.elementAt(2) * 10;
+         final int _1s = e.elementAt(3);
+         
+         return _100s + _10s + _1s;
+       }).orElse(0);
+ 
+ final Parser&lt;int&gt; QF_PARSER =
+     (DIGIT + FRACTIONAL_PART).map((final Iterable&lt;int&gt; e){
+       final int _1000s = e.elementAt(0) * 1000;
+       final int retval = _1000s + e.elementAt(1);
+       
+       if (retval &gt; 1000) {
+         return null;
+       }
+       return retval;
+     });
+ 
+ return (valueParser + KEY_VALUE_PAIRS)
+   .map((final Iterable e) {
+     final Matcheable value = e.elementAt(0);
+     final Iterable&lt;KeyValuePair&gt; parameters = e.elementAt(1);
+     
+     if (parameters.isEmpty) {
+       return new Preference(value);
+     } 
+     
+     final KeyValuePair qfPair = parameters.first;
+     if (qfPair.fst.toLowerCase() != "q") {
+       return null;
+     }
+     
+     final Option&lt;int&gt; qfValue = QF_PARSER.parse(qfPair.snd);
+     if (qfValue.isEmpty) {
+       return null;
+     }
+     
+     return new Preference(value, qualityFactor: qfValue.value, parameters: Persistent.EMPTY_SEQUENCE_MULTIMAP.insertAll(parameters.skip(1)));        
+   });
+     
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Preference</strong>(<a href="../restlib.core.http/Preference.html">T</a> value, {int qualityFactor: 1000, <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;String, String, dynamic&gt; parameters: Persistent.EMPTY_SEQUENCE_MULTIMAP}) <a class="anchor-link" href="#"
+              title="Permalink to Preference&lt;T&gt;.Preference">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+Preference(T value, {int qualityFactor: 1000, Multimap&lt;String, String, dynamic&gt; parameters: Persistent.EMPTY_SEQUENCE_MULTIMAP}) :
+ this.value = value,
+ this.qualityFactor = qualityFactor,
+ this.parameters = parameters;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to Preference&lt;T&gt;.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.core.http/Preference.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt; computeHashCode([value, qualityFactor, parameters]);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="parameters">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;String, String, dynamic&gt;         <strong>parameters</strong> <a class="anchor-link"
+            href="#parameters"
+            title="Permalink to Preference&lt;T&gt;.parameters">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Multimap&lt;String, String, dynamic&gt; parameters
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="qualityFactor">
+<button class="show-code">Code</button>
+final int         <strong>qualityFactor</strong> <a class="anchor-link"
+            href="#qualityFactor"
+            title="Permalink to Preference&lt;T&gt;.qualityFactor">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final int qualityFactor
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="value">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.http/Preference.html">T</a>         <strong>value</strong> <a class="anchor-link"
+            href="#value"
+            title="Permalink to Preference&lt;T&gt;.value">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final T value
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to Preference&lt;T&gt;.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.core.http/Preference.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is Preference) {
+   Preference that = other;
+   return this.value == that.value &amp;&amp;
+       this.qualityFactor == that.qualityFactor &amp;&amp;
+       this.parameters == that.parameters;
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Preference&lt;T&gt;.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() {
+ String qf = 
+     (qualityFactor == 1000) ? 1.toString() :
+       (qualityFactor == 0) ? 0.toString() :
+         (qualityFactor / 1000).toStringAsFixed(3);
+       
+ return "${value}; q=${qf}" + 
+     (parameters.isEmpty ? "" : "; " + 
+         pairIterableToString(this.parameters));
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.806</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

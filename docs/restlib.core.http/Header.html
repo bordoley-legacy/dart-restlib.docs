@@ -1,0 +1,748 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Header class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="Header">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/Header.html">Header</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Header</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Header {  
+ static const Header ACCEPT = const Header._internal("Accept");   
+ static const Header ACCEPT_CHARSET = const Header._internal("Accept-Charset");
+ static const Header ACCEPT_ENCODING = const Header._internal("Accept-Encoding");
+ static const Header ACCEPT_LANGUAGE = const Header._internal("Accept-Language"); 
+ static const Header ACCEPT_RANGES = const Header._internal("Accept-Ranges");
+ static const Header AGE = const Header._internal("Age");
+ static const Header ALLOW = const Header._internal("Allow");
+ static const Header AUTHORIZATION = const Header._internal("Authorization");
+ static const Header CACHE_CONTROL = const Header._internal("Cache-Control");
+ static const Header CONNECTION = const Header._internal("Connection"); 
+ static const Header CONTENT_ENCODING = const Header._internal("Content-Encoding");
+ static const Header CONTENT_LANGUAGE = const Header._internal("Content-Language");
+ static const Header CONTENT_LENGTH = const Header._internal("Content-Length");
+ static const Header CONTENT_LOCATION = const Header._internal("Content-Location");
+ static const Header CONTENT_MD5 = const Header._internal("Content-MD5");
+ static const Header CONTENT_RANGE = const Header._internal("Content-Range");
+ static const Header CONTENT_TYPE = const Header._internal("Content-Type");
+ static const Header DATE = const Header._internal("Date");
+ static const Header ENTITY_TAG = const Header._internal("ETag");
+ static const Header EXPECT = const Header._internal("Expect");
+ static const Header EXPIRES = const Header._internal("Expires");
+ static const Header FROM = const Header._internal("From");
+ static const Header HOST = const Header._internal("Host");
+ static const Header IF_MATCH = const Header._internal("If-Match");
+ static const Header IF_MODIFIED_SINCE = const Header._internal("If-Modified-Since");
+ static const Header IF_NONE_MATCH = const Header._internal("If-None-Match");
+ static const Header IF_RANGE = const Header._internal("If-Range");
+ static const Header IF_UNMODIFIED_SINCE = const Header._internal("If-Unmodified-Since");
+ static const Header LAST_MODIFIED = const Header._internal("Last-Modified");
+ static const Header LOCATION = const Header._internal("Location");
+ static const Header MAX_FORWARDS = const Header._internal("Max-Forwards");
+ static const Header PRAGMA = const Header._internal("Pragma");
+ static const Header PROXY_AUTHENTICATE = const Header._internal("Proxy-Authenticate");
+ static const Header PROXY_AUTHORIZATION = const Header._internal("Proxy-Authorization");
+ static const Header RANGE = const Header._internal("Range");
+ static const Header REFERER = const Header._internal("Referer");
+ static const Header RETRY_AFTER = const Header._internal("Retry-After");
+ static const Header SERVER = const Header._internal("Server");
+ static const Header TE = const Header._internal("TE");
+ static const Header TRAILER = const Header._internal("Trailer");
+ static const Header TRANSFER_ENCODING = const Header._internal("Transfer-Encoding");
+ static const Header UPGRADE = const Header._internal("Upgrade");
+ static const Header USER_AGENT = const Header._internal("User-Agent");
+ static const Header VARY = const Header._internal("Vary");
+ static const Header VIA = const Header._internal("Via");  
+ static const Header WARNING = const Header._internal("Warning");
+ static const Header WWW_AUTHENTICATE = const Header._internal("WWW-Authenticate");
+ 
+ static String asHeaderValue(final value) {
+   if (value is Iterable) {
+     return (value.isEmpty) ? "" : value.join(", ");
+   } else {
+     return value.toString();
+   } 
+ }
+ 
+ final String header;
+ 
+ const Header._internal(this.header);
+ 
+ String write(var value) {
+   String headerValue = asHeaderValue(value);
+   return !headerValue.isEmpty ? "${header}: ${headerValue}\r\n" : "";
+ }
+ 
+ String toString() {
+   return header;
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="ACCEPT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ACCEPT</strong> <a class="anchor-link"
+            href="#ACCEPT"
+            title="Permalink to Header.ACCEPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ACCEPT = const Header._internal("Accept")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_CHARSET">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ACCEPT_CHARSET</strong> <a class="anchor-link"
+            href="#ACCEPT_CHARSET"
+            title="Permalink to Header.ACCEPT_CHARSET">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ACCEPT_CHARSET = const Header._internal("Accept-Charset")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_ENCODING">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ACCEPT_ENCODING</strong> <a class="anchor-link"
+            href="#ACCEPT_ENCODING"
+            title="Permalink to Header.ACCEPT_ENCODING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ACCEPT_ENCODING = const Header._internal("Accept-Encoding")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_LANGUAGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ACCEPT_LANGUAGE</strong> <a class="anchor-link"
+            href="#ACCEPT_LANGUAGE"
+            title="Permalink to Header.ACCEPT_LANGUAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ACCEPT_LANGUAGE = const Header._internal("Accept-Language")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_RANGES">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ACCEPT_RANGES</strong> <a class="anchor-link"
+            href="#ACCEPT_RANGES"
+            title="Permalink to Header.ACCEPT_RANGES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ACCEPT_RANGES = const Header._internal("Accept-Ranges")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="AGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>AGE</strong> <a class="anchor-link"
+            href="#AGE"
+            title="Permalink to Header.AGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header AGE = const Header._internal("Age")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ALLOW">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ALLOW</strong> <a class="anchor-link"
+            href="#ALLOW"
+            title="Permalink to Header.ALLOW">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ALLOW = const Header._internal("Allow")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="AUTHORIZATION">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>AUTHORIZATION</strong> <a class="anchor-link"
+            href="#AUTHORIZATION"
+            title="Permalink to Header.AUTHORIZATION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header AUTHORIZATION = const Header._internal("Authorization")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CACHE_CONTROL">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CACHE_CONTROL</strong> <a class="anchor-link"
+            href="#CACHE_CONTROL"
+            title="Permalink to Header.CACHE_CONTROL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CACHE_CONTROL = const Header._internal("Cache-Control")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONNECTION">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONNECTION</strong> <a class="anchor-link"
+            href="#CONNECTION"
+            title="Permalink to Header.CONNECTION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONNECTION = const Header._internal("Connection")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_ENCODING">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_ENCODING</strong> <a class="anchor-link"
+            href="#CONTENT_ENCODING"
+            title="Permalink to Header.CONTENT_ENCODING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_ENCODING = const Header._internal("Content-Encoding")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_LANGUAGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_LANGUAGE</strong> <a class="anchor-link"
+            href="#CONTENT_LANGUAGE"
+            title="Permalink to Header.CONTENT_LANGUAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_LANGUAGE = const Header._internal("Content-Language")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_LENGTH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_LENGTH</strong> <a class="anchor-link"
+            href="#CONTENT_LENGTH"
+            title="Permalink to Header.CONTENT_LENGTH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_LENGTH = const Header._internal("Content-Length")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_LOCATION">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_LOCATION</strong> <a class="anchor-link"
+            href="#CONTENT_LOCATION"
+            title="Permalink to Header.CONTENT_LOCATION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_LOCATION = const Header._internal("Content-Location")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_MD5">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_MD5</strong> <a class="anchor-link"
+            href="#CONTENT_MD5"
+            title="Permalink to Header.CONTENT_MD5">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_MD5 = const Header._internal("Content-MD5")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_RANGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_RANGE</strong> <a class="anchor-link"
+            href="#CONTENT_RANGE"
+            title="Permalink to Header.CONTENT_RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_RANGE = const Header._internal("Content-Range")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_TYPE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>CONTENT_TYPE</strong> <a class="anchor-link"
+            href="#CONTENT_TYPE"
+            title="Permalink to Header.CONTENT_TYPE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header CONTENT_TYPE = const Header._internal("Content-Type")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DATE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>DATE</strong> <a class="anchor-link"
+            href="#DATE"
+            title="Permalink to Header.DATE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header DATE = const Header._internal("Date")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ENTITY_TAG">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>ENTITY_TAG</strong> <a class="anchor-link"
+            href="#ENTITY_TAG"
+            title="Permalink to Header.ENTITY_TAG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header ENTITY_TAG = const Header._internal("ETag")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="EXPECT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>EXPECT</strong> <a class="anchor-link"
+            href="#EXPECT"
+            title="Permalink to Header.EXPECT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header EXPECT = const Header._internal("Expect")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="EXPIRES">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>EXPIRES</strong> <a class="anchor-link"
+            href="#EXPIRES"
+            title="Permalink to Header.EXPIRES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header EXPIRES = const Header._internal("Expires")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="FROM">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>FROM</strong> <a class="anchor-link"
+            href="#FROM"
+            title="Permalink to Header.FROM">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header FROM = const Header._internal("From")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HOST">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>HOST</strong> <a class="anchor-link"
+            href="#HOST"
+            title="Permalink to Header.HOST">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header HOST = const Header._internal("Host")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_MATCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>IF_MATCH</strong> <a class="anchor-link"
+            href="#IF_MATCH"
+            title="Permalink to Header.IF_MATCH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header IF_MATCH = const Header._internal("If-Match")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_MODIFIED_SINCE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>IF_MODIFIED_SINCE</strong> <a class="anchor-link"
+            href="#IF_MODIFIED_SINCE"
+            title="Permalink to Header.IF_MODIFIED_SINCE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header IF_MODIFIED_SINCE = const Header._internal("If-Modified-Since")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_NONE_MATCH">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>IF_NONE_MATCH</strong> <a class="anchor-link"
+            href="#IF_NONE_MATCH"
+            title="Permalink to Header.IF_NONE_MATCH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header IF_NONE_MATCH = const Header._internal("If-None-Match")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_RANGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>IF_RANGE</strong> <a class="anchor-link"
+            href="#IF_RANGE"
+            title="Permalink to Header.IF_RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header IF_RANGE = const Header._internal("If-Range")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_UNMODIFIED_SINCE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>IF_UNMODIFIED_SINCE</strong> <a class="anchor-link"
+            href="#IF_UNMODIFIED_SINCE"
+            title="Permalink to Header.IF_UNMODIFIED_SINCE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header IF_UNMODIFIED_SINCE = const Header._internal("If-Unmodified-Since")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LAST_MODIFIED">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>LAST_MODIFIED</strong> <a class="anchor-link"
+            href="#LAST_MODIFIED"
+            title="Permalink to Header.LAST_MODIFIED">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header LAST_MODIFIED = const Header._internal("Last-Modified")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LOCATION">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>LOCATION</strong> <a class="anchor-link"
+            href="#LOCATION"
+            title="Permalink to Header.LOCATION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header LOCATION = const Header._internal("Location")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MAX_FORWARDS">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>MAX_FORWARDS</strong> <a class="anchor-link"
+            href="#MAX_FORWARDS"
+            title="Permalink to Header.MAX_FORWARDS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header MAX_FORWARDS = const Header._internal("Max-Forwards")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PRAGMA">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>PRAGMA</strong> <a class="anchor-link"
+            href="#PRAGMA"
+            title="Permalink to Header.PRAGMA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header PRAGMA = const Header._internal("Pragma")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROXY_AUTHENTICATE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>PROXY_AUTHENTICATE</strong> <a class="anchor-link"
+            href="#PROXY_AUTHENTICATE"
+            title="Permalink to Header.PROXY_AUTHENTICATE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header PROXY_AUTHENTICATE = const Header._internal("Proxy-Authenticate")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROXY_AUTHORIZATION">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>PROXY_AUTHORIZATION</strong> <a class="anchor-link"
+            href="#PROXY_AUTHORIZATION"
+            title="Permalink to Header.PROXY_AUTHORIZATION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header PROXY_AUTHORIZATION = const Header._internal("Proxy-Authorization")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RANGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>RANGE</strong> <a class="anchor-link"
+            href="#RANGE"
+            title="Permalink to Header.RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header RANGE = const Header._internal("Range")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="REFERER">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>REFERER</strong> <a class="anchor-link"
+            href="#REFERER"
+            title="Permalink to Header.REFERER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header REFERER = const Header._internal("Referer")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RETRY_AFTER">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>RETRY_AFTER</strong> <a class="anchor-link"
+            href="#RETRY_AFTER"
+            title="Permalink to Header.RETRY_AFTER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header RETRY_AFTER = const Header._internal("Retry-After")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SERVER">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>SERVER</strong> <a class="anchor-link"
+            href="#SERVER"
+            title="Permalink to Header.SERVER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header SERVER = const Header._internal("Server")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>TE</strong> <a class="anchor-link"
+            href="#TE"
+            title="Permalink to Header.TE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header TE = const Header._internal("TE")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TRAILER">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>TRAILER</strong> <a class="anchor-link"
+            href="#TRAILER"
+            title="Permalink to Header.TRAILER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header TRAILER = const Header._internal("Trailer")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TRANSFER_ENCODING">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>TRANSFER_ENCODING</strong> <a class="anchor-link"
+            href="#TRANSFER_ENCODING"
+            title="Permalink to Header.TRANSFER_ENCODING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header TRANSFER_ENCODING = const Header._internal("Transfer-Encoding")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="UPGRADE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>UPGRADE</strong> <a class="anchor-link"
+            href="#UPGRADE"
+            title="Permalink to Header.UPGRADE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header UPGRADE = const Header._internal("Upgrade")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="USER_AGENT">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>USER_AGENT</strong> <a class="anchor-link"
+            href="#USER_AGENT"
+            title="Permalink to Header.USER_AGENT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header USER_AGENT = const Header._internal("User-Agent")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VARY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>VARY</strong> <a class="anchor-link"
+            href="#VARY"
+            title="Permalink to Header.VARY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header VARY = const Header._internal("Vary")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VIA">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>VIA</strong> <a class="anchor-link"
+            href="#VIA"
+            title="Permalink to Header.VIA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header VIA = const Header._internal("Via")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="WARNING">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>WARNING</strong> <a class="anchor-link"
+            href="#WARNING"
+            title="Permalink to Header.WARNING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header WARNING = const Header._internal("Warning")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="WWW_AUTHENTICATE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>WWW_AUTHENTICATE</strong> <a class="anchor-link"
+            href="#WWW_AUTHENTICATE"
+            title="Permalink to Header.WWW_AUTHENTICATE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header WWW_AUTHENTICATE = const Header._internal("WWW-Authenticate")
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Static Methods</h3>
+<div class="method"><h4 id="asHeaderValue">
+<button class="show-code">Code</button>
+String <strong>asHeaderValue</strong>(value) <a class="anchor-link" href="#asHeaderValue"
+              title="Permalink to Header.asHeaderValue">#</a></h4>
+<div class="doc">
+<pre class="source">
+static String asHeaderValue(final value) {
+ if (value is Iterable) {
+   return (value.isEmpty) ? "" : value.join(", ");
+ } else {
+   return value.toString();
+ } 
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="header">
+<button class="show-code">Code</button>
+final String         <strong>header</strong> <a class="anchor-link"
+            href="#header"
+            title="Permalink to Header.header">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String header
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Header.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() {
+ return header;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="write">
+<button class="show-code">Code</button>
+String <strong>write</strong>(value) <a class="anchor-link" href="#write"
+              title="Permalink to Header.write">#</a></h4>
+<div class="doc">
+<pre class="source">
+String write(var value) {
+ String headerValue = asHeaderValue(value);
+ return !headerValue.isEmpty ? "${header}: ${headerValue}\r\n" : "";
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.861</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

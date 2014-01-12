@@ -1,0 +1,164 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Parser&lt;T&gt; abstract class / restlib.parsing Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.parsing" data-type="Parser&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.parsing.html">restlib.parsing</a> &rsaquo; <a href="../restlib.parsing/Parser.html">Parser&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Parser&lt;T&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Parser&lt;T&gt; {    
+ Parser&lt;Iterable&gt; operator+(Parser other);
+ 
+ Parser&lt;Either&lt;T,dynamic&gt;&gt; operator^(Parser other);
+ 
+ Parser flatMap(Option f(T value));
+ 
+ Parser&lt;T&gt; followedBy(Parser p);
+ 
+ /// p* in EBNF.
+ Parser&lt;Iterable&lt;T&gt;&gt; many();
+ 
+ /// p+ in EBNF.
+ Parser&lt;Iterable&lt;T&gt;&gt; many1();
+ 
+ Parser map(dynamic f(T value));
+ 
+ Parser&lt;Option&lt;T&gt;&gt; optional();
+ 
+ Parser&lt;T&gt; orElse(final T alternative);
+ 
+ Option&lt;T&gt; parse(String str);
+ 
+ Option&lt;T&gt; parseFrom(StringIterator itr);
+ 
+ Parser&lt;Iterable&lt;T&gt;&gt; sepBy(Parser delim);
+ 
+ Parser&lt;Iterable&lt;T&gt;&gt; sepBy1(Parser delim);
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/AbstractParser.html">AbstractParser&lt;T&gt;</a></span></p>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="+">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&gt; <strong>operator +</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#+"
+              title="Permalink to Parser&lt;T&gt;.operator +">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="^">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>, dynamic&gt;&gt; <strong>operator ^</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#^"
+              title="Permalink to Parser&lt;T&gt;.operator ^">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="flatMap">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a> <strong>flatMap</strong>(<a href="../restlib.common.collections/Option.html">Option</a> f(<a href="../restlib.parsing/Parser.html">T</a> value)) <a class="anchor-link" href="#flatMap"
+              title="Permalink to Parser&lt;T&gt;.flatMap">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="followedBy">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>followedBy</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> p) <a class="anchor-link" href="#followedBy"
+              title="Permalink to Parser&lt;T&gt;.followedBy">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="many">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt;&gt; <strong>many</strong>() <a class="anchor-link" href="#many"
+              title="Permalink to Parser&lt;T&gt;.many">#</a></h4>
+<div class="doc">
+<p>p* in EBNF.</p>
+</div>
+</div>
+<div class="method"><h4 id="many1">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt;&gt; <strong>many1</strong>() <a class="anchor-link" href="#many1"
+              title="Permalink to Parser&lt;T&gt;.many1">#</a></h4>
+<div class="doc">
+<p>p+ in EBNF.</p>
+</div>
+</div>
+<div class="method"><h4 id="map">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a> <strong>map</strong>(f(<a href="../restlib.parsing/Parser.html">T</a> value)) <a class="anchor-link" href="#map"
+              title="Permalink to Parser&lt;T&gt;.map">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="optional">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt;&gt; <strong>optional</strong>() <a class="anchor-link" href="#optional"
+              title="Permalink to Parser&lt;T&gt;.optional">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="orElse">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>orElse</strong>(<a href="../restlib.parsing/Parser.html">T</a> alternative) <a class="anchor-link" href="#orElse"
+              title="Permalink to Parser&lt;T&gt;.orElse">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="parse">
+abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>parse</strong>(String str) <a class="anchor-link" href="#parse"
+              title="Permalink to Parser&lt;T&gt;.parse">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="parseFrom">
+abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>parseFrom</strong>(<a href="../restlib.parsing/StringIterator.html">StringIterator</a> itr) <a class="anchor-link" href="#parseFrom"
+              title="Permalink to Parser&lt;T&gt;.parseFrom">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="sepBy">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt;&gt; <strong>sepBy</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> delim) <a class="anchor-link" href="#sepBy"
+              title="Permalink to Parser&lt;T&gt;.sepBy">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="sepBy1">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt;&gt; <strong>sepBy1</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> delim) <a class="anchor-link" href="#sepBy1"
+              title="Permalink to Parser&lt;T&gt;.sepBy1">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:01.767</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

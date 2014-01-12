@@ -1,0 +1,124 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ForwardingIOApplication abstract class / restlib.server.io Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server.io" data-type="ForwardingIOApplication">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.io.html">restlib.server.io</a> &rsaquo; <a href="../restlib.server.io/ForwardingIOApplication.html">ForwardingIOApplication</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ForwardingIOApplication</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class ForwardingIOApplication implements Forwarder, IOApplication {
+ Request filterRequest(final Request request) =&gt;
+     delegate.filterRequest(request);
+ 
+ Response filterResponse(final Response response) =&gt;
+     delegate.filterResponse(response);
+     
+ IOResource route(final Request request) =&gt;
+     delegate.route(request);
+ 
+ Future writeError(Request request, Response response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) =&gt;
+     delegate.writeError(request, response, msgSink);
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.server.io/IOApplication.html">IOApplication</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.objects/Forwarder.html">Forwarder</a></span></p>
+<div class="inherited">
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="delegate">
+<button class="show-code">Code</button>
+final         <strong>delegate</strong> <a class="anchor-link"
+            href="#delegate"
+            title="Permalink to ForwardingIOApplication.delegate">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.objects/Forwarder.html">Forwarder</a> </div><div class="doc">
+<pre class="source">
+dynamic get delegate;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="filterRequest">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Request.html">Request</a> <strong>filterRequest</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#filterRequest"
+              title="Permalink to ForwardingIOApplication.filterRequest">#</a></h4>
+<div class="doc">
+<pre class="source">
+Request filterRequest(final Request request) =&gt;
+   delegate.filterRequest(request);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="filterResponse">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a> <strong>filterResponse</strong>(<a href="../restlib.core.http/Response.html">Response</a> response) <a class="anchor-link" href="#filterResponse"
+              title="Permalink to ForwardingIOApplication.filterResponse">#</a></h4>
+<div class="doc">
+<pre class="source">
+Response filterResponse(final Response response) =&gt;
+   delegate.filterResponse(response);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="route">
+<button class="show-code">Code</button>
+<a href="../restlib.server.io/IOResource.html">IOResource</a> <strong>route</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#route"
+              title="Permalink to ForwardingIOApplication.route">#</a></h4>
+<div class="doc">
+<pre class="source">
+IOResource route(final Request request) =&gt;
+   delegate.route(request);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="writeError">
+<button class="show-code">Code</button>
+Future <strong>writeError</strong>(<a href="../restlib.core.http/Request.html">Request</a> request, <a href="../restlib.core.http/Response.html">Response</a> response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) <a class="anchor-link" href="#writeError"
+              title="Permalink to ForwardingIOApplication.writeError">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future writeError(Request request, Response response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) =&gt;
+   delegate.writeError(request, response, msgSink);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.662</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

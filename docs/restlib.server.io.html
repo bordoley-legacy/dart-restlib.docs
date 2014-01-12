@@ -1,0 +1,202 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.server.io Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server.io">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.server.io.html">restlib.server.io</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.server.io</strong> library</h2>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="writeMultipart">
+<button class="show-code">Code</button>
+Future <strong>writeMultipart</strong>(<a href="restlib.core.http/Request.html">Request</a> request, <a href="restlib.core.http/Response.html">Response</a>&lt;<a href="restlib.core.multipart/MultipartOutput.html">MultipartOutput</a>&gt; response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) <a class="anchor-link" href="#writeMultipart"
+              title="Permalink to writeMultipart">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future writeMultipart(final Request request, final Response&lt;MultipartOutput&gt; response, final StreamSink&lt;List&lt;int&gt;&gt; msgSink) {
+ final MultipartOutput entity = response.entity.value;
+ final String boundary = response.contentInfo.mediaRange.value.parameters["boundary"].first;
+ 
+ return entity
+   .fold(new Future.value(), (final Future future, final Part part) =&gt; 
+       future
+         .then((_) {
+           msgSink.add(ASCII.encode("--$boundary\r\n"));
+           msgSink.add(ASCII.encode(part.contentInfo.toString()));
+           return msgSink
+               .addStream(part.entity.asStream())
+               .then((_) =&gt;
+                   msgSink.add(ASCII.encode("\r\n\r\n")));
+         }))
+  .then((_) =&gt;
+      msgSink.add(ASCII.encode("--$boundary--\r\n")));   
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="writeString">
+<button class="show-code">Code</button>
+Future <strong>writeString</strong>(<a href="restlib.core.http/Request.html">Request</a>&lt;String&gt; request, <a href="restlib.core.http/Response.html">Response</a> response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) <a class="anchor-link" href="#writeString"
+              title="Permalink to writeString">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future writeString(final Request&lt;String&gt; request, final Response response, final StreamSink&lt;List&lt;int&gt;&gt; msgSink) {
+ final Charset charset = 
+     response.contentInfo.mediaRange
+       .flatMap((final MediaRange mr) =&gt; 
+           mr.charset)
+       .orElse(Charset.UTF_8);
+  
+ return charset.codec
+     .map((final Encoding codec) {
+       msgSink.add(codec.encode(response.entity.value.toString()));
+       return new Future.value();   
+     }).orCompute(() =&gt; 
+         new Future.error("${charset.toString()} is unsupported"));
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="parseString">
+<button class="show-code">Code</button>
+Future&lt;<a href="restlib.core.http/Request.html">Request</a>&lt;String&gt;&gt; <strong>parseString</strong>(<a href="restlib.core.http/Request.html">Request</a> request, Stream&lt;List&lt;int&gt;&gt; msgStream) <a class="anchor-link" href="#parseString"
+              title="Permalink to parseString">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Stream&lt;List&lt;int&gt;&gt; msgStream){
+ final Charset charset = 
+     request.contentInfo.mediaRange
+       .flatMap((final MediaRange mediaRange) =&gt; 
+           mediaRange.charset)
+       .orElse(Charset.UTF_8);
+ 
+ return charset.codec
+   .map((final Encoding codec) =&gt; 
+       codec.decodeStream(msgStream)
+         .then((final String requestBody) =&gt; 
+             request.with_(entity: requestBody)))
+   .orCompute(() =&gt; 
+       new Future.error("Request charset preference is unsupported."));
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ForwardingIOApplication.html"><strong>ForwardingIOApplication</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ForwardingIOResource.html"><strong>ForwardingIOResource&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/IOApplication.html"><strong>IOApplication</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/IOResource.html"><strong>IOResource&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ResponseWriter.html"><strong>ResponseWriter</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ResponseWriterProvider.html"><strong>ResponseWriterProvider</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/MultipartInputProcessor.html"><strong>MultipartInputProcessor</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Typedefs</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/PartParser.html"><strong>PartParser</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/PartParserProvider.html"><strong>PartParserProvider</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/RequestParser.html"><strong>RequestParser</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/RequestParserProvider.html"><strong>RequestParserProvider</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ResponseEntityWriter.html"><strong>ResponseEntityWriter</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ResponseWriterForMediaRange.html"><strong>ResponseWriterForMediaRange</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.644</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

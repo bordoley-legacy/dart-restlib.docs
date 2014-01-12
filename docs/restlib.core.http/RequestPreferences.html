@@ -1,0 +1,156 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RequestPreferences abstract class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="RequestPreferences">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RequestPreferences</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class RequestPreferences {
+ static const RequestPreferences NONE = const _RequestPreferencesNone();
+
+ ImmutableSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets;
+ 
+ ImmutableSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings;
+ 
+ ImmutableSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages;
+ 
+ ImmutableSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges;
+
+ Option&lt;Range&gt; get range;
+ 
+ RequestPreferences with_({
+   Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets,
+   Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings,
+   Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages,
+   Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges,
+   Range range});
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequestPreferences.html">ForwardingRequestPreferences</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestPreferencesToString.html">RequestPreferencesToString</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestPreferencesWith_.html">RequestPreferencesWith_</a></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="NONE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a>         <strong>NONE</strong> <a class="anchor-link"
+            href="#NONE"
+            title="Permalink to RequestPreferences.NONE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const RequestPreferences NONE = const _RequestPreferencesNone()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="acceptedCharsets">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt;         <strong>acceptedCharsets</strong> <a class="anchor-link"
+            href="#acceptedCharsets"
+            title="Permalink to RequestPreferences.acceptedCharsets">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="acceptedEncodings">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt;         <strong>acceptedEncodings</strong> <a class="anchor-link"
+            href="#acceptedEncodings"
+            title="Permalink to RequestPreferences.acceptedEncodings">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="acceptedLanguages">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt;         <strong>acceptedLanguages</strong> <a class="anchor-link"
+            href="#acceptedLanguages"
+            title="Permalink to RequestPreferences.acceptedLanguages">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="acceptedMediaRanges">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt;         <strong>acceptedMediaRanges</strong> <a class="anchor-link"
+            href="#acceptedMediaRanges"
+            title="Permalink to RequestPreferences.acceptedMediaRanges">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.data/Range.html">Range</a>&gt;         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to RequestPreferences.range">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;Range&gt; get range;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="with_">
+abstract <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; acceptedCharsets, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; acceptedEncodings, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; acceptedLanguages, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; acceptedMediaRanges, <a href="../restlib.core.data/Range.html">Range</a> range}) <a class="anchor-link" href="#with_"
+              title="Permalink to RequestPreferences.with_">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.477</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

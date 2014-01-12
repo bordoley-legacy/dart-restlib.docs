@@ -1,0 +1,189 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Route class / restlib.server Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server" data-type="Route">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.html">restlib.server</a> &rsaquo; <a href="../restlib.server/Route.html">Route</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Route</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Route {    
+ final Iterable&lt;_RouteSegment&gt; _segments;
+ 
+ const Route._internal(this._segments);
+ 
+ bool matches(Uri uri) {
+   try {
+     parsePathParameters(uri);
+     return true;
+   } on ArgumentError {
+     return false;
+   }
+ }
+ 
+ Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {    
+   Map&lt;String, String&gt; retval = new Map();
+
+   ImmutableSequence uriSegments = uri._pathSegments.canonicalize().segments;
+   
+   int i = 0, j = 0;
+   for (; i &lt; _segments.length &amp;&amp; j &lt; uriSegments.length; i++, j++) {
+     _RouteSegment routeSegment = _segments.elementAt(i);
+     String pathSegment = uriSegments.elementAt(j);
+     
+     if (routeSegment is _GlobSegment) {
+       String key = routeSegment.name;
+       
+       String stopSegment = (i+1 &lt; _segments.length) ? _segments.elementAt(i+1).name : "";
+       StringBuffer buffer = new StringBuffer("$pathSegment");
+       
+       for(j++; j &lt; uriSegments.length; j++) {
+         if (uriSegments.elementAt(j) != stopSegment) {
+           buffer.write("/${uriSegments.elementAt(j)}");
+         } else {
+           j--;
+           break;
+         }
+       }
+       
+       retval[key] = buffer.toString();
+       
+     } else if (routeSegment is _ParameterSegment) {
+       String key = routeSegment.name;
+       retval[key] = pathSegment;
+       
+     } else if (routeSegment.name != pathSegment) {
+       throw new ArgumentError("$uri does not match route $this");
+     }  
+   }
+   
+   if (i &lt; _segments.length || j &lt; uriSegments.length) {
+     throw new ArgumentError("$uri does not match route $this");
+   }
+   
+   return Persistent.EMPTY_DICTIONARY.insertAllFromMap(retval);
+ }
+ 
+ String toString() =&gt; _segments.join("/");
+}
+</pre>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="matches">
+<button class="show-code">Code</button>
+bool <strong>matches</strong>(Uri uri) <a class="anchor-link" href="#matches"
+              title="Permalink to Route.matches">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool matches(Uri uri) {
+ try {
+   parsePathParameters(uri);
+   return true;
+ } on ArgumentError {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="parsePathParameters">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;String, String&gt; <strong>parsePathParameters</strong>(<a href="../restlib.server/RoutableUri.html">RoutableUri</a> uri) <a class="anchor-link" href="#parsePathParameters"
+              title="Permalink to Route.parsePathParameters">#</a></h4>
+<div class="doc">
+<pre class="source">
+Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {    
+ Map&lt;String, String&gt; retval = new Map();
+
+ ImmutableSequence uriSegments = uri._pathSegments.canonicalize().segments;
+ 
+ int i = 0, j = 0;
+ for (; i &lt; _segments.length &amp;&amp; j &lt; uriSegments.length; i++, j++) {
+   _RouteSegment routeSegment = _segments.elementAt(i);
+   String pathSegment = uriSegments.elementAt(j);
+   
+   if (routeSegment is _GlobSegment) {
+     String key = routeSegment.name;
+     
+     String stopSegment = (i+1 &lt; _segments.length) ? _segments.elementAt(i+1).name : "";
+     StringBuffer buffer = new StringBuffer("$pathSegment");
+     
+     for(j++; j &lt; uriSegments.length; j++) {
+       if (uriSegments.elementAt(j) != stopSegment) {
+         buffer.write("/${uriSegments.elementAt(j)}");
+       } else {
+         j--;
+         break;
+       }
+     }
+     
+     retval[key] = buffer.toString();
+     
+   } else if (routeSegment is _ParameterSegment) {
+     String key = routeSegment.name;
+     retval[key] = pathSegment;
+     
+   } else if (routeSegment.name != pathSegment) {
+     throw new ArgumentError("$uri does not match route $this");
+   }  
+ }
+ 
+ if (i &lt; _segments.length || j &lt; uriSegments.length) {
+   throw new ArgumentError("$uri does not match route $this");
+ }
+ 
+ return Persistent.EMPTY_DICTIONARY.insertAllFromMap(retval);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Route.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; _segments.join("/");
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.428</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

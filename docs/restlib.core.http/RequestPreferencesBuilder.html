@@ -1,0 +1,205 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RequestPreferencesBuilder class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="RequestPreferencesBuilder">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/RequestPreferencesBuilder.html">RequestPreferencesBuilder</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RequestPreferencesBuilder</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class RequestPreferencesBuilder {
+ MutableSet&lt;Preference&lt;Charset&gt;&gt; _acceptedCharsets = new MutableSet.hash();
+ MutableSet&lt;Preference&lt;ContentEncoding&gt;&gt; _acceptedEncodings = new MutableSet.hash();
+ MutableSet&lt;Preference&lt;Language&gt;&gt; _acceptedLanguages = new MutableSet.hash();
+ MutableSet&lt;Preference&lt;MediaRange&gt;&gt; _acceptedMediaRanges = new MutableSet.hash();
+ Option&lt;Range&gt; _range = Option.NONE;
+ 
+ set Range(final Range range) =&gt; 
+     _range = new Option(range);
+ 
+ void addAcceptedCharset(final Preference&lt;Charset&gt; charset) {
+   _acceptedCharsets.add(charset);
+ }
+ 
+ void addAcceptedCharsets(final Iterable&lt;Preference&lt;Charset&gt;&gt; charsets) =&gt;
+   _acceptedCharsets.addAll(charsets);
+ 
+ void addAcceptedEncoding(final Preference&lt;ContentEncoding&gt; encoding) {
+   _acceptedEncodings.add(encoding);
+ }
+ 
+ void addAcceptedEncodings(final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; encodings) =&gt;
+   _acceptedEncodings.addAll(encodings);
+ 
+ void addAcceptedLanguage(final Preference&lt;Language&gt; language) {
+   _acceptedLanguages.add(language);
+ }
+ 
+ void addAcceptedLanguages(final Iterable&lt;Preference&lt;Language&gt;&gt; languages) =&gt;
+   _acceptedLanguages.addAll(languages); 
+ 
+ void addAcceptedMediaRange(final Preference&lt;MediaRange&gt; mediaRange) {
+   _acceptedMediaRanges.add(mediaRange);
+ }
+ 
+ void addAcceptedMediaRanges(final Iterable&lt;Preference&lt;MediaRange&gt;&gt; mediaRanges) =&gt;
+   _acceptedMediaRanges.addAll(mediaRanges);
+ 
+ RequestPreferences build() =&gt; new _RequestPreferencesImpl(this);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="method"><h4 id="Range=">
+<button class="show-code">Code</button>
+dynamic <strong>set Range</strong>(range) <a class="anchor-link" href="#Range="
+              title="Permalink to RequestPreferencesBuilder.set Range">#</a></h4>
+<div class="doc">
+<pre class="source">
+set Range(final Range range) =&gt; 
+   _range = new Option(range);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="addAcceptedCharset">
+<button class="show-code">Code</button>
+void <strong>addAcceptedCharset</strong>(<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt; charset) <a class="anchor-link" href="#addAcceptedCharset"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedCharset">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedCharset(final Preference&lt;Charset&gt; charset) {
+ _acceptedCharsets.add(charset);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedCharsets">
+<button class="show-code">Code</button>
+void <strong>addAcceptedCharsets</strong>(Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; charsets) <a class="anchor-link" href="#addAcceptedCharsets"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedCharsets">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedCharsets(final Iterable&lt;Preference&lt;Charset&gt;&gt; charsets) =&gt;
+ _acceptedCharsets.addAll(charsets);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedEncoding">
+<button class="show-code">Code</button>
+void <strong>addAcceptedEncoding</strong>(<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encoding) <a class="anchor-link" href="#addAcceptedEncoding"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedEncoding">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedEncoding(final Preference&lt;ContentEncoding&gt; encoding) {
+ _acceptedEncodings.add(encoding);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedEncodings">
+<button class="show-code">Code</button>
+void <strong>addAcceptedEncodings</strong>(Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; encodings) <a class="anchor-link" href="#addAcceptedEncodings"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedEncodings">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedEncodings(final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; encodings) =&gt;
+ _acceptedEncodings.addAll(encodings);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedLanguage">
+<button class="show-code">Code</button>
+void <strong>addAcceptedLanguage</strong>(<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; language) <a class="anchor-link" href="#addAcceptedLanguage"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedLanguage">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedLanguage(final Preference&lt;Language&gt; language) {
+ _acceptedLanguages.add(language);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedLanguages">
+<button class="show-code">Code</button>
+void <strong>addAcceptedLanguages</strong>(Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; languages) <a class="anchor-link" href="#addAcceptedLanguages"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedLanguages">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedLanguages(final Iterable&lt;Preference&lt;Language&gt;&gt; languages) =&gt;
+ _acceptedLanguages.addAll(languages);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedMediaRange">
+<button class="show-code">Code</button>
+void <strong>addAcceptedMediaRange</strong>(<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt; mediaRange) <a class="anchor-link" href="#addAcceptedMediaRange"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedMediaRange">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedMediaRange(final Preference&lt;MediaRange&gt; mediaRange) {
+ _acceptedMediaRanges.add(mediaRange);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedMediaRanges">
+<button class="show-code">Code</button>
+void <strong>addAcceptedMediaRanges</strong>(Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; mediaRanges) <a class="anchor-link" href="#addAcceptedMediaRanges"
+              title="Permalink to RequestPreferencesBuilder.addAcceptedMediaRanges">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedMediaRanges(final Iterable&lt;Preference&lt;MediaRange&gt;&gt; mediaRanges) =&gt;
+ _acceptedMediaRanges.addAll(mediaRanges);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="build">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>build</strong>() <a class="anchor-link" href="#build"
+              title="Permalink to RequestPreferencesBuilder.build">#</a></h4>
+<div class="doc">
+<pre class="source">
+RequestPreferences build() =&gt; new _RequestPreferencesImpl(this);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.426</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

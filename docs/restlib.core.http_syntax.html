@@ -1,0 +1,382 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.core.http_syntax Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http_syntax">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.core.http_syntax.html">restlib.core.http_syntax</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.core.http_syntax</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="BASE64">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>BASE64</strong> <a class="anchor-link"
+            href="#BASE64"
+            title="Permalink to BASE64">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; BASE64 = 
+ ((ALPHA_NUMERIC | anyOf("-._~+/")).many1() + EQUALS.many())
+   .map((final Iterable&lt;IterableString&gt; e) =&gt; 
+       e.elementAt(0).toString() + e.elementAt(1).toString())
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="BWS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.parsing/IterableString.html">IterableString</a>&gt;         <strong>BWS</strong> <a class="anchor-link"
+            href="#BWS"
+            title="Permalink to BWS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;IterableString&gt; BWS = OWS
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHAR">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>CHAR</strong> <a class="anchor-link"
+            href="#CHAR"
+            title="Permalink to CHAR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher CHAR =
+ inRange("\u0001", "\u007F")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CTEXT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>CTEXT</strong> <a class="anchor-link"
+            href="#CTEXT"
+            title="Permalink to CTEXT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher CTEXT =
+ WS | 
+ inRange('\u0021', '\'') | 
+ inRange('\u002A', '\u005B') |
+ inRange('\u005D', '\u007E') |
+ OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ETAGC">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>ETAGC</strong> <a class="anchor-link"
+            href="#ETAGC"
+            title="Permalink to ETAGC">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher ETAGC =
+ isChar("\u0021") |
+ inRange("\u0023", "\u007E") |
+ OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="FIELD_VALUE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>FIELD_VALUE</strong> <a class="anchor-link"
+            href="#FIELD_VALUE"
+            title="Permalink to FIELD_VALUE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher FIELD_VALUE = 
+ WS | VCHAR | OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HOST_PORT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>HOST_PORT</strong> <a class="anchor-link"
+            href="#HOST_PORT"
+            title="Permalink to HOST_PORT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher HOST_PORT =
+ TCHAR | isChar(":")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OBS_TEXT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>OBS_TEXT</strong> <a class="anchor-link"
+            href="#OBS_TEXT"
+            title="Permalink to OBS_TEXT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher OBS_TEXT = inRange('\u0080','\u00FF')
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OPTIONAL_WORD">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>OPTIONAL_WORD</strong> <a class="anchor-link"
+            href="#OPTIONAL_WORD"
+            title="Permalink to OPTIONAL_WORD">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; OPTIONAL_WORD = WORD.orElse("")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OWS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.parsing/IterableString.html">IterableString</a>&gt;         <strong>OWS</strong> <a class="anchor-link"
+            href="#OWS"
+            title="Permalink to OWS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;IterableString&gt; OWS = WS.many()
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OWS_COMMA_OWS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>OWS_COMMA_OWS</strong> <a class="anchor-link"
+            href="#OWS_COMMA_OWS"
+            title="Permalink to OWS_COMMA_OWS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; OWS_COMMA_OWS = (OWS + COMMA + OWS).map((val) =&gt; ",")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OWS_SEMICOLON_OWS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>OWS_SEMICOLON_OWS</strong> <a class="anchor-link"
+            href="#OWS_SEMICOLON_OWS"
+            title="Permalink to OWS_SEMICOLON_OWS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; OWS_SEMICOLON_OWS = (OWS + SEMICOLON + OWS).map((val) =&gt; ";")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QD_TEXT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>QD_TEXT</strong> <a class="anchor-link"
+            href="#QD_TEXT"
+            title="Permalink to QD_TEXT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher QD_TEXT =
+ WS |
+ isChar("\u0021") |
+ inRange("\u0023", "\u005B") |
+ inRange("\u005D", "\u007E") |
+ OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QUOTABLE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>QUOTABLE</strong> <a class="anchor-link"
+            href="#QUOTABLE"
+            title="Permalink to QUOTABLE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher QUOTABLE = QD_TEXT | QUOTED_PAIR_CHAR
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QUOTED_CPAIR_CHAR">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>QUOTED_CPAIR_CHAR</strong> <a class="anchor-link"
+            href="#QUOTED_CPAIR_CHAR"
+            title="Permalink to QUOTED_CPAIR_CHAR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher QUOTED_CPAIR_CHAR =
+ WS | VCHAR | OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QUOTED_PAIR_CHAR">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>QUOTED_PAIR_CHAR</strong> <a class="anchor-link"
+            href="#QUOTED_PAIR_CHAR"
+            title="Permalink to QUOTED_PAIR_CHAR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher QUOTED_PAIR_CHAR = 
+ WS | VCHAR | OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QUOTED_STRING">
+<button class="show-code">Code</button>
+const <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>QUOTED_STRING</strong> <a class="anchor-link"
+            href="#QUOTED_STRING"
+            title="Permalink to QUOTED_STRING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+const Parser&lt;String&gt; QUOTED_STRING = const _QuotedStringParser()
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="REASON_PHRASE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>REASON_PHRASE</strong> <a class="anchor-link"
+            href="#REASON_PHRASE"
+            title="Permalink to REASON_PHRASE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher REASON_PHRASE =
+ WS | VCHAR | OBS_TEXT
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RWS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.parsing/IterableString.html">IterableString</a>&gt;         <strong>RWS</strong> <a class="anchor-link"
+            href="#RWS"
+            title="Permalink to RWS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;IterableString&gt; RWS = WS.many1()
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TCHAR">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>TCHAR</strong> <a class="anchor-link"
+            href="#TCHAR"
+            title="Permalink to TCHAR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher TCHAR = 
+ ALPHA_NUMERIC | anyOf("!#\$%&amp;'*+-.^_`|~")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOKEN">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>TOKEN</strong> <a class="anchor-link"
+            href="#TOKEN"
+            title="Permalink to TOKEN">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; TOKEN = TCHAR.many1().map(objectToString)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VCHAR">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>VCHAR</strong> <a class="anchor-link"
+            href="#VCHAR"
+            title="Permalink to VCHAR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher VCHAR = inRange("\u0021", "\u007E")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="WORD">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>WORD</strong> <a class="anchor-link"
+            href="#WORD"
+            title="Permalink to WORD">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;String&gt; WORD = 
+ (TOKEN ^ QUOTED_STRING)
+   .map((final Either&lt;String, String&gt; e) =&gt;
+       e.value)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="WS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>WS</strong> <a class="anchor-link"
+            href="#WS"
+            title="Permalink to WS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher WS = anyOf(" \t")
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="encodeWord">
+<button class="show-code">Code</button>
+String <strong>encodeWord</strong>(String val) <a class="anchor-link" href="#encodeWord"
+              title="Permalink to encodeWord">#</a></h4>
+<div class="doc">
+<pre class="source">
+String encodeWord(String val){
+ return val;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="encodeQuotedString">
+<button class="show-code">Code</button>
+String <strong>encodeQuotedString</strong>(String val) <a class="anchor-link" href="#encodeQuotedString"
+              title="Permalink to encodeQuotedString">#</a></h4>
+<div class="doc">
+<pre class="source">
+String encodeQuotedString(String val){
+ return val;
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:01.489</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

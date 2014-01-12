@@ -1,0 +1,304 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>StringIterator class / restlib.parsing Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.parsing" data-type="StringIterator">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.parsing.html">restlib.parsing</a> &rsaquo; <a href="../restlib.parsing/StringIterator.html">StringIterator</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>StringIterator</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class StringIterator implements BidirectionalIterator&lt;int&gt; {
+ int _current = null;  
+ int _index = -1;
+ final String string;
+ 
+ StringIterator(this.string);
+ 
+ int get current { 
+   if (_current == null) { 
+     throw new StateError("Index is out of bounds");
+   } 
+   
+   return _current;
+ }
+ 
+ String get currentAsString {
+   if (_current == null) {
+     throw new StateError("Index is out of bounds");
+   }
+   return _isLeadSurrogate(string.codeUnitAt(index)) ?
+       string.substring(index, index + 2) :
+       string.substring(index, index + 1);
+ }
+
+ int get index =&gt; _index;
+ 
+ void set index(final int index) {
+   checkRangeInclusive(index, -1, string.length);
+   if ((index &gt; 0) &amp;&amp; 
+       (index &lt; string.length) &amp;&amp; 
+       _isTrailSurrogate(string.codeUnitAt(index))) {
+     throw new ArgumentError("Index inside surrogate pair: $index");
+   }
+   _index = index;
+   _updateCurrent();
+ }
+ 
+ bool moveNext() {
+   if (index &lt; string.length) {
+     _moveIndexToNextCodePointIndex();
+     _updateCurrent();
+     return !(index == string.length);
+   } else {
+     return false;
+   }
+ }
+ 
+ bool movePrevious() {
+   if (index &gt; -1) {
+     _moveIndexToPreviousCodePointIndex();
+     _updateCurrent();
+     return !(index == -1);
+   } else {
+     return false;
+   }
+ }  
+ 
+ String toString() =&gt; 
+     "StringIterator($string, $index)";
+ 
+ void _moveIndexToNextCodePointIndex() {
+   if ((index &gt; -1) &amp;&amp;
+       (index &lt; string.length - 1) &amp;&amp; 
+       _isLeadSurrogate(string.codeUnitAt(index))) {
+     _index++;
+   } 
+   _index++;
+ }
+ 
+ void _moveIndexToPreviousCodePointIndex() {
+   if ((index &gt; 0) &amp;&amp; 
+       (index &lt; string.length) &amp;&amp; 
+       _isTrailSurrogate(string.codeUnitAt(index))) {
+     _index--;
+   }  
+   _index--;
+ }
+ 
+ void _updateCurrent() {
+   if (index == string.length || index &lt; 0) {
+     this._current = null;
+   } else {
+     int codeUnit = string.codeUnitAt(index);
+     this._current = 
+         _isLeadSurrogate(string.codeUnitAt(index)) ?
+           _combineSurrogatePair(codeUnit, string.codeUnitAt(index + 1)) : 
+             codeUnit;
+   }
+ }
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span>BidirectionalIterator&lt;int&gt;</span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>StringIterator</strong>(String string) <a class="anchor-link" href="#"
+              title="Permalink to StringIterator.StringIterator">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+StringIterator(this.string);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="current">
+<button class="show-code">Code</button>
+final int         <strong>current</strong> <a class="anchor-link"
+            href="#current"
+            title="Permalink to StringIterator.current">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Returns the current element.</p>
+<p>Return <code>null</code> if the iterator has not yet been moved to the first
+element, or if the iterator has been moved after the last element of the
+<code>Iterable</code>.</p>
+<div class="docs-inherited-from">docs inherited from Iterator&lt;<a href="../restlib.parsing/StringIterator.html">E</a>&gt; </div></div>
+<pre class="source">
+int get current { 
+ if (_current == null) { 
+   throw new StateError("Index is out of bounds");
+ } 
+ 
+ return _current;
+}
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="currentAsString">
+<button class="show-code">Code</button>
+final String         <strong>currentAsString</strong> <a class="anchor-link"
+            href="#currentAsString"
+            title="Permalink to StringIterator.currentAsString">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get currentAsString {
+ if (_current == null) {
+   throw new StateError("Index is out of bounds");
+ }
+ return _isLeadSurrogate(string.codeUnitAt(index)) ?
+     string.substring(index, index + 2) :
+     string.substring(index, index + 1);
+}
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="index">
+<button class="show-code">Code</button>
+int         <strong>index</strong> <a class="anchor-link"
+            href="#index"
+            title="Permalink to StringIterator.index">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get index =&gt; _index;
+</pre>
+<pre class="source">
+void set index(final int index) {
+ checkRangeInclusive(index, -1, string.length);
+ if ((index &gt; 0) &amp;&amp; 
+     (index &lt; string.length) &amp;&amp; 
+     _isTrailSurrogate(string.codeUnitAt(index))) {
+   throw new ArgumentError("Index inside surrogate pair: $index");
+ }
+ _index = index;
+ _updateCurrent();
+}
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="string">
+<button class="show-code">Code</button>
+final String         <strong>string</strong> <a class="anchor-link"
+            href="#string"
+            title="Permalink to StringIterator.string">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String string
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="moveNext">
+<button class="show-code">Code</button>
+bool <strong>moveNext</strong>() <a class="anchor-link" href="#moveNext"
+              title="Permalink to StringIterator.moveNext">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Moves to the next element. Returns true if <a class="crossref" href="../restlib.parsing/StringIterator.html#current">current</a> contains the next
+element. Returns false, if no element was left.</p>
+<p>It is safe to invoke <a class="crossref" href="../restlib.parsing/StringIterator.html#moveNext">moveNext</a> even when the iterator is already
+positioned after the last element. In this case <a class="crossref" href="../restlib.parsing/StringIterator.html#moveNext">moveNext</a> has no effect.</p>
+<div class="docs-inherited-from">docs inherited from Iterator&lt;<a href="../restlib.parsing/StringIterator.html">E</a>&gt; </div></div>
+<pre class="source">
+bool moveNext() {
+ if (index &lt; string.length) {
+   _moveIndexToNextCodePointIndex();
+   _updateCurrent();
+   return !(index == string.length);
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="movePrevious">
+<button class="show-code">Code</button>
+bool <strong>movePrevious</strong>() <a class="anchor-link" href="#movePrevious"
+              title="Permalink to StringIterator.movePrevious">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Move back to the previous element.</p>
+<p>Returns true and updates <a class="crossref" href="../restlib.parsing/StringIterator.html#current">current</a> if successful. Returns false
+and sets <a class="crossref" href="../restlib.parsing/StringIterator.html#current">current</a> to null if there is no previous element.</p>
+<div class="docs-inherited-from">docs inherited from BidirectionalIterator&lt;int&gt; </div></div>
+<pre class="source">
+bool movePrevious() {
+ if (index &gt; -1) {
+   _moveIndexToPreviousCodePointIndex();
+   _updateCurrent();
+   return !(index == -1);
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to StringIterator.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; 
+   "StringIterator($string, $index)";
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.139</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

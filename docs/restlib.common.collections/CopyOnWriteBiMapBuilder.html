@@ -1,0 +1,112 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>CopyOnWriteBiMapBuilder&lt;K, V&gt; class / restlib.common.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.collections" data-type="CopyOnWriteBiMapBuilder&amp;lt;K, V&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.common.collections.html">restlib.common.collections</a> &rsaquo; <a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">CopyOnWriteBiMapBuilder&lt;K, V&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>CopyOnWriteBiMapBuilder&lt;K, V&gt;</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class CopyOnWriteBiMapBuilder&lt;K,V&gt; {
+ final MutableBiMap _delegate = new MutableBiMap.hash();
+ 
+ void insert(final K key, final V value) =&gt;
+     _delegate.insert(key, value);
+ 
+ void insertAll(final Iterable&lt;Pair&lt;K,V&gt;&gt; pairs) =&gt;
+     _delegate.insertAll(pairs);
+ 
+ void insertPair(final Pair&lt;K,V&gt; pair) =&gt;
+     _delegate.insertPair(pair);
+ 
+ ImmutableBiMap&lt;K,V&gt; build() =&gt; 
+     new _CopyOnWriteBiMap._internal(
+         (new CopyOnWriteDictionaryBuilder()..insertAll(_delegate)).build(),
+         (new CopyOnWriteDictionaryBuilder()..insertAll(_delegate.inverse)).build());
+}
+</pre>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="build">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/ImmutableBiMap.html">ImmutableBiMap</a>&lt;<a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">V</a>&gt; <strong>build</strong>() <a class="anchor-link" href="#build"
+              title="Permalink to CopyOnWriteBiMapBuilder&lt;K, V&gt;.build">#</a></h4>
+<div class="doc">
+<pre class="source">
+ImmutableBiMap&lt;K,V&gt; build() =&gt; 
+   new _CopyOnWriteBiMap._internal(
+       (new CopyOnWriteDictionaryBuilder()..insertAll(_delegate)).build(),
+       (new CopyOnWriteDictionaryBuilder()..insertAll(_delegate.inverse)).build());
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insert">
+<button class="show-code">Code</button>
+void <strong>insert</strong>(<a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">K</a> key, <a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">V</a> value) <a class="anchor-link" href="#insert"
+              title="Permalink to CopyOnWriteBiMapBuilder&lt;K, V&gt;.insert">#</a></h4>
+<div class="doc">
+<pre class="source">
+void insert(final K key, final V value) =&gt;
+   _delegate.insert(key, value);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insertAll">
+<button class="show-code">Code</button>
+void <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">V</a>&gt;&gt; pairs) <a class="anchor-link" href="#insertAll"
+              title="Permalink to CopyOnWriteBiMapBuilder&lt;K, V&gt;.insertAll">#</a></h4>
+<div class="doc">
+<pre class="source">
+void insertAll(final Iterable&lt;Pair&lt;K,V&gt;&gt; pairs) =&gt;
+   _delegate.insertAll(pairs);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insertPair">
+<button class="show-code">Code</button>
+void <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteBiMapBuilder.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
+              title="Permalink to CopyOnWriteBiMapBuilder&lt;K, V&gt;.insertPair">#</a></h4>
+<div class="doc">
+<pre class="source">
+void insertPair(final Pair&lt;K,V&gt; pair) =&gt;
+   _delegate.insertPair(pair);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:56.488</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

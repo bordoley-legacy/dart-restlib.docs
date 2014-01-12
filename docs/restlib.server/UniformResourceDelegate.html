@@ -1,0 +1,173 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>UniformResourceDelegate&lt;T&gt; abstract class / restlib.server Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server" data-type="UniformResourceDelegate&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.html">restlib.server</a> &rsaquo; <a href="../restlib.server/UniformResourceDelegate.html">UniformResourceDelegate&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>UniformResourceDelegate&lt;T&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class UniformResourceDelegate&lt;T&gt; {
+ static ImmutableSet&lt;Method&gt; _getImplementedMethods(final UniformResourceDelegate delegate) {
+   final MutableSet&lt;Method&gt; set = 
+       new MutableSet.hash(elements:
+           [Method.GET, Method.HEAD, 
+            Method.OPTIONS, Method.DELETE,
+            Method.PATCH, Method.POST, Method.PUT]);
+   
+   try {
+     delegate.delete(null);
+   } on NoSuchMethodError {
+     set.remove(Method.DELETE);
+   } catch (e) {
+   }
+   
+   try {
+     delegate.patch(null);
+   } on NoSuchMethodError {
+     set.remove(Method.PATCH);
+   } catch (e) {
+   }
+   
+   try {
+     delegate.post(null);
+   } on NoSuchMethodError {
+     set.remove(Method.POST);
+   } catch (e) {
+   }
+   
+   try {
+     delegate.put(null);
+   } on NoSuchMethodError {
+     set.remove(Method.PUT);
+   } catch (e) {
+   }
+   
+   return Persistent.EMPTY_SET.addAll(set);
+ }
+ 
+ bool get requireETagForUpdate;
+ 
+ bool get requireIfUnmodifiedSinceForUpdate;
+ 
+ Route get route;
+ 
+ Future&lt;Response&gt; delete(Request request);
+ 
+ Future&lt;Response&gt; get(Request request);
+ 
+ Future&lt;Response&gt; patch(Request&lt;T&gt; request);
+ 
+ Future&lt;Response&gt; post(Request&lt;T&gt; request);
+ 
+ Future&lt;Response&gt; put(Request&lt;T&gt; request);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="requireETagForUpdate">
+<button class="show-code">Code</button>
+final bool         <strong>requireETagForUpdate</strong> <a class="anchor-link"
+            href="#requireETagForUpdate"
+            title="Permalink to UniformResourceDelegate&lt;T&gt;.requireETagForUpdate">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get requireETagForUpdate;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="requireIfUnmodifiedSinceForUpdate">
+<button class="show-code">Code</button>
+final bool         <strong>requireIfUnmodifiedSinceForUpdate</strong> <a class="anchor-link"
+            href="#requireIfUnmodifiedSinceForUpdate"
+            title="Permalink to UniformResourceDelegate&lt;T&gt;.requireIfUnmodifiedSinceForUpdate">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get requireIfUnmodifiedSinceForUpdate;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="route">
+<button class="show-code">Code</button>
+final <a href="../restlib.server/Route.html">Route</a>         <strong>route</strong> <a class="anchor-link"
+            href="#route"
+            title="Permalink to UniformResourceDelegate&lt;T&gt;.route">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Route get route;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="delete">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>delete</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#delete"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.delete">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="get">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>get</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#get"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.get">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="patch">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>patch</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#patch"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.patch">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="post">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>post</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#post"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.post">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="put">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>put</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#put"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.put">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.413</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

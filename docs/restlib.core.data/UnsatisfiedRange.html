@@ -1,0 +1,140 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>UnsatisfiedRange class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="UnsatisfiedRange">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/UnsatisfiedRange.html">UnsatisfiedRange</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>UnsatisfiedRange</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class UnsatisfiedRange {
+ final int length;
+ 
+ const UnsatisfiedRange._internal(this.length);
+ 
+ int get hashCode =&gt;
+     length;
+ 
+ bool equals(final other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is UnsatisfiedRange) {
+     return this.length == other.length;
+   } else {
+     return false;
+   }
+ }
+ 
+ String toString() =&gt;
+     "bytes */$length";
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to UnsatisfiedRange.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.core.data/UnsatisfiedRange.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt;
+   length;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="length">
+<button class="show-code">Code</button>
+final int         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to UnsatisfiedRange.length">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final int length
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="equals">
+<button class="show-code">Code</button>
+bool <strong>equals</strong>(other) <a class="anchor-link" href="#equals"
+              title="Permalink to UnsatisfiedRange.equals">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool equals(final other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is UnsatisfiedRange) {
+   return this.length == other.length;
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to UnsatisfiedRange.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   "bytes */$length";
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:59.249</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

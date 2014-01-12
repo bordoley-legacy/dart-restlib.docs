@@ -1,0 +1,678 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>MediaRange class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="MediaRange">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/MediaRange.html">MediaRange</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>MediaRange</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class MediaRange implements Matcheable&lt;MediaRange&gt; {  
+ static const MediaRange ANY = const MediaRange._internal("*", "*");
+ static const MediaRange APPLICATION_ANY = const MediaRange._internal("application", "*");
+ static const MediaRange APPLICATION_ATOM = const MediaRange._internal("application", "atom+xml");
+ static final MediaRange APPLICATION_ATOM_ENTRY = MEDIA_RANGE.parse("application/atom+xml;type=entry").value;
+ static final MediaRange APPLICATION_ATOM_FEED = MEDIA_RANGE.parse("application/atom+xml;type=feed").value;
+ static const MediaRange APPLICATION_JSON = const MediaRange._internal("application", "json");
+ static final MediaRange APPLICATION_JSON_ENTRY = MEDIA_RANGE.parse("application/json;type=entry").value;
+ static final MediaRange APPLICATION_JSON_FEED = MEDIA_RANGE.parse("application/json;type=feed").value;
+ static const MediaRange APPLICATION_OCTET_STREAM = const MediaRange._internal("application", "octet-stream");
+ static const MediaRange APPLICATION_OPEN_SEARCH_DESCRIPTION_XML = const MediaRange._internal("application", "opensearchdescription+xml");
+ static const MediaRange APPLICATION_WWW_FORM = const MediaRange._internal("application", "x-www-form-urlencoded");
+ static const MediaRange APPLICATION_XML = const MediaRange._internal("application", "xml");
+ static const MediaRange GOOGLE_PROTOCOL_BUFFER = const MediaRange._internal("application", "x-protobuf");
+ static const MediaRange MULTIPART_BYTE_RANGE = const MediaRange._internal("multipart", "byteranges");
+ static const MediaRange MULTIPART_FORM_DATA = const MediaRange._internal("multipart", "form-data");
+ static const MediaRange MULTIPART_RELATED = const MediaRange._internal("multipart" , "related");
+ static const MediaRange TEXT_ANY = const MediaRange._internal("text", "*");
+ static const MediaRange TEXT_HTML = const MediaRange._internal("text", "html");
+ static final MediaRange TEXT_HTML_ENTRY = MEDIA_RANGE.parse("text/html;type=entry").value;
+ static final MediaRange TEXT_HTML_FEED = MEDIA_RANGE.parse("text/html;type=feed").value;
+ static const MediaRange TEXT_PLAIN = const MediaRange._internal("text", "plain");     
+
+ factory MediaRange(final String type, final String subtype, {final Charset charset, Multimap&lt;String,String, dynamic&gt; parameters}) {
+   checkArgument(TOKEN.parse(type).isNotEmpty);
+   checkArgument(TOKEN.parse(subtype).isNotEmpty);
+   Option&lt;Charset&gt; optionalCharset = new Option(charset);
+   
+   optionalCharset.map((final Charset charset) =&gt; 
+       checkArgument(charset != Charset.ANY));
+   
+   parameters = firstNotNull(parameters, Persistent.EMPTY_SET_MULTIMAP);
+   parameters = 
+       Persistent.EMPTY_SET_MULTIMAP.insertAll(
+           parameters.map((final Pair&lt;String,String&gt; kv) {
+             checkArgument(TOKEN.parse(kv.fst).isNotEmpty);
+             checkArgument(kv.fst.toLowerCase() != "q");
+             checkArgument(kv.fst.toLowerCase() != "charset");
+             checkArgument(QUOTABLE.matchesAllOf(kv.snd));
+             return new Pair(kv.fst.toLowerCase(), kv.snd);
+           }));
+   
+   return new MediaRange._internal(
+       type.toLowerCase(), subtype.toLowerCase(), optionalCharset, parameters);
+ }
+ 
+ final Option&lt;Charset&gt; charset;
+ final String type;
+ final String subtype;
+ final Multimap&lt;String, String, dynamic&gt; parameters;
+ 
+ const MediaRange._internal(this.type, this.subtype, [this.charset = Option.NONE, this.parameters = Persistent.EMPTY_SET_MULTIMAP]);
+ 
+ int get hashCode =&gt;
+     computeHashCode([type, subtype, charset, parameters]);
+ 
+ int match(final MediaRange that) {
+   //if(this.charset.isDefined) { 
+   //  throw new StateError("Invalid to call match on MediaRange with a defined charset."); 
+   //}
+
+   if (this == that) {
+     return 1000;
+   } else if (this == MediaRange.ANY) {
+     return 250;
+   } else if (this.type != that.type) {
+     return 0;            
+   } else if (this.subtype =="*") {
+     return 500;
+   } else if (this.subtype != that.subtype) {
+     return 0;
+   } else if (this.parameters == that.parameters) {
+     return 1000;
+   } else if (that.parameters.every((ele) =&gt; this.parameters.contains(ele))) {
+     return 750;
+   } else {
+     return 0;
+   }
+ }
+ 
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is MediaRange) {
+     return (this.type == other.type) &amp;&amp;
+         (this.subtype == other.subtype) &amp;&amp;
+         (this.charset == other.charset) &amp;&amp;
+         (this.parameters == other.parameters);
+   } else {
+     return false;
+   }
+ }
+ 
+ MediaRange with_({final Charset charset, final Multimap&lt;String, String, dynamic&gt; parameters}) {
+   checkState((type != "*") &amp;&amp; (subtype != "*"));
+   checkArgument(charset != Charset.ANY);
+
+   final Charset newCharset = computeIfNull(charset, () =&gt; this.charset.nullableValue);
+   final Multimap&lt;String, String, dynamic&gt; newParameters = firstNotNull(parameters, this.parameters);
+   
+   return new MediaRange(this.type, this.subtype, charset: newCharset, parameters: newParameters);
+ }
+ 
+ String toString() {        
+   StringBuffer buffer = new StringBuffer();
+   buffer
+     ..write(this.type)
+     ..write('/')
+     ..write(this.subtype);
+   
+   this.charset.map(
+       (final Charset charset) =&gt; 
+           buffer
+             ..write("; ")
+             ..write("charset")
+             ..write('=')
+             ..write(charset));
+   
+   if (!this.parameters.isEmpty) {
+     buffer
+       ..write("; ")
+       ..write(pairIterableToString(this.parameters));
+   }
+   
+   return buffer.toString();
+ }
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/Matcheable.html">Matcheable&lt;MediaRange&gt;</a></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="ANY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>ANY</strong> <a class="anchor-link"
+            href="#ANY"
+            title="Permalink to MediaRange.ANY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange ANY = const MediaRange._internal("*", "*")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_ANY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ANY</strong> <a class="anchor-link"
+            href="#APPLICATION_ANY"
+            title="Permalink to MediaRange.APPLICATION_ANY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_ANY = const MediaRange._internal("application", "*")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_ATOM">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM</strong> <a class="anchor-link"
+            href="#APPLICATION_ATOM"
+            title="Permalink to MediaRange.APPLICATION_ATOM">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_ATOM = const MediaRange._internal("application", "atom+xml")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_ATOM_ENTRY">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM_ENTRY</strong> <a class="anchor-link"
+            href="#APPLICATION_ATOM_ENTRY"
+            title="Permalink to MediaRange.APPLICATION_ATOM_ENTRY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange APPLICATION_ATOM_ENTRY = MEDIA_RANGE.parse("application/atom+xml;type=entry").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_ATOM_FEED">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM_FEED</strong> <a class="anchor-link"
+            href="#APPLICATION_ATOM_FEED"
+            title="Permalink to MediaRange.APPLICATION_ATOM_FEED">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange APPLICATION_ATOM_FEED = MEDIA_RANGE.parse("application/atom+xml;type=feed").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_JSON">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON</strong> <a class="anchor-link"
+            href="#APPLICATION_JSON"
+            title="Permalink to MediaRange.APPLICATION_JSON">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_JSON = const MediaRange._internal("application", "json")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_JSON_ENTRY">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON_ENTRY</strong> <a class="anchor-link"
+            href="#APPLICATION_JSON_ENTRY"
+            title="Permalink to MediaRange.APPLICATION_JSON_ENTRY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange APPLICATION_JSON_ENTRY = MEDIA_RANGE.parse("application/json;type=entry").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_JSON_FEED">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON_FEED</strong> <a class="anchor-link"
+            href="#APPLICATION_JSON_FEED"
+            title="Permalink to MediaRange.APPLICATION_JSON_FEED">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange APPLICATION_JSON_FEED = MEDIA_RANGE.parse("application/json;type=feed").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_OCTET_STREAM">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_OCTET_STREAM</strong> <a class="anchor-link"
+            href="#APPLICATION_OCTET_STREAM"
+            title="Permalink to MediaRange.APPLICATION_OCTET_STREAM">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_OCTET_STREAM = const MediaRange._internal("application", "octet-stream")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_OPEN_SEARCH_DESCRIPTION_XML">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_OPEN_SEARCH_DESCRIPTION_XML</strong> <a class="anchor-link"
+            href="#APPLICATION_OPEN_SEARCH_DESCRIPTION_XML"
+            title="Permalink to MediaRange.APPLICATION_OPEN_SEARCH_DESCRIPTION_XML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_OPEN_SEARCH_DESCRIPTION_XML = const MediaRange._internal("application", "opensearchdescription+xml")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_WWW_FORM">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_WWW_FORM</strong> <a class="anchor-link"
+            href="#APPLICATION_WWW_FORM"
+            title="Permalink to MediaRange.APPLICATION_WWW_FORM">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_WWW_FORM = const MediaRange._internal("application", "x-www-form-urlencoded")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APPLICATION_XML">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_XML</strong> <a class="anchor-link"
+            href="#APPLICATION_XML"
+            title="Permalink to MediaRange.APPLICATION_XML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange APPLICATION_XML = const MediaRange._internal("application", "xml")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GOOGLE_PROTOCOL_BUFFER">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>GOOGLE_PROTOCOL_BUFFER</strong> <a class="anchor-link"
+            href="#GOOGLE_PROTOCOL_BUFFER"
+            title="Permalink to MediaRange.GOOGLE_PROTOCOL_BUFFER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange GOOGLE_PROTOCOL_BUFFER = const MediaRange._internal("application", "x-protobuf")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MULTIPART_BYTE_RANGE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_BYTE_RANGE</strong> <a class="anchor-link"
+            href="#MULTIPART_BYTE_RANGE"
+            title="Permalink to MediaRange.MULTIPART_BYTE_RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange MULTIPART_BYTE_RANGE = const MediaRange._internal("multipart", "byteranges")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MULTIPART_FORM_DATA">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_FORM_DATA</strong> <a class="anchor-link"
+            href="#MULTIPART_FORM_DATA"
+            title="Permalink to MediaRange.MULTIPART_FORM_DATA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange MULTIPART_FORM_DATA = const MediaRange._internal("multipart", "form-data")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MULTIPART_RELATED">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_RELATED</strong> <a class="anchor-link"
+            href="#MULTIPART_RELATED"
+            title="Permalink to MediaRange.MULTIPART_RELATED">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange MULTIPART_RELATED = const MediaRange._internal("multipart" , "related")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT_ANY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_ANY</strong> <a class="anchor-link"
+            href="#TEXT_ANY"
+            title="Permalink to MediaRange.TEXT_ANY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange TEXT_ANY = const MediaRange._internal("text", "*")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT_HTML">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML</strong> <a class="anchor-link"
+            href="#TEXT_HTML"
+            title="Permalink to MediaRange.TEXT_HTML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange TEXT_HTML = const MediaRange._internal("text", "html")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT_HTML_ENTRY">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML_ENTRY</strong> <a class="anchor-link"
+            href="#TEXT_HTML_ENTRY"
+            title="Permalink to MediaRange.TEXT_HTML_ENTRY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange TEXT_HTML_ENTRY = MEDIA_RANGE.parse("text/html;type=entry").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT_HTML_FEED">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML_FEED</strong> <a class="anchor-link"
+            href="#TEXT_HTML_FEED"
+            title="Permalink to MediaRange.TEXT_HTML_FEED">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static final MediaRange TEXT_HTML_FEED = MEDIA_RANGE.parse("text/html;type=feed").value
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT_PLAIN">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_PLAIN</strong> <a class="anchor-link"
+            href="#TEXT_PLAIN"
+            title="Permalink to MediaRange.TEXT_PLAIN">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MediaRange TEXT_PLAIN = const MediaRange._internal("text", "plain")
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>MediaRange</strong>(String type, String subtype, {<a href="../restlib.core.data/Charset.html">Charset</a> charset, <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;String, String, dynamic&gt; parameters}) <a class="anchor-link" href="#"
+              title="Permalink to MediaRange.MediaRange">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory MediaRange(final String type, final String subtype, {final Charset charset, Multimap&lt;String,String, dynamic&gt; parameters}) {
+ checkArgument(TOKEN.parse(type).isNotEmpty);
+ checkArgument(TOKEN.parse(subtype).isNotEmpty);
+ Option&lt;Charset&gt; optionalCharset = new Option(charset);
+ 
+ optionalCharset.map((final Charset charset) =&gt; 
+     checkArgument(charset != Charset.ANY));
+ 
+ parameters = firstNotNull(parameters, Persistent.EMPTY_SET_MULTIMAP);
+ parameters = 
+     Persistent.EMPTY_SET_MULTIMAP.insertAll(
+         parameters.map((final Pair&lt;String,String&gt; kv) {
+           checkArgument(TOKEN.parse(kv.fst).isNotEmpty);
+           checkArgument(kv.fst.toLowerCase() != "q");
+           checkArgument(kv.fst.toLowerCase() != "charset");
+           checkArgument(QUOTABLE.matchesAllOf(kv.snd));
+           return new Pair(kv.fst.toLowerCase(), kv.snd);
+         }));
+ 
+ return new MediaRange._internal(
+     type.toLowerCase(), subtype.toLowerCase(), optionalCharset, parameters);
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="charset">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;         <strong>charset</strong> <a class="anchor-link"
+            href="#charset"
+            title="Permalink to MediaRange.charset">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Option&lt;Charset&gt; charset
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to MediaRange.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.core.data/MediaRange.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt;
+   computeHashCode([type, subtype, charset, parameters]);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="parameters">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;String, String, dynamic&gt;         <strong>parameters</strong> <a class="anchor-link"
+            href="#parameters"
+            title="Permalink to MediaRange.parameters">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Multimap&lt;String, String, dynamic&gt; parameters
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="subtype">
+<button class="show-code">Code</button>
+final String         <strong>subtype</strong> <a class="anchor-link"
+            href="#subtype"
+            title="Permalink to MediaRange.subtype">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String subtype
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="type">
+<button class="show-code">Code</button>
+final String         <strong>type</strong> <a class="anchor-link"
+            href="#type"
+            title="Permalink to MediaRange.type">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String type
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to MediaRange.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.core.data/MediaRange.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is MediaRange) {
+   return (this.type == other.type) &amp;&amp;
+       (this.subtype == other.subtype) &amp;&amp;
+       (this.charset == other.charset) &amp;&amp;
+       (this.parameters == other.parameters);
+ } else {
+   return false;
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="match">
+<button class="show-code">Code</button>
+int <strong>match</strong>(<a href="../restlib.core.data/MediaRange.html">MediaRange</a> that) <a class="anchor-link" href="#match"
+              title="Permalink to MediaRange.match">#</a></h4>
+<div class="doc">
+<pre class="source">
+int match(final MediaRange that) {
+ //if(this.charset.isDefined) { 
+ //  throw new StateError("Invalid to call match on MediaRange with a defined charset."); 
+ //}
+
+ if (this == that) {
+   return 1000;
+ } else if (this == MediaRange.ANY) {
+   return 250;
+ } else if (this.type != that.type) {
+   return 0;            
+ } else if (this.subtype =="*") {
+   return 500;
+ } else if (this.subtype != that.subtype) {
+   return 0;
+ } else if (this.parameters == that.parameters) {
+   return 1000;
+ } else if (that.parameters.every((ele) =&gt; this.parameters.contains(ele))) {
+   return 750;
+ } else {
+   return 0;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to MediaRange.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() {        
+ StringBuffer buffer = new StringBuffer();
+ buffer
+   ..write(this.type)
+   ..write('/')
+   ..write(this.subtype);
+ 
+ this.charset.map(
+     (final Charset charset) =&gt; 
+         buffer
+           ..write("; ")
+           ..write("charset")
+           ..write('=')
+           ..write(charset));
+ 
+ if (!this.parameters.isEmpty) {
+   buffer
+     ..write("; ")
+     ..write(pairIterableToString(this.parameters));
+ }
+ 
+ return buffer.toString();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="with_">
+<button class="show-code">Code</button>
+<a href="../restlib.core.data/MediaRange.html">MediaRange</a> <strong>with_</strong>({<a href="../restlib.core.data/Charset.html">Charset</a> charset, <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;String, String, dynamic&gt; parameters}) <a class="anchor-link" href="#with_"
+              title="Permalink to MediaRange.with_">#</a></h4>
+<div class="doc">
+<pre class="source">
+MediaRange with_({final Charset charset, final Multimap&lt;String, String, dynamic&gt; parameters}) {
+ checkState((type != "*") &amp;&amp; (subtype != "*"));
+ checkArgument(charset != Charset.ANY);
+
+ final Charset newCharset = computeIfNull(charset, () =&gt; this.charset.nullableValue);
+ final Multimap&lt;String, String, dynamic&gt; newParameters = firstNotNull(parameters, this.parameters);
+ 
+ return new MediaRange(this.type, this.subtype, charset: newCharset, parameters: newParameters);
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:58.961</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

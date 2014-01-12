@@ -1,0 +1,183 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ContentInfo abstract class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="ContentInfo">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ContentInfo</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class ContentInfo {
+ static const ContentInfo NONE = const _ContentInfoNone();
+
+ // The encodings applied to the content in order.
+ ImmutableSequence&lt;ContentEncoding&gt; get encodings;
+ ImmutableSet&lt;Language&gt; get languages;
+ Option&lt;int&gt; get length;
+ Option&lt;Uri&gt; get location;
+ Option&lt;MediaRange&gt; get mediaRange;
+ Option&lt;ContentRange&gt; get range;
+ 
+ ContentInfo with_({
+   Iterable&lt;ContentEncoding&gt; encodings,
+   Iterable&lt;Language&gt; languages,
+   int length,
+   Uri location,
+   MediaRange mediaRange,
+   ContentRange range
+ });
+ 
+ ContentInfo without({
+   bool encodings: false,
+   bool languages: false,
+   bool length: false,
+   bool location: false,
+   bool mediaRange:  false,
+   bool range : false
+ });
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ContentInfoToString.html">ContentInfoToString</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ContentInfoWith_.html">ContentInfoWith_</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingContentInfo.html">ForwardingContentInfo</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.multipart/PartContentInfo.html">PartContentInfo</a></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="NONE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <strong>NONE</strong> <a class="anchor-link"
+            href="#NONE"
+            title="Permalink to ContentInfo.NONE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ContentInfo NONE = const _ContentInfoNone()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="encodings">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>encodings</strong> <a class="anchor-link"
+            href="#encodings"
+            title="Permalink to ContentInfo.encodings">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSequence&lt;ContentEncoding&gt; get encodings;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="languages">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;         <strong>languages</strong> <a class="anchor-link"
+            href="#languages"
+            title="Permalink to ContentInfo.languages">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ImmutableSet&lt;Language&gt; get languages;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="length">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;int&gt;         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to ContentInfo.length">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;int&gt; get length;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="location">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;Uri&gt;         <strong>location</strong> <a class="anchor-link"
+            href="#location"
+            title="Permalink to ContentInfo.location">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;Uri&gt; get location;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="mediaRange">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;         <strong>mediaRange</strong> <a class="anchor-link"
+            href="#mediaRange"
+            title="Permalink to ContentInfo.mediaRange">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;MediaRange&gt; get mediaRange;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.data/ContentRange.html">ContentRange</a>&gt;         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to ContentInfo.range">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;ContentRange&gt; get range;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="with_">
+abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
+              title="Permalink to ContentInfo.with_">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="without">
+abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>without</strong>({bool encodings: false, bool languages: false, bool length: false, bool location: false, bool mediaRange: false, bool range: false}) <a class="anchor-link" href="#without"
+              title="Permalink to ContentInfo.without">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:01.361</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

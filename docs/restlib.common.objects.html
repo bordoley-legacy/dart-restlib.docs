@@ -1,0 +1,272 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.common.objects Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.objects">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.common.objects.html">restlib.common.objects</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.common.objects</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="visibleForTesting">
+<button class="show-code">Code</button>
+const Object         <strong>visibleForTesting</strong> <a class="anchor-link"
+            href="#visibleForTesting"
+            title="Permalink to visibleForTesting">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+const Object visibleForTesting = const _VisibleForTesting()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="otherwise">
+<button class="show-code">Code</button>
+<a href="restlib.common.objects/Pattern.html">Pattern</a> <strong>otherwise</strong>(apply(obj)) <a class="anchor-link" href="#otherwise"
+              title="Permalink to otherwise">#</a></h4>
+<div class="doc">
+<pre class="source">
+Pattern otherwise(apply(obj)) =&gt;
+   new Pattern.otherwise(apply);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="inCaseOf">
+<button class="show-code">Code</button>
+<a href="restlib.common.objects/Pattern.html">Pattern</a> <strong>inCaseOf</strong>(<a href="restlib.common.objects/Predicate.html">Predicate</a> matcher, apply(obj)) <a class="anchor-link" href="#inCaseOf"
+              title="Permalink to inCaseOf">#</a></h4>
+<div class="doc">
+<pre class="source">
+Pattern inCaseOf(final Predicate matcher, /*&lt;T&gt;*/ apply(obj)) =&gt;
+   new Pattern.inCaseOf(matcher, apply);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="objectToString">
+<button class="show-code">Code</button>
+String <strong>objectToString</strong>(obj) <a class="anchor-link" href="#objectToString"
+              title="Permalink to objectToString">#</a></h4>
+<div class="doc">
+<pre class="source">
+String objectToString(final dynamic obj) =&gt; 
+   obj.toString();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="nullToEmpty">
+<button class="show-code">Code</button>
+String <strong>nullToEmpty</strong>(String string) <a class="anchor-link" href="#nullToEmpty"
+              title="Permalink to nullToEmpty">#</a></h4>
+<div class="doc">
+<pre class="source">
+String nullToEmpty(final String string) =&gt;
+   firstNotNull(string, "");
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isTrue">
+<button class="show-code">Code</button>
+bool <strong>isTrue</strong>(bool value) <a class="anchor-link" href="#isTrue"
+              title="Permalink to isTrue">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isTrue(final bool value) =&gt; 
+   value == true;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isNull">
+<button class="show-code">Code</button>
+bool <strong>isNull</strong>(value) <a class="anchor-link" href="#isNull"
+              title="Permalink to isNull">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isNull(final value) =&gt;
+   identical(value, null);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isNotNull">
+<button class="show-code">Code</button>
+bool <strong>isNotNull</strong>(value) <a class="anchor-link" href="#isNotNull"
+              title="Permalink to isNotNull">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isNotNull(final value) =&gt; 
+   !identical(value, null);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isFalse">
+<button class="show-code">Code</button>
+bool <strong>isFalse</strong>(bool value) <a class="anchor-link" href="#isFalse"
+              title="Permalink to isFalse">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isFalse(final bool value) =&gt; 
+   value == false;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="firstNotNull">
+<button class="show-code">Code</button>
+dynamic <strong>firstNotNull</strong>(first, second) <a class="anchor-link" href="#firstNotNull"
+              title="Permalink to firstNotNull">#</a></h4>
+<div class="doc">
+<pre class="source">
+firstNotNull(final /*&lt;T&gt;*/first, final /*&lt;T&gt;*/second) {
+if (isNotNull(first)) {
+return first;
+} else if (isNotNull(second)) {
+return second;
+}
+throw new ArgumentError("both arguments are null");
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="equals">
+<button class="show-code">Code</button>
+<a href="restlib.common.objects/Predicate.html">Predicate</a> <strong>equals</strong>(obj) <a class="anchor-link" href="#equals"
+              title="Permalink to equals">#</a></h4>
+<div class="doc">
+<pre class="source">
+Predicate equals(final obj) =&gt;
+   (final other) =&gt;
+       obj == other;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeIfNotNullOtherwise">
+<button class="show-code">Code</button>
+dynamic <strong>computeIfNotNullOtherwise</strong>(first, second, compute(dyanmic)) <a class="anchor-link" href="#computeIfNotNullOtherwise"
+              title="Permalink to computeIfNotNullOtherwise">#</a></h4>
+<div class="doc">
+<pre class="source">
+dynamic computeIfNotNullOtherwise(first, second, compute(dyanmic)) =&gt;
+   isNull(first) ? second : compute(first);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeIfNotNull">
+<button class="show-code">Code</button>
+void <strong>computeIfNotNull</strong>(value, compute(value)) <a class="anchor-link" href="#computeIfNotNull"
+              title="Permalink to computeIfNotNull">#</a></h4>
+<div class="doc">
+<pre class="source">
+void computeIfNotNull(final value, compute(value))  {
+ if(value != null) {
+   compute(value);
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeIfNull">
+<button class="show-code">Code</button>
+dynamic <strong>computeIfNull</strong>(first, second()) <a class="anchor-link" href="#computeIfNull"
+              title="Permalink to computeIfNull">#</a></h4>
+<div class="doc">
+<pre class="source">
+computeIfNull(final /*&lt;T&gt;*/first, /*&lt;T&gt;*/second()) =&gt; 
+isNotNull(first) ? first : second();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="computeHashCode">
+<button class="show-code">Code</button>
+int <strong>computeHashCode</strong>(Iterable items) <a class="anchor-link" href="#computeHashCode"
+              title="Permalink to computeHashCode">#</a></h4>
+<div class="doc">
+<pre class="source">
+int computeHashCode(final Iterable items) =&gt;
+   items.fold(_HASH_INITIAL_VALUE, (int prev, var ele) =&gt; 
+     _HASH_MULTIPLIER_VALUE * prev + ele.hashCode);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/Forwarder.html"><strong>Forwarder</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/Pattern.html"><strong>Pattern&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/ToStringForwarder.html"><strong>ToStringForwarder</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/IsInstanceOf.html"><strong>IsInstanceOf&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/NoSuchMethodForwarder.html"><strong>NoSuchMethodForwarder</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/PatternMatcher.html"><strong>PatternMatcher&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Typedefs</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.common.objects/Predicate.html"><strong>Predicate</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:57.396</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

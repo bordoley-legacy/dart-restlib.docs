@@ -1,0 +1,161 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Resource&lt;T&gt; abstract class / restlib.server Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server" data-type="Resource&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.html">restlib.server</a> &rsaquo; <a href="../restlib.server/Resource.html">Resource&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Resource&lt;T&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Resource&lt;T&gt; {
+ static const Resource NOT_FOUND = const _NotFoundResource();
+ 
+ factory Resource.authorizingResource(Resource&lt;T&gt; next, Iterable&lt;Authorizer&gt; authorizer) {
+   ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+       Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
+           new Pair(authorizer.scheme, authorizer)));
+   
+   return new _AuthorizingResource&lt;T&gt; (next, authorizerMap);
+ }
+ 
+ factory Resource.byteRangeResource(delegate) =&gt;
+     new _ByteRangeResource(delegate);
+ 
+ factory Resource.uniform(final UniformResourceDelegate&lt;T&gt; delegate) {
+   final ImmutableSet&lt;Method&gt; allowedMethods = UniformResourceDelegate._getImplementedMethods(delegate);
+   return new _UniformResource._internal(delegate, allowedMethods);
+ }
+ 
+ Route get route;
+
+ Future&lt;Response&gt; handle(Request request);
+ Future&lt;Response&gt; acceptMessage(Request&lt;T&gt; request);
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.server/ForwardingResource.html">ForwardingResource&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.server.io/IOResource.html">IOResource&lt;T&gt;</a></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="NOT_FOUND">
+<button class="show-code">Code</button>
+const <a href="../restlib.server/Resource.html">Resource</a>         <strong>NOT_FOUND</strong> <a class="anchor-link"
+            href="#NOT_FOUND"
+            title="Permalink to Resource&lt;T&gt;.NOT_FOUND">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Resource NOT_FOUND = const _NotFoundResource()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="authorizingResource">
+<button class="show-code">Code</button>
+factory <strong>Resource.authorizingResource</strong>(<a href="../restlib.server/Resource.html">Resource</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; next, Iterable&lt;<a href="../restlib.server/Authorizer.html">Authorizer</a>&gt; authorizer) <a class="anchor-link" href="#authorizingResource"
+              title="Permalink to Resource&lt;T&gt;.Resource.authorizingResource">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Resource.authorizingResource(Resource&lt;T&gt; next, Iterable&lt;Authorizer&gt; authorizer) {
+ ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+     Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
+         new Pair(authorizer.scheme, authorizer)));
+ 
+ return new _AuthorizingResource&lt;T&gt; (next, authorizerMap);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="byteRangeResource">
+<button class="show-code">Code</button>
+factory <strong>Resource.byteRangeResource</strong>(delegate) <a class="anchor-link" href="#byteRangeResource"
+              title="Permalink to Resource&lt;T&gt;.Resource.byteRangeResource">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Resource.byteRangeResource(delegate) =&gt;
+   new _ByteRangeResource(delegate);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="uniform">
+<button class="show-code">Code</button>
+factory <strong>Resource.uniform</strong>(<a href="../restlib.server/UniformResourceDelegate.html">UniformResourceDelegate</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; delegate) <a class="anchor-link" href="#uniform"
+              title="Permalink to Resource&lt;T&gt;.Resource.uniform">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Resource.uniform(final UniformResourceDelegate&lt;T&gt; delegate) {
+ final ImmutableSet&lt;Method&gt; allowedMethods = UniformResourceDelegate._getImplementedMethods(delegate);
+ return new _UniformResource._internal(delegate, allowedMethods);
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="route">
+<button class="show-code">Code</button>
+final <a href="../restlib.server/Route.html">Route</a>         <strong>route</strong> <a class="anchor-link"
+            href="#route"
+            title="Permalink to Resource&lt;T&gt;.route">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Route get route;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="acceptMessage">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>acceptMessage</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; request) <a class="anchor-link" href="#acceptMessage"
+              title="Permalink to Resource&lt;T&gt;.acceptMessage">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="handle">
+abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>handle</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#handle"
+              title="Permalink to Resource&lt;T&gt;.handle">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.603</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

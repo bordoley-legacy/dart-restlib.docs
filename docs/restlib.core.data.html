@@ -1,0 +1,559 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.core.data.html">restlib.core.data</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.core.data</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="BYTES_UNIT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/RangeUnit.html">RangeUnit</a>&gt;         <strong>BYTES_UNIT</strong> <a class="anchor-link"
+            href="#BYTES_UNIT"
+            title="Permalink to BYTES_UNIT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;RangeUnit&gt; BYTES_UNIT =
+ string("bytes")
+   .map((final String bytes) =&gt;
+       RangeUnit.BYTES)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CACHE_DIRECTIVE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>CACHE_DIRECTIVE</strong> <a class="anchor-link"
+            href="#CACHE_DIRECTIVE"
+            title="Permalink to CACHE_DIRECTIVE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;CacheDirective&gt; CACHE_DIRECTIVE =
+ KVP.map((final KeyValuePair kvp) { 
+   try {
+     final int value = int.parse(kvp.snd);
+     return new CacheDirective.createWithDigitValue(kvp.fst, value);
+   } on FormatException{}
+   
+   return new CacheDirective._internal(kvp.fst.toLowerCase(), kvp.snd);
+ })
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHALLENGE_MESSAGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt;         <strong>CHALLENGE_MESSAGE</strong> <a class="anchor-link"
+            href="#CHALLENGE_MESSAGE"
+            title="Permalink to CHALLENGE_MESSAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;ChallengeMessage&gt; CHALLENGE_MESSAGE =
+ (TOKEN + SP.many1() + (_BASE64_DATA ^ KVP.optional().sepBy1(OWS_COMMA_OWS)))
+   .map((final Iterable e) {
+     final String scheme = e.elementAt(0);
+     return e.elementAt(2).fold(
+         (final String base64) =&gt; 
+             new Base64ChallengeMessage._internal(scheme, base64),
+         (final Iterable&lt;Option&lt;KeyValuePair&gt;&gt; pairs) =&gt; 
+             new ParametersChallengeMessage._internal(
+                 scheme, 
+                 Persistent.EMPTY_DICTIONARY.insertAll(
+                     pairs
+                       .where((final Option&lt;KeyValuePair&gt; optionalPair) =&gt; 
+                           optionalPair.isNotEmpty)
+                       .map((final Option&lt;KeyValuePair&gt; optionalPair) =&gt; 
+                           optionalPair.value))));
+   })
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHARSET">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Charset.html">Charset</a>&gt;         <strong>CHARSET</strong> <a class="anchor-link"
+            href="#CHARSET"
+            title="Permalink to CHARSET">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Charset&gt; CHARSET = 
+ TOKEN.flatMap((final String charsetName) =&gt;
+     _charsetMatcher(charsetName.toUpperCase()))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COMMENT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Comment.html">Comment</a>&gt;         <strong>COMMENT</strong> <a class="anchor-link"
+            href="#COMMENT"
+            title="Permalink to COMMENT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Comment&gt; COMMENT =
+ (OPEN_PARENTHESES + _COMMENT_SEGMENT.many() + CLOSE_PARENTHESES)
+   .map((final Iterable e) =&gt;
+     new Comment._internal(
+       Persistent.EMPTY_SEQUENCE.addAll(e.elementAt(1))))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_ENCODING">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>CONTENT_ENCODING</strong> <a class="anchor-link"
+            href="#CONTENT_ENCODING"
+            title="Permalink to CONTENT_ENCODING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;ContentEncoding&gt; CONTENT_ENCODING =
+ TOKEN.map((final String encoding) =&gt; 
+     new ContentEncoding._internal(encoding.toLowerCase()))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_RANGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/ContentRange.html">ContentRange</a>&gt;         <strong>CONTENT_RANGE</strong> <a class="anchor-link"
+            href="#CONTENT_RANGE"
+            title="Permalink to CONTENT_RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;ContentRange&gt; CONTENT_RANGE =
+ (_BYTES_CONTENT_RANGE ^ _OTHER_CONTENT_RANGE)
+   .map((final Either&lt;BytesContentRange, OtherContentRange&gt; either) =&gt; 
+       either.value)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ETAG">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ETAG</strong> <a class="anchor-link"
+            href="#ETAG"
+            title="Permalink to ETAG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;EntityTag&gt; ETAG = 
+ (_WEAK_TAG.optional() + DQUOTE + ETAGC.many1().map(objectToString) + DQUOTE)
+   .map((final Iterable e) =&gt; 
+       e.elementAt(0).isEmpty ? 
+           new EntityTag.strong(e.elementAt(2)) :
+             new EntityTag.weak(e.elementAt(2)))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="EXPECTATION">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>EXPECTATION</strong> <a class="anchor-link"
+            href="#EXPECTATION"
+            title="Permalink to EXPECTATION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Expectation&gt; EXPECTATION =
+ KVP.sepBy1(OWS_SEMICOLON_OWS)
+   .map((final Iterable&lt;KeyValuePair&gt; kvp) =&gt;
+       new Expectation._internal(Persistent.EMPTY_SEQUENCE_MULTIMAP.insertAll(kvp)))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HTTP_DATE_TIME">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/HttpDateTime.html">HttpDateTime</a>&gt;         <strong>HTTP_DATE_TIME</strong> <a class="anchor-link"
+            href="#HTTP_DATE_TIME"
+            title="Permalink to HTTP_DATE_TIME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;HttpDateTime&gt; HTTP_DATE_TIME = _IMF_FIX_DATE
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="KVP">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/KeyValuePair.html">KeyValuePair</a>&gt;         <strong>KVP</strong> <a class="anchor-link"
+            href="#KVP"
+            title="Permalink to KVP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;KeyValuePair&gt; KVP =
+ (TOKEN + _OPTIONAL_VALUE)
+   .map((final Iterable elements) =&gt;
+     new KeyValuePair(elements.elementAt(0), elements.elementAt(1)))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="KVP_NOT_Q">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/KeyValuePair.html">KeyValuePair</a>&gt;         <strong>KVP_NOT_Q</strong> <a class="anchor-link"
+            href="#KVP_NOT_Q"
+            title="Permalink to KVP_NOT_Q">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;KeyValuePair&gt; KVP_NOT_Q =
+ KVP.map((final KeyValuePair kvp) =&gt;
+   (kvp.fst.toLowerCase() != "q") ? kvp : null)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LANGUAGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Language.html">Language</a>&gt;         <strong>LANGUAGE</strong> <a class="anchor-link"
+            href="#LANGUAGE"
+            title="Permalink to LANGUAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Language&gt; LANGUAGE =
+ TOKEN.map((final String language) =&gt; 
+     new Language._internal(language.toLowerCase()))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MEDIA_RANGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/MediaRange.html">MediaRange</a>&gt;         <strong>MEDIA_RANGE</strong> <a class="anchor-link"
+            href="#MEDIA_RANGE"
+            title="Permalink to MEDIA_RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;MediaRange&gt; MEDIA_RANGE =
+ (TOKEN + FORWARD_SLASH + TOKEN + _PARAMETERS)
+   .map((final Iterable e) {
+     final String type = e.elementAt(0).toLowerCase();
+     final String subtype = e.elementAt(2).toLowerCase();
+     Option&lt;Charset&gt; charset = Option.NONE;
+     final SetMultimap&lt;String, String&gt; parameters = 
+         Persistent.EMPTY_SET_MULTIMAP.insertAll(
+             e.elementAt(3).where((final KeyValuePair kvp) {                
+               final String key = kvp.fst.toLowerCase();
+               
+               // Parse the first valid charset in the parameters. Skip the rest.
+               if (key == "charset") {
+                 if (charset.isEmpty) {
+                   charset = CHARSET.parse(kvp.snd);
+                   charset = (charset.isNotEmpty &amp;&amp; (charset.value == Charset.ANY)) ?
+                     Option.NONE : charset;
+                 }
+                 
+                 return false;
+               } else {
+                 return true;
+               }
+             }));
+     
+     return new MediaRange._internal(type, subtype, charset, parameters); 
+   })
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PRODUCT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Product.html">Product</a>&gt;         <strong>PRODUCT</strong> <a class="anchor-link"
+            href="#PRODUCT"
+            title="Permalink to PRODUCT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Product&gt; PRODUCT = 
+ (TOKEN + _OPTIONAL_FORWARD_SLASH_TOKEN)
+   .map((final Iterable e) =&gt; 
+       new Product._internal(e.elementAt(0), e.elementAt(1)))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RANGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Range.html">Range</a>&gt;         <strong>RANGE</strong> <a class="anchor-link"
+            href="#RANGE"
+            title="Permalink to RANGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Range&gt; RANGE = 
+ (_BYTE_RANGES_SPECIFIER  ^ _OTHER_RANGES_SPECIFIER)
+   .map((final Either&lt;ByteRangesSpecifier, OtherRangesSpecifier&gt; rangesSpecifier) =&gt;
+       rangesSpecifier.value)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RANGE_UNIT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/RangeUnit.html">RangeUnit</a>&gt;         <strong>RANGE_UNIT</strong> <a class="anchor-link"
+            href="#RANGE_UNIT"
+            title="Permalink to RANGE_UNIT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;RangeUnit&gt; RANGE_UNIT =
+ TOKEN.map((final String token) =&gt; 
+     new RangeUnit._internal(token))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="USER_AGENT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/UserAgent.html">UserAgent</a>&gt;         <strong>USER_AGENT</strong> <a class="anchor-link"
+            href="#USER_AGENT"
+            title="Permalink to USER_AGENT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;UserAgent&gt; USER_AGENT =
+ (PRODUCT + _PRODUCT_OR_COMMENT.many())
+   .map((final Iterable e) =&gt; 
+       new UserAgent._internal(
+           Persistent.EMPTY_SEQUENCE
+             .add(new Either.leftValue(e.elementAt(0)))
+             .addAll(e.elementAt(1))))
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="WARNING">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/Warning.html">Warning</a>&gt;         <strong>WARNING</strong> <a class="anchor-link"
+            href="#WARNING"
+            title="Permalink to WARNING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Warning&gt; WARNING =
+ (_WARN_CODE + SP + _WARN_AGENT + SP + QUOTED_STRING + _SP_WARN_DATE)
+   .map((final Iterable e) =&gt; 
+       new Warning._internal(e.elementAt(0), e.elementAt(2), e.elementAt(4), e.elementAt(5)))
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="pairIterableToString">
+<button class="show-code">Code</button>
+String <strong>pairIterableToString</strong>(Iterable&lt;<a href="restlib.common.collections/Pair.html">Pair</a>&gt; entries) <a class="anchor-link" href="#pairIterableToString"
+              title="Permalink to pairIterableToString">#</a></h4>
+<div class="doc">
+<pre class="source">
+String pairIterableToString(final Iterable&lt;Pair&gt; entries) =&gt; 
+   entries.map(_pairToString).join(";");
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ChallengeMessage.html"><strong>ChallengeMessage</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ContentRange.html"><strong>ContentRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Matcheable.html"><strong>Matcheable&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Range.html"><strong>Range</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Base64ChallengeMessage.html"><strong>Base64ChallengeMessage</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ByteRangeResp.html"><strong>ByteRangeResp</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ByteRangeSpec.html"><strong>ByteRangeSpec</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ByteRangesSpecifier.html"><strong>ByteRangesSpecifier</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/BytesContentRange.html"><strong>BytesContentRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/CacheDirective.html"><strong>CacheDirective</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Charset.html"><strong>Charset</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Comment.html"><strong>Comment</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ContentEncoding.html"><strong>ContentEncoding</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/EntityTag.html"><strong>EntityTag</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Expectation.html"><strong>Expectation</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/HostPort.html"><strong>HostPort</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/HttpDateTime.html"><strong>HttpDateTime</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/KeyValuePair.html"><strong>KeyValuePair</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Language.html"><strong>Language</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/MediaRange.html"><strong>MediaRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/OtherContentRange.html"><strong>OtherContentRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/OtherRangesSpecifier.html"><strong>OtherRangesSpecifier</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/ParametersChallengeMessage.html"><strong>ParametersChallengeMessage</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Product.html"><strong>Product</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/RangeUnit.html"><strong>RangeUnit</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/SuffixByteRangeSpec.html"><strong>SuffixByteRangeSpec</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/UnsatisfiedRange.html"><strong>UnsatisfiedRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/UserAgent.html"><strong>UserAgent</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Warning.html"><strong>Warning</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:57.787</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

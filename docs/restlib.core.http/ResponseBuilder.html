@@ -1,0 +1,436 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ResponseBuilder&lt;T&gt; class / restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http" data-type="ResponseBuilder&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.http.html">restlib.core.http</a> &rsaquo; <a href="../restlib.core.http/ResponseBuilder.html">ResponseBuilder&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ResponseBuilder&lt;T&gt;</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class ResponseBuilder&lt;T&gt; {
+ MutableSet&lt;RangeUnit&gt; _acceptedRangeUnits = new MutableSet.hash();
+ Option&lt;int&gt; _age = Option.NONE;
+ MutableSet&lt;Method&gt; _allowedMethods = new MutableSet.hash();
+ MutableSet&lt;ChallengeMessage&gt; _authenticationChallenges = new MutableSet.hash();
+ MutableSet&lt;CacheDirective&gt; _cacheDirectives = new MutableSet.hash();
+ ContentInfo _contentInfo = ContentInfo.NONE;
+ Option&lt;DateTime&gt; _date = Option.NONE;
+ Option&lt;T&gt; _entity = Option.NONE;
+ Option&lt;EntityTag&gt; _entityTag = Option.NONE;
+ Option&lt;DateTime&gt; _expires = Option.NONE;
+ Option&lt;DateTime&gt; _lastModified = Option.NONE;
+ Option&lt;Uri&gt; _location = Option.NONE;
+ MutableSet&lt;ChallengeMessage&gt; _proxyAuthenticationChallenges = new MutableSet.hash();
+ Option&lt;DateTime&gt; _retryAfter = Option.NONE;
+ Option&lt;UserAgent&gt; _server = Option.NONE;
+ Status _status = Status.SUCCESS_OK;
+ MutableSet&lt;Header&gt; _vary = new MutableSet.hash();
+ MutableSequence&lt;Warning&gt; _warnings = new GrowableSequence();
+
+ set age(final int age) =&gt; 
+     this._age = new Option(age);
+ 
+ set contentInfo(final ContentInfo contentInfo) =&gt; 
+     this._contentInfo = checkNotNull(contentInfo);
+
+ set date(final DateTime date) =&gt; 
+     this._date = new Option(date);
+
+ set entity(final T entity) =&gt; 
+     this._entity = new Option(entity);
+ 
+ set entityTag(final EntityTag entity) =&gt; 
+     this._entityTag = new Option(entity);
+ 
+ set expires(final DateTime date) =&gt; 
+     this._expires = new Option(date);
+ 
+ set lastModified(final DateTime date) =&gt; 
+     this._lastModified = new Option(date);
+ 
+ set location(final Uri location) =&gt;
+     this._location = new Option(location);
+ 
+ set retryAfter(final DateTime date) =&gt; 
+     this._retryAfter = new Option(date);
+
+ set server(final UserAgent server) =&gt; 
+     this._server = new Option(server);
+ 
+ set status(final Status status) =&gt; 
+     this._status = checkNotNull(status);
+ 
+ void addAllowedMethod(final Method method) =&gt;
+     this._allowedMethods.add(method);
+ 
+ void addAllowedMethods(final Iterable&lt;Method&gt; methods) =&gt;
+     this._allowedMethods.addAll(methods);
+ 
+ void addAcceptedRangeUnit(final RangeUnit rangeUnit) =&gt;
+     this._acceptedRangeUnits.add(rangeUnit);
+ 
+ void addAcceptedRangeUnits(final Iterable&lt;RangeUnit&gt; rangeUnits) =&gt;
+     this._acceptedRangeUnits.addAll(rangeUnits);
+ 
+ void addAuthenticationChallenge(final ChallengeMessage challengeMessage) =&gt;
+     this._authenticationChallenges.add(challengeMessage);
+ 
+ void addAuthenticationChallenges(final Iterable&lt;ChallengeMessage&gt; challengeMessages) =&gt;
+     this._authenticationChallenges.addAll(challengeMessages);
+ 
+ void addCacheDirective(final CacheDirective cacheDirective) =&gt;
+     this._cacheDirectives.add(cacheDirective);
+ 
+ void addCacheDirectives(final Iterable&lt;CacheDirective&gt; cacheDirectives) =&gt;
+     this._cacheDirectives.addAll(cacheDirectives);
+ 
+ void addProxyAuthenticationChallenge(final ChallengeMessage challenge) =&gt;
+     this._proxyAuthenticationChallenges.add(challenge); 
+ 
+ void addProxyAuthenticationChallenges(final Iterable&lt;ChallengeMessage&gt; challenges) =&gt;
+     this._proxyAuthenticationChallenges.addAll(challenges); 
+ 
+ void addVaryHeader(final Header header) =&gt;
+     this._vary.add(header);
+
+ void addVaryHeaders(final Iterable&lt;Header&gt; headers) =&gt; 
+     this._vary.addAll(headers);
+ 
+ void addWarning(final Warning warning) =&gt; 
+     this._warnings.add(warning);
+ 
+ void addWarnings(final Iterable&lt;Warning&gt; warnings) =&gt; 
+     this._warnings.addAll(warnings);
+
+ Response&lt;T&gt; build() =&gt; 
+     new _ResponseImpl(this);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="method"><h4 id="age=">
+<button class="show-code">Code</button>
+dynamic <strong>set age</strong>(int age) <a class="anchor-link" href="#age="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set age">#</a></h4>
+<div class="doc">
+<pre class="source">
+set age(final int age) =&gt; 
+   this._age = new Option(age);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="contentInfo=">
+<button class="show-code">Code</button>
+dynamic <strong>set contentInfo</strong>(<a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo) <a class="anchor-link" href="#contentInfo="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set contentInfo">#</a></h4>
+<div class="doc">
+<pre class="source">
+set contentInfo(final ContentInfo contentInfo) =&gt; 
+   this._contentInfo = checkNotNull(contentInfo);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="date=">
+<button class="show-code">Code</button>
+dynamic <strong>set date</strong>(DateTime date) <a class="anchor-link" href="#date="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set date">#</a></h4>
+<div class="doc">
+<pre class="source">
+set date(final DateTime date) =&gt; 
+   this._date = new Option(date);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="entity=">
+<button class="show-code">Code</button>
+dynamic <strong>set entity</strong>(<a href="../restlib.core.http/ResponseBuilder.html">T</a> entity) <a class="anchor-link" href="#entity="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set entity">#</a></h4>
+<div class="doc">
+<pre class="source">
+set entity(final T entity) =&gt; 
+   this._entity = new Option(entity);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="entityTag=">
+<button class="show-code">Code</button>
+dynamic <strong>set entityTag</strong>(<a href="../restlib.core.data/EntityTag.html">EntityTag</a> entity) <a class="anchor-link" href="#entityTag="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set entityTag">#</a></h4>
+<div class="doc">
+<pre class="source">
+set entityTag(final EntityTag entity) =&gt; 
+   this._entityTag = new Option(entity);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="expires=">
+<button class="show-code">Code</button>
+dynamic <strong>set expires</strong>(DateTime date) <a class="anchor-link" href="#expires="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set expires">#</a></h4>
+<div class="doc">
+<pre class="source">
+set expires(final DateTime date) =&gt; 
+   this._expires = new Option(date);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="lastModified=">
+<button class="show-code">Code</button>
+dynamic <strong>set lastModified</strong>(DateTime date) <a class="anchor-link" href="#lastModified="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set lastModified">#</a></h4>
+<div class="doc">
+<pre class="source">
+set lastModified(final DateTime date) =&gt; 
+   this._lastModified = new Option(date);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="location=">
+<button class="show-code">Code</button>
+dynamic <strong>set location</strong>(Uri location) <a class="anchor-link" href="#location="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set location">#</a></h4>
+<div class="doc">
+<pre class="source">
+set location(final Uri location) =&gt;
+   this._location = new Option(location);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="retryAfter=">
+<button class="show-code">Code</button>
+dynamic <strong>set retryAfter</strong>(DateTime date) <a class="anchor-link" href="#retryAfter="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set retryAfter">#</a></h4>
+<div class="doc">
+<pre class="source">
+set retryAfter(final DateTime date) =&gt; 
+   this._retryAfter = new Option(date);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="server=">
+<button class="show-code">Code</button>
+dynamic <strong>set server</strong>(<a href="../restlib.core.data/UserAgent.html">UserAgent</a> server) <a class="anchor-link" href="#server="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set server">#</a></h4>
+<div class="doc">
+<pre class="source">
+set server(final UserAgent server) =&gt; 
+   this._server = new Option(server);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="status=">
+<button class="show-code">Code</button>
+dynamic <strong>set status</strong>(<a href="../restlib.core.http/Status.html">Status</a> status) <a class="anchor-link" href="#status="
+              title="Permalink to ResponseBuilder&lt;T&gt;.set status">#</a></h4>
+<div class="doc">
+<pre class="source">
+set status(final Status status) =&gt; 
+   this._status = checkNotNull(status);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="addAcceptedRangeUnit">
+<button class="show-code">Code</button>
+void <strong>addAcceptedRangeUnit</strong>(<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a> rangeUnit) <a class="anchor-link" href="#addAcceptedRangeUnit"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAcceptedRangeUnit">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedRangeUnit(final RangeUnit rangeUnit) =&gt;
+   this._acceptedRangeUnits.add(rangeUnit);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAcceptedRangeUnits">
+<button class="show-code">Code</button>
+void <strong>addAcceptedRangeUnits</strong>(Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; rangeUnits) <a class="anchor-link" href="#addAcceptedRangeUnits"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAcceptedRangeUnits">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAcceptedRangeUnits(final Iterable&lt;RangeUnit&gt; rangeUnits) =&gt;
+   this._acceptedRangeUnits.addAll(rangeUnits);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAllowedMethod">
+<button class="show-code">Code</button>
+void <strong>addAllowedMethod</strong>(<a href="../restlib.core.http/Method.html">Method</a> method) <a class="anchor-link" href="#addAllowedMethod"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAllowedMethod">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAllowedMethod(final Method method) =&gt;
+   this._allowedMethods.add(method);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAllowedMethods">
+<button class="show-code">Code</button>
+void <strong>addAllowedMethods</strong>(Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; methods) <a class="anchor-link" href="#addAllowedMethods"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAllowedMethods">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAllowedMethods(final Iterable&lt;Method&gt; methods) =&gt;
+   this._allowedMethods.addAll(methods);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAuthenticationChallenge">
+<button class="show-code">Code</button>
+void <strong>addAuthenticationChallenge</strong>(<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> challengeMessage) <a class="anchor-link" href="#addAuthenticationChallenge"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAuthenticationChallenge">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAuthenticationChallenge(final ChallengeMessage challengeMessage) =&gt;
+   this._authenticationChallenges.add(challengeMessage);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAuthenticationChallenges">
+<button class="show-code">Code</button>
+void <strong>addAuthenticationChallenges</strong>(Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; challengeMessages) <a class="anchor-link" href="#addAuthenticationChallenges"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addAuthenticationChallenges">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addAuthenticationChallenges(final Iterable&lt;ChallengeMessage&gt; challengeMessages) =&gt;
+   this._authenticationChallenges.addAll(challengeMessages);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addCacheDirective">
+<button class="show-code">Code</button>
+void <strong>addCacheDirective</strong>(<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a> cacheDirective) <a class="anchor-link" href="#addCacheDirective"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addCacheDirective">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addCacheDirective(final CacheDirective cacheDirective) =&gt;
+   this._cacheDirectives.add(cacheDirective);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addCacheDirectives">
+<button class="show-code">Code</button>
+void <strong>addCacheDirectives</strong>(Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives) <a class="anchor-link" href="#addCacheDirectives"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addCacheDirectives">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addCacheDirectives(final Iterable&lt;CacheDirective&gt; cacheDirectives) =&gt;
+   this._cacheDirectives.addAll(cacheDirectives);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addProxyAuthenticationChallenge">
+<button class="show-code">Code</button>
+void <strong>addProxyAuthenticationChallenge</strong>(<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> challenge) <a class="anchor-link" href="#addProxyAuthenticationChallenge"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addProxyAuthenticationChallenge">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addProxyAuthenticationChallenge(final ChallengeMessage challenge) =&gt;
+   this._proxyAuthenticationChallenges.add(challenge);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addProxyAuthenticationChallenges">
+<button class="show-code">Code</button>
+void <strong>addProxyAuthenticationChallenges</strong>(Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; challenges) <a class="anchor-link" href="#addProxyAuthenticationChallenges"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addProxyAuthenticationChallenges">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addProxyAuthenticationChallenges(final Iterable&lt;ChallengeMessage&gt; challenges) =&gt;
+   this._proxyAuthenticationChallenges.addAll(challenges);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addVaryHeader">
+<button class="show-code">Code</button>
+void <strong>addVaryHeader</strong>(<a href="../restlib.core.http/Header.html">Header</a> header) <a class="anchor-link" href="#addVaryHeader"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addVaryHeader">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addVaryHeader(final Header header) =&gt;
+   this._vary.add(header);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addVaryHeaders">
+<button class="show-code">Code</button>
+void <strong>addVaryHeaders</strong>(Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; headers) <a class="anchor-link" href="#addVaryHeaders"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addVaryHeaders">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addVaryHeaders(final Iterable&lt;Header&gt; headers) =&gt; 
+   this._vary.addAll(headers);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addWarning">
+<button class="show-code">Code</button>
+void <strong>addWarning</strong>(<a href="../restlib.core.data/Warning.html">Warning</a> warning) <a class="anchor-link" href="#addWarning"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addWarning">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addWarning(final Warning warning) =&gt; 
+   this._warnings.add(warning);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addWarnings">
+<button class="show-code">Code</button>
+void <strong>addWarnings</strong>(Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings) <a class="anchor-link" href="#addWarnings"
+              title="Permalink to ResponseBuilder&lt;T&gt;.addWarnings">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addWarnings(final Iterable&lt;Warning&gt; warnings) =&gt; 
+   this._warnings.addAll(warnings);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="build">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a>&lt;<a href="../restlib.core.http/ResponseBuilder.html">T</a>&gt; <strong>build</strong>() <a class="anchor-link" href="#build"
+              title="Permalink to ResponseBuilder&lt;T&gt;.build">#</a></h4>
+<div class="doc">
+<pre class="source">
+Response&lt;T&gt; build() =&gt; 
+   new _ResponseImpl(this);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:00.230</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

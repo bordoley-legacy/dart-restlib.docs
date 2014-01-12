@@ -1,0 +1,91 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Authorizer abstract class / restlib.server Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server" data-type="Authorizer">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.html">restlib.server</a> &rsaquo; <a href="../restlib.server/Authorizer.html">Authorizer</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Authorizer</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Authorizer {
+ ChallengeMessage get authenticationChallenge;
+ String get scheme;
+ 
+ Future&lt;bool&gt; authenticate(ChallengeMessage credentials) ;
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.server/BasicAuthorizer.html">BasicAuthorizer</a></span></p>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="authenticationChallenge">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>         <strong>authenticationChallenge</strong> <a class="anchor-link"
+            href="#authenticationChallenge"
+            title="Permalink to Authorizer.authenticationChallenge">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ChallengeMessage get authenticationChallenge;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="scheme">
+<button class="show-code">Code</button>
+final String         <strong>scheme</strong> <a class="anchor-link"
+            href="#scheme"
+            title="Permalink to Authorizer.scheme">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get scheme;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="authenticate">
+abstract Future&lt;bool&gt; <strong>authenticate</strong>(<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> credentials) <a class="anchor-link" href="#authenticate"
+              title="Permalink to Authorizer.authenticate">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.610</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

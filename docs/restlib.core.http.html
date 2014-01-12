@@ -1,0 +1,371 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.core.http Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.http">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.core.http.html">restlib.core.http</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.core.http</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="ACCEPT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.http/Preference.html">Preference</a>&gt;&gt;         <strong>ACCEPT</strong> <a class="anchor-link"
+            href="#ACCEPT"
+            title="Permalink to ACCEPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Preference/*&lt;MediaRange&gt;*/&gt;&gt; ACCEPT = _MEDIA_RANGE_PREFERENCE.sepBy1(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_CHARSET">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.http/Preference.html">Preference</a>&gt;&gt;         <strong>ACCEPT_CHARSET</strong> <a class="anchor-link"
+            href="#ACCEPT_CHARSET"
+            title="Permalink to ACCEPT_CHARSET">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Preference/*&lt;Charset&gt;*/&gt;&gt; ACCEPT_CHARSET = _CHARSET_PREFERENCE_PARSER.sepBy1(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_ENCODING">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.http/Preference.html">Preference</a>&gt;&gt;         <strong>ACCEPT_ENCODING</strong> <a class="anchor-link"
+            href="#ACCEPT_ENCODING"
+            title="Permalink to ACCEPT_ENCODING">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Preference/*&lt;ContentEncoding&gt;*/&gt;&gt; ACCEPT_ENCODING = _CONTENT_ENCODING_PREFERENCE_PARSER.sepBy1(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_LANGUAGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.http/Preference.html">Preference</a>&gt;&gt;         <strong>ACCEPT_LANGUAGE</strong> <a class="anchor-link"
+            href="#ACCEPT_LANGUAGE"
+            title="Permalink to ACCEPT_LANGUAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Preference/*&lt;Language&gt;*/&gt;&gt; ACCEPT_LANGUAGE = _LANGUAGE_PREFERENCE_PARSER.sepBy1(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACCEPT_RANGES">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/RangeUnit.html">RangeUnit</a>&gt;&gt;         <strong>ACCEPT_RANGES</strong> <a class="anchor-link"
+            href="#ACCEPT_RANGES"
+            title="Permalink to ACCEPT_RANGES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;RangeUnit&gt;&gt; ACCEPT_RANGES = RANGE_UNIT.sepBy1(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CACHE_CONTROL">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;&gt;         <strong>CACHE_CONTROL</strong> <a class="anchor-link"
+            href="#CACHE_CONTROL"
+            title="Permalink to CACHE_CONTROL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;CacheDirective&gt;&gt; CACHE_CONTROL = CACHE_DIRECTIVE.sepBy(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_ENCODING_HEADER">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt;         <strong>CONTENT_ENCODING_HEADER</strong> <a class="anchor-link"
+            href="#CONTENT_ENCODING_HEADER"
+            title="Permalink to CONTENT_ENCODING_HEADER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;ContentEncoding&gt;&gt; CONTENT_ENCODING_HEADER = CONTENT_ENCODING.sepBy(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CONTENT_LANGUAGE">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/Language.html">Language</a>&gt;&gt;         <strong>CONTENT_LANGUAGE</strong> <a class="anchor-link"
+            href="#CONTENT_LANGUAGE"
+            title="Permalink to CONTENT_LANGUAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Language&gt;&gt; CONTENT_LANGUAGE = LANGUAGE.sepBy(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="EXPECT">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/Expectation.html">Expectation</a>&gt;&gt;         <strong>EXPECT</strong> <a class="anchor-link"
+            href="#EXPECT"
+            title="Permalink to EXPECT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;Expectation&gt;&gt; EXPECT = EXPECTATION.sepBy(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_MATCH">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/EntityTag.html">EntityTag</a>&gt;&gt;         <strong>IF_MATCH</strong> <a class="anchor-link"
+            href="#IF_MATCH"
+            title="Permalink to IF_MATCH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;EntityTag&gt;&gt; IF_MATCH = ETAG.sepBy(OWS_COMMA_OWS)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IF_NONE_MATCH">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/EntityTag.html">EntityTag</a>&gt;&gt;         <strong>IF_NONE_MATCH</strong> <a class="anchor-link"
+            href="#IF_NONE_MATCH"
+            title="Permalink to IF_NONE_MATCH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;EntityTag&gt;&gt; IF_NONE_MATCH = IF_MATCH
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PRAGMA">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;&gt;         <strong>PRAGMA</strong> <a class="anchor-link"
+            href="#PRAGMA"
+            title="Permalink to PRAGMA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Iterable&lt;CacheDirective&gt;&gt; PRAGMA = CACHE_CONTROL
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ContentInfo.html"><strong>ContentInfo</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ContentInfoToString.html"><strong>ContentInfoToString</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ContentInfoWith_.html"><strong>ContentInfoWith_</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ForwardingContentInfo.html"><strong>ForwardingContentInfo</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ForwardingRequest.html"><strong>ForwardingRequest&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ForwardingRequestPreconditions.html"><strong>ForwardingRequestPreconditions</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ForwardingRequestPreferences.html"><strong>ForwardingRequestPreferences</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ForwardingResponse.html"><strong>ForwardingResponse&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Request.html"><strong>Request&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreconditions.html"><strong>RequestPreconditions</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreconditionsToString.html"><strong>RequestPreconditionsToString</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreconditionsWith_.html"><strong>RequestPreconditionsWith_</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreferences.html"><strong>RequestPreferences</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreferencesToString.html"><strong>RequestPreferencesToString</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreferencesWith_.html"><strong>RequestPreferencesWith_</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestToString.html"><strong>RequestToString</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestWith_.html"><strong>RequestWith_</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Response.html"><strong>Response&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ResponseToString.html"><strong>ResponseToString&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ResponseWith_.html"><strong>ResponseWith_&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ContentInfoBuilder.html"><strong>ContentInfoBuilder</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Header.html"><strong>Header</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Method.html"><strong>Method</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Preference.html"><strong>Preference&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestBuilder.html"><strong>RequestBuilder&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreconditionsBuilder.html"><strong>RequestPreconditionsBuilder</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/RequestPreferencesBuilder.html"><strong>RequestPreferencesBuilder</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/ResponseBuilder.html"><strong>ResponseBuilder&lt;T&gt;</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/Status.html"><strong>Status</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.http/StatusClass.html"><strong>StatusClass</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:59.858</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

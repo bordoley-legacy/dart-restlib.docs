@@ -1,0 +1,151 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ForwardingAssociative&lt;K, V&gt; abstract class / restlib.common.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.collections" data-type="ForwardingAssociative&amp;lt;K, V&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.common.collections.html">restlib.common.collections</a> &rsaquo; <a href="../restlib.common.collections/ForwardingAssociative.html">ForwardingAssociative&lt;K, V&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ForwardingAssociative&lt;K, V&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class ForwardingAssociative&lt;K,V&gt; implements Forwarder, Associative&lt;K,V&gt; { 
+ Iterable&lt;K&gt; get keys =&gt;
+     delegate.keys;
+ 
+ Iterable&lt;V&gt; get values =&gt;
+     delegate.values;
+ 
+ Iterable&lt;V&gt; operator[](final K key) =&gt;
+     delegate[key];
+ 
+ bool containsKey(final K key) =&gt;
+     delegate.containsKey(key);
+ 
+ bool containsValue(final V value) =&gt;
+     delegate.containsValue(value);
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Associative.html">Associative&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.objects/Forwarder.html">Forwarder</a></span></p>
+<div>
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="delegate">
+<button class="show-code">Code</button>
+final         <strong>delegate</strong> <a class="anchor-link"
+            href="#delegate"
+            title="Permalink to ForwardingAssociative&lt;K, V&gt;.delegate">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.objects/Forwarder.html">Forwarder</a> </div><div class="doc">
+<pre class="source">
+dynamic get delegate;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="keys">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.common.collections/ForwardingAssociative.html">K</a>&gt;         <strong>keys</strong> <a class="anchor-link"
+            href="#keys"
+            title="Permalink to ForwardingAssociative&lt;K, V&gt;.keys">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;K&gt; get keys =&gt;
+   delegate.keys;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="values">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.common.collections/ForwardingAssociative.html">V</a>&gt;         <strong>values</strong> <a class="anchor-link"
+            href="#values"
+            title="Permalink to ForwardingAssociative&lt;K, V&gt;.values">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;V&gt; get values =&gt;
+   delegate.values;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="[]">
+<button class="show-code">Code</button>
+Iterable&lt;<a href="../restlib.common.collections/ForwardingAssociative.html">V</a>&gt; <strong>operator []</strong>(<a href="../restlib.common.collections/ForwardingAssociative.html">K</a> key) <a class="anchor-link" href="#[]"
+              title="Permalink to ForwardingAssociative&lt;K, V&gt;.operator []">#</a></h4>
+<div class="doc">
+<pre class="source">
+Iterable&lt;V&gt; operator[](final K key) =&gt;
+   delegate[key];
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="containsKey">
+<button class="show-code">Code</button>
+bool <strong>containsKey</strong>(<a href="../restlib.common.collections/ForwardingAssociative.html">K</a> key) <a class="anchor-link" href="#containsKey"
+              title="Permalink to ForwardingAssociative&lt;K, V&gt;.containsKey">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool containsKey(final K key) =&gt;
+   delegate.containsKey(key);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="containsValue">
+<button class="show-code">Code</button>
+bool <strong>containsValue</strong>(<a href="../restlib.common.collections/ForwardingAssociative.html">V</a> value) <a class="anchor-link" href="#containsValue"
+              title="Permalink to ForwardingAssociative&lt;K, V&gt;.containsValue">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool containsValue(final V value) =&gt;
+   delegate.containsValue(value);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="mapValues">
+abstract <a href="../restlib.common.collections/Associative.html">Associative</a>&lt;<a href="../restlib.common.collections/ForwardingAssociative.html">K</a>, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections/ForwardingAssociative.html">V</a> value)) <a class="anchor-link" href="#mapValues"
+              title="Permalink to ForwardingAssociative&lt;K, V&gt;.mapValues">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:55.875</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

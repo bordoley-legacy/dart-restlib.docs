@@ -1,0 +1,110 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt; class / restlib.common.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.collections" data-type="CopyOnWriteSequenceMultimapBuilder&amp;lt;K, V&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.common.collections.html">restlib.common.collections</a> &rsaquo; <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class CopyOnWriteSequenceMultimapBuilder&lt;K,V&gt; extends _CopyOnWriteMultimapBuilder&lt;K,V, Sequence&lt;V&gt;&gt; {
+ final MutableSequenceMultimap&lt;K,V&gt; _delegate = new MutableSequenceMultimap.hash();
+ 
+ CopyOnWriteCollectionBuilder&lt;V&gt; _newValueBuilder() =&gt;
+     new CopyOnWriteSequenceBuilder();
+ 
+ ImmutableSequenceMultimap&lt;K,V&gt; _doBuild(final ImmutableDictionary&lt;K,Sequence&lt;V&gt;&gt; dictionary) =&gt;
+     new _CopyOnWriteSequenceMultimap(dictionary);
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/_CopyOnWriteMultimapBuilder.html">_CopyOnWriteMultimapBuilder&lt;K, V, Sequence&lt;V&gt;&gt;</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;</strong></span></p>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="build">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/ImmutableMultimap.html">ImmutableMultimap</a>&lt;<a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">V</a>, <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">I</a>&gt; <strong>build</strong>() <a class="anchor-link" href="#build"
+              title="Permalink to CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;.build">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/_CopyOnWriteMultimapBuilder.html">_CopyOnWriteMultimapBuilder</a> </div><div class="doc">
+<pre class="source">
+ImmutableMultimap&lt;K,V,I&gt; build() { 
+ final CopyOnWriteDictionaryBuilder builder = new CopyOnWriteDictionaryBuilder();
+ 
+ _delegate.dictionary.forEach((final Pair&lt;K,I&gt; pair) =&gt;
+     builder.insert(pair.fst, (_newValueBuilder()..addAll(pair.snd)).build()));
+ return _doBuild(builder.build());
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="insert">
+<button class="show-code">Code</button>
+void <strong>insert</strong>(<a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">K</a> key, <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">V</a> value) <a class="anchor-link" href="#insert"
+              title="Permalink to CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;.insert">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/_CopyOnWriteMultimapBuilder.html">_CopyOnWriteMultimapBuilder</a> </div><div class="doc">
+<pre class="source">
+void insert(final K key, final V value) =&gt;
+   _delegate.insert(key, value);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="insertAll">
+<button class="show-code">Code</button>
+void <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">V</a>&gt;&gt; pairs) <a class="anchor-link" href="#insertAll"
+              title="Permalink to CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;.insertAll">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/_CopyOnWriteMultimapBuilder.html">_CopyOnWriteMultimapBuilder</a> </div><div class="doc">
+<pre class="source">
+void insertAll(final Iterable&lt;Pair&lt;K,V&gt;&gt; pairs) =&gt;
+   _delegate.insertAll(pairs);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="insertPair">
+<button class="show-code">Code</button>
+void <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">K</a>, <a href="../restlib.common.collections/CopyOnWriteSequenceMultimapBuilder.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
+              title="Permalink to CopyOnWriteSequenceMultimapBuilder&lt;K, V&gt;.insertPair">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/_CopyOnWriteMultimapBuilder.html">_CopyOnWriteMultimapBuilder</a> </div><div class="doc">
+<pre class="source">
+void insertPair(final Pair&lt;K,V&gt; pair) =&gt;
+   _delegate.insertPair(pair);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:49:56.195</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

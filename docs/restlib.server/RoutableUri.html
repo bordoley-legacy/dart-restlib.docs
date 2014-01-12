@@ -1,0 +1,639 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RoutableUri class / restlib.server Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server" data-type="RoutableUri">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.html">restlib.server</a> &rsaquo; <a href="../restlib.server/RoutableUri.html">RoutableUri</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RoutableUri</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+@proxy
+class RoutableUri extends NoSuchMethodForwarder implements Uri {
+ static RoutableUri parse(String uri) {
+   return new RoutableUri.wrap(Uri.parse(uri));
+ }
+ 
+ factory RoutableUri.wrap(Uri uri){
+   if (uri is RoutableUri) {
+     return uri;
+   } else {
+     return new RoutableUri._internal(uri);
+   }
+ }
+ 
+ _Path _pathSegmentsInternal = null;
+
+ RoutableUri._internal(uri) : super(uri);
+ 
+ int get hashCode =&gt;
+     delegate.hashCode;
+
+ _Path get _pathSegments {
+   if(_pathSegmentsInternal == null) {
+     _pathSegmentsInternal = _Path.parse(this.path);
+   }
+   return _pathSegmentsInternal;
+ }
+ 
+ bool operator==(other) =&gt;
+     delegate == other;
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>RoutableUri</strong></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span>Uri</span></p>
+<div>
+<h3>Static Methods</h3>
+<div class="method"><h4 id="parse">
+<button class="show-code">Code</button>
+<a href="../restlib.server/RoutableUri.html">RoutableUri</a> <strong>parse</strong>(String uri) <a class="anchor-link" href="#parse"
+              title="Permalink to RoutableUri.parse">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new URI object by parsing a URI string.</p>
+<div class="docs-inherited-from">docs inherited from Uri </div></div>
+<pre class="source">
+static RoutableUri parse(String uri) {
+ return new RoutableUri.wrap(Uri.parse(uri));
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="wrap">
+<button class="show-code">Code</button>
+factory <strong>RoutableUri.wrap</strong>(Uri uri) <a class="anchor-link" href="#wrap"
+              title="Permalink to RoutableUri.RoutableUri.wrap">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory RoutableUri.wrap(Uri uri){
+ if (uri is RoutableUri) {
+   return uri;
+ } else {
+   return new RoutableUri._internal(uri);
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="authority">
+<button class="show-code">Code</button>
+final String         <strong>authority</strong> <a class="anchor-link"
+            href="#authority"
+            title="Permalink to RoutableUri.authority">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the authority component.</p>
+<p>The authority is formatted from the <code>userInfo</code>, <code>host</code> and <code>port</code>
+parts.</p>
+<p>Returns the empty string if there is no authority component.</p>
+<pre class="source">
+String get authority {
+ if (!hasAuthority) return "";
+ var sb = new StringBuffer();
+ _writeAuthority(sb);
+ return sb.toString();
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="delegate">
+<button class="show-code">Code</button>
+final         <strong>delegate</strong> <a class="anchor-link"
+            href="#delegate"
+            title="Permalink to RoutableUri.delegate">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a> </div><div class="doc">
+<pre class="source">
+final dynamic delegate
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="fragment">
+<button class="show-code">Code</button>
+final String         <strong>fragment</strong> <a class="anchor-link"
+            href="#fragment"
+            title="Permalink to RoutableUri.fragment">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the fragment identifier component.</p>
+<p>Returns the empty string if there is no fragment identifier
+component.</p>
+<pre class="source">
+final String fragment
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="hasAuthority">
+<button class="show-code">Code</button>
+final bool         <strong>hasAuthority</strong> <a class="anchor-link"
+            href="#hasAuthority"
+            title="Permalink to RoutableUri.hasAuthority">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns whether the URI has an <code>authority</code> component.</p>
+<pre class="source">
+bool get hasAuthority =&gt; host != "";
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to RoutableUri.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.server/RoutableUri.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt;
+   delegate.hashCode;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="host">
+<button class="show-code">Code</button>
+final String         <strong>host</strong> <a class="anchor-link"
+            href="#host"
+            title="Permalink to RoutableUri.host">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the host part of the authority component.</p>
+<p>Returns the empty string if there is no authority component and
+hence no host.</p>
+<p>If the host is an IP version 6 address, the surrounding <code>[</code> and <code>]</code> is
+removed.</p>
+<pre class="source">
+String get host {
+ if (_host != null &amp;&amp; _host.startsWith('[')) {
+   return _host.substring(1, _host.length - 1);
+ }
+ return _host;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isAbsolute">
+<button class="show-code">Code</button>
+final bool         <strong>isAbsolute</strong> <a class="anchor-link"
+            href="#isAbsolute"
+            title="Permalink to RoutableUri.isAbsolute">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns whether the URI is absolute.</p>
+<pre class="source">
+bool get isAbsolute =&gt; scheme != "" &amp;&amp; fragment == "";
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="origin">
+<button class="show-code">Code</button>
+final String         <strong>origin</strong> <a class="anchor-link"
+            href="#origin"
+            title="Permalink to RoutableUri.origin">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the origin of the URI in the form scheme://host:port for the
+schemes http and https.</p>
+<p>It is an error if the scheme is not "http" or "https".</p>
+<p>See: http://www.w3.org/TR/2011/WD-html5-20110405/origin-0.html#origin</p>
+<pre class="source">
+String get origin {
+ if (scheme == "" || _host == null || _host == "") {
+   throw new StateError("Cannot use origin without a scheme: $this");
+ }
+ if (scheme != "http" &amp;&amp; scheme != "https") {
+   throw new StateError(
+     "Origin is only applicable schemes http and https: $this");
+ }
+ if (_port == 0) return "$scheme://$_host";
+ return "$scheme://$_host:$_port";
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="path">
+<button class="show-code">Code</button>
+final String         <strong>path</strong> <a class="anchor-link"
+            href="#path"
+            title="Permalink to RoutableUri.path">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the path component.</p>
+<p>The returned path is encoded. To get direct access to the decoded
+path use <code>pathSegments</code>.</p>
+<p>Returns the empty string if there is no path component.</p>
+<pre class="source">
+String get path =&gt; _path;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="pathSegments">
+<button class="show-code">Code</button>
+final List&lt;String&gt;         <strong>pathSegments</strong> <a class="anchor-link"
+            href="#pathSegments"
+            title="Permalink to RoutableUri.pathSegments">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the URI path split into its segments. Each of the
+segments in the returned list have been decoded. If the path is
+empty the empty list will be returned. A leading slash <code>/</code> does
+not affect the segments returned.</p>
+<p>The returned list is unmodifiable and will throw <code>UnsupportedError</code> on any
+calls that would mutate it.</p>
+<pre class="source">
+List&lt;String&gt; get pathSegments {
+ if (_pathSegments == null) {
+   var pathToSplit = !path.isEmpty &amp;&amp; path.codeUnitAt(0) == _SLASH
+                     ? path.substring(1)
+                     : path;
+   _pathSegments = new UnmodifiableListView(
+     pathToSplit == "" ? const&lt;String&gt;[]
+                       : pathToSplit.split("/")
+                                    .map(Uri.decodeComponent)
+                                    .toList(growable: false));
+ }
+ return _pathSegments;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="port">
+<button class="show-code">Code</button>
+final int         <strong>port</strong> <a class="anchor-link"
+            href="#port"
+            title="Permalink to RoutableUri.port">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the port part of the authority component.</p>
+<p>Returns 0 if there is no port in the authority component.</p>
+<pre class="source">
+int get port {
+ if (_port == 0) {
+   if (scheme == "http") return 80;
+   if (scheme == "https") return 443;
+ }
+ return _port;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="query">
+<button class="show-code">Code</button>
+final String         <strong>query</strong> <a class="anchor-link"
+            href="#query"
+            title="Permalink to RoutableUri.query">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the query component. The returned query is encoded. To get
+direct access to the decoded query use <code>queryParameters</code>.</p>
+<p>Returns the empty string if there is no query component.</p>
+<pre class="source">
+final String query
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="queryParameters">
+<button class="show-code">Code</button>
+final Map&lt;String, String&gt;         <strong>queryParameters</strong> <a class="anchor-link"
+            href="#queryParameters"
+            title="Permalink to RoutableUri.queryParameters">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the URI query split into a map according to the rules
+specified for FORM post in the <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#h-17.13.4
+" title="HTML 4.01 section 17.13.4">HTML 4.01 specification section 17.13.4</a>. Each key and value in the returned map
+has been decoded. If there is no query the empty map is returned.</p>
+<p>Keys in the query string that have no value are mapped to the
+empty string.</p>
+<p>The returned map is unmodifiable and will throw <code>UnsupportedError</code> on any
+calls that would mutate it.</p>
+<pre class="source">
+Map&lt;String, String&gt; get queryParameters {
+ if (_queryParameters == null) {
+   _queryParameters = new _UnmodifiableMap(splitQueryString(query));
+ }
+ return _queryParameters;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="scheme">
+<button class="show-code">Code</button>
+final String         <strong>scheme</strong> <a class="anchor-link"
+            href="#scheme"
+            title="Permalink to RoutableUri.scheme">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the scheme component.</p>
+<p>Returns the empty string if there is no scheme component.</p>
+<pre class="source">
+final String scheme
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="userInfo">
+<button class="show-code">Code</button>
+final String         <strong>userInfo</strong> <a class="anchor-link"
+            href="#userInfo"
+            title="Permalink to RoutableUri.userInfo">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the user info part of the authority component.</p>
+<p>Returns the empty string if there is no user info in the
+authority component.</p>
+<pre class="source">
+final String userInfo
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to RoutableUri.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.server/RoutableUri.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) =&gt;
+   delegate == other;
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="noSuchMethod">
+<button class="show-code">Code</button>
+dynamic <strong>noSuchMethod</strong>(Invocation invocation) <a class="anchor-link" href="#noSuchMethod"
+              title="Permalink to RoutableUri.noSuchMethod">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a> </div><div class="doc">
+<div class="inherited">
+<p><a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is invoked when users invoke a non-existent method
+on an object. The name of the method and the arguments of the
+invocation are passed to <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> in an <code>Invocation</code>.
+If <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> returns a value, that value becomes the result of
+the original invocation.</p>
+<p>The default behavior of <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is to throw a
+<code>NoSuchMethodError</code>.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+noSuchMethod(final Invocation invocation) =&gt;
+   _delegateMirror.delegate(invocation);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="resolve">
+<button class="show-code">Code</button>
+Uri <strong>resolve</strong>(String reference) <a class="anchor-link" href="#resolve"
+              title="Permalink to RoutableUri.resolve">#</a></h4>
+<div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Resolve 
+<span class="param">reference</span> as an URI relative to <code>this</code>.</p>
+<p>First turn 
+<span class="param">reference</span> into a URI using <code>Uri.parse</code>. Then resolve the
+resulting URI relative to <code>this</code>.</p>
+<p>Returns the resolved URI.</p>
+<p>See <code>resolveUri</code> for details.</p>
+<pre class="source">
+Uri resolve(String reference) {
+ return resolveUri(Uri.parse(reference));
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="resolveUri">
+<button class="show-code">Code</button>
+Uri <strong>resolveUri</strong>(Uri reference) <a class="anchor-link" href="#resolveUri"
+              title="Permalink to RoutableUri.resolveUri">#</a></h4>
+<div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Resolve 
+<span class="param">reference</span> as an URI relative to <code>this</code>.</p>
+<p>Returns the resolved URI.</p>
+<p>The algorithm for resolving a reference is described in
+<a href="http://tools.ietf.org/html/rfc3986#section-5" title="RFC-1123">RFC-3986 Section 5</a>.</p>
+<pre class="source">
+Uri resolveUri(Uri reference) {
+ // From RFC 3986.
+ String targetScheme;
+ String targetUserInfo;
+ String targetHost;
+ int targetPort;
+ String targetPath;
+ String targetQuery;
+ if (reference.scheme != "") {
+   targetScheme = reference.scheme;
+   targetUserInfo = reference.userInfo;
+   targetHost = reference.host;
+   targetPort = reference.port;
+   targetPath = _removeDotSegments(reference.path);
+   targetQuery = reference.query;
+ } else {
+   if (reference.hasAuthority) {
+     targetUserInfo = reference.userInfo;
+     targetHost = reference.host;
+     targetPort = reference.port;
+     targetPath = _removeDotSegments(reference.path);
+     targetQuery = reference.query;
+   } else {
+     if (reference.path == "") {
+       targetPath = this.path;
+       if (reference.query != "") {
+         targetQuery = reference.query;
+       } else {
+         targetQuery = this.query;
+       }
+     } else {
+       if (reference.path.startsWith("/")) {
+         targetPath = _removeDotSegments(reference.path);
+       } else {
+         targetPath = _removeDotSegments(_merge(this.path, reference.path));
+       }
+       targetQuery = reference.query;
+     }
+     targetUserInfo = this.userInfo;
+     targetHost = this.host;
+     targetPort = this.port;
+   }
+   targetScheme = this.scheme;
+ }
+ return new Uri(scheme: targetScheme,
+                userInfo: targetUserInfo,
+                host: targetHost,
+                port: targetPort,
+                path: targetPath,
+                query: targetQuery,
+                fragment: reference.fragment);
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="toFilePath">
+<button class="show-code">Code</button>
+String <strong>toFilePath</strong>({bool windows}) <a class="anchor-link" href="#toFilePath"
+              title="Permalink to RoutableUri.toFilePath">#</a></h4>
+<div class="inherited-from">inherited from Uri </div><div class="doc">
+<p>Returns the file path from a file URI.</p>
+<p>The returned path has either Windows or non-Windows
+semantics.</p>
+<p>For non-Windows semantics the slash ("/") is used to separate
+path segments.</p>
+<p>For Windows semantics the backslash ("\") separator is used to
+separate path segments.</p>
+<p>If the URI is absolute the path starts with a path separator
+unless Windows semantics is used and the first path segment is a
+drive letter. When Windows semantics is used a host component in
+the uri in interpreted as a file server and a UNC path is
+returned.</p>
+<p>The default for whether to use Windows or non-Windows semantics
+determined from the platform Dart is running on. When running in
+the standalone VM this is detected by the VM based on the
+operating system. When running in a browser non-Windows semantics
+is always used.</p>
+<p>To override the automatic detection of which semantics to use pass
+a value for 
+<span class="param">windows</span>. Passing <code>true</code> will use Windows
+semantics and passing <code>false</code> will use non-Windows semantics.</p>
+<p>If the URI ends with a slash (i.e. the last path component is
+empty) the returned file path will also end with a slash.</p>
+<p>With Windows semantics URIs starting with a drive letter cannot
+be relative to the current drive on the designated drive. That is
+for the URI <code>file:///c:abc</code> calling <code>toFilePath</code> will throw as a
+path segment cannot contain colon on Windows.</p>
+<p>Examples using non-Windows semantics (resulting of calling
+toFilePath in comment):</p>
+<pre><code>Uri.parse("xxx/yyy");  // xxx/yyy
+Uri.parse("xxx/yyy/");  // xxx/yyy/
+Uri.parse("file:///xxx/yyy");  // /xxx/yyy
+Uri.parse("file:///xxx/yyy/");  // /xxx/yyy/
+Uri.parse("file:///C:");  // /C:
+Uri.parse("file:///C:a");  // /C:a
+</code></pre>
+<p>Examples using Windows semantics (resulting URI in comment):</p>
+<pre><code>Uri.parse("xxx/yyy");  // xxx\yyy
+Uri.parse("xxx/yyy/");  // xxx\yyy\
+Uri.parse("file:///xxx/yyy");  // \xxx\yyy
+Uri.parse("file:///xxx/yyy/");  // \xxx\yyy/
+Uri.parse("file:///C:/xxx/yyy");  // C:\xxx\yyy
+Uri.parse("file:C:xxx/yyy");  // Throws as a path segment
+                              // cannot contain colon on Windows.
+Uri.parse("file://server/share/file");  // \\server\share\file
+</code></pre>
+<p>If the URI is not a file URI calling this throws
+<code>UnsupportedError</code>.</p>
+<p>If the URI cannot be converted to a file path calling this throws
+<code>UnsupportedError</code>.</p>
+<pre class="source">
+String toFilePath({bool windows}) {
+ if (scheme != "" &amp;&amp; scheme != "file") {
+   throw new UnsupportedError(
+       "Cannot extract a file path from a $scheme URI");
+ }
+ if (scheme != "" &amp;&amp; scheme != "file") {
+   throw new UnsupportedError(
+       "Cannot extract a file path from a $scheme URI");
+ }
+ if (query != "") {
+   throw new UnsupportedError(
+       "Cannot extract a file path from a URI with a query component");
+ }
+ if (fragment != "") {
+   throw new UnsupportedError(
+       "Cannot extract a file path from a URI with a fragment component");
+ }
+ if (windows == null) windows = _isWindows;
+ return windows ? _toWindowsFilePath() : _toFilePath();
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to RoutableUri.toString">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a> </div><div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; 
+   delegate.toString();
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 02:50:02.594</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
