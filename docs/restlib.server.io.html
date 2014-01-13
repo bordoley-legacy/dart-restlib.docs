@@ -103,24 +103,43 @@ Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Str
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="virtualHostApplicationSupplier">
+<button class="show-code">Code</button>
+<a href="restlib.server.io/ApplicationSupplier.html">ApplicationSupplier</a> <strong>virtualHostApplicationSupplier</strong>(Map&lt;String, <a href="restlib.server.io/Application.html">Application</a>&gt; applications, [<a href="restlib.server.io/Application.html">Application</a> fallback]) <a class="anchor-link" href="#virtualHostApplicationSupplier"
+              title="Permalink to virtualHostApplicationSupplier">#</a></h4>
+<div class="doc">
+<pre class="source">
+ApplicationSupplier virtualHostApplicationSupplier(Map&lt;String,Application&gt; applications, [Application fallback]) {
+ checkArgument(applications.isNotEmpty);
+
+ fallback = (fallback != null) ? fallback : applications.values.first;
+
+ return (Request request){
+   Application app = applications[request.uri.host];
+   return (app != null) ? app : fallback;
+ };
+}
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Abstract Classes</h3>
           <div class="type">
           <h4>
-            <a href="restlib.server.io/ForwardingIOApplication.html"><strong>ForwardingIOApplication</strong></a>
+            <a href="restlib.server.io/Application.html"><strong>Application</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ForwardingApplication.html"><strong>ForwardingApplication</strong></a>
           </h4>
           </div>
           
           <div class="type">
           <h4>
             <a href="restlib.server.io/ForwardingIOResource.html"><strong>ForwardingIOResource&lt;T&gt;</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.server.io/IOApplication.html"><strong>IOApplication</strong></a>
           </h4>
           </div>
           
@@ -154,6 +173,12 @@ Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Str
 </div>
 <div>
 <h3>Typedefs</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.server.io/ApplicationSupplier.html"><strong>ApplicationSupplier</strong></a>
+          </h4>
+          </div>
+          
           <div class="type">
           <h4>
             <a href="restlib.server.io/PartParser.html"><strong>PartParser</strong></a>
@@ -195,7 +220,7 @@ Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Str
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:22:08.072</div>
+          <div>This page was generated at 2014-01-12 22:36:54.615</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
