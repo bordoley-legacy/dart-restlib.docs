@@ -31,12 +31,12 @@
 <h3>Functions</h3>
 <div class="method"><h4 id="processRequest">
 <button class="show-code">Code</button>
-Future <strong>processRequest</strong>(HttpRequest serverRequest, <a href="restlib.connector.http/IOApplicationSupplier.html">IOApplicationSupplier</a> applicationSupplier, String scheme) <a class="anchor-link" href="#processRequest"
+Future <strong>processRequest</strong>(HttpRequest serverRequest, <a href="restlib.server.io/Application.html">Application</a> applicationSupplier(<a href="restlib.core.http/Request.html">Request</a> request), String scheme) <a class="anchor-link" href="#processRequest"
               title="Permalink to processRequest">#</a></h4>
 <div class="doc">
 <pre class="source">
 @visibleForTesting
-Future processRequest(final HttpRequest serverRequest, final IOApplicationSupplier applicationSupplier, final String scheme) {  
+Future processRequest(final HttpRequest serverRequest, Application applicationSupplier(Request request), final String scheme) {  
  Future _writeResponse(final Request request, final Response response, Future write(Request request, Response response, StreamSink&lt;List&lt;int&gt;&gt; msgSink)) {
    checkNotNull(response);
    
@@ -55,7 +55,7 @@ Future processRequest(final HttpRequest serverRequest, final IOApplicationSuppli
    Future&lt;Response&gt; response;
    
    try {
-     final IOApplication application = applicationSupplier(request);
+     final Application application = applicationSupplier(request);
      
      try {
        request = application.filterRequest(request);
@@ -106,7 +106,25 @@ Future processRequest(final HttpRequest serverRequest, final IOApplicationSuppli
  
  _logger.finest("Received request from ${serverRequest.connectionInfo.remoteAddress}");
  
- final Request request = wrapHttpRequest(serverRequest, scheme);
+ final Method method = new Method.forName(serverRequest.method);
+ 
+ // this is terribly hacky, but dart's URI class sucks.
+ // FIXME: what if host is empty?
+ final String host = nullToEmpty(serverRequest.headers.value(HttpHeaders.HOST));
+ final Uri hostPort = Uri.parse("//" + host);
+ final Uri requestUri = new RoutableUri.wrap(
+     new Uri(
+         scheme: scheme,
+         host: hostPort.host, 
+         port: hostPort.port,
+         path: serverRequest.uri.path,
+         query: serverRequest.uri.query));
+ 
+ Iterable&lt;String&gt; getHeader(final Header header) =&gt;
+     firstNotNull(serverRequest.headers[header.toString()], Option.NONE);
+ 
+ final Request request = new Request.wrapHeaders(getHeader, method, requestUri);
+ 
  _logger.finest(request.toString());
  
  return _doProcessRequest(request)
@@ -123,11 +141,11 @@ Future processRequest(final HttpRequest serverRequest, final IOApplicationSuppli
 </div>
 <div class="method"><h4 id="httpServerListener">
 <button class="show-code">Code</button>
-<a href="restlib.connector.http/HttpServerListener.html">HttpServerListener</a> <strong>httpServerListener</strong>(<a href="restlib.connector.http/IOApplicationSupplier.html">IOApplicationSupplier</a> applicationSupplier, String scheme) <a class="anchor-link" href="#httpServerListener"
+<a href="restlib.connector.http/HttpServerListener.html">HttpServerListener</a> <strong>httpServerListener</strong>(<a href="restlib.server.io/Application.html">Application</a> applicationSupplier(<a href="restlib.core.http/Request.html">Request</a> request), String scheme) <a class="anchor-link" href="#httpServerListener"
               title="Permalink to httpServerListener">#</a></h4>
 <div class="doc">
 <pre class="source">
-HttpServerListener httpServerListener(final IOApplicationSupplier applicationSupplier, final String scheme) =&gt;
+HttpServerListener httpServerListener(Application applicationSupplier(Request request), final String scheme) =&gt;
    (final HttpServer server) {  
      _logger.info("Listening on port: ${server.port}");
 
@@ -184,18 +202,6 @@ void writeHttpResponse(final Response response, final HttpResponse serverRespons
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="wrapHttpRequest">
-<button class="show-code">Code</button>
-<a href="restlib.core.http/Request.html">Request</a> <strong>wrapHttpRequest</strong>(HttpRequest request, String scheme) <a class="anchor-link" href="#wrapHttpRequest"
-              title="Permalink to wrapHttpRequest">#</a></h4>
-<div class="doc">
-<pre class="source">
-@visibleForTesting
-Request wrapHttpRequest(final HttpRequest request, final String scheme) =&gt;
-   new _HttpRequestWrapper(request, scheme);
-</pre>
-</div>
-</div>
 </div>
 <div>
 <h3>Typedefs</h3>
@@ -205,18 +211,12 @@ Request wrapHttpRequest(final HttpRequest request, final String scheme) =&gt;
           </h4>
           </div>
           
-          <div class="type">
-          <h4>
-            <a href="restlib.connector.http/IOApplicationSupplier.html"><strong>IOApplicationSupplier</strong></a>
-          </h4>
-          </div>
-          
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:53.650</div>
+          
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>

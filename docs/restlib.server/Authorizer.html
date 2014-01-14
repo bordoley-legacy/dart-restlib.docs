@@ -34,6 +34,9 @@
 <div class="doc">
 <pre class="source">
 abstract class Authorizer {
+ factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) =&gt;
+     new _BasicAuthorizer(realm, authenticate);
+     
  ChallengeMessage get authenticationChallenge;
  String get scheme;
  
@@ -41,9 +44,20 @@ abstract class Authorizer {
 }
 </pre>
 </div>
-<h3>Subclasses</h3>
-<p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.server/BasicAuthorizer.html">BasicAuthorizer</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="basicAuth">
+<button class="show-code">Code</button>
+factory <strong>Authorizer.basicAuth</strong>(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) <a class="anchor-link" href="#basicAuth"
+              title="Permalink to Authorizer.Authorizer.basicAuth">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) =&gt;
+   new _BasicAuthorizer(realm, authenticate);
+</pre>
+</div>
+</div>
+</div>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="authenticationChallenge">
@@ -84,7 +98,7 @@ abstract Future&lt;bool&gt; <strong>authenticate</strong>(<a href="../restlib.co
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.613</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

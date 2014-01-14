@@ -41,6 +41,8 @@ abstract class Dictionary&lt;K,V&gt; implements Associative&lt;K,V&gt;, Iterable
  
  Map&lt;K,V&gt; asMap();
  
+ Option&lt;V&gt; call(K key);
+ 
  Dictionary&lt;K, dynamic&gt; mapValues(mapFunc(V value));
 }
 </pre>
@@ -212,6 +214,12 @@ predicate
 <div class="method"><h4 id="asMap">
 abstract Map&lt;<a href="../restlib.common.collections/Dictionary.html">K</a>, <a href="../restlib.common.collections/Dictionary.html">V</a>&gt; <strong>asMap</strong>() <a class="anchor-link" href="#asMap"
               title="Permalink to Dictionary&lt;K, V&gt;.asMap">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="call">
+abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.common.collections/Dictionary.html">V</a>&gt; <strong>call</strong>(<a href="../restlib.common.collections/Dictionary.html">K</a> key) <a class="anchor-link" href="#call"
+              title="Permalink to Dictionary&lt;K, V&gt;.call">#</a></h4>
 <div class="doc">
 </div>
 </div>
@@ -478,7 +486,7 @@ function
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:53.490</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

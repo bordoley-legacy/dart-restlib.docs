@@ -36,6 +36,9 @@
 abstract class RequestPreconditions {
  static const RequestPreconditions NONE = const _RequestPreconditionsNone();
  
+ factory RequestPreconditions.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+     new _HeadersRequestPreconditionsImpl(headers);
+ 
  ImmutableSet&lt;EntityTag&gt; get ifMatch;
  Option&lt;DateTime&gt; get ifModifiedSince;
  
@@ -66,6 +69,20 @@ const <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditi
         <div class="doc">
 <pre class="source">
 static const RequestPreconditions NONE = const _RequestPreconditionsNone()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="wrapHeaders">
+<button class="show-code">Code</button>
+factory <strong>RequestPreconditions.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header)) <a class="anchor-link" href="#wrapHeaders"
+              title="Permalink to RequestPreconditions.RequestPreconditions.wrapHeaders">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory RequestPreconditions.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+   new _HeadersRequestPreconditionsImpl(headers);
 </pre>
 </div>
 </div>
@@ -146,7 +163,7 @@ abstract <a href="../restlib.core.http/RequestPreconditions.html">RequestPrecond
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.194</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

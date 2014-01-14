@@ -67,6 +67,9 @@ class OptionArray&lt;E&gt;
    _delegate[key] = new Option(value);
  }
  
+ Option&lt;E&gt; call(int key) =&gt;
+     this[key];
+ 
  bool containsKey(int key) =&gt;
    (key &gt;= 0 ) &amp;&amp; (key &lt; length);  
  
@@ -334,6 +337,17 @@ bool any(bool f(E element)) {
  }
  return false;
 }
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="call">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.common.collections/OptionArray.html">E</a>&gt; <strong>call</strong>(int key) <a class="anchor-link" href="#call"
+              title="Permalink to OptionArray&lt;E&gt;.call">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option&lt;E&gt; call(int key) =&gt;
+   this[key];
 </pre>
 </div>
 </div>
@@ -830,7 +844,7 @@ Iterable&lt;E&gt; where(bool f(E element)) =&gt; new WhereIterable&lt;E&gt;(this
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:51.260</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

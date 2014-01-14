@@ -38,6 +38,8 @@ abstract class Sequence&lt;E&gt; implements Associative&lt;int, E&gt;, Iterable&
  
  Option&lt;E&gt; operator[](int index);
  
+ Option&lt;E&gt; call(int index);
+ 
  int indexOf(E element, [int start=0]);
  
  Sequence&lt;E&gt; subSequence(int start, int length);
@@ -213,6 +215,12 @@ predicate
 <div class="method"><h4 id="asList">
 abstract List&lt;<a href="../restlib.common.collections/Sequence.html">E</a>&gt; <strong>asList</strong>() <a class="anchor-link" href="#asList"
               title="Permalink to Sequence&lt;E&gt;.asList">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="call">
+abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.common.collections/Sequence.html">E</a>&gt; <strong>call</strong>(int index) <a class="anchor-link" href="#call"
+              title="Permalink to Sequence&lt;E&gt;.call">#</a></h4>
 <div class="doc">
 </div>
 </div>
@@ -491,7 +499,7 @@ function
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:53.303</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

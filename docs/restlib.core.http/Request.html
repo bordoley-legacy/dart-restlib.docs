@@ -34,6 +34,9 @@
 <div class="doc">
 <pre class="source">
 abstract class Request&lt;T&gt; {  
+ factory Request.wrapHeaders(Iterable&lt;String&gt; headers(Header header), final Method method, final Uri requestUri) =&gt;
+     new _HeadersRequestWrapper(headers, method, requestUri);
+ 
  Option&lt;ChallengeMessage&gt; get authorizationCredentials;
  ImmutableSet&lt;CacheDirective&gt; get cacheDirectives;
  ContentInfo get contentInfo;
@@ -68,6 +71,20 @@ abstract class Request&lt;T&gt; {
 <h3>Subclasses</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequest.html">ForwardingRequest&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestToString.html">RequestToString</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestWith_.html">RequestWith_</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="wrapHeaders">
+<button class="show-code">Code</button>
+factory <strong>Request.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header), <a href="../restlib.core.http/Method.html">Method</a> method, Uri requestUri) <a class="anchor-link" href="#wrapHeaders"
+              title="Permalink to Request&lt;T&gt;.Request.wrapHeaders">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Request.wrapHeaders(Iterable&lt;String&gt; headers(Header header), final Method method, final Uri requestUri) =&gt;
+   new _HeadersRequestWrapper(headers, method, requestUri);
+</pre>
+</div>
+</div>
+</div>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="authorizationCredentials">
@@ -240,7 +257,7 @@ abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>with_</
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.227</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

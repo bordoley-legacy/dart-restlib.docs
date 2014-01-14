@@ -35,7 +35,10 @@
 <pre class="source">
 abstract class ContentInfo {
  static const ContentInfo NONE = const _ContentInfoNone();
-
+ 
+ factory ContentInfo.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+     new _HeadersContentInfoImpl(headers);
+     
  // The encodings applied to the content in order.
  ImmutableSequence&lt;ContentEncoding&gt; get encodings;
  ImmutableSet&lt;Language&gt; get languages;
@@ -78,6 +81,20 @@ const <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <s
         <div class="doc">
 <pre class="source">
 static const ContentInfo NONE = const _ContentInfoNone()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="wrapHeaders">
+<button class="show-code">Code</button>
+factory <strong>ContentInfo.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header)) <a class="anchor-link" href="#wrapHeaders"
+              title="Permalink to ContentInfo.ContentInfo.wrapHeaders">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory ContentInfo.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+   new _HeadersContentInfoImpl(headers);
 </pre>
 </div>
 </div>
@@ -176,7 +193,7 @@ abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.357</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

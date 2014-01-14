@@ -28,16 +28,45 @@
 <div class="content">
 <h2><strong>restlib.core.multipart</strong> library</h2>
 <div>
+<h3>Functions</h3>
+<div class="method"><h4 id="parseMultipartStream">
+<button class="show-code">Code</button>
+Future&lt;<a href="restlib.core.multipart/Multipart.html">Multipart</a>&gt; <strong>parseMultipartStream</strong>(Stream&lt;List&lt;int&gt;&gt; msgStream, String boundary, <a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.core.multipart/PartParser.html">PartParser</a>&gt; partParserProvider(<a href="restlib.core.multipart/PartContentInfo.html">PartContentInfo</a> contentInfo)) <a class="anchor-link" href="#parseMultipartStream"
+              title="Permalink to parseMultipartStream">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future&lt;Multipart&gt; parseMultipartStream(
+   final Stream&lt;List&lt;int&gt;&gt; msgStream, 
+   final String boundary, 
+   Option&lt;PartParser&gt; partParserProvider(PartContentInfo contentInfo)) =&gt; 
+       new MimeMultipartTransformer(boundary)
+         .bind(msgStream)
+         .map((final MimeMultipart multipart) =&gt;
+             new Part(new ContentInfo.wrapHeaders(
+               (final Header header) =&gt; 
+                   new Option(multipart.headers[header.toString()])), 
+             multipart))
+         .fold(Persistent.EMPTY_SEQUENCE, (final ImmutableSequence&lt;Future&gt; futureResults, final Part&lt;Stream&lt;List&lt;int&gt;&gt;&gt; part) =&gt; 
+             partParserProvider(part.contentInfo)
+               .map((final PartParser parser) =&gt;
+                   futureResults.add(parser(part.contentInfo, part.entity)))
+               .orCompute(() =&gt;
+                   futureResults.add(part.entity.drain()))
+         .then(Future.wait)
+         .then((final List parts) =&gt; 
+             parts.where((final e) =&gt;
+                 e is Part))
+         .then((final List&lt;Part&gt; parts) =&gt;
+             new Multipart(boundary, parts)));
+</pre>
+</div>
+</div>
+</div>
+<div>
 <h3>Abstract Classes</h3>
           <div class="type">
           <h4>
-            <a href="restlib.core.multipart/ByteRange.html"><strong>ByteRange</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.core.multipart/ByteRangeSubRange.html"><strong>ByteRangeSubRange</strong></a>
+            <a href="restlib.core.multipart/ByteStreamableMultipart.html"><strong>ByteStreamableMultipart&lt;T&gt;</strong></a>
           </h4>
           </div>
           
@@ -49,19 +78,7 @@
           
           <div class="type">
           <h4>
-            <a href="restlib.core.multipart/MultipartOutput.html"><strong>MultipartOutput&lt;T&gt;</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
             <a href="restlib.core.multipart/PartContentInfo.html"><strong>PartContentInfo</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.core.multipart/Streamable.html"><strong>Streamable</strong></a>
           </h4>
           </div>
           
@@ -75,11 +92,20 @@
           </div>
           
 </div>
+<div>
+<h3>Typedefs</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.multipart/PartParser.html"><strong>PartParser</strong></a>
+          </h4>
+          </div>
+          
+</div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.379</div>
+          
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>

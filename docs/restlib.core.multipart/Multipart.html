@@ -34,14 +34,16 @@
 <div class="doc">
 <pre class="source">
 abstract class Multipart&lt;T&gt; implements Iterable&lt;Part&lt;T&gt;&gt; {
- factory Multipart(final Iterable&lt;Part&lt;T&gt;&gt; parts) =&gt;
-     new _Multipart(parts);
+ factory Multipart(final String boundary, final Iterable&lt;Part&lt;T&gt;&gt; parts) =&gt;
+     new _Multipart(boundary, parts);
+ 
+ String get boundary;
 }
 </pre>
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.multipart/MultipartOutput.html">MultipartOutput&lt;T&gt;</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.multipart/ByteStreamableMultipart.html">ByteStreamableMultipart&lt;T&gt;</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span>Iterable&lt;Part&lt;T&gt;&gt;</span></p>
@@ -49,7 +51,7 @@ abstract class Multipart&lt;T&gt; implements Iterable&lt;Part&lt;T&gt;&gt; {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Multipart</strong>(Iterable&lt;<a href="../restlib.core.multipart/Part.html">Part</a>&lt;<a href="../restlib.core.multipart/Multipart.html">T</a>&gt;&gt; parts) <a class="anchor-link" href="#"
+factory <strong>Multipart</strong>(String boundary, Iterable&lt;<a href="../restlib.core.multipart/Part.html">Part</a>&lt;<a href="../restlib.core.multipart/Multipart.html">T</a>&gt;&gt; parts) <a class="anchor-link" href="#"
               title="Permalink to Multipart&lt;T&gt;.Multipart">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -59,14 +61,26 @@ through their identity. An <code>Object</code> instance is equal to itself
 only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
-factory Multipart(final Iterable&lt;Part&lt;T&gt;&gt; parts) =&gt;
-   new _Multipart(parts);
+factory Multipart(final String boundary, final Iterable&lt;Part&lt;T&gt;&gt; parts) =&gt;
+   new _Multipart(boundary, parts);
 </pre>
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Properties</h3>
+<div class="field"><h4 id="boundary">
+<button class="show-code">Code</button>
+final String         <strong>boundary</strong> <a class="anchor-link"
+            href="#boundary"
+            title="Permalink to Multipart&lt;T&gt;.boundary">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get boundary;
+</pre>
+</div>
+</div>
 <div class="field inherited"><h4 id="first">
 <button class="show-code">Code</button>
 final <a href="../restlib.core.multipart/Multipart.html">E</a>         <strong>first</strong> <a class="anchor-link"
@@ -421,7 +435,7 @@ function
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.421</div>
+          
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

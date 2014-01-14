@@ -29,30 +29,33 @@
 <h2><strong>restlib.server.io</strong> library</h2>
 <div>
 <h3>Functions</h3>
+<div class="method"><h4 id="parseMultipart">
+<button class="show-code">Code</button>
+Future&lt;<a href="restlib.core.http/Request.html">Request</a>&lt;<a href="restlib.core.multipart/Multipart.html">Multipart</a>&gt;&gt; <strong>parseMultipart</strong>(<a href="restlib.core.http/Request.html">Request</a> request, Stream&lt;List&lt;int&gt;&gt; msgStream, <a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.core.multipart/PartParser.html">PartParser</a>&gt; partParserProvider(<a href="restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo)) <a class="anchor-link" href="#parseMultipart"
+              title="Permalink to parseMultipart">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future&lt;Request&lt;Multipart&gt;&gt; parseMultipart(
+   final Request request, 
+   final Stream&lt;List&lt;int&gt;&gt; msgStream, 
+   Option&lt;PartParser&gt; partParserProvider(ContentInfo contentInfo)){
+ final String boundary = request.contentInfo.mediaRange.value.parameters["boundary"].value;
+ 
+ return parseMultipartStream(msgStream, boundary, partParserProvider)
+     .then((final Multipart multipart) =&gt;
+         request.with_(entity: multipart));          
+}
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="writeMultipart">
 <button class="show-code">Code</button>
-Future <strong>writeMultipart</strong>(<a href="restlib.core.http/Request.html">Request</a> request, <a href="restlib.core.http/Response.html">Response</a>&lt;<a href="restlib.core.multipart/MultipartOutput.html">MultipartOutput</a>&gt; response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) <a class="anchor-link" href="#writeMultipart"
+Future <strong>writeMultipart</strong>(<a href="restlib.core.http/Request.html">Request</a> request, <a href="restlib.core.http/Response.html">Response</a>&lt;<a href="restlib.core.multipart/ByteStreamableMultipart.html">ByteStreamableMultipart</a>&gt; response, StreamSink&lt;List&lt;int&gt;&gt; msgSink) <a class="anchor-link" href="#writeMultipart"
               title="Permalink to writeMultipart">#</a></h4>
 <div class="doc">
 <pre class="source">
-Future writeMultipart(final Request request, final Response&lt;MultipartOutput&gt; response, final StreamSink&lt;List&lt;int&gt;&gt; msgSink) {
- final MultipartOutput entity = response.entity.value;
- final String boundary = response.contentInfo.mediaRange.value.parameters["boundary"].first;
- 
- return entity
-   .fold(new Future.value(), (final Future future, final Part part) =&gt; 
-       future
-         .then((_) {
-           msgSink.add(ASCII.encode("--$boundary\r\n"));
-           msgSink.add(ASCII.encode(part.contentInfo.toString()));
-           return msgSink
-               .addStream(part.entity.asStream())
-               .then((_) =&gt;
-                   msgSink.add(ASCII.encode("\r\n\r\n")));
-         }))
-  .then((_) =&gt;
-      msgSink.add(ASCII.encode("--$boundary--\r\n")));   
-}
+Future writeMultipart(final Request request, final Response&lt;ByteStreamableMultipart&gt; response, final StreamSink&lt;List&lt;int&gt;&gt; msgSink) =&gt;
+   msgSink.addStream(response.entity.value.asByteStream());
 </pre>
 </div>
 </div>
@@ -105,20 +108,14 @@ Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Str
 </div>
 <div class="method"><h4 id="virtualHostApplicationSupplier">
 <button class="show-code">Code</button>
-<a href="restlib.server.io/ApplicationSupplier.html">ApplicationSupplier</a> <strong>virtualHostApplicationSupplier</strong>(Map&lt;String, <a href="restlib.server.io/Application.html">Application</a>&gt; applications, [<a href="restlib.server.io/Application.html">Application</a> fallback]) <a class="anchor-link" href="#virtualHostApplicationSupplier"
+<a href="restlib.server.io/ApplicationSupplier.html">ApplicationSupplier</a> <strong>virtualHostApplicationSupplier</strong>(<a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.server.io/Application.html">Application</a>&gt; applicationForHost(String host), <a href="restlib.server.io/Application.html">Application</a> fallback) <a class="anchor-link" href="#virtualHostApplicationSupplier"
               title="Permalink to virtualHostApplicationSupplier">#</a></h4>
 <div class="doc">
 <pre class="source">
-ApplicationSupplier virtualHostApplicationSupplier(Map&lt;String,Application&gt; applications, [Application fallback]) {
- checkArgument(applications.isNotEmpty);
-
- fallback = (fallback != null) ? fallback : applications.values.first;
-
- return (Request request){
-   Application app = applications[request.uri.host];
-   return (app != null) ? app : fallback;
- };
-}
+ApplicationSupplier virtualHostApplicationSupplier(Option&lt;Application&gt; applicationForHost(String host), final Application fallback) =&gt;
+   (final Request request) =&gt;
+       applicationForHost(request.uri.host)
+         .orElse(fallback);
 </pre>
 </div>
 </div>
@@ -163,31 +160,10 @@ ApplicationSupplier virtualHostApplicationSupplier(Map&lt;String,Application&gt;
           
 </div>
 <div>
-<h3>Classes</h3>
-          <div class="type">
-          <h4>
-            <a href="restlib.server.io/MultipartInputProcessor.html"><strong>MultipartInputProcessor</strong></a>
-          </h4>
-          </div>
-          
-</div>
-<div>
 <h3>Typedefs</h3>
           <div class="type">
           <h4>
             <a href="restlib.server.io/ApplicationSupplier.html"><strong>ApplicationSupplier</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.server.io/PartParser.html"><strong>PartParser</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.server.io/PartParserProvider.html"><strong>PartParserProvider</strong></a>
           </h4>
           </div>
           
@@ -220,7 +196,7 @@ ApplicationSupplier virtualHostApplicationSupplier(Map&lt;String,Application&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 22:36:54.615</div>
+          
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>

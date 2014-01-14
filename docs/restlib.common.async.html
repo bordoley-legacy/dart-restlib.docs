@@ -1,0 +1,86 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.common.async Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.async">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.common.async.html">restlib.common.async</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.common.async</strong> library</h2>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="concatStreams">
+<button class="show-code">Code</button>
+Stream <strong>concatStreams</strong>(Iterable&lt;Stream&gt; streams) <a class="anchor-link" href="#concatStreams"
+              title="Permalink to concatStreams">#</a></h4>
+<div class="doc">
+<pre class="source">
+Stream concatStreams(final Iterable&lt;Stream&gt; streams) {
+ final StreamController controller = new StreamController();
+ final Iterator&lt;Stream&gt; streamItr = streams.iterator;
+ 
+ void addNextStream() {
+   final Stream stream = streamItr.current;
+   stream.listen(controller.add)
+     ..onError(controller.addError)
+     ..onDone(() {
+       if(streamItr.moveNext()) {
+         addNextStream();
+       } else {
+         controller.close();
+       }
+     });
+ }
+ 
+ if (streamItr.moveNext()) {
+   addNextStream();
+ } else {
+   controller.close();
+ }
+ 
+ return controller.stream;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="valueAsStream">
+<button class="show-code">Code</button>
+Stream <strong>valueAsStream</strong>(value) <a class="anchor-link" href="#valueAsStream"
+              title="Permalink to valueAsStream">#</a></h4>
+<div class="doc">
+<pre class="source">
+Stream valueAsStream(dynamic value) =&gt;
+   new Stream.fromFuture(new Future.value(value));
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        
