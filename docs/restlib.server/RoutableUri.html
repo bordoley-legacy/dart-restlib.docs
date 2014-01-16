@@ -33,7 +33,6 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-@proxy
 class RoutableUri extends NoSuchMethodForwarder implements Uri {
  static RoutableUri parse(String uri) {
    return new RoutableUri.wrap(Uri.parse(uri));
@@ -63,6 +62,9 @@ class RoutableUri extends NoSuchMethodForwarder implements Uri {
  
  bool operator==(other) =&gt;
      delegate == other;
+ 
+ dynamic noSuchMethod(Invocation invocation) =&gt;
+     super.noSuchMethod(invocation);
 }
 </pre>
 </div>
@@ -427,25 +429,25 @@ bool operator==(other) =&gt;
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
-<div class="method inherited"><h4 id="noSuchMethod">
+<div class="method"><h4 id="noSuchMethod">
 <button class="show-code">Code</button>
 dynamic <strong>noSuchMethod</strong>(Invocation invocation) <a class="anchor-link" href="#noSuchMethod"
               title="Permalink to RoutableUri.noSuchMethod">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.objects/NoSuchMethodForwarder.html">NoSuchMethodForwarder</a> </div><div class="doc">
+<div class="doc">
 <div class="inherited">
-<p><a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is invoked when users invoke a non-existent method
+<p><a class="crossref" href="../restlib.server/RoutableUri.html#noSuchMethod">noSuchMethod</a> is invoked when users invoke a non-existent method
 on an object. The name of the method and the arguments of the
-invocation are passed to <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> in an <code>Invocation</code>.
-If <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> returns a value, that value becomes the result of
+invocation are passed to <a class="crossref" href="../restlib.server/RoutableUri.html#noSuchMethod">noSuchMethod</a> in an <code>Invocation</code>.
+If <a class="crossref" href="../restlib.server/RoutableUri.html#noSuchMethod">noSuchMethod</a> returns a value, that value becomes the result of
 the original invocation.</p>
-<p>The default behavior of <a class="crossref" href="../restlib.common.objects/NoSuchMethodForwarder.html#noSuchMethod">noSuchMethod</a> is to throw a
+<p>The default behavior of <a class="crossref" href="../restlib.server/RoutableUri.html#noSuchMethod">noSuchMethod</a> is to throw a
 <code>NoSuchMethodError</code>.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
-noSuchMethod(final Invocation invocation) =&gt;
-   _delegateMirror.delegate(invocation);
+dynamic noSuchMethod(Invocation invocation) =&gt;
+   super.noSuchMethod(invocation);
 </pre>
 </div>
 </div>

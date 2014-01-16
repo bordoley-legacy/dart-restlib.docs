@@ -40,7 +40,12 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
      new _ListParser.concat(this, other);
  
  Parser&lt;Either&lt;T,dynamic&gt;&gt; operator^(final Parser other) =&gt;
-     new _OrParser(this, other); 
+     new _EitherParser(this, other); 
+ 
+ Parser&lt;T&gt; operator|(final Parser&lt;T&gt; other) =&gt;
+     new _OrParser(this, other);
+ 
+//  Parser&lt;T&gt; operator|(Parser&lt;T&gt; other);
  
  Parser flatMap(Option f(T value)) =&gt;
      new _FlatMappedParser(this, f);
@@ -103,7 +108,7 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/StringParser.html">StringParser</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/RuneMatcher.html">RuneMatcher</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.parsing/Parser.html">Parser&lt;T&gt;</a></span></p>
@@ -139,6 +144,17 @@ Parser&lt;Iterable&gt; operator+(final Parser other) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="|">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/AbstractParser.html">T</a>&gt; <strong>operator |</strong>(<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/AbstractParser.html">T</a>&gt; other) <a class="anchor-link" href="#|"
+              title="Permalink to AbstractParser&lt;T&gt;.operator |">#</a></h4>
+<div class="doc">
+<pre class="source">
+Parser&lt;T&gt; operator|(final Parser&lt;T&gt; other) =&gt;
+   new _OrParser(this, other);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="^">
 <button class="show-code">Code</button>
 <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.parsing/AbstractParser.html">T</a>, dynamic&gt;&gt; <strong>operator ^</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#^"
@@ -146,7 +162,7 @@ Parser&lt;Iterable&gt; operator+(final Parser other) =&gt;
 <div class="doc">
 <pre class="source">
 Parser&lt;Either&lt;T,dynamic&gt;&gt; operator^(final Parser other) =&gt;
-   new _OrParser(this, other);
+   new _EitherParser(this, other);
 </pre>
 </div>
 </div>

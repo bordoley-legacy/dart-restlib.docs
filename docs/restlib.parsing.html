@@ -266,12 +266,12 @@ const RuneMatcher SP = const _SingleRuneMatcher(32)
 <h3>Functions</h3>
 <div class="method"><h4 id="string">
 <button class="show-code">Code</button>
-<a href="restlib.parsing/StringParser.html">StringParser</a> <strong>string</strong>(String string) <a class="anchor-link" href="#string"
+<a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt; <strong>string</strong>(String string) <a class="anchor-link" href="#string"
               title="Permalink to string">#</a></h4>
 <div class="doc">
 <pre class="source">
-StringParser string(final String string) =&gt; 
-   new _SingleStringParser(string);
+Parser&lt;String&gt; string(final String string) =&gt; 
+   new _StringParser(string);
 </pre>
 </div>
 </div>
@@ -348,12 +348,6 @@ RuneMatcher anyOf(final String runes) =&gt;
           <div class="type">
           <h4>
             <a href="restlib.parsing/RuneMatcher.html"><strong>RuneMatcher</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.parsing/StringParser.html"><strong>StringParser</strong></a>
           </h4>
           </div>
           

@@ -41,34 +41,22 @@ abstract class UniformResourceDelegate&lt;T&gt; {
             Method.OPTIONS, Method.DELETE,
             Method.PATCH, Method.POST, Method.PUT]);
    
-   try {
-     delegate.delete(null);
-   } on NoSuchMethodError {
-     set.remove(Method.DELETE);
-   } catch (e) {
+   void testMethod(final Method methodName, method) {
+     try {
+       method(null);
+     } on UnimplementedError {
+       set.remove(methodName);
+     } catch (e) {
+     }
    }
    
-   try {
-     delegate.patch(null);
-   } on NoSuchMethodError {
-     set.remove(Method.PATCH);
-   } catch (e) {
-   }
-   
-   try {
-     delegate.post(null);
-   } on NoSuchMethodError {
-     set.remove(Method.POST);
-   } catch (e) {
-   }
-   
-   try {
-     delegate.put(null);
-   } on NoSuchMethodError {
-     set.remove(Method.PUT);
-   } catch (e) {
-   }
-   
+   testMethod(Method.DELETE, delegate.delete);
+   testMethod(Method.GET, delegate.get);
+   testMethod(Method.HEAD, delegate.get);
+   testMethod(Method.PATCH, delegate.patch);
+   testMethod(Method.POST, delegate.post);
+   testMethod(Method.PUT, delegate.put);
+
    return Persistent.EMPTY_SET.addAll(set);
  }
  
@@ -78,15 +66,20 @@ abstract class UniformResourceDelegate&lt;T&gt; {
  
  Route get route;
  
- Future&lt;Response&gt; delete(Request request);
+ Future&lt;Response&gt; delete(Request request) =&gt;
+     throw new UnimplementedError();
  
- Future&lt;Response&gt; get(Request request);
+ Future&lt;Response&gt; get(Request request) =&gt;
+     throw new UnimplementedError();
  
- Future&lt;Response&gt; patch(Request&lt;T&gt; request);
+ Future&lt;Response&gt; patch(Request&lt;T&gt; request) =&gt;
+     throw new UnimplementedError();
  
- Future&lt;Response&gt; post(Request&lt;T&gt; request);
+ Future&lt;Response&gt; post(Request&lt;T&gt; request) =&gt;
+     throw new UnimplementedError();
  
- Future&lt;Response&gt; put(Request&lt;T&gt; request);
+ Future&lt;Response&gt; put(Request&lt;T&gt; request) =&gt;
+     throw new UnimplementedError();
 }
 </pre>
 </div>
@@ -132,33 +125,58 @@ Route get route;
 <div>
 <h3>Methods</h3>
 <div class="method"><h4 id="delete">
-abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>delete</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#delete"
+<button class="show-code">Code</button>
+Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>delete</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#delete"
               title="Permalink to UniformResourceDelegate&lt;T&gt;.delete">#</a></h4>
 <div class="doc">
+<pre class="source">
+Future&lt;Response&gt; delete(Request request) =&gt;
+   throw new UnimplementedError();
+</pre>
 </div>
 </div>
 <div class="method"><h4 id="get">
-abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>get</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#get"
+<button class="show-code">Code</button>
+Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>get</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#get"
               title="Permalink to UniformResourceDelegate&lt;T&gt;.get">#</a></h4>
 <div class="doc">
+<pre class="source">
+Future&lt;Response&gt; get(Request request) =&gt;
+   throw new UnimplementedError();
+</pre>
 </div>
 </div>
 <div class="method"><h4 id="patch">
-abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>patch</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#patch"
+<button class="show-code">Code</button>
+Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>patch</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#patch"
               title="Permalink to UniformResourceDelegate&lt;T&gt;.patch">#</a></h4>
 <div class="doc">
+<pre class="source">
+Future&lt;Response&gt; patch(Request&lt;T&gt; request) =&gt;
+   throw new UnimplementedError();
+</pre>
 </div>
 </div>
 <div class="method"><h4 id="post">
-abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>post</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#post"
+<button class="show-code">Code</button>
+Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>post</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#post"
               title="Permalink to UniformResourceDelegate&lt;T&gt;.post">#</a></h4>
 <div class="doc">
+<pre class="source">
+Future&lt;Response&gt; post(Request&lt;T&gt; request) =&gt;
+   throw new UnimplementedError();
+</pre>
 </div>
 </div>
 <div class="method"><h4 id="put">
-abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>put</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#put"
+<button class="show-code">Code</button>
+Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>put</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/UniformResourceDelegate.html">T</a>&gt; request) <a class="anchor-link" href="#put"
               title="Permalink to UniformResourceDelegate&lt;T&gt;.put">#</a></h4>
 <div class="doc">
+<pre class="source">
+Future&lt;Response&gt; put(Request&lt;T&gt; request) =&gt;
+   throw new UnimplementedError();
+</pre>
 </div>
 </div>
 </div>

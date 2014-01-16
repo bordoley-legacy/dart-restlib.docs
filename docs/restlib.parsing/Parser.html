@@ -38,6 +38,8 @@ abstract class Parser&lt;T&gt; {
  
  Parser&lt;Either&lt;T,dynamic&gt;&gt; operator^(Parser other);
  
+ Parser&lt;T&gt; operator|(final Parser&lt;T&gt; other);
+ 
  Parser flatMap(Option f(T value));
  
  Parser&lt;T&gt; followedBy(Parser p);
@@ -72,6 +74,12 @@ abstract class Parser&lt;T&gt; {
 <div class="method"><h4 id="+">
 abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;Iterable&gt; <strong>operator +</strong>(<a href="../restlib.parsing/Parser.html">Parser</a> other) <a class="anchor-link" href="#+"
               title="Permalink to Parser&lt;T&gt;.operator +">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="|">
+abstract <a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>operator |</strong>(<a href="../restlib.parsing/Parser.html">Parser</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; other) <a class="anchor-link" href="#|"
+              title="Permalink to Parser&lt;T&gt;.operator |">#</a></h4>
 <div class="doc">
 </div>
 </div>

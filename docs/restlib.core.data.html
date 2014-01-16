@@ -185,13 +185,13 @@ final Parser&lt;Expectation&gt; EXPECTATION =
 </div>
 <div class="field"><h4 id="HTTP_DATE_TIME">
 <button class="show-code">Code</button>
-final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/HttpDateTime.html">HttpDateTime</a>&gt;         <strong>HTTP_DATE_TIME</strong> <a class="anchor-link"
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;DateTime&gt;         <strong>HTTP_DATE_TIME</strong> <a class="anchor-link"
             href="#HTTP_DATE_TIME"
             title="Permalink to HTTP_DATE_TIME">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-final Parser&lt;HttpDateTime&gt; HTTP_DATE_TIME = _IMF_FIX_DATE
+final Parser&lt;DateTime&gt; HTTP_DATE_TIME = _IMF_FIX_DATE
 </pre>
 </div>
 </div>
@@ -367,6 +367,19 @@ String pairIterableToString(final Iterable&lt;Pair&gt; entries) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="toHttpDate">
+<button class="show-code">Code</button>
+String <strong>toHttpDate</strong>(DateTime dateTime) <a class="anchor-link" href="#toHttpDate"
+              title="Permalink to toHttpDate">#</a></h4>
+<div class="doc">
+<pre class="source">
+String toHttpDate(final DateTime dateTime) {
+ final DateTime utc = dateTime.toUtc();
+ return "${_day(utc)}, ${_twoDigit(utc.day)} ${_month(utc)} ${utc.year} ${_twoDigit(utc.hour)}:${_twoDigit(utc.minute)}:${_twoDigit(utc.second)} GMT";
+}
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Abstract Classes</h3>
@@ -466,12 +479,6 @@ String pairIterableToString(final Iterable&lt;Pair&gt; entries) =&gt;
           <div class="type">
           <h4>
             <a href="restlib.core.data/HostPort.html"><strong>HostPort</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.core.data/HttpDateTime.html"><strong>HttpDateTime</strong></a>
           </h4>
           </div>
           

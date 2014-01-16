@@ -36,10 +36,10 @@
 class Warning {
  final Either&lt;HostPort, String&gt; warnAgent;
  final int warnCode;
- final Option&lt;HttpDateTime&gt; warnDate;
+ final Option&lt;DateTime&gt; warnDate;
  final String warnText;
  
- factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final HttpDateTime warnDate = null]) {
+ factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final DateTime warnDate = null]) {
    checkArgument(warnCode &gt; 0);
    checkArgument(warnCode &lt;= 999);
    checkArgument(QUOTABLE.matchesAllOf(warnText));
@@ -47,7 +47,7 @@ class Warning {
    return new Warning._internal(warnCode, new Either.leftValue(warnAgent), warnText, new Option(warnDate));
  }
  
- factory Warning.synomynAgent(final int warnCode, final String warnAgent, final String warnText, [final HttpDateTime warnDate = null]) {
+ factory Warning.synomynAgent(final int warnCode, final String warnAgent, final String warnText, [final DateTime warnDate = null]) {
    checkArgument(warnCode &gt; 0);
    checkArgument(warnCode &lt;= 999);
    checkArgument(QUOTABLE.matchesAllOf(warnText));
@@ -74,7 +74,7 @@ class Warning {
  }
  
  String toString() =&gt;
-     "$warnCode $warnAgent ${encodeQuotedString(warnText)}${warnDate.map((final HttpDateTime date) =&gt; " \"$date\"").orElse("")}";
+     "$warnCode $warnAgent ${encodeQuotedString(warnText)}${warnDate.map(toHttpDate).orElse("")}";
 }
 </pre>
 </div>
@@ -82,11 +82,11 @@ class Warning {
 <h3>Constructors</h3>
 <div class="method"><h4 id="hostPort">
 <button class="show-code">Code</button>
-factory <strong>Warning.hostPort</strong>(int warnCode, <a href="../restlib.core.data/HostPort.html">HostPort</a> warnAgent, String warnText, [<a href="../restlib.core.data/HttpDateTime.html">HttpDateTime</a> warnDate = null]) <a class="anchor-link" href="#hostPort"
+factory <strong>Warning.hostPort</strong>(int warnCode, <a href="../restlib.core.data/HostPort.html">HostPort</a> warnAgent, String warnText, [DateTime warnDate = null]) <a class="anchor-link" href="#hostPort"
               title="Permalink to Warning.Warning.hostPort">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final HttpDateTime warnDate = null]) {
+factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final DateTime warnDate = null]) {
  checkArgument(warnCode &gt; 0);
  checkArgument(warnCode &lt;= 999);
  checkArgument(QUOTABLE.matchesAllOf(warnText));
@@ -98,11 +98,11 @@ factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final Str
 </div>
 <div class="method"><h4 id="synomynAgent">
 <button class="show-code">Code</button>
-factory <strong>Warning.synomynAgent</strong>(int warnCode, String warnAgent, String warnText, [<a href="../restlib.core.data/HttpDateTime.html">HttpDateTime</a> warnDate = null]) <a class="anchor-link" href="#synomynAgent"
+factory <strong>Warning.synomynAgent</strong>(int warnCode, String warnAgent, String warnText, [DateTime warnDate = null]) <a class="anchor-link" href="#synomynAgent"
               title="Permalink to Warning.Warning.synomynAgent">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Warning.synomynAgent(final int warnCode, final String warnAgent, final String warnText, [final HttpDateTime warnDate = null]) {
+factory Warning.synomynAgent(final int warnCode, final String warnAgent, final String warnText, [final DateTime warnDate = null]) {
  checkArgument(warnCode &gt; 0);
  checkArgument(warnCode &lt;= 999);
  checkArgument(QUOTABLE.matchesAllOf(warnText));
@@ -164,13 +164,13 @@ final int warnCode
 </div>
 <div class="field"><h4 id="warnDate">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.data/HttpDateTime.html">HttpDateTime</a>&gt;         <strong>warnDate</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;DateTime&gt;         <strong>warnDate</strong> <a class="anchor-link"
             href="#warnDate"
             title="Permalink to Warning.warnDate">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-final Option&lt;HttpDateTime&gt; warnDate
+final Option&lt;DateTime&gt; warnDate
 </pre>
 </div>
 </div>
@@ -244,7 +244,7 @@ String <strong>toString</strong>() <a class="anchor-link" href="#toString"
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 String toString() =&gt;
-   "$warnCode $warnAgent ${encodeQuotedString(warnText)}${warnDate.map((final HttpDateTime date) =&gt; " \"$date\"").orElse("")}";
+   "$warnCode $warnAgent ${encodeQuotedString(warnText)}${warnDate.map(toHttpDate).orElse("")}";
 </pre>
 </div>
 </div>
