@@ -1,5 +1,8 @@
 import "package:restlib_common/async.dart";
 import "package:restlib_common/collections.dart";
+import "package:restlib_common/collections.forwarding.dart";
+import "package:restlib_common/collections.immutable.dart";
+import "package:restlib_common/collections.mutable.dart";
 import "package:restlib_common/io.dart";
 import "package:restlib_common/objects.dart";
 import "package:restlib_common/preconditions.dart";
@@ -20,6 +23,9 @@ void main() {
   final Iterable<String> libs = 
       ["restlib.common.async",
        "restlib.common.collections",
+       "restlib.common.collections.forwarding",
+       "restlib.common.collections.immutable",
+       "restlib.common.collections.mutable",
        "restlib.common.io",
        "restlib.common.objects",
        "restlib.common.preconditions",

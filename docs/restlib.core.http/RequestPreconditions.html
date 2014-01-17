@@ -36,7 +36,7 @@
 abstract class RequestPreconditions {
  static const RequestPreconditions NONE = const _RequestPreconditionsNone();
  
- factory RequestPreconditions.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+ factory RequestPreconditions.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
      new _HeadersRequestPreconditionsImpl(headers);
  
  ImmutableSet&lt;EntityTag&gt; get ifMatch;
@@ -77,11 +77,11 @@ static const RequestPreconditions NONE = const _RequestPreconditionsNone()
 <h3>Constructors</h3>
 <div class="method"><h4 id="wrapHeaders">
 <button class="show-code">Code</button>
-factory <strong>RequestPreconditions.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header)) <a class="anchor-link" href="#wrapHeaders"
+factory <strong>RequestPreconditions.wrapHeaders</strong>(<a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String&gt; headers) <a class="anchor-link" href="#wrapHeaders"
               title="Permalink to RequestPreconditions.RequestPreconditions.wrapHeaders">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory RequestPreconditions.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+factory RequestPreconditions.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
    new _HeadersRequestPreconditionsImpl(headers);
 </pre>
 </div>
@@ -91,7 +91,7 @@ factory RequestPreconditions.wrapHeaders(Iterable&lt;String&gt; headers(Header h
 <h3>Properties</h3>
 <div class="field"><h4 id="ifMatch">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifMatch</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifMatch</strong> <a class="anchor-link"
             href="#ifMatch"
             title="Permalink to RequestPreconditions.ifMatch">#</a>
         </h4>
@@ -115,7 +115,7 @@ Option&lt;DateTime&gt; get ifModifiedSince;
 </div>
 <div class="field"><h4 id="ifNoneMatch">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifNoneMatch</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifNoneMatch</strong> <a class="anchor-link"
             href="#ifNoneMatch"
             title="Permalink to RequestPreconditions.ifNoneMatch">#</a>
         </h4>

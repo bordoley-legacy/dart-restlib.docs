@@ -40,7 +40,7 @@ abstract class BiMap&lt;K,V&gt; implements Dictionary&lt;K,V&gt; {
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/ForwardingBiMap.html">ForwardingBiMap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/ImmutableBiMap.html">ImmutableBiMap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MutableBiMap.html">MutableBiMap&lt;K, V&gt;</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.forwarding/ForwardingBiMap.html">ForwardingBiMap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableBiMap.html">ImmutableBiMap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.mutable/MutableBiMap.html">MutableBiMap&lt;K, V&gt;</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Dictionary.html">Dictionary&lt;K, V&gt;</a></span></p>
@@ -266,6 +266,12 @@ by
 <p>The returned <code>Iterable</code> is lazy, and calls 
 <span class="param">f</span> for each element
 of this every time it's iterated.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="filterKeys">
+abstract <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.common.collections/BiMap.html">K</a>, <a href="../restlib.common.collections/BiMap.html">V</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections/BiMap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+              title="Permalink to BiMap&lt;K, V&gt;.filterKeys">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/Dictionary.html">Dictionary</a> </div><div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="firstWhere">

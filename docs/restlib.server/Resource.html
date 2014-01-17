@@ -36,15 +36,15 @@
 abstract class Resource&lt;T&gt; {
  static const Resource NOT_FOUND = const _NotFoundResource();
  
- factory Resource.authorizingResource(Resource&lt;T&gt; next, Iterable&lt;Authorizer&gt; authorizer) {
-   ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+ factory Resource.authorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
+   final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
        Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
            new Pair(authorizer.scheme, authorizer)));
    
-   return new _AuthorizingResource&lt;T&gt; (next, authorizerMap);
+   return new _AuthorizingResource&lt;T&gt; (delegate, authorizerMap);
  }
  
- factory Resource.byteRangeResource(delegate) =&gt;
+ factory Resource.byteRangeResource(final Resource&lt;T&gt; delegate) =&gt;
      new _ByteRangeResource(delegate);
  
  factory Resource.uniform(final UniformResourceDelegate&lt;T&gt; delegate) {
@@ -81,27 +81,27 @@ static const Resource NOT_FOUND = const _NotFoundResource()
 <h3>Constructors</h3>
 <div class="method"><h4 id="authorizingResource">
 <button class="show-code">Code</button>
-factory <strong>Resource.authorizingResource</strong>(<a href="../restlib.server/Resource.html">Resource</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; next, Iterable&lt;<a href="../restlib.server/Authorizer.html">Authorizer</a>&gt; authorizer) <a class="anchor-link" href="#authorizingResource"
+factory <strong>Resource.authorizingResource</strong>(<a href="../restlib.server/Resource.html">Resource</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; delegate, Iterable&lt;<a href="../restlib.server/Authorizer.html">Authorizer</a>&gt; authorizer) <a class="anchor-link" href="#authorizingResource"
               title="Permalink to Resource&lt;T&gt;.Resource.authorizingResource">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Resource.authorizingResource(Resource&lt;T&gt; next, Iterable&lt;Authorizer&gt; authorizer) {
- ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+factory Resource.authorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
+ final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
      Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
          new Pair(authorizer.scheme, authorizer)));
  
- return new _AuthorizingResource&lt;T&gt; (next, authorizerMap);
+ return new _AuthorizingResource&lt;T&gt; (delegate, authorizerMap);
 }
 </pre>
 </div>
 </div>
 <div class="method"><h4 id="byteRangeResource">
 <button class="show-code">Code</button>
-factory <strong>Resource.byteRangeResource</strong>(delegate) <a class="anchor-link" href="#byteRangeResource"
+factory <strong>Resource.byteRangeResource</strong>(<a href="../restlib.server/Resource.html">Resource</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; delegate) <a class="anchor-link" href="#byteRangeResource"
               title="Permalink to Resource&lt;T&gt;.Resource.byteRangeResource">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Resource.byteRangeResource(delegate) =&gt;
+factory Resource.byteRangeResource(final Resource&lt;T&gt; delegate) =&gt;
    new _ByteRangeResource(delegate);
 </pre>
 </div>

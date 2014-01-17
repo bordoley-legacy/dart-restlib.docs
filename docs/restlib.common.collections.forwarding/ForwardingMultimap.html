@@ -1,0 +1,526 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>ForwardingMultimap&lt;K, V, I&gt; abstract class / restlib.common.collections.forwarding Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.common.collections.forwarding" data-type="ForwardingMultimap&amp;lt;K, V, I&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.common.collections.forwarding.html">restlib.common.collections.forwarding</a> &rsaquo; <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">ForwardingMultimap&lt;K, V, I&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>ForwardingMultimap&lt;K, V, I extends Iterable&lt;V&gt;&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class ForwardingMultimap&lt;K,V, I extends Iterable&lt;V&gt;&gt; 
+   implements Forwarder, Multimap&lt;K,V,I&gt; {  
+ Dictionary&lt;K, I&gt; get dictionary =&gt; 
+     delegate.dictionary;
+ 
+ I operator[](K key) =&gt;
+     delegate[key];
+ 
+ I call(K key) =&gt;
+     delegate.call(key);
+ 
+ Multimap&lt;K,V,I&gt; filterKeys(bool filterFunc(K key)) =&gt;
+     delegate.filterKeys(filterFunc);
+ 
+ Multimap&lt;K, dynamic, dynamic&gt; mapValues(mapFunc(V value)) =&gt;
+     delegate.mapValues(mapFunc);
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Multimap.html">Multimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.objects/Forwarder.html">Forwarder</a></span></p>
+<div>
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="delegate">
+<button class="show-code">Code</button>
+final         <strong>delegate</strong> <a class="anchor-link"
+            href="#delegate"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.delegate">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.objects/Forwarder.html">Forwarder</a> </div><div class="doc">
+<pre class="source">
+dynamic get delegate;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="dictionary">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a>, <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">I</a>&gt;         <strong>dictionary</strong> <a class="anchor-link"
+            href="#dictionary"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.dictionary">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Dictionary&lt;K, I&gt; get dictionary =&gt; 
+   delegate.dictionary;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="first">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>         <strong>first</strong> <a class="anchor-link"
+            href="#first"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.first">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the first element.</p>
+<p>If <code>this</code> is empty throws a <code>StateError</code>. Otherwise this method is
+equivalent to <code>this.elementAt(0)</code></p>
+<pre class="source">
+E get first;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isEmpty">
+<button class="show-code">Code</button>
+final bool         <strong>isEmpty</strong> <a class="anchor-link"
+            href="#isEmpty"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.isEmpty">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns true if there is no element in this collection.</p>
+<pre class="source">
+bool get isEmpty;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isNotEmpty">
+<button class="show-code">Code</button>
+final bool         <strong>isNotEmpty</strong> <a class="anchor-link"
+            href="#isNotEmpty"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.isNotEmpty">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns true if there is at least one element in this collection.</p>
+<pre class="source">
+bool get isNotEmpty;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="iterator">
+<button class="show-code">Code</button>
+final Iterator&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt;         <strong>iterator</strong> <a class="anchor-link"
+            href="#iterator"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.iterator">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns an Iterator that iterates over this Iterable object.</p>
+<pre class="source">
+Iterator&lt;E&gt; get iterator;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="keys">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a>&gt;         <strong>keys</strong> <a class="anchor-link"
+            href="#keys"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.keys">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+<pre class="source">
+Iterable&lt;K&gt; get keys;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="last">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>         <strong>last</strong> <a class="anchor-link"
+            href="#last"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.last">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the last element.</p>
+<p>If <code>this</code> is empty throws a <code>StateError</code>.</p>
+<pre class="source">
+E get last;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="length">
+<button class="show-code">Code</button>
+final int         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.length">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the number of elements in <code>this</code>.</p>
+<p>Counting all elements may be involve running through all elements and can
+therefore be slow.</p>
+<pre class="source">
+int get length;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="single">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>         <strong>single</strong> <a class="anchor-link"
+            href="#single"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.single">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the single element in <code>this</code>.</p>
+<p>If <code>this</code> is empty or has more than one element throws a <code>StateError</code>.</p>
+<pre class="source">
+E get single;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="values">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">V</a>&gt;         <strong>values</strong> <a class="anchor-link"
+            href="#values"
+            title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.values">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+<pre class="source">
+Iterable&lt;V&gt; get values;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="[]">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">I</a> <strong>operator []</strong>(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a> key) <a class="anchor-link" href="#[]"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.operator []">#</a></h4>
+<div class="doc">
+<pre class="source">
+I operator[](K key) =&gt;
+   delegate[key];
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="any">
+abstract bool <strong>any</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#any"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.any">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns true if one element of this collection satisfies the
+predicate 
+<span class="param">test</span>. Returns false otherwise.</p>
+</div>
+</div>
+<div class="method"><h4 id="call">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">I</a> <strong>call</strong>(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a> key) <a class="anchor-link" href="#call"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.call">#</a></h4>
+<div class="doc">
+<pre class="source">
+I call(K key) =&gt;
+   delegate.call(key);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="contains">
+abstract bool <strong>contains</strong>(Object element) <a class="anchor-link" href="#contains"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.contains">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns true if the collection contains an element equal to 
+<span class="param">element</span>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="containsKey">
+abstract bool <strong>containsKey</strong>(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a> key) <a class="anchor-link" href="#containsKey"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.containsKey">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="containsValue">
+abstract bool <strong>containsValue</strong>(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">V</a> value) <a class="anchor-link" href="#containsValue"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.containsValue">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="elementAt">
+abstract <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> <strong>elementAt</strong>(int index) <a class="anchor-link" href="#elementAt"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.elementAt">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the 
+<span class="param">index</span>th element.</p>
+<p>If <code>this</code> has fewer than 
+<span class="param">index</span> elements throws a <code>RangeError</code>.</p>
+<p>Note: if <code>this</code> does not have a deterministic iteration order then the
+function may simply return any element without any iteration if there are
+at least 
+<span class="param">index</span> elements in <code>this</code>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="every">
+abstract bool <strong>every</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#every"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.every">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns true if every elements of this collection satisify the
+predicate 
+<span class="param">test</span>. Returns <code>false</code> otherwise.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="expand">
+abstract Iterable <strong>expand</strong>(Iterable f(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#expand"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.expand">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Expands each element of this <code>Iterable</code> into zero or more elements.</p>
+<p>The resulting Iterable runs through the elements returned
+by 
+<span class="param">f</span> for each element of this, in order.</p>
+<p>The returned <code>Iterable</code> is lazy, and calls 
+<span class="param">f</span> for each element
+of this every time it's iterated.</p>
+</div>
+</div>
+<div class="method"><h4 id="filterKeys">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a>, <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">V</a>, <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">I</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.filterKeys">#</a></h4>
+<div class="doc">
+<pre class="source">
+Multimap&lt;K,V,I&gt; filterKeys(bool filterFunc(K key)) =&gt;
+   delegate.filterKeys(filterFunc);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="firstWhere">
+abstract <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> <strong>firstWhere</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element), {<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> orElse()}) <a class="anchor-link" href="#firstWhere"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.firstWhere">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the first element that satisfies the given predicate 
+<span class="param">test</span>.</p>
+<p>If none matches, the result of invoking the 
+<span class="param">orElse</span> function is
+returned. By default, when 
+<span class="param">orElse</span> is <code>null</code>, a <code>StateError</code> is
+thrown.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="fold">
+abstract dynamic <strong>fold</strong>(initialValue, combine(previousValue, <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#fold"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.fold">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Reduces a collection to a single value by iteratively combining each
+element of the collection with an existing value using the provided
+function.</p>
+<p>Use 
+<span class="param">initialValue</span> as the initial value, and the function 
+<span class="param">combine</span> to
+create a new value from the previous one and an element.</p>
+<p>Example of calculating the sum of an iterable:</p>
+<pre><code>iterable.fold(0, (prev, element) =&gt; prev + element);
+</code></pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="forEach">
+abstract void <strong>forEach</strong>(void f(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#forEach"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.forEach">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Applies the function 
+<span class="param">f</span> to each element of this collection.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="join">
+<button class="show-code">Code</button>
+String <strong>join</strong>([String separator = ""]) <a class="anchor-link" href="#join"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.join">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Converts each element to a <code>String</code> and concatenates the strings.</p>
+<p>Converts each element to a <code>String</code> by calling <code>Object.toString</code> on it.
+Then concatenates the strings, optionally separated by the 
+<span class="param">separator</span>
+string.</p>
+<pre class="source">
+String join([String separator = ""]) {
+ StringBuffer buffer = new StringBuffer();
+ buffer.writeAll(this, separator);
+ return buffer.toString();
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="lastWhere">
+abstract <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> <strong>lastWhere</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element), {<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> orElse()}) <a class="anchor-link" href="#lastWhere"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.lastWhere">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the last element that satisfies the given predicate 
+<span class="param">test</span>.</p>
+<p>If none matches, the result of invoking the 
+<span class="param">orElse</span> function is
+returned. By default, when 
+<span class="param">orElse</span> is <code>null</code>, a <code>StateError</code> is
+thrown.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="map">
+abstract Iterable <strong>map</strong>(f(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#map"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.map">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns a lazy <code>Iterable</code> where each element <code>e</code> of <code>this</code> is replaced
+by the result of <code>f(e)</code>.</p>
+<p>This method returns a view of the mapped elements. As long as the
+returned <code>Iterable</code> is not iterated over, the supplied function 
+<span class="param">f</span> will
+not be invoked. The transformed elements will not be cached. Iterating
+multiple times over the the returned <code>Iterable</code> will invoke the supplied
+function 
+<span class="param">f</span> multiple times on the same element.</p>
+</div>
+</div>
+<div class="method"><h4 id="mapValues">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">K</a>, dynamic, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">V</a> value)) <a class="anchor-link" href="#mapValues"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.mapValues">#</a></h4>
+<div class="doc">
+<pre class="source">
+Multimap&lt;K, dynamic, dynamic&gt; mapValues(mapFunc(V value)) =&gt;
+   delegate.mapValues(mapFunc);
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="reduce">
+abstract <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> <strong>reduce</strong>(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> combine(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> value, <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#reduce"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.reduce">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Reduces a collection to a single value by iteratively combining elements
+of the collection using the provided function.</p>
+<p>Example of calculating the sum of an iterable:</p>
+<pre><code>iterable.reduce((value, element) =&gt; value + element);
+</code></pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="singleWhere">
+abstract <a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> <strong>singleWhere</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#singleWhere"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.singleWhere">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns the single element that satisfies 
+<span class="param">test</span>. If no or more than one
+element match then a <code>StateError</code> is thrown.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="skip">
+abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>skip</strong>(int n) <a class="anchor-link" href="#skip"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.skip">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns an Iterable that skips the first 
+<span class="param">n</span> elements.</p>
+<p>If <code>this</code> has fewer than 
+<span class="param">n</span> elements, then the resulting Iterable is
+empty.</p>
+<p>It is an error if 
+<span class="param">n</span> is negative.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="skipWhile">
+abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>skipWhile</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> value)) <a class="anchor-link" href="#skipWhile"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.skipWhile">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns an Iterable that skips elements while 
+<span class="param">test</span> is satisfied.</p>
+<p>The filtering happens lazily. Every new Iterator of the returned
+Iterable iterates over all elements of <code>this</code>.</p>
+<p>As long as the iterator's elements satisfy 
+<span class="param">test</span> they are
+discarded. Once an element does not satisfy the 
+<span class="param">test</span> the iterator stops
+testing and uses every later element unconditionally. That is, the elements
+of the returned Iterable are the elements of <code>this</code> starting from the
+first element that does not satisfy 
+<span class="param">test</span>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="take">
+abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>take</strong>(int n) <a class="anchor-link" href="#take"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.take">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns an <code>Iterable</code> with at most 
+<span class="param">n</span> elements.</p>
+<p>The returned <code>Iterable</code> may contain fewer than 
+<span class="param">n</span> elements, if <code>this</code>
+contains fewer than 
+<span class="param">n</span> elements.</p>
+<p>It is an error if 
+<span class="param">n</span> is negative.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="takeWhile">
+abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>takeWhile</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> value)) <a class="anchor-link" href="#takeWhile"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.takeWhile">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns an Iterable that stops once 
+<span class="param">test</span> is not satisfied anymore.</p>
+<p>The filtering happens lazily. Every new Iterator of the returned
+Iterable starts iterating over the elements of <code>this</code>.</p>
+<p>When the iterator encounters an element <code>e</code> that does not satisfy 
+<span class="param">test</span>,
+it discards <code>e</code> and moves into the finished state. That is, it does not
+get or provide any more elements.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="toList">
+abstract List&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>toList</strong>({bool growable: true}) <a class="anchor-link" href="#toList"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.toList">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Creates a <code>List</code> containing the elements of this <code>Iterable</code>.</p>
+<p>The elements are in iteration order. The list is fixed-length
+if 
+<span class="param">growable</span> is false.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="toSet">
+abstract Set&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>toSet</strong>() <a class="anchor-link" href="#toSet"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.toSet">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Creates a <code>Set</code> containing the elements of this <code>Iterable</code>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="where">
+abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a>&gt; <strong>where</strong>(bool test(<a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">E</a> element)) <a class="anchor-link" href="#where"
+              title="Permalink to ForwardingMultimap&lt;K, V, I&gt;.where">#</a></h4>
+<div class="inherited-from">inherited from Iterable </div><div class="doc">
+<p>Returns a lazy <code>Iterable</code> with all elements that satisfy the
+predicate 
+<span class="param">test</span>.</p>
+<p>This method returns a view of the mapped elements. As long as the
+returned <code>Iterable</code> is not iterated over, the supplied function 
+<span class="param">test</span> will
+not be invoked. Iterating will not cache results, and thus iterating
+multiple times over the returned <code>Iterable</code> will invoke the supplied
+function 
+<span class="param">test</span> multiple times on the same element.</p>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

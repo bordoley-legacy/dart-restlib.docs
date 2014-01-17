@@ -95,7 +95,7 @@ Option&lt;ChallengeMessage&gt; get authorizationCredentials =&gt;
 </div>
 <div class="field"><h4 id="cacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
             href="#cacheDirectives"
             title="Permalink to ForwardingRequest&lt;T&gt;.cacheDirectives">#</a>
         </h4>
@@ -116,6 +116,18 @@ final <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <s
 <pre class="source">
 ContentInfo get contentInfo =&gt;
    delegate.contentInfo;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="customHeaders">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt;         <strong>customHeaders</strong> <a class="anchor-link"
+            href="#customHeaders"
+            title="Permalink to ForwardingRequest&lt;T&gt;.customHeaders">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.http/Request.html">Request</a> </div><div class="doc">
+<pre class="source">
+Dictionary&lt;Header, dynamic&gt; get customHeaders;
 </pre>
 </div>
 </div>
@@ -146,7 +158,7 @@ Option&lt;T&gt; get entity =&gt;
 </div>
 <div class="field"><h4 id="expectations">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
             href="#expectations"
             title="Permalink to ForwardingRequest&lt;T&gt;.expectations">#</a>
         </h4>
@@ -172,7 +184,7 @@ Method get method =&gt;
 </div>
 <div class="field"><h4 id="pragmaCacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
             href="#pragmaCacheDirectives"
             title="Permalink to ForwardingRequest&lt;T&gt;.pragmaCacheDirectives">#</a>
         </h4>

@@ -39,13 +39,15 @@ abstract class Multimap&lt;K,V, I extends Iterable&lt;V&gt;&gt; implements Assoc
  
  I call(K key);
  
+ Multimap&lt;K,V,I&gt; filterKeys(bool filterFunc(K key));
+ 
  Multimap&lt;K, dynamic, dynamic&gt; mapValues(mapFunc(V value));
 }
 </pre>
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/ForwardingMultimap.html">ForwardingMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/ImmutableMultimap.html">ImmutableMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MultisetMultimap.html">MultisetMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MutableMultimap.html">MutableMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/SetMultimap.html">SetMultimap&lt;K, V&gt;</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.forwarding/ForwardingMultimap.html">ForwardingMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableMultimap.html">ImmutableMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span>MultimapBase&lt;K, V, I&gt;</span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MultisetMultimap.html">MultisetMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.mutable/MutableMultimap.html">MutableMultimap&lt;K, V, I&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/SetMultimap.html">SetMultimap&lt;K, V&gt;</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span>Iterable&lt;Pair&lt;K, V&gt;&gt;</span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Associative.html">Associative&lt;K, V&gt;</a></span></p>
@@ -265,6 +267,12 @@ by
 <p>The returned <code>Iterable</code> is lazy, and calls 
 <span class="param">f</span> for each element
 of this every time it's iterated.</p>
+</div>
+</div>
+<div class="method"><h4 id="filterKeys">
+abstract <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections/Multimap.html">K</a>, <a href="../restlib.common.collections/Multimap.html">V</a>, <a href="../restlib.common.collections/Multimap.html">I</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections/Multimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+              title="Permalink to Multimap&lt;K, V, I&gt;.filterKeys">#</a></h4>
+<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="firstWhere">

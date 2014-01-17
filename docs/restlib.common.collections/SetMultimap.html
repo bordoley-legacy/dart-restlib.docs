@@ -40,7 +40,7 @@ abstract class SetMultimap&lt;K,V&gt; implements Multimap&lt;K,V,FiniteSet&lt;V&
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/ImmutableSetMultimap.html">ImmutableSetMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MutableSetMultimap.html">MutableSetMultimap&lt;K, V&gt;</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableSetMultimap.html">ImmutableSetMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.mutable/MutableSetMultimap.html">MutableSetMultimap&lt;K, V&gt;</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Multimap.html">Multimap&lt;K, V, FiniteSet&lt;V&gt;&gt;</a></span></p>
@@ -260,6 +260,12 @@ by
 <p>The returned <code>Iterable</code> is lazy, and calls 
 <span class="param">f</span> for each element
 of this every time it's iterated.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="filterKeys">
+abstract <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections/SetMultimap.html">K</a>, <a href="../restlib.common.collections/SetMultimap.html">V</a>, <a href="../restlib.common.collections/SetMultimap.html">I</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections/SetMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+              title="Permalink to SetMultimap&lt;K, V&gt;.filterKeys">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/Multimap.html">Multimap</a> </div><div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="firstWhere">

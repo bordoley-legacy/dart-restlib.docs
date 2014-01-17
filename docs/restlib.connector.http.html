@@ -120,10 +120,7 @@ Future processRequest(final HttpRequest serverRequest, Application applicationSu
          path: serverRequest.uri.path,
          query: serverRequest.uri.query));
  
- Iterable&lt;String&gt; getHeader(final Header header) =&gt;
-     firstNotNull(serverRequest.headers[header.toString()], Option.NONE);
- 
- final Request request = new Request.wrapHeaders(getHeader, method, requestUri);
+ final Request request = new Request.wrapHeaders(new _HeadersMultimap(serverRequest.headers) , method, requestUri);
  
  _logger.finest(request.toString());
  

@@ -34,7 +34,7 @@
 <div class="doc">
 <pre class="source">
 abstract class Request&lt;T&gt; {  
- factory Request.wrapHeaders(Iterable&lt;String&gt; headers(Header header), final Method method, final Uri requestUri) =&gt;
+ factory Request.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers, final Method method, final Uri requestUri) =&gt;
      new _HeadersRequestWrapper(headers, method, requestUri);
  
  Option&lt;ChallengeMessage&gt; get authorizationCredentials;
@@ -42,6 +42,9 @@ abstract class Request&lt;T&gt; {
  ContentInfo get contentInfo;
  Option&lt;T&gt; get entity;
  ImmutableSet&lt;Expectation&gt; get expectations;
+ 
+ Dictionary&lt;Header, dynamic&gt; get customHeaders;
+ 
  Method get method;
  ImmutableSet&lt;CacheDirective&gt; get pragmaCacheDirectives;
  RequestPreconditions get preconditions;
@@ -70,16 +73,16 @@ abstract class Request&lt;T&gt; {
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequest.html">ForwardingRequest&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestToString.html">RequestToString</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestWith_.html">RequestWith_</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequest.html">ForwardingRequest&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestMixin.html">RequestMixin</a></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="wrapHeaders">
 <button class="show-code">Code</button>
-factory <strong>Request.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header), <a href="../restlib.core.http/Method.html">Method</a> method, Uri requestUri) <a class="anchor-link" href="#wrapHeaders"
+factory <strong>Request.wrapHeaders</strong>(<a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String&gt; headers, <a href="../restlib.core.http/Method.html">Method</a> method, Uri requestUri) <a class="anchor-link" href="#wrapHeaders"
               title="Permalink to Request&lt;T&gt;.Request.wrapHeaders">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Request.wrapHeaders(Iterable&lt;String&gt; headers(Header header), final Method method, final Uri requestUri) =&gt;
+factory Request.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers, final Method method, final Uri requestUri) =&gt;
    new _HeadersRequestWrapper(headers, method, requestUri);
 </pre>
 </div>
@@ -101,7 +104,7 @@ Option&lt;ChallengeMessage&gt; get authorizationCredentials;
 </div>
 <div class="field"><h4 id="cacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
             href="#cacheDirectives"
             title="Permalink to Request&lt;T&gt;.cacheDirectives">#</a>
         </h4>
@@ -123,6 +126,18 @@ ContentInfo get contentInfo;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="customHeaders">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt;         <strong>customHeaders</strong> <a class="anchor-link"
+            href="#customHeaders"
+            title="Permalink to Request&lt;T&gt;.customHeaders">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Dictionary&lt;Header, dynamic&gt; get customHeaders;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="entity">
 <button class="show-code">Code</button>
 final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.http/Request.html">T</a>&gt;         <strong>entity</strong> <a class="anchor-link"
@@ -137,7 +152,7 @@ Option&lt;T&gt; get entity;
 </div>
 <div class="field"><h4 id="expectations">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
             href="#expectations"
             title="Permalink to Request&lt;T&gt;.expectations">#</a>
         </h4>
@@ -161,7 +176,7 @@ Method get method;
 </div>
 <div class="field"><h4 id="pragmaCacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
             href="#pragmaCacheDirectives"
             title="Permalink to Request&lt;T&gt;.pragmaCacheDirectives">#</a>
         </h4>

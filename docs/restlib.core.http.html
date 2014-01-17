@@ -137,6 +137,21 @@ final Parser&lt;Iterable&lt;Expectation&gt;&gt; EXPECT = EXPECTATION.sepBy(OWS_C
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="HEADER">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.http/Header.html">Header</a>&gt;         <strong>HEADER</strong> <a class="anchor-link"
+            href="#HEADER"
+            title="Permalink to HEADER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Header&gt; HEADER = 
+ TOKEN.map((final String token) =&gt;
+     // FIXME: For standard headers return the const instance ideally
+     new Header._internal(token.toLowerCase(), token))
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="IF_MATCH">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/EntityTag.html">EntityTag</a>&gt;&gt;         <strong>IF_MATCH</strong> <a class="anchor-link"
@@ -232,6 +247,12 @@ final Parser&lt;Iterable&lt;CacheDirective&gt;&gt; PRAGMA = CACHE_CONTROL
           
           <div class="type">
           <h4>
+            <a href="restlib.core.http/RequestMixin.html"><strong>RequestMixin</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
             <a href="restlib.core.http/RequestPreconditions.html"><strong>RequestPreconditions</strong></a>
           </h4>
           </div>
@@ -263,18 +284,6 @@ final Parser&lt;Iterable&lt;CacheDirective&gt;&gt; PRAGMA = CACHE_CONTROL
           <div class="type">
           <h4>
             <a href="restlib.core.http/RequestPreferencesWith_.html"><strong>RequestPreferencesWith_</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.core.http/RequestToString.html"><strong>RequestToString</strong></a>
-          </h4>
-          </div>
-          
-          <div class="type">
-          <h4>
-            <a href="restlib.core.http/RequestWith_.html"><strong>RequestWith_</strong></a>
           </h4>
           </div>
           

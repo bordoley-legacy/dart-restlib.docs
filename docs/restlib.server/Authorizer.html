@@ -40,10 +40,13 @@ abstract class Authorizer {
  ChallengeMessage get authenticationChallenge;
  String get scheme;
  
- Future&lt;bool&gt; authenticate(ChallengeMessage credentials) ;
+ Future&lt;bool&gt; authenticate(Request request) ;
 }
 </pre>
 </div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.server/ForwardingAuthorizer.html">ForwardingAuthorizer</a></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="basicAuth">
@@ -88,7 +91,7 @@ String get scheme;
 <div>
 <h3>Methods</h3>
 <div class="method"><h4 id="authenticate">
-abstract Future&lt;bool&gt; <strong>authenticate</strong>(<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> credentials) <a class="anchor-link" href="#authenticate"
+abstract Future&lt;bool&gt; <strong>authenticate</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#authenticate"
               title="Permalink to Authorizer.authenticate">#</a></h4>
 <div class="doc">
 </div>

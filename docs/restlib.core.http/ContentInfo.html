@@ -36,7 +36,7 @@
 abstract class ContentInfo {
  static const ContentInfo NONE = const _ContentInfoNone();
  
- factory ContentInfo.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+ factory ContentInfo.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
      new _HeadersContentInfoImpl(headers);
      
  // The encodings applied to the content in order.
@@ -89,11 +89,11 @@ static const ContentInfo NONE = const _ContentInfoNone()
 <h3>Constructors</h3>
 <div class="method"><h4 id="wrapHeaders">
 <button class="show-code">Code</button>
-factory <strong>ContentInfo.wrapHeaders</strong>(Iterable&lt;String&gt; headers(<a href="../restlib.core.http/Header.html">Header</a> header)) <a class="anchor-link" href="#wrapHeaders"
+factory <strong>ContentInfo.wrapHeaders</strong>(<a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String&gt; headers) <a class="anchor-link" href="#wrapHeaders"
               title="Permalink to ContentInfo.ContentInfo.wrapHeaders">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory ContentInfo.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =&gt;
+factory ContentInfo.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
    new _HeadersContentInfoImpl(headers);
 </pre>
 </div>
@@ -103,7 +103,7 @@ factory ContentInfo.wrapHeaders(Iterable&lt;String&gt; headers(Header header)) =
 <h3>Properties</h3>
 <div class="field"><h4 id="encodings">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>encodings</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>encodings</strong> <a class="anchor-link"
             href="#encodings"
             title="Permalink to ContentInfo.encodings">#</a>
         </h4>
@@ -115,7 +115,7 @@ ImmutableSequence&lt;ContentEncoding&gt; get encodings;
 </div>
 <div class="field"><h4 id="languages">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;         <strong>languages</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;         <strong>languages</strong> <a class="anchor-link"
             href="#languages"
             title="Permalink to ContentInfo.languages">#</a>
         </h4>
