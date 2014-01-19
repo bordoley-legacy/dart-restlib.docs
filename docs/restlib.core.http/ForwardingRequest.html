@@ -81,13 +81,13 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
  
  Request with_({
    final ChallengeMessage authorizationCredentials,
-   final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+   final Iterable&lt;CacheDirective&gt; cacheDirectives,
    final ContentInfo contentInfo,
-   final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+   final Dictionary&lt;Header, dynamic&gt; customHeaders,
    final entity,
-   final Iterable&lt;Expectation&gt; expectations : const [],
+   final Iterable&lt;Expectation&gt; expectations,
    final Method method,
-   final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+   final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives,
    final RequestPreconditions preconditions,
    final RequestPreferences preferences,
    final ChallengeMessage proxyAuthorizationCredentials,
@@ -359,19 +359,19 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives: const[] , <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders: Persistent.EMPTY_DICTIONARY, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations: const[] , <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives: const[] , <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, Uri uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, Uri uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequest&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
 Request with_({
  final ChallengeMessage authorizationCredentials,
- final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+ final Iterable&lt;CacheDirective&gt; cacheDirectives,
  final ContentInfo contentInfo,
- final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+ final Dictionary&lt;Header, dynamic&gt; customHeaders,
  final entity,
- final Iterable&lt;Expectation&gt; expectations : const [],
+ final Iterable&lt;Expectation&gt; expectations,
  final Method method,
- final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+ final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives,
  final RequestPreconditions preconditions,
  final RequestPreferences preferences,
  final ChallengeMessage proxyAuthorizationCredentials,

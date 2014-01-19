@@ -53,10 +53,10 @@ abstract class ForwardingRequestPreferences implements Forwarder, RequestPrefere
      _requestPreferencesToString(this);
  
  RequestPreferences with_({
-   final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets : const [],
-   final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings : const [],
-   final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages : const [],
-   final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges : const [],
+   final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets,
+   final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings,
+   final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages,
+   final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges,
    final Range range}) =&gt;
        _requestPreferencesWith(
            this,
@@ -183,15 +183,15 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; acceptedCharsets: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; acceptedEncodings: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; acceptedLanguages: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; acceptedMediaRanges: const[] , <a href="../restlib.core.data/Range.html">Range</a> range}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; acceptedCharsets, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; acceptedEncodings, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; acceptedLanguages, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; acceptedMediaRanges, <a href="../restlib.core.data/Range.html">Range</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequestPreferences.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
 RequestPreferences with_({
- final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets : const [],
- final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings : const [],
- final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages : const [],
- final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges : const [],
+ final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets,
+ final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings,
+ final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages,
+ final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges,
  final Range range}) =&gt;
      _requestPreferencesWith(
          this,

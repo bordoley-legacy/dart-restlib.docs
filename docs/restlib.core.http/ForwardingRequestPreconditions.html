@@ -53,9 +53,9 @@ abstract class ForwardingRequestPreconditions implements Forwarder, RequestPreco
      _requestPreconditionsToString(this);
  
  RequestPreconditions with_({
-   final Iterable&lt;EntityTag&gt; ifMatch : const [],
+   final Iterable&lt;EntityTag&gt; ifMatch,
    final DateTime ifModifiedSince,
-   final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+   final Iterable&lt;EntityTag&gt; ifNoneMatch,
    final Either&lt;EntityTag,DateTime&gt; ifRange,
    final DateTime ifUnmodifiedSince}) =&gt;
        _requestPreconditionsWith(
@@ -183,14 +183,14 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch: const[] , DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch: const[] , <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch, DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch, <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequestPreconditions.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
 RequestPreconditions with_({
- final Iterable&lt;EntityTag&gt; ifMatch : const [],
+ final Iterable&lt;EntityTag&gt; ifMatch,
  final DateTime ifModifiedSince,
- final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+ final Iterable&lt;EntityTag&gt; ifNoneMatch,
  final Either&lt;EntityTag,DateTime&gt; ifRange,
  final DateTime ifUnmodifiedSince}) =&gt;
      _requestPreconditionsWith(

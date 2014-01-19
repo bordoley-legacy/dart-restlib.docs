@@ -56,8 +56,8 @@ abstract class ForwardingContentInfo implements Forwarder, ContentInfo {
      _contentInfoToString(this);
  
  ContentInfo with_({
-   final Iterable&lt;ContentEncoding&gt; encodings : const[],
-   final Iterable&lt;Language&gt; languages : const[],
+   final Iterable&lt;ContentEncoding&gt; encodings,
+   final Iterable&lt;Language&gt; languages,
    final int length,
    final Uri location,
    final MediaRange mediaRange,
@@ -189,13 +189,13 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings: const[] , Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages: const[] , int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingContentInfo.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
 ContentInfo with_({
- final Iterable&lt;ContentEncoding&gt; encodings : const[],
- final Iterable&lt;Language&gt; languages : const[],
+ final Iterable&lt;ContentEncoding&gt; encodings,
+ final Iterable&lt;Language&gt; languages,
  final int length,
  final Uri location,
  final MediaRange mediaRange,
