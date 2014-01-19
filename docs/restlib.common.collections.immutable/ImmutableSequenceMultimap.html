@@ -34,10 +34,10 @@
 <div class="doc">
 <pre class="source">
 abstract class ImmutableSequenceMultimap&lt;K,V&gt; implements ImmutableMultimap&lt;K,V,Sequence&lt;V&gt;&gt;, SequenceMultimap&lt;K,V&gt; {      
- ImmutableSequenceMultimap&lt;K,V&gt; insertAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
- 
  ImmutableSequenceMultimap&lt;K,V&gt; insert(final K key, final V value);
- 
+ ImmutableSequenceMultimap&lt;K,V&gt; insertAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
+ ImmutableSequenceMultimap&lt;K,V&gt; insertAllFromMap(Map&lt;K, V&gt; map);
+ ImmutableSequenceMultimap&lt;K,V&gt; insertPair(Pair&lt;K, V&gt; pair);
  ImmutableSequenceMultimap&lt;K,V&gt; removeAt(final K key);
 }
 </pre>
@@ -318,16 +318,16 @@ abstract <a href="../restlib.common.collections.immutable/ImmutableSequenceMulti
 <div class="doc">
 </div>
 </div>
-<div class="method inherited"><h4 id="insertAllFromMap">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
+<div class="method"><h4 id="insertAllFromMap">
+abstract <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">ImmutableSequenceMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
               title="Permalink to ImmutableSequenceMultimap&lt;K, V&gt;.insertAllFromMap">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a> </div><div class="doc">
+<div class="doc">
 </div>
 </div>
-<div class="method inherited"><h4 id="insertPair">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
+<div class="method"><h4 id="insertPair">
+abstract <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">ImmutableSequenceMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequenceMultimap.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
               title="Permalink to ImmutableSequenceMultimap&lt;K, V&gt;.insertPair">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a> </div><div class="doc">
+<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="join">

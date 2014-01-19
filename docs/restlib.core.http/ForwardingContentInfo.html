@@ -34,10 +34,10 @@
 <div class="doc">
 <pre class="source">
 abstract class ForwardingContentInfo implements Forwarder, ContentInfo {
- ImmutableSequence&lt;ContentEncoding&gt; get encodings =&gt;
+ Sequence&lt;ContentEncoding&gt; get encodings =&gt;
      delegate.encodings;
  
- ImmutableSet&lt;Language&gt; get languages =&gt;
+ FiniteSet&lt;Language&gt; get languages =&gt;
      delegate.languages;
  
  Option&lt;int&gt; get length =&gt;
@@ -51,6 +51,27 @@ abstract class ForwardingContentInfo implements Forwarder, ContentInfo {
  
  Option&lt;ContentRange&gt; get range =&gt;
      delegate.range;
+ 
+ String toString() =&gt;
+     _contentInfoToString(this);
+ 
+ ContentInfo with_({
+   final Iterable&lt;ContentEncoding&gt; encodings : const[],
+   final Iterable&lt;Language&gt; languages : const[],
+   final int length,
+   final Uri location,
+   final MediaRange mediaRange,
+   final ContentRange range}) =&gt; 
+       _contentInfoWith(this, encodings, languages, length, location, mediaRange, range);
+ 
+ ContentInfo without({
+   final bool encodings: false,
+   final bool languages: false,
+   final bool length: false,
+   final bool location: false,
+   final bool mediaRange:  false,
+   final bool range : false}) =&gt;
+       _contentInfoWithout(this, encodings, languages, length, location, mediaRange, range);
 }
 </pre>
 </div>
@@ -73,26 +94,26 @@ dynamic get delegate;
 </div>
 <div class="field"><h4 id="encodings">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>encodings</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Sequence.html">Sequence</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;         <strong>encodings</strong> <a class="anchor-link"
             href="#encodings"
             title="Permalink to ForwardingContentInfo.encodings">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSequence&lt;ContentEncoding&gt; get encodings =&gt;
+Sequence&lt;ContentEncoding&gt; get encodings =&gt;
    delegate.encodings;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="languages">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;         <strong>languages</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;         <strong>languages</strong> <a class="anchor-link"
             href="#languages"
             title="Permalink to ForwardingContentInfo.languages">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Language&gt; get languages =&gt;
+FiniteSet&lt;Language&gt; get languages =&gt;
    delegate.languages;
 </pre>
 </div>
@@ -150,18 +171,54 @@ Option&lt;ContentRange&gt; get range =&gt;
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
-<div class="method inherited"><h4 id="with_">
-abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to ForwardingContentInfo.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   _contentInfoToString(this);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="with_">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings: const[] , Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages: const[] , int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingContentInfo.with_">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+ContentInfo with_({
+ final Iterable&lt;ContentEncoding&gt; encodings : const[],
+ final Iterable&lt;Language&gt; languages : const[],
+ final int length,
+ final Uri location,
+ final MediaRange mediaRange,
+ final ContentRange range}) =&gt; 
+     _contentInfoWith(this, encodings, languages, length, location, mediaRange, range);
+</pre>
 </div>
 </div>
-<div class="method inherited"><h4 id="without">
-abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>without</strong>({bool encodings: false, bool languages: false, bool length: false, bool location: false, bool mediaRange: false, bool range: false}) <a class="anchor-link" href="#without"
+<div class="method"><h4 id="without">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>without</strong>({bool encodings: false, bool languages: false, bool length: false, bool location: false, bool mediaRange: false, bool range: false}) <a class="anchor-link" href="#without"
               title="Permalink to ForwardingContentInfo.without">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+ContentInfo without({
+ final bool encodings: false,
+ final bool languages: false,
+ final bool length: false,
+ final bool location: false,
+ final bool mediaRange:  false,
+ final bool range : false}) =&gt;
+     _contentInfoWithout(this, encodings, languages, length, location, mediaRange, range);
+</pre>
 </div>
 </div>
 </div>

@@ -592,10 +592,7 @@ class Status {
  }
  
  Response toResponse() {
-   return (new ResponseBuilder()
-           ..status = this
-           ..entity = this.reason
-           ).build();
+   return new Response(this, entity : this.reason);
  }
  
  String toString() {
@@ -1694,10 +1691,7 @@ bool operator==(other) {
 <div class="doc">
 <pre class="source">
 Response toResponse() {
- return (new ResponseBuilder()
-         ..status = this
-         ..entity = this.reason
-         ).build();
+ return new Response(this, entity : this.reason);
 }
 </pre>
 </div>

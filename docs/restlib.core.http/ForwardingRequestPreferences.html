@@ -34,20 +34,51 @@
 <div class="doc">
 <pre class="source">
 abstract class ForwardingRequestPreferences implements Forwarder, RequestPreferences {
- ImmutableSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets =&gt;
+ FiniteSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets =&gt;
      delegate.acceptedCharsets;
  
- ImmutableSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings =&gt;
+ FiniteSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings =&gt;
      delegate.acceptedEncodings;
  
- ImmutableSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages =&gt;
+ FiniteSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages =&gt;
      delegate.acceptedLanguages;
  
- ImmutableSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges =&gt;
+ FiniteSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges =&gt;
      delegate.acceptedMediaRanges;
 
  Option&lt;Range&gt; get range =&gt;
      delegate.range;
+ 
+ String toString() =&gt;
+     _requestPreferencesToString(this);
+ 
+ RequestPreferences with_({
+   final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets : const [],
+   final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings : const [],
+   final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages : const [],
+   final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges : const [],
+   final Range range}) =&gt;
+       _requestPreferencesWith(
+           this,
+           acceptedCharsets, 
+           acceptedEncodings, 
+           acceptedLanguages, 
+           acceptedMediaRanges, 
+           range);
+ 
+ RequestPreferences without({
+   final bool acceptedCharsets : false,
+   final bool acceptedEncodings : false,
+   final bool acceptedLanguages : false,
+   final bool acceptedMediaRanges : false,
+   final bool range : false}) =&gt;
+       _requestPreferencesWithout(
+           this,
+           acceptedCharsets, 
+           acceptedEncodings, 
+           acceptedLanguages, 
+           acceptedMediaRanges, 
+           range); 
 }
 </pre>
 </div>
@@ -58,52 +89,52 @@ abstract class ForwardingRequestPreferences implements Forwarder, RequestPrefere
 <h3>Properties</h3>
 <div class="field"><h4 id="acceptedCharsets">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt;         <strong>acceptedCharsets</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt;         <strong>acceptedCharsets</strong> <a class="anchor-link"
             href="#acceptedCharsets"
             title="Permalink to ForwardingRequestPreferences.acceptedCharsets">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets =&gt;
+FiniteSet&lt;Preference&lt;Charset&gt;&gt; get acceptedCharsets =&gt;
    delegate.acceptedCharsets;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="acceptedEncodings">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt;         <strong>acceptedEncodings</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt;         <strong>acceptedEncodings</strong> <a class="anchor-link"
             href="#acceptedEncodings"
             title="Permalink to ForwardingRequestPreferences.acceptedEncodings">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings =&gt;
+FiniteSet&lt;Preference&lt;ContentEncoding&gt;&gt; get acceptedEncodings =&gt;
    delegate.acceptedEncodings;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="acceptedLanguages">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt;         <strong>acceptedLanguages</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt;         <strong>acceptedLanguages</strong> <a class="anchor-link"
             href="#acceptedLanguages"
             title="Permalink to ForwardingRequestPreferences.acceptedLanguages">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages =&gt;
+FiniteSet&lt;Preference&lt;Language&gt;&gt; get acceptedLanguages =&gt;
    delegate.acceptedLanguages;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="acceptedMediaRanges">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt;         <strong>acceptedMediaRanges</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt;         <strong>acceptedMediaRanges</strong> <a class="anchor-link"
             href="#acceptedMediaRanges"
             title="Permalink to ForwardingRequestPreferences.acceptedMediaRanges">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges =&gt;
+FiniteSet&lt;Preference&lt;MediaRange&gt;&gt; get acceptedMediaRanges =&gt;
    delegate.acceptedMediaRanges;
 </pre>
 </div>
@@ -134,12 +165,64 @@ Option&lt;Range&gt; get range =&gt;
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
-<div class="method inherited"><h4 id="with_">
-abstract <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; acceptedCharsets, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; acceptedEncodings, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; acceptedLanguages, Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; acceptedMediaRanges, <a href="../restlib.core.data/Range.html">Range</a> range}) <a class="anchor-link" href="#with_"
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to ForwardingRequestPreferences.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   _requestPreferencesToString(this);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="with_">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Charset.html">Charset</a>&gt;&gt; acceptedCharsets: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt;&gt; acceptedEncodings: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt;&gt; acceptedLanguages: const[] , Iterable&lt;<a href="../restlib.core.http/Preference.html">Preference</a>&lt;<a href="../restlib.core.data/MediaRange.html">MediaRange</a>&gt;&gt; acceptedMediaRanges: const[] , <a href="../restlib.core.data/Range.html">Range</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequestPreferences.with_">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+RequestPreferences with_({
+ final Iterable&lt;Preference&lt;Charset&gt;&gt; acceptedCharsets : const [],
+ final Iterable&lt;Preference&lt;ContentEncoding&gt;&gt; acceptedEncodings : const [],
+ final Iterable&lt;Preference&lt;Language&gt;&gt;  acceptedLanguages : const [],
+ final Iterable&lt;Preference&lt;MediaRange&gt;&gt; acceptedMediaRanges : const [],
+ final Range range}) =&gt;
+     _requestPreferencesWith(
+         this,
+         acceptedCharsets, 
+         acceptedEncodings, 
+         acceptedLanguages, 
+         acceptedMediaRanges, 
+         range);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="without">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> <strong>without</strong>({bool acceptedCharsets: false, bool acceptedEncodings: false, bool acceptedLanguages: false, bool acceptedMediaRanges: false, bool range: false}) <a class="anchor-link" href="#without"
+              title="Permalink to ForwardingRequestPreferences.without">#</a></h4>
+<div class="doc">
+<pre class="source">
+RequestPreferences without({
+ final bool acceptedCharsets : false,
+ final bool acceptedEncodings : false,
+ final bool acceptedLanguages : false,
+ final bool acceptedMediaRanges : false,
+ final bool range : false}) =&gt;
+     _requestPreferencesWithout(
+         this,
+         acceptedCharsets, 
+         acceptedEncodings, 
+         acceptedLanguages, 
+         acceptedMediaRanges, 
+         range);
+</pre>
 </div>
 </div>
 </div>

@@ -38,7 +38,7 @@ class Part&lt;T&gt; {
  final T entity;
  
  Part(final ContentInfo contentInfo, this.entity):
-     this.contentInfo = new _PartContentInfo(contentInfo) {
+     this.contentInfo = new _PartContentInfo(Persistent.EMPTY_DICTIONARY, contentInfo) {
    checkNotNull(contentInfo);
    checkNotNull(entity);
  }
@@ -60,7 +60,7 @@ only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 Part(final ContentInfo contentInfo, this.entity):
-   this.contentInfo = new _PartContentInfo(contentInfo) {
+   this.contentInfo = new _PartContentInfo(Persistent.EMPTY_DICTIONARY, contentInfo) {
  checkNotNull(contentInfo);
  checkNotNull(entity);
 }

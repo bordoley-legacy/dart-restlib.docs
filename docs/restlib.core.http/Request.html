@@ -34,30 +34,73 @@
 <div class="doc">
 <pre class="source">
 abstract class Request&lt;T&gt; {  
- factory Request.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers, final Method method, final Uri requestUri) =&gt;
-     new _HeadersRequestWrapper(headers, method, requestUri);
+ factory Request(final Method method, final uri, {
+   final ChallengeMessage authorizationCredentials,
+   final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+   final ContentInfo contentInfo,
+   final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+   final T entity,
+   final Iterable&lt;Expectation&gt; expectations : const [],
+   final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+   final RequestPreconditions preconditions,    
+   final RequestPreferences preferences,
+   final ChallengeMessage proxyAuthorizationCredentials,
+   final Uri referer,    
+   final UserAgent userAgent}) =&gt;
+       new _RequestImpl(
+           new Option(authorizationCredentials),
+           Persistent.EMPTY_SET.addAll(cacheDirectives),
+           firstNotNull(contentInfo, ContentInfo.NONE),
+           Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+           new Option(entity),
+           Persistent.EMPTY_SET.addAll(expectations),
+           method,
+           Persistent.EMPTY_SET.addAll(pragmaCacheDirectives),
+           firstNotNull(preconditions, RequestPreconditions.NONE),
+           firstNotNull(preferences, RequestPreferences.NONE),
+           new Option(proxyAuthorizationCredentials),
+           new Option(referer),
+           uri,
+           new Option(userAgent));
+ 
+ factory Request.wrapHeaders(final Method method, final Uri uri, final Multimap&lt;Header, String, dynamic&gt; headers) =&gt;
+     new _HeadersRequestWrapper(headers, method, uri);
  
  Option&lt;ChallengeMessage&gt; get authorizationCredentials;
- ImmutableSet&lt;CacheDirective&gt; get cacheDirectives;
+ 
+ FiniteSet&lt;CacheDirective&gt; get cacheDirectives;
+ 
  ContentInfo get contentInfo;
- Option&lt;T&gt; get entity;
- ImmutableSet&lt;Expectation&gt; get expectations;
  
  Dictionary&lt;Header, dynamic&gt; get customHeaders;
  
+ Option&lt;T&gt; get entity;
+ 
+ FiniteSet&lt;Expectation&gt; get expectations;
+
  Method get method;
- ImmutableSet&lt;CacheDirective&gt; get pragmaCacheDirectives;
+ 
+ FiniteSet&lt;CacheDirective&gt; get pragmaCacheDirectives;
+ 
  RequestPreconditions get preconditions;
+ 
  RequestPreferences get preferences;
+ 
  Option&lt;ChallengeMessage&gt; get proxyAuthorizationCredentials;
+ 
  Option&lt;Uri&gt; get referer;
+ 
  Uri get uri;
+ 
  Option&lt;UserAgent&gt; get userAgent;
+ 
+ String toString();
  
  Request with_({
    ChallengeMessage authorizationCredentials,
    Iterable&lt;CacheDirective&gt; cacheDirectives,
    ContentInfo contentInfo,
+   Dictionary&lt;Header, dynamic&gt; customHeaders,
    entity,
    Iterable&lt;Expectation&gt; expectations,
    Method method,
@@ -68,22 +111,79 @@ abstract class Request&lt;T&gt; {
    Uri referer,
    Uri uri,
    UserAgent userAgent});
+ 
+ Request without({
+   bool authorizationCredentials : false,
+   bool cacheDirectives : false,
+   bool contentInfo : false,
+   bool customHeaders : false,
+   bool entity : false,
+   bool expectations : false,
+   bool pragmaCacheDirectives : false,
+   bool preconditions : false,
+   bool preferences : false,
+   bool proxyAuthorizationCredentials : false,
+   bool referer : false,
+   bool userAgent : false});
 }
 </pre>
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequest.html">ForwardingRequest&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestMixin.html">RequestMixin</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequest.html">ForwardingRequest&lt;T&gt;</a></span></p>
 <div>
 <h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>Request</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, uri, {<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives: const[] , <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders: Persistent.EMPTY_DICTIONARY, <a href="../restlib.core.http/Request.html">T</a> entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations: const[] , Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives: const[] , <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#"
+              title="Permalink to Request&lt;T&gt;.Request">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory Request(final Method method, final uri, {
+ final ChallengeMessage authorizationCredentials,
+ final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+ final ContentInfo contentInfo,
+ final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+ final T entity,
+ final Iterable&lt;Expectation&gt; expectations : const [],
+ final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+ final RequestPreconditions preconditions,    
+ final RequestPreferences preferences,
+ final ChallengeMessage proxyAuthorizationCredentials,
+ final Uri referer,    
+ final UserAgent userAgent}) =&gt;
+     new _RequestImpl(
+         new Option(authorizationCredentials),
+         Persistent.EMPTY_SET.addAll(cacheDirectives),
+         firstNotNull(contentInfo, ContentInfo.NONE),
+         Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+         new Option(entity),
+         Persistent.EMPTY_SET.addAll(expectations),
+         method,
+         Persistent.EMPTY_SET.addAll(pragmaCacheDirectives),
+         firstNotNull(preconditions, RequestPreconditions.NONE),
+         firstNotNull(preferences, RequestPreferences.NONE),
+         new Option(proxyAuthorizationCredentials),
+         new Option(referer),
+         uri,
+         new Option(userAgent));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="wrapHeaders">
 <button class="show-code">Code</button>
-factory <strong>Request.wrapHeaders</strong>(<a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String&gt; headers, <a href="../restlib.core.http/Method.html">Method</a> method, Uri requestUri) <a class="anchor-link" href="#wrapHeaders"
+factory <strong>Request.wrapHeaders</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, Uri uri, <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String, dynamic&gt; headers) <a class="anchor-link" href="#wrapHeaders"
               title="Permalink to Request&lt;T&gt;.Request.wrapHeaders">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Request.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers, final Method method, final Uri requestUri) =&gt;
-   new _HeadersRequestWrapper(headers, method, requestUri);
+factory Request.wrapHeaders(final Method method, final Uri uri, final Multimap&lt;Header, String, dynamic&gt; headers) =&gt;
+   new _HeadersRequestWrapper(headers, method, uri);
 </pre>
 </div>
 </div>
@@ -104,13 +204,13 @@ Option&lt;ChallengeMessage&gt; get authorizationCredentials;
 </div>
 <div class="field"><h4 id="cacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
             href="#cacheDirectives"
             title="Permalink to Request&lt;T&gt;.cacheDirectives">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;CacheDirective&gt; get cacheDirectives;
+FiniteSet&lt;CacheDirective&gt; get cacheDirectives;
 </pre>
 </div>
 </div>
@@ -152,13 +252,13 @@ Option&lt;T&gt; get entity;
 </div>
 <div class="field"><h4 id="expectations">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt;         <strong>expectations</strong> <a class="anchor-link"
             href="#expectations"
             title="Permalink to Request&lt;T&gt;.expectations">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Expectation&gt; get expectations;
+FiniteSet&lt;Expectation&gt; get expectations;
 </pre>
 </div>
 </div>
@@ -176,13 +276,13 @@ Method get method;
 </div>
 <div class="field"><h4 id="pragmaCacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>pragmaCacheDirectives</strong> <a class="anchor-link"
             href="#pragmaCacheDirectives"
             title="Permalink to Request&lt;T&gt;.pragmaCacheDirectives">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;CacheDirective&gt; get pragmaCacheDirectives;
+FiniteSet&lt;CacheDirective&gt; get pragmaCacheDirectives;
 </pre>
 </div>
 </div>
@@ -261,9 +361,24 @@ Option&lt;UserAgent&gt; get userAgent;
 </div>
 <div>
 <h3>Methods</h3>
+<div class="method"><h4 id="toString">
+abstract String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Request&lt;T&gt;.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+</div>
+</div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, Uri uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, Uri uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
               title="Permalink to Request&lt;T&gt;.with_">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="without">
+abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>without</strong>({bool authorizationCredentials: false, bool cacheDirectives: false, bool contentInfo: false, bool customHeaders: false, bool entity: false, bool expectations: false, bool pragmaCacheDirectives: false, bool preconditions: false, bool preferences: false, bool proxyAuthorizationCredentials: false, bool referer: false, bool userAgent: false}) <a class="anchor-link" href="#without"
+              title="Permalink to Request&lt;T&gt;.without">#</a></h4>
 <div class="doc">
 </div>
 </div>

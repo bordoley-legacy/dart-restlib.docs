@@ -36,28 +36,59 @@
 abstract class RequestPreconditions {
  static const RequestPreconditions NONE = const _RequestPreconditionsNone();
  
- factory RequestPreconditions.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
+ factory RequestPreconditions({
+   final Iterable&lt;EntityTag&gt; ifMatch : const [],
+   final DateTime ifModifiedSince,
+   final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+   final Either&lt;EntityTag,DateTime&gt; ifRange,
+   final DateTime ifUnmodifiedSince}) {
+   
+   if (isNull(ifMatch) &amp;&amp; isNull(ifModifiedSince) &amp;&amp; isNull(ifNoneMatch) &amp;&amp; isNull(ifRange) &amp;&amp; isNull(ifUnmodifiedSince)) {
+     return RequestPreconditions.NONE;
+   }
+
+   return new _RequestPreconditionsImpl(
+       Persistent.EMPTY_SET.addAll(ifMatch), 
+       new Option(ifModifiedSince), 
+       Persistent.EMPTY_SET.addAll(ifNoneMatch), 
+       new Option(ifRange), 
+       new Option(ifUnmodifiedSince));   
+ }
+ 
+ factory RequestPreconditions.wrapHeaders(final Multimap&lt;Header, String, dynamic&gt; headers) =&gt;
      new _HeadersRequestPreconditionsImpl(headers);
  
- ImmutableSet&lt;EntityTag&gt; get ifMatch;
+ FiniteSet&lt;EntityTag&gt; get ifMatch;
+
  Option&lt;DateTime&gt; get ifModifiedSince;
  
- ImmutableSet&lt;EntityTag&gt; get ifNoneMatch;
+ FiniteSet&lt;EntityTag&gt; get ifNoneMatch;
+ 
  Option&lt;Either&lt;EntityTag,DateTime&gt;&gt; get ifRange;
+ 
  Option&lt;DateTime&gt; get ifUnmodifiedSince;
  
+ String toString();
+ 
  RequestPreconditions with_({
-   Iterable&lt;EntityTag&gt; ifMatch,
+   Iterable&lt;EntityTag&gt; ifMatch : const [],
    DateTime ifModifiedSince,
-   Iterable&lt;EntityTag&gt; ifNoneMatch,
+   Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
    Either&lt;EntityTag,DateTime&gt; ifRange,
-   DateTime ifUnmodifiedSince});                             
+   DateTime ifUnmodifiedSince}); 
+ 
+ RequestPreconditions without({
+   bool ifMatch : false,
+   bool ifModifiedSince : false,
+   bool ifNoneMatch : false,
+   bool ifRange : false,
+   bool ifUnmodifiedSince : false}); 
 }
 </pre>
 </div>
 <h3>Subclasses</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequestPreconditions.html">ForwardingRequestPreconditions</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestPreconditionsToString.html">RequestPreconditionsToString</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/RequestPreconditionsWith_.html">RequestPreconditionsWith_</a></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.http/ForwardingRequestPreconditions.html">ForwardingRequestPreconditions</a></span></p>
 <div>
 <h3>Static Properties</h3>
 <div class="field"><h4 id="NONE">
@@ -75,13 +106,46 @@ static const RequestPreconditions NONE = const _RequestPreconditionsNone()
 </div>
 <div>
 <h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>RequestPreconditions</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch: const[] , DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch: const[] , <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#"
+              title="Permalink to RequestPreconditions.RequestPreconditions">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory RequestPreconditions({
+ final Iterable&lt;EntityTag&gt; ifMatch : const [],
+ final DateTime ifModifiedSince,
+ final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+ final Either&lt;EntityTag,DateTime&gt; ifRange,
+ final DateTime ifUnmodifiedSince}) {
+ 
+ if (isNull(ifMatch) &amp;&amp; isNull(ifModifiedSince) &amp;&amp; isNull(ifNoneMatch) &amp;&amp; isNull(ifRange) &amp;&amp; isNull(ifUnmodifiedSince)) {
+   return RequestPreconditions.NONE;
+ }
+
+ return new _RequestPreconditionsImpl(
+     Persistent.EMPTY_SET.addAll(ifMatch), 
+     new Option(ifModifiedSince), 
+     Persistent.EMPTY_SET.addAll(ifNoneMatch), 
+     new Option(ifRange), 
+     new Option(ifUnmodifiedSince));   
+}
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="wrapHeaders">
 <button class="show-code">Code</button>
-factory <strong>RequestPreconditions.wrapHeaders</strong>(<a href="../restlib.common.collections/SequenceMultimap.html">SequenceMultimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String&gt; headers) <a class="anchor-link" href="#wrapHeaders"
+factory <strong>RequestPreconditions.wrapHeaders</strong>(<a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, String, dynamic&gt; headers) <a class="anchor-link" href="#wrapHeaders"
               title="Permalink to RequestPreconditions.RequestPreconditions.wrapHeaders">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory RequestPreconditions.wrapHeaders(final SequenceMultimap&lt;Header, String&gt; headers) =&gt;
+factory RequestPreconditions.wrapHeaders(final Multimap&lt;Header, String, dynamic&gt; headers) =&gt;
    new _HeadersRequestPreconditionsImpl(headers);
 </pre>
 </div>
@@ -91,13 +155,13 @@ factory RequestPreconditions.wrapHeaders(final SequenceMultimap&lt;Header, Strin
 <h3>Properties</h3>
 <div class="field"><h4 id="ifMatch">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifMatch</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifMatch</strong> <a class="anchor-link"
             href="#ifMatch"
             title="Permalink to RequestPreconditions.ifMatch">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;EntityTag&gt; get ifMatch;
+FiniteSet&lt;EntityTag&gt; get ifMatch;
 </pre>
 </div>
 </div>
@@ -115,13 +179,13 @@ Option&lt;DateTime&gt; get ifModifiedSince;
 </div>
 <div class="field"><h4 id="ifNoneMatch">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifNoneMatch</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt;         <strong>ifNoneMatch</strong> <a class="anchor-link"
             href="#ifNoneMatch"
             title="Permalink to RequestPreconditions.ifNoneMatch">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;EntityTag&gt; get ifNoneMatch;
+FiniteSet&lt;EntityTag&gt; get ifNoneMatch;
 </pre>
 </div>
 </div>
@@ -152,9 +216,24 @@ Option&lt;DateTime&gt; get ifUnmodifiedSince;
 </div>
 <div>
 <h3>Methods</h3>
+<div class="method"><h4 id="toString">
+abstract String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to RequestPreconditions.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+</div>
+</div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch, DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch, <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch: const[] , DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch: const[] , <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#with_"
               title="Permalink to RequestPreconditions.with_">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="without">
+abstract <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> <strong>without</strong>({bool ifMatch: false, bool ifModifiedSince: false, bool ifNoneMatch: false, bool ifRange: false, bool ifUnmodifiedSince: false}) <a class="anchor-link" href="#without"
+              title="Permalink to RequestPreconditions.without">#</a></h4>
 <div class="doc">
 </div>
 </div>

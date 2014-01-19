@@ -34,19 +34,19 @@
 <div class="doc">
 <pre class="source">
 abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&gt; {
- ImmutableSet&lt;RangeUnit&gt; get acceptedRangeUnits =&gt;
+ FiniteSet&lt;RangeUnit&gt; get acceptedRangeUnits =&gt;
      delegate.acceptedRangeUnits;
  
  Option&lt;int&gt; get age =&gt;
      delegate.age;
  
- ImmutableSet&lt;Method&gt; get allowedMethods =&gt;
+ FiniteSet&lt;Method&gt; get allowedMethods =&gt;
      delegate.allowedMethods;
  
- ImmutableSet&lt;ChallengeMessage&gt; get authenticationChallenges =&gt;
+ FiniteSet&lt;ChallengeMessage&gt; get authenticationChallenges =&gt;
      delegate.authenticationChallenges;
  
- ImmutableSet&lt;CacheDirective&gt; get cacheDirectives =&gt;
+ FiniteSet&lt;CacheDirective&gt; get cacheDirectives =&gt;
      delegate.cacheDirectives;
  
  ContentInfo get contentInfo =&gt;
@@ -70,7 +70,7 @@ abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&g
  Option&lt;Uri&gt; get location =&gt;
      delegate.location;
  
- ImmutableSet&lt;ChallengeMessage&gt; get proxyAuthenticationChallenges =&gt;
+ FiniteSet&lt;ChallengeMessage&gt; get proxyAuthenticationChallenges =&gt;
      delegate.proxyAuthenticationChallenges;
  
  Option&lt;DateTime&gt; get retryAfter =&gt;
@@ -82,11 +82,96 @@ abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&g
  Status get status =&gt;
      delegate.status;
  
- ImmutableSet&lt;Header&gt; get vary =&gt;
+ FiniteSet&lt;Header&gt; get vary =&gt;
      delegate.vary;
  
- ImmutableSequence&lt;Warning&gt; get warnings =&gt;
+ Sequence&lt;Warning&gt; get warnings =&gt;
      delegate.warnings;
+ 
+ String toString() =&gt;
+     _responseToString(this);
+ 
+ Response with_({
+   final Iterable&lt;RangeUnit&gt; acceptedRangeUnits : const [],
+   final int age,
+   final Iterable&lt;Method&gt; allowedMethods : const [],
+   final Iterable&lt;ChallengeMessage&gt; authenticationChallenges : const [],
+   final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+   final ContentInfo contentInfo,
+   final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+   final DateTime date,
+   final entity,
+   final EntityTag entityTag,
+   final DateTime expires,
+   final DateTime lastModified,
+   final Uri location,
+   final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges : const [],
+   final DateTime retryAfter,
+   final UserAgent server,
+   final Status status,
+   final Iterable&lt;Header&gt; vary : const [],
+   final Iterable&lt;Warning&gt; warnings : const []}) =&gt;
+       _responseWith(
+           this, 
+           acceptedRangeUnits, 
+           age, 
+           allowedMethods, 
+           authenticationChallenges, 
+           cacheDirectives, 
+           contentInfo, 
+           customHeaders,
+           date,
+           entity,
+           entityTag,
+           expires,
+           lastModified,
+           location,
+           proxyAuthenticationChallenges,
+           retryAfter,
+           server,
+           status,
+           vary,
+           warnings);
+ 
+ Response without({
+   final bool acceptedRangeUnits : false,
+   final bool age : false,
+   final bool allowedMethods : false,
+   final bool authenticationChallenges : false,
+   final bool cacheDirectives : false,
+   final bool contentInfo : false,
+   final bool customHeaders : false,
+   final bool date : false,
+   final bool entity : false,
+   final bool entityTag : false,
+   final bool expires : false,
+   final bool lastModified : false,
+   final bool location : false,
+   final bool proxyAuthenticationChallenges : false,
+   final bool retryAfter : false,
+   final bool server : false,
+   final bool vary : false,
+   final bool warnings : false}) =&gt;
+       _responseWithout(
+           this, 
+           acceptedRangeUnits, 
+           age, 
+           allowedMethods, 
+           authenticationChallenges, 
+           cacheDirectives, 
+           contentInfo, 
+           customHeaders,
+           date,
+           entity,
+           entityTag,
+           expires,
+           lastModified,
+           location,
+           proxyAuthenticationChallenges,
+           retryAfter,
+           server,
+           vary,
+           warnings);
 }
 </pre>
 </div>
@@ -97,13 +182,13 @@ abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&g
 <h3>Properties</h3>
 <div class="field"><h4 id="acceptedRangeUnits">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt;         <strong>acceptedRangeUnits</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt;         <strong>acceptedRangeUnits</strong> <a class="anchor-link"
             href="#acceptedRangeUnits"
             title="Permalink to ForwardingResponse&lt;T&gt;.acceptedRangeUnits">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;RangeUnit&gt; get acceptedRangeUnits =&gt;
+FiniteSet&lt;RangeUnit&gt; get acceptedRangeUnits =&gt;
    delegate.acceptedRangeUnits;
 </pre>
 </div>
@@ -123,39 +208,39 @@ Option&lt;int&gt; get age =&gt;
 </div>
 <div class="field"><h4 id="allowedMethods">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt;         <strong>allowedMethods</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt;         <strong>allowedMethods</strong> <a class="anchor-link"
             href="#allowedMethods"
             title="Permalink to ForwardingResponse&lt;T&gt;.allowedMethods">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Method&gt; get allowedMethods =&gt;
+FiniteSet&lt;Method&gt; get allowedMethods =&gt;
    delegate.allowedMethods;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="authenticationChallenges">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt;         <strong>authenticationChallenges</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt;         <strong>authenticationChallenges</strong> <a class="anchor-link"
             href="#authenticationChallenges"
             title="Permalink to ForwardingResponse&lt;T&gt;.authenticationChallenges">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;ChallengeMessage&gt; get authenticationChallenges =&gt;
+FiniteSet&lt;ChallengeMessage&gt; get authenticationChallenges =&gt;
    delegate.authenticationChallenges;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="cacheDirectives">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt;         <strong>cacheDirectives</strong> <a class="anchor-link"
             href="#cacheDirectives"
             title="Permalink to ForwardingResponse&lt;T&gt;.cacheDirectives">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;CacheDirective&gt; get cacheDirectives =&gt;
+FiniteSet&lt;CacheDirective&gt; get cacheDirectives =&gt;
    delegate.cacheDirectives;
 </pre>
 </div>
@@ -170,6 +255,18 @@ final <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <s
 <pre class="source">
 ContentInfo get contentInfo =&gt;
    delegate.contentInfo;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="customHeaders">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt;         <strong>customHeaders</strong> <a class="anchor-link"
+            href="#customHeaders"
+            title="Permalink to ForwardingResponse&lt;T&gt;.customHeaders">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.http/Response.html">Response</a> </div><div class="doc">
+<pre class="source">
+Dictionary&lt;Header, dynamic&gt; get customHeaders;
 </pre>
 </div>
 </div>
@@ -265,13 +362,13 @@ Option&lt;Uri&gt; get location =&gt;
 </div>
 <div class="field"><h4 id="proxyAuthenticationChallenges">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt;         <strong>proxyAuthenticationChallenges</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt;         <strong>proxyAuthenticationChallenges</strong> <a class="anchor-link"
             href="#proxyAuthenticationChallenges"
             title="Permalink to ForwardingResponse&lt;T&gt;.proxyAuthenticationChallenges">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;ChallengeMessage&gt; get proxyAuthenticationChallenges =&gt;
+FiniteSet&lt;ChallengeMessage&gt; get proxyAuthenticationChallenges =&gt;
    delegate.proxyAuthenticationChallenges;
 </pre>
 </div>
@@ -317,37 +414,143 @@ Status get status =&gt;
 </div>
 <div class="field"><h4 id="vary">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt;         <strong>vary</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt;         <strong>vary</strong> <a class="anchor-link"
             href="#vary"
             title="Permalink to ForwardingResponse&lt;T&gt;.vary">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSet&lt;Header&gt; get vary =&gt;
+FiniteSet&lt;Header&gt; get vary =&gt;
    delegate.vary;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="warnings">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt;         <strong>warnings</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Sequence.html">Sequence</a>&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt;         <strong>warnings</strong> <a class="anchor-link"
             href="#warnings"
             title="Permalink to ForwardingResponse&lt;T&gt;.warnings">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-ImmutableSequence&lt;Warning&gt; get warnings =&gt;
+Sequence&lt;Warning&gt; get warnings =&gt;
    delegate.warnings;
 </pre>
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
-<div class="method inherited"><h4 id="with_">
-abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, Uri location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#with_"
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to ForwardingResponse&lt;T&gt;.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   _responseToString(this);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="with_">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits: const[] , int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods: const[] , Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges: const[] , Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives: const[] , <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders: Persistent.EMPTY_DICTIONARY, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, Uri location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges: const[] , DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary: const[] , Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings: const[] }) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingResponse&lt;T&gt;.with_">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.core.http/Response.html">Response</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+Response with_({
+ final Iterable&lt;RangeUnit&gt; acceptedRangeUnits : const [],
+ final int age,
+ final Iterable&lt;Method&gt; allowedMethods : const [],
+ final Iterable&lt;ChallengeMessage&gt; authenticationChallenges : const [],
+ final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+ final ContentInfo contentInfo,
+ final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+ final DateTime date,
+ final entity,
+ final EntityTag entityTag,
+ final DateTime expires,
+ final DateTime lastModified,
+ final Uri location,
+ final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges : const [],
+ final DateTime retryAfter,
+ final UserAgent server,
+ final Status status,
+ final Iterable&lt;Header&gt; vary : const [],
+ final Iterable&lt;Warning&gt; warnings : const []}) =&gt;
+     _responseWith(
+         this, 
+         acceptedRangeUnits, 
+         age, 
+         allowedMethods, 
+         authenticationChallenges, 
+         cacheDirectives, 
+         contentInfo, 
+         customHeaders,
+         date,
+         entity,
+         entityTag,
+         expires,
+         lastModified,
+         location,
+         proxyAuthenticationChallenges,
+         retryAfter,
+         server,
+         status,
+         vary,
+         warnings);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="without">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a> <strong>without</strong>({bool acceptedRangeUnits: false, bool age: false, bool allowedMethods: false, bool authenticationChallenges: false, bool cacheDirectives: false, bool contentInfo: false, bool customHeaders: false, bool date: false, bool entity: false, bool entityTag: false, bool expires: false, bool lastModified: false, bool location: false, bool proxyAuthenticationChallenges: false, bool retryAfter: false, bool server: false, bool vary: false, bool warnings: false}) <a class="anchor-link" href="#without"
+              title="Permalink to ForwardingResponse&lt;T&gt;.without">#</a></h4>
+<div class="doc">
+<pre class="source">
+Response without({
+ final bool acceptedRangeUnits : false,
+ final bool age : false,
+ final bool allowedMethods : false,
+ final bool authenticationChallenges : false,
+ final bool cacheDirectives : false,
+ final bool contentInfo : false,
+ final bool customHeaders : false,
+ final bool date : false,
+ final bool entity : false,
+ final bool entityTag : false,
+ final bool expires : false,
+ final bool lastModified : false,
+ final bool location : false,
+ final bool proxyAuthenticationChallenges : false,
+ final bool retryAfter : false,
+ final bool server : false,
+ final bool vary : false,
+ final bool warnings : false}) =&gt;
+     _responseWithout(
+         this, 
+         acceptedRangeUnits, 
+         age, 
+         allowedMethods, 
+         authenticationChallenges, 
+         cacheDirectives, 
+         contentInfo, 
+         customHeaders,
+         date,
+         entity,
+         entityTag,
+         expires,
+         lastModified,
+         location,
+         proxyAuthenticationChallenges,
+         retryAfter,
+         server,
+         vary,
+         warnings);
+</pre>
 </div>
 </div>
 </div>
