@@ -127,6 +127,18 @@ final RuneMatcher HOST_PORT =
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="HTTP_DATE_TIME">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;DateTime&gt;         <strong>HTTP_DATE_TIME</strong> <a class="anchor-link"
+            href="#HTTP_DATE_TIME"
+            title="Permalink to HTTP_DATE_TIME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;DateTime&gt; HTTP_DATE_TIME = _IMF_FIX_DATE
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="OBS_TEXT">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>OBS_TEXT</strong> <a class="anchor-link"
@@ -352,9 +364,9 @@ String <strong>encodeWord</strong>(String val) <a class="anchor-link" href="#enc
               title="Permalink to encodeWord">#</a></h4>
 <div class="doc">
 <pre class="source">
-String encodeWord(String val){
- return val;
-}
+String encodeWord(final String val) =&gt;
+   TOKEN.parse(val).orCompute(() =&gt; 
+       encodeQuotedString(val));
 </pre>
 </div>
 </div>
@@ -364,8 +376,39 @@ String <strong>encodeQuotedString</strong>(String val) <a class="anchor-link" hr
               title="Permalink to encodeQuotedString">#</a></h4>
 <div class="doc">
 <pre class="source">
-String encodeQuotedString(String val){
- return val;
+String encodeQuotedString(final String val) {
+ final StringBuffer retval = new StringBuffer(val.length * 2 + 2);
+ 
+ void write(final int codepoint) =&gt;
+     retval.write(new String.fromCharCode(codepoint));
+ 
+ write(_DQUOTE_CHAR);
+ 
+ new IterableString(val).forEach((final int codepoint) {
+   if(QD_TEXT.matches(codepoint)) {
+     write(codepoint);
+   } else if (codepoint == _DQUOTE_CHAR || codepoint == _ESCAPE_CHAR) {
+     write(_ESCAPE_CHAR);
+     write(codepoint);
+   } else {
+     throw new ArgumentError("val includes the character $codepoint which cannot be included in a quoted string");
+   }
+ });
+ 
+ return retval.toString();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toHttpDate">
+<button class="show-code">Code</button>
+String <strong>toHttpDate</strong>(DateTime dateTime) <a class="anchor-link" href="#toHttpDate"
+              title="Permalink to toHttpDate">#</a></h4>
+<div class="doc">
+<pre class="source">
+String toHttpDate(final DateTime dateTime) {
+ final DateTime utc = dateTime.toUtc();
+ return "${_day(utc)}, ${_twoDigit(utc.day)} ${_month(utc)} ${utc.year} ${_twoDigit(utc.hour)}:${_twoDigit(utc.minute)}:${_twoDigit(utc.second)} GMT";
 }
 </pre>
 </div>
