@@ -36,12 +36,12 @@
 abstract class Request&lt;T&gt; {  
  factory Request(final Method method, final uri, {
    final ChallengeMessage authorizationCredentials,
-   final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+   final Iterable&lt;CacheDirective&gt; cacheDirectives,
    final ContentInfo contentInfo,
-   final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+   final Dictionary&lt;Header, dynamic&gt; customHeaders,
    final T entity,
-   final Iterable&lt;Expectation&gt; expectations : const [],
-   final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+   final Iterable&lt;Expectation&gt; expectations,
+   final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives,
    final RequestPreconditions preconditions,    
    final RequestPreferences preferences,
    final ChallengeMessage proxyAuthorizationCredentials,
@@ -49,13 +49,13 @@ abstract class Request&lt;T&gt; {
    final UserAgent userAgent}) =&gt;
        new _RequestImpl(
            new Option(authorizationCredentials),
-           Persistent.EMPTY_SET.addAll(cacheDirectives),
+           Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
            firstNotNull(contentInfo, ContentInfo.NONE),
-           Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+           Persistent.EMPTY_DICTIONARY.insertAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
            new Option(entity),
-           Persistent.EMPTY_SET.addAll(expectations),
+           Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
            method,
-           Persistent.EMPTY_SET.addAll(pragmaCacheDirectives),
+           Persistent.EMPTY_SET.addAll(firstNotNull(pragmaCacheDirectives, EMPTY_LIST)),
            firstNotNull(preconditions, RequestPreconditions.NONE),
            firstNotNull(preferences, RequestPreferences.NONE),
            new Option(proxyAuthorizationCredentials),
@@ -135,7 +135,7 @@ abstract class Request&lt;T&gt; {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Request</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, uri, {<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives: const[] , <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders: Persistent.EMPTY_DICTIONARY, <a href="../restlib.core.http/Request.html">T</a> entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations: const[] , Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives: const[] , <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#"
+factory <strong>Request</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, uri, {<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, <a href="../restlib.core.http/Request.html">T</a> entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#"
               title="Permalink to Request&lt;T&gt;.Request">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -147,12 +147,12 @@ only.</p>
 <pre class="source">
 factory Request(final Method method, final uri, {
  final ChallengeMessage authorizationCredentials,
- final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+ final Iterable&lt;CacheDirective&gt; cacheDirectives,
  final ContentInfo contentInfo,
- final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+ final Dictionary&lt;Header, dynamic&gt; customHeaders,
  final T entity,
- final Iterable&lt;Expectation&gt; expectations : const [],
- final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives : const [],
+ final Iterable&lt;Expectation&gt; expectations,
+ final Iterable&lt;CacheDirective&gt; pragmaCacheDirectives,
  final RequestPreconditions preconditions,    
  final RequestPreferences preferences,
  final ChallengeMessage proxyAuthorizationCredentials,
@@ -160,13 +160,13 @@ factory Request(final Method method, final uri, {
  final UserAgent userAgent}) =&gt;
      new _RequestImpl(
          new Option(authorizationCredentials),
-         Persistent.EMPTY_SET.addAll(cacheDirectives),
+         Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
          firstNotNull(contentInfo, ContentInfo.NONE),
-         Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+         Persistent.EMPTY_DICTIONARY.insertAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
          new Option(entity),
-         Persistent.EMPTY_SET.addAll(expectations),
+         Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
          method,
-         Persistent.EMPTY_SET.addAll(pragmaCacheDirectives),
+         Persistent.EMPTY_SET.addAll(firstNotNull(pragmaCacheDirectives, EMPTY_LIST)),
          firstNotNull(preconditions, RequestPreconditions.NONE),
          firstNotNull(preferences, RequestPreferences.NONE),
          new Option(proxyAuthorizationCredentials),

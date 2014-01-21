@@ -37,8 +37,8 @@ abstract class ContentInfo {
  static const ContentInfo NONE = const _ContentInfoNone();
  
  factory ContentInfo({
-   final Iterable&lt;ContentEncoding&gt; encodings : const [],
-   final Iterable&lt;Language&gt; languages : const [],
+   final Iterable&lt;ContentEncoding&gt; encodings,
+   final Iterable&lt;Language&gt; languages,
    final int length,
    final Uri location,
    final MediaRange mediaRange,
@@ -53,8 +53,8 @@ abstract class ContentInfo {
      return ContentInfo.NONE;
    }
    return new _ContentInfoImpl(
-       Persistent.EMPTY_SEQUENCE.addAll(encodings), 
-       Persistent.EMPTY_SET.addAll(languages), 
+       Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(encodings, EMPTY_LIST)), 
+       Persistent.EMPTY_SET.addAll(firstNotNull(languages, EMPTY_LIST)), 
        new Option(length), 
        new Option(location), 
        new Option(mediaRange), 
@@ -120,7 +120,7 @@ static const ContentInfo NONE = const _ContentInfoNone()
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>ContentInfo</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings: const[] , Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages: const[] , int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#"
+factory <strong>ContentInfo</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#"
               title="Permalink to ContentInfo.ContentInfo">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -131,8 +131,8 @@ only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 factory ContentInfo({
- final Iterable&lt;ContentEncoding&gt; encodings : const [],
- final Iterable&lt;Language&gt; languages : const [],
+ final Iterable&lt;ContentEncoding&gt; encodings,
+ final Iterable&lt;Language&gt; languages,
  final int length,
  final Uri location,
  final MediaRange mediaRange,
@@ -147,8 +147,8 @@ factory ContentInfo({
    return ContentInfo.NONE;
  }
  return new _ContentInfoImpl(
-     Persistent.EMPTY_SEQUENCE.addAll(encodings), 
-     Persistent.EMPTY_SET.addAll(languages), 
+     Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(encodings, EMPTY_LIST)), 
+     Persistent.EMPTY_SET.addAll(firstNotNull(languages, EMPTY_LIST)), 
      new Option(length), 
      new Option(location), 
      new Option(mediaRange), 

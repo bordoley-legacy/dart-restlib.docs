@@ -54,6 +54,8 @@ abstract class Resource&lt;T&gt; {
  
  Route get route;
 
+ Request filterRequest(final Request request);
+ Response filterResponse(final Response response);
  Future&lt;Response&gt; handle(Request request);
  Future&lt;Response&gt; acceptMessage(Request&lt;T&gt; request);
 }
@@ -140,6 +142,18 @@ Route get route;
 <div class="method"><h4 id="acceptMessage">
 abstract Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>acceptMessage</strong>(<a href="../restlib.core.http/Request.html">Request</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; request) <a class="anchor-link" href="#acceptMessage"
               title="Permalink to Resource&lt;T&gt;.acceptMessage">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="filterRequest">
+abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>filterRequest</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#filterRequest"
+              title="Permalink to Resource&lt;T&gt;.filterRequest">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="filterResponse">
+abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>filterResponse</strong>(<a href="../restlib.core.http/Response.html">Response</a> response) <a class="anchor-link" href="#filterResponse"
+              title="Permalink to Resource&lt;T&gt;.filterResponse">#</a></h4>
 <div class="doc">
 </div>
 </div>

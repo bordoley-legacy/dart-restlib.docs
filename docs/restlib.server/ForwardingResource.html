@@ -36,7 +36,14 @@
 abstract class ForwardingResource&lt;T&gt; implements Forwarder, Resource&lt;T&gt; {    
  Route get route =&gt; delegate.route;
 
+ Request filterRequest(final Request request) =&gt;
+     delegate.filterRequest(request);
+ 
+ Response filterResponse(final Response response) =&gt;
+     delegate.filterResponse(response);
+ 
  Future&lt;Response&gt; handle(final Request request) =&gt; delegate.handle(request);
+ 
  Future&lt;Response&gt; acceptMessage(final Request&lt;T&gt; request) =&gt; delegate.acceptMessage(request);
 }
 </pre>
@@ -80,6 +87,28 @@ Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>
 <div class="doc">
 <pre class="source">
 Future&lt;Response&gt; acceptMessage(final Request&lt;T&gt; request) =&gt; delegate.acceptMessage(request);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="filterRequest">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Request.html">Request</a> <strong>filterRequest</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#filterRequest"
+              title="Permalink to ForwardingResource&lt;T&gt;.filterRequest">#</a></h4>
+<div class="doc">
+<pre class="source">
+Request filterRequest(final Request request) =&gt;
+   delegate.filterRequest(request);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="filterResponse">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a> <strong>filterResponse</strong>(<a href="../restlib.core.http/Response.html">Response</a> response) <a class="anchor-link" href="#filterResponse"
+              title="Permalink to ForwardingResource&lt;T&gt;.filterResponse">#</a></h4>
+<div class="doc">
+<pre class="source">
+Response filterResponse(final Response response) =&gt;
+   delegate.filterResponse(response);
 </pre>
 </div>
 </div>

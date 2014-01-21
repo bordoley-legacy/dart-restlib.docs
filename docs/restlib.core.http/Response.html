@@ -36,44 +36,44 @@
 abstract class Response&lt;T&gt; {  
  factory Response(
    final Status status, {
-   final Iterable&lt;RangeUnit&gt; acceptedRangeUnits : const [],
+   final Iterable&lt;RangeUnit&gt; acceptedRangeUnits,
    final int age,
-   final Iterable&lt;Method&gt; allowedMethods : const [],
-   final Iterable&lt;ChallengeMessage&gt; authenticationChallenges : const [],
-   final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+   final Iterable&lt;Method&gt; allowedMethods,
+   final Iterable&lt;ChallengeMessage&gt; authenticationChallenges,
+   final Iterable&lt;CacheDirective&gt; cacheDirectives,
    final ContentInfo contentInfo,
-   final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+   final Dictionary&lt;Header, dynamic&gt; customHeaders,
    final DateTime date,
    final T entity,
    final EntityTag entityTag,
    final DateTime expires,
    final DateTime lastModified,
    final Uri location,
-   final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges : const [],
+   final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
    final DateTime retryAfter,
    final UserAgent server,  
-   final Iterable&lt;Header&gt; vary : const [],
-   final Iterable&lt;Warning&gt; warnings : const []}) =&gt;
+   final Iterable&lt;Header&gt; vary,
+   final Iterable&lt;Warning&gt; warnings}) =&gt;
        new _ResponseImpl(
-           Persistent.EMPTY_SET.addAll(acceptedRangeUnits),
+           Persistent.EMPTY_SET.addAll(firstNotNull(acceptedRangeUnits, EMPTY_LIST)),
            new Option(age),
-           Persistent.EMPTY_SET.addAll(allowedMethods),
-           Persistent.EMPTY_SET.addAll(authenticationChallenges),
-           Persistent.EMPTY_SET.addAll(cacheDirectives),
+           Persistent.EMPTY_SET.addAll(firstNotNull(allowedMethods, EMPTY_LIST)),
+           Persistent.EMPTY_SET.addAll(firstNotNull(authenticationChallenges, EMPTY_LIST)),
+           Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
            firstNotNull(contentInfo, ContentInfo.NONE),
-           Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+           Persistent.EMPTY_DICTIONARY.insertAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
            new Option(date),
            new Option(entity),
            new Option(entityTag),
            new Option(expires),
            new Option(lastModified),
            new Option(location),
-           Persistent.EMPTY_SET.addAll(proxyAuthenticationChallenges),
+           Persistent.EMPTY_SET.addAll(firstNotNull(proxyAuthenticationChallenges, EMPTY_LIST)),
            new Option(retryAfter),
            new Option(server),
            status,
-           Persistent.EMPTY_SET.addAll(vary),
-           Persistent.EMPTY_SEQUENCE.addAll(warnings));
+           Persistent.EMPTY_SET.addAll(firstNotNull(vary, EMPTY_LIST)),
+           Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(warnings, EMPTY_LIST)));
    
  FiniteSet&lt;RangeUnit&gt; get acceptedRangeUnits;
  
@@ -165,7 +165,7 @@ abstract class Response&lt;T&gt; {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Response</strong>(<a href="../restlib.core.http/Status.html">Status</a> status, {Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits: const[] , int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods: const[] , Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges: const[] , Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives: const[] , <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders: Persistent.EMPTY_DICTIONARY, DateTime date, <a href="../restlib.core.http/Response.html">T</a> entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, Uri location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges: const[] , DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary: const[] , Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings: const[] }) <a class="anchor-link" href="#"
+factory <strong>Response</strong>(<a href="../restlib.core.http/Status.html">Status</a> status, {Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, <a href="../restlib.core.http/Response.html">T</a> entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, Uri location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#"
               title="Permalink to Response&lt;T&gt;.Response">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -177,44 +177,44 @@ only.</p>
 <pre class="source">
 factory Response(
  final Status status, {
- final Iterable&lt;RangeUnit&gt; acceptedRangeUnits : const [],
+ final Iterable&lt;RangeUnit&gt; acceptedRangeUnits,
  final int age,
- final Iterable&lt;Method&gt; allowedMethods : const [],
- final Iterable&lt;ChallengeMessage&gt; authenticationChallenges : const [],
- final Iterable&lt;CacheDirective&gt; cacheDirectives : const [],
+ final Iterable&lt;Method&gt; allowedMethods,
+ final Iterable&lt;ChallengeMessage&gt; authenticationChallenges,
+ final Iterable&lt;CacheDirective&gt; cacheDirectives,
  final ContentInfo contentInfo,
- final Dictionary&lt;Header, dynamic&gt; customHeaders : Persistent.EMPTY_DICTIONARY,
+ final Dictionary&lt;Header, dynamic&gt; customHeaders,
  final DateTime date,
  final T entity,
  final EntityTag entityTag,
  final DateTime expires,
  final DateTime lastModified,
  final Uri location,
- final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges : const [],
+ final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
  final DateTime retryAfter,
  final UserAgent server,  
- final Iterable&lt;Header&gt; vary : const [],
- final Iterable&lt;Warning&gt; warnings : const []}) =&gt;
+ final Iterable&lt;Header&gt; vary,
+ final Iterable&lt;Warning&gt; warnings}) =&gt;
      new _ResponseImpl(
-         Persistent.EMPTY_SET.addAll(acceptedRangeUnits),
+         Persistent.EMPTY_SET.addAll(firstNotNull(acceptedRangeUnits, EMPTY_LIST)),
          new Option(age),
-         Persistent.EMPTY_SET.addAll(allowedMethods),
-         Persistent.EMPTY_SET.addAll(authenticationChallenges),
-         Persistent.EMPTY_SET.addAll(cacheDirectives),
+         Persistent.EMPTY_SET.addAll(firstNotNull(allowedMethods, EMPTY_LIST)),
+         Persistent.EMPTY_SET.addAll(firstNotNull(authenticationChallenges, EMPTY_LIST)),
+         Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
          firstNotNull(contentInfo, ContentInfo.NONE),
-         Persistent.EMPTY_DICTIONARY.insertAll(customHeaders),
+         Persistent.EMPTY_DICTIONARY.insertAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
          new Option(date),
          new Option(entity),
          new Option(entityTag),
          new Option(expires),
          new Option(lastModified),
          new Option(location),
-         Persistent.EMPTY_SET.addAll(proxyAuthenticationChallenges),
+         Persistent.EMPTY_SET.addAll(firstNotNull(proxyAuthenticationChallenges, EMPTY_LIST)),
          new Option(retryAfter),
          new Option(server),
          status,
-         Persistent.EMPTY_SET.addAll(vary),
-         Persistent.EMPTY_SEQUENCE.addAll(warnings));
+         Persistent.EMPTY_SET.addAll(firstNotNull(vary, EMPTY_LIST)),
+         Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(warnings, EMPTY_LIST)));
 </pre>
 </div>
 </div>

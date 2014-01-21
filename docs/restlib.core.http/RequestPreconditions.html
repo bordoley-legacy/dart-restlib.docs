@@ -37,9 +37,9 @@ abstract class RequestPreconditions {
  static const RequestPreconditions NONE = const _RequestPreconditionsNone();
  
  factory RequestPreconditions({
-   final Iterable&lt;EntityTag&gt; ifMatch : const [],
+   final Iterable&lt;EntityTag&gt; ifMatch,
    final DateTime ifModifiedSince,
-   final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+   final Iterable&lt;EntityTag&gt; ifNoneMatch,
    final Either&lt;EntityTag,DateTime&gt; ifRange,
    final DateTime ifUnmodifiedSince}) {
    
@@ -48,9 +48,9 @@ abstract class RequestPreconditions {
    }
 
    return new _RequestPreconditionsImpl(
-       Persistent.EMPTY_SET.addAll(ifMatch), 
+       Persistent.EMPTY_SET.addAll(firstNotNull(ifMatch, EMPTY_LIST)), 
        new Option(ifModifiedSince), 
-       Persistent.EMPTY_SET.addAll(ifNoneMatch), 
+       Persistent.EMPTY_SET.addAll(firstNotNull(ifNoneMatch,  EMPTY_LIST)), 
        new Option(ifRange), 
        new Option(ifUnmodifiedSince));   
  }
@@ -108,7 +108,7 @@ static const RequestPreconditions NONE = const _RequestPreconditionsNone()
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>RequestPreconditions</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch: const[] , DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch: const[] , <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#"
+factory <strong>RequestPreconditions</strong>({Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifMatch, DateTime ifModifiedSince, Iterable&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>&gt; ifNoneMatch, <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/EntityTag.html">EntityTag</a>, DateTime&gt; ifRange, DateTime ifUnmodifiedSince}) <a class="anchor-link" href="#"
               title="Permalink to RequestPreconditions.RequestPreconditions">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -119,9 +119,9 @@ only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 factory RequestPreconditions({
- final Iterable&lt;EntityTag&gt; ifMatch : const [],
+ final Iterable&lt;EntityTag&gt; ifMatch,
  final DateTime ifModifiedSince,
- final Iterable&lt;EntityTag&gt; ifNoneMatch : const [],
+ final Iterable&lt;EntityTag&gt; ifNoneMatch,
  final Either&lt;EntityTag,DateTime&gt; ifRange,
  final DateTime ifUnmodifiedSince}) {
  
@@ -130,9 +130,9 @@ factory RequestPreconditions({
  }
 
  return new _RequestPreconditionsImpl(
-     Persistent.EMPTY_SET.addAll(ifMatch), 
+     Persistent.EMPTY_SET.addAll(firstNotNull(ifMatch, EMPTY_LIST)), 
      new Option(ifModifiedSince), 
-     Persistent.EMPTY_SET.addAll(ifNoneMatch), 
+     Persistent.EMPTY_SET.addAll(firstNotNull(ifNoneMatch,  EMPTY_LIST)), 
      new Option(ifRange), 
      new Option(ifUnmodifiedSince));   
 }

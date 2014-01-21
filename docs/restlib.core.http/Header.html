@@ -93,6 +93,11 @@ class Header {
  static const Header WARNING = const Header._internal("warning", "Warning");
  static const Header WWW_AUTHENTICATE = const Header._internal("www-authenticate", "WWW-Authenticate");
  
+ // Extension Headers
+ static const Header X_HTTP_METHOD = const Header._internal("x-http-method", "X-HTTP-Method"); 
+ static const Header X_HTTP_METHOD_OVERRIDE = const Header._internal("x-http-method-override", "X-HTTP-Method-Override");
+ static const Header X_METHOD_OVERRIDE  = const Header._internal("x-method-override", "X-Method-Override");
+ 
  static String asHeaderValue(final value) {
    if (value is Option) {
      return value
@@ -700,6 +705,42 @@ const <a href="../restlib.core.http/Header.html">Header</a>         <strong>WWW_
         <div class="doc">
 <pre class="source">
 static const Header WWW_AUTHENTICATE = const Header._internal("www-authenticate", "WWW-Authenticate")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="X_HTTP_METHOD">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>X_HTTP_METHOD</strong> <a class="anchor-link"
+            href="#X_HTTP_METHOD"
+            title="Permalink to Header.X_HTTP_METHOD">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header X_HTTP_METHOD = const Header._internal("x-http-method", "X-HTTP-Method")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="X_HTTP_METHOD_OVERRIDE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>X_HTTP_METHOD_OVERRIDE</strong> <a class="anchor-link"
+            href="#X_HTTP_METHOD_OVERRIDE"
+            title="Permalink to Header.X_HTTP_METHOD_OVERRIDE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header X_HTTP_METHOD_OVERRIDE = const Header._internal("x-http-method-override", "X-HTTP-Method-Override")
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="X_METHOD_OVERRIDE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.http/Header.html">Header</a>         <strong>X_METHOD_OVERRIDE</strong> <a class="anchor-link"
+            href="#X_METHOD_OVERRIDE"
+            title="Permalink to Header.X_METHOD_OVERRIDE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Header X_METHOD_OVERRIDE  = const Header._internal("x-method-override", "X-Method-Override")
 </pre>
 </div>
 </div>
