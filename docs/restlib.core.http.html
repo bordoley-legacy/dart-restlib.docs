@@ -215,7 +215,7 @@ Request requestMethodOverride(final Request request) {
          final Method method = new Method.forName(token);
          final Dictionary&lt;Header, dynamic&gt; customHeaders =
              Persistent.EMPTY_DICTIONARY
-               .insertAll(request.customHeaders)
+               .putAll(request.customHeaders)
                .removeAt(Header.X_HTTP_METHOD)
                .removeAt(Header.X_HTTP_METHOD_OVERRIDE)
                .removeAt(Header.X_METHOD_OVERRIDE);

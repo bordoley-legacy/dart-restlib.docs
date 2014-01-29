@@ -34,10 +34,10 @@
 <div class="doc">
 <pre class="source">
 abstract class ImmutableMultisetMultimap&lt;K,V&gt; extends IterableBase&lt;Pair&lt;K,V&gt;&gt; implements ImmutableMultimap&lt;K,V,Multiset&lt;V&gt;&gt;, MultisetMultimap&lt;K,V&gt; {    
- ImmutableMultisetMultimap&lt;K,V&gt; insert(final K key, final V value);
- ImmutableMultisetMultimap&lt;K,V&gt; insertAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
- ImmutableMultisetMultimap&lt;K,V&gt; insertAllFromMap(Map&lt;K, V&gt; map);
- ImmutableMultisetMultimap&lt;K,V&gt; insertPair(Pair&lt;K, V&gt; pair);
+ ImmutableMultisetMultimap&lt;K,V&gt; put(final K key, final V value);
+ ImmutableMultisetMultimap&lt;K,V&gt; putAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
+ ImmutableMultisetMultimap&lt;K,V&gt; putAllFromMap(Map&lt;K, V&gt; map);
+ ImmutableMultisetMultimap&lt;K,V&gt; putPair(Pair&lt;K, V&gt; pair);
  ImmutableMultisetMultimap&lt;K,V&gt; removeAt(final K key);
 }
 </pre>
@@ -45,6 +45,9 @@ abstract class ImmutableMultisetMultimap&lt;K,V&gt; extends IterableBase&lt;Pair
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span>IterableBase&lt;Pair&lt;K, V&gt;&gt;</span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>ImmutableMultisetMultimap&lt;K, V&gt;</strong></span></p>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/Form.html">Form</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/MultisetMultimap.html">MultisetMultimap&lt;K, V&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableMultimap.html">ImmutableMultimap&lt;K, V, Multiset&lt;V&gt;&gt;</a></span></p>
@@ -361,9 +364,9 @@ Iterable expand(Iterable f(E element)) =&gt;
 </div>
 </div>
 <div class="method inherited"><h4 id="filterKeys">
-abstract <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">I</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+abstract <a href="../restlib.common.collections/MultisetMultimap.html">MultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
               title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.filterKeys">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections/Multimap.html">Multimap</a> </div><div class="doc">
+<div class="inherited-from">inherited from <a href="../restlib.common.collections/MultisetMultimap.html">MultisetMultimap</a> </div><div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="firstWhere">
@@ -432,30 +435,6 @@ void forEach(void f(E element)) {
  for (E element in this) f(element);
 }
 </pre>
-</div>
-</div>
-<div class="method"><h4 id="insert">
-abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>insert</strong>(<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a> value) <a class="anchor-link" href="#insert"
-              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.insert">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAll">
-abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt;&gt; other) <a class="anchor-link" href="#insertAll"
-              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.insertAll">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAllFromMap">
-abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
-              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.insertAllFromMap">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertPair">
-abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
-              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.insertPair">#</a></h4>
-<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="join">
@@ -547,6 +526,30 @@ Iterable map(f(E element)) =&gt; new MappedIterable&lt;E, dynamic&gt;(this, f);
 abstract <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, dynamic, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a> value)) <a class="anchor-link" href="#mapValues"
               title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.mapValues">#</a></h4>
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Multimap.html">Multimap</a> </div><div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="put">
+abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>put</strong>(<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a> value) <a class="anchor-link" href="#put"
+              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.put">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAll">
+abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>putAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt;&gt; other) <a class="anchor-link" href="#putAll"
+              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.putAll">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAllFromMap">
+abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>putAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; map) <a class="anchor-link" href="#putAllFromMap"
+              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.putAllFromMap">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putPair">
+abstract <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">ImmutableMultisetMultimap</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; <strong>putPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableMultisetMultimap.html">V</a>&gt; pair) <a class="anchor-link" href="#putPair"
+              title="Permalink to ImmutableMultisetMultimap&lt;K, V&gt;.putPair">#</a></h4>
+<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="reduce">

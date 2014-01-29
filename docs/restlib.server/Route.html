@@ -38,7 +38,7 @@ class Route {
  
  const Route._internal(this._segments);
  
- bool matches(Uri uri) {
+ bool matches(URI uri) {
    try {
      parsePathParameters(uri);
      return true;
@@ -47,15 +47,15 @@ class Route {
    }
  }
  
- Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {    
+ Dictionary&lt;String, String&gt; parsePathParameters(URI uri) {    
    Map&lt;String, String&gt; retval = new Map();
 
-   ImmutableSequence uriSegments = uri._pathSegments.canonicalize().segments;
+   Path path = uri.path.canonicalize();
    
    int i = 0, j = 0;
-   for (; i &lt; _segments.length &amp;&amp; j &lt; uriSegments.length; i++, j++) {
+   for (; i &lt; _segments.length &amp;&amp; j &lt; path.length; i++, j++) {
      _RouteSegment routeSegment = _segments.elementAt(i);
-     String pathSegment = uriSegments.elementAt(j);
+     String pathSegment = path.elementAt(j);
      
      if (routeSegment is _GlobSegment) {
        String key = routeSegment.name;
@@ -63,9 +63,9 @@ class Route {
        String stopSegment = (i+1 &lt; _segments.length) ? _segments.elementAt(i+1).name : "";
        StringBuffer buffer = new StringBuffer("$pathSegment");
        
-       for(j++; j &lt; uriSegments.length; j++) {
-         if (uriSegments.elementAt(j) != stopSegment) {
-           buffer.write("/${uriSegments.elementAt(j)}");
+       for(j++; j &lt; path.length; j++) {
+         if (path.elementAt(j) != stopSegment) {
+           buffer.write("/${path.elementAt(j)}");
          } else {
            j--;
            break;
@@ -83,11 +83,11 @@ class Route {
      }  
    }
    
-   if (i &lt; _segments.length || j &lt; uriSegments.length) {
+   if (i &lt; _segments.length || j &lt; path.length) {
      throw new ArgumentError("$uri does not match route $this");
    }
    
-   return Persistent.EMPTY_DICTIONARY.insertAllFromMap(retval);
+   return Persistent.EMPTY_DICTIONARY.putAllFromMap(retval);
  }
  
  String toString() =&gt; _segments.join("/");
@@ -98,11 +98,11 @@ class Route {
 <h3>Methods</h3>
 <div class="method"><h4 id="matches">
 <button class="show-code">Code</button>
-bool <strong>matches</strong>(Uri uri) <a class="anchor-link" href="#matches"
+bool <strong>matches</strong>(<a href="../restlib.core.net/URI.html">URI</a> uri) <a class="anchor-link" href="#matches"
               title="Permalink to Route.matches">#</a></h4>
 <div class="doc">
 <pre class="source">
-bool matches(Uri uri) {
+bool matches(URI uri) {
  try {
    parsePathParameters(uri);
    return true;
@@ -115,19 +115,19 @@ bool matches(Uri uri) {
 </div>
 <div class="method"><h4 id="parsePathParameters">
 <button class="show-code">Code</button>
-<a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;String, String&gt; <strong>parsePathParameters</strong>(<a href="../restlib.server/RoutableUri.html">RoutableUri</a> uri) <a class="anchor-link" href="#parsePathParameters"
+<a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;String, String&gt; <strong>parsePathParameters</strong>(<a href="../restlib.core.net/URI.html">URI</a> uri) <a class="anchor-link" href="#parsePathParameters"
               title="Permalink to Route.parsePathParameters">#</a></h4>
 <div class="doc">
 <pre class="source">
-Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {    
+Dictionary&lt;String, String&gt; parsePathParameters(URI uri) {    
  Map&lt;String, String&gt; retval = new Map();
 
- ImmutableSequence uriSegments = uri._pathSegments.canonicalize().segments;
+ Path path = uri.path.canonicalize();
  
  int i = 0, j = 0;
- for (; i &lt; _segments.length &amp;&amp; j &lt; uriSegments.length; i++, j++) {
+ for (; i &lt; _segments.length &amp;&amp; j &lt; path.length; i++, j++) {
    _RouteSegment routeSegment = _segments.elementAt(i);
-   String pathSegment = uriSegments.elementAt(j);
+   String pathSegment = path.elementAt(j);
    
    if (routeSegment is _GlobSegment) {
      String key = routeSegment.name;
@@ -135,9 +135,9 @@ Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {
      String stopSegment = (i+1 &lt; _segments.length) ? _segments.elementAt(i+1).name : "";
      StringBuffer buffer = new StringBuffer("$pathSegment");
      
-     for(j++; j &lt; uriSegments.length; j++) {
-       if (uriSegments.elementAt(j) != stopSegment) {
-         buffer.write("/${uriSegments.elementAt(j)}");
+     for(j++; j &lt; path.length; j++) {
+       if (path.elementAt(j) != stopSegment) {
+         buffer.write("/${path.elementAt(j)}");
        } else {
          j--;
          break;
@@ -155,11 +155,11 @@ Dictionary&lt;String, String&gt; parsePathParameters(RoutableUri uri) {
    }  
  }
  
- if (i &lt; _segments.length || j &lt; uriSegments.length) {
+ if (i &lt; _segments.length || j &lt; path.length) {
    throw new ArgumentError("$uri does not match route $this");
  }
  
- return Persistent.EMPTY_DICTIONARY.insertAllFromMap(retval);
+ return Persistent.EMPTY_DICTIONARY.putAllFromMap(retval);
 }
 </pre>
 </div>

@@ -34,13 +34,13 @@
 <div class="doc">
 <pre class="source">
 abstract class ImmutableDictionary&lt;K,V&gt; implements Dictionary&lt;K,V&gt;, ImmutableAssociative&lt;K,V&gt; {
- ImmutableDictionary&lt;K,V&gt; insertAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
+ ImmutableDictionary&lt;K,V&gt; putAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; other);
  
- ImmutableDictionary&lt;K,V&gt; insert(final K key, final V value);
+ ImmutableDictionary&lt;K,V&gt; put(final K key, final V value);
  
- ImmutableDictionary&lt;K,V&gt; insertAllFromMap(final Map&lt;K,V&gt; map);
+ ImmutableDictionary&lt;K,V&gt; putAllFromMap(final Map&lt;K,V&gt; map);
  
- ImmutableDictionary&lt;K,V&gt; insertPair(final Pair&lt;K,V&gt; pair);
+ ImmutableDictionary&lt;K,V&gt; putPair(final Pair&lt;K,V&gt; pair);
  
  ImmutableDictionary&lt;K,V&gt; removeAt(final K key);
  
@@ -309,30 +309,6 @@ abstract void <strong>forEach</strong>(void f(<a href="../restlib.common.collect
 <span class="param">f</span> to each element of this collection.</p>
 </div>
 </div>
-<div class="method"><h4 id="insert">
-abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>insert</strong>(<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a> value) <a class="anchor-link" href="#insert"
-              title="Permalink to ImmutableDictionary&lt;K, V&gt;.insert">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAll">
-abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt;&gt; other) <a class="anchor-link" href="#insertAll"
-              title="Permalink to ImmutableDictionary&lt;K, V&gt;.insertAll">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAllFromMap">
-abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
-              title="Permalink to ImmutableDictionary&lt;K, V&gt;.insertAllFromMap">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertPair">
-abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
-              title="Permalink to ImmutableDictionary&lt;K, V&gt;.insertPair">#</a></h4>
-<div class="doc">
-</div>
-</div>
 <div class="method inherited"><h4 id="join">
 <button class="show-code">Code</button>
 String <strong>join</strong>([String separator = ""]) <a class="anchor-link" href="#join"
@@ -386,9 +362,33 @@ abstract <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Dictionary.html">Dictionary</a> </div><div class="doc">
 </div>
 </div>
+<div class="method"><h4 id="put">
+abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>put</strong>(<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a> value) <a class="anchor-link" href="#put"
+              title="Permalink to ImmutableDictionary&lt;K, V&gt;.put">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAll">
+abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>putAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt;&gt; other) <a class="anchor-link" href="#putAll"
+              title="Permalink to ImmutableDictionary&lt;K, V&gt;.putAll">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAllFromMap">
+abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>putAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; map) <a class="anchor-link" href="#putAllFromMap"
+              title="Permalink to ImmutableDictionary&lt;K, V&gt;.putAllFromMap">#</a></h4>
+<div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="putIfAbsent">
 abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>putIfAbsent</strong>(<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a> value) <a class="anchor-link" href="#putIfAbsent"
               title="Permalink to ImmutableDictionary&lt;K, V&gt;.putIfAbsent">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putPair">
+abstract <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">ImmutableDictionary</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; <strong>putPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableDictionary.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableDictionary.html">V</a>&gt; pair) <a class="anchor-link" href="#putPair"
+              title="Permalink to ImmutableDictionary&lt;K, V&gt;.putPair">#</a></h4>
 <div class="doc">
 </div>
 </div>

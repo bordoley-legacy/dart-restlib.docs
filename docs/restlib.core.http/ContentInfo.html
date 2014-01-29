@@ -40,7 +40,7 @@ abstract class ContentInfo {
    final Iterable&lt;ContentEncoding&gt; encodings,
    final Iterable&lt;Language&gt; languages,
    final int length,
-   final Uri location,
+   final URI location,
    final MediaRange mediaRange,
    final ContentRange range}) {
    
@@ -70,7 +70,7 @@ abstract class ContentInfo {
  
  Option&lt;int&gt; get length;
  
- Option&lt;Uri&gt; get location;
+ Option&lt;URI&gt; get location;
  
  Option&lt;MediaRange&gt; get mediaRange;
  
@@ -82,7 +82,7 @@ abstract class ContentInfo {
    Iterable&lt;ContentEncoding&gt; encodings,
    Iterable&lt;Language&gt; languages,
    int length,
-   Uri location,
+   URI location,
    MediaRange mediaRange,
    ContentRange range
  });
@@ -120,7 +120,7 @@ static const ContentInfo NONE = const _ContentInfoNone()
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>ContentInfo</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#"
+factory <strong>ContentInfo</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, <a href="../restlib.core.net/URI.html">URI</a> location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#"
               title="Permalink to ContentInfo.ContentInfo">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -134,7 +134,7 @@ factory ContentInfo({
  final Iterable&lt;ContentEncoding&gt; encodings,
  final Iterable&lt;Language&gt; languages,
  final int length,
- final Uri location,
+ final URI location,
  final MediaRange mediaRange,
  final ContentRange range}) {
  
@@ -209,13 +209,13 @@ Option&lt;int&gt; get length;
 </div>
 <div class="field"><h4 id="location">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Option.html">Option</a>&lt;Uri&gt;         <strong>location</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.net/URI.html">URI</a>&gt;         <strong>location</strong> <a class="anchor-link"
             href="#location"
             title="Permalink to ContentInfo.location">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-Option&lt;Uri&gt; get location;
+Option&lt;URI&gt; get location;
 </pre>
 </div>
 </div>
@@ -256,7 +256,7 @@ abstract String <strong>toString</strong>() <a class="anchor-link" href="#toStri
 </div>
 </div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, <a href="../restlib.core.net/URI.html">URI</a> location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to ContentInfo.with_">#</a></h4>
 <div class="doc">
 </div>

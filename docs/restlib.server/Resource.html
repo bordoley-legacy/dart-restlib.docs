@@ -38,7 +38,7 @@ abstract class Resource&lt;T&gt; {
  
  factory Resource.authorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
    final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
-       Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
+       Persistent.EMPTY_DICTIONARY.putAll(authorizer.map((final Authorizer authorizer) =&gt;
            new Pair(authorizer.scheme, authorizer)));
    
    return new _AuthorizingResource&lt;T&gt; (delegate, authorizerMap);
@@ -89,7 +89,7 @@ factory <strong>Resource.authorizingResource</strong>(<a href="../restlib.server
 <pre class="source">
 factory Resource.authorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
  final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
-     Persistent.EMPTY_DICTIONARY.insertAll(authorizer.map((final Authorizer authorizer) =&gt;
+     Persistent.EMPTY_DICTIONARY.putAll(authorizer.map((final Authorizer authorizer) =&gt;
          new Pair(authorizer.scheme, authorizer)));
  
  return new _AuthorizingResource&lt;T&gt; (delegate, authorizerMap);

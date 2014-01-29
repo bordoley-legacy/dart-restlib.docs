@@ -11,6 +11,8 @@ import "package:restlib_core/data.dart";
 import "package:restlib_core/http.dart";
 import "package:restlib_core/http_syntax.dart";
 import "package:restlib_core/multipart.dart";
+import "package:restlib_core/net.dart";
+import "package:restlib_core/net.schemes.dart";
 import "package:restlib_parsing/parsing.dart";
 import "package:restlib_server/io.dart";
 import "package:restlib_server/server.dart";
@@ -34,6 +36,8 @@ void main() {
        "restlib.core.http",
        "restlib.core.http_syntax",
        "restlib.core.multipart",
+       "restlib.core.net",
+       "restlib.core.net.schemes",
        "restlib.parsing",
        "restlib.server.io",
        "restlib.server",

@@ -66,7 +66,7 @@ class MediaRange implements Matcheable&lt;MediaRange&gt; {
    
    parameters = firstNotNull(parameters, Persistent.EMPTY_SET_MULTIMAP);
    parameters = 
-       Persistent.EMPTY_SET_MULTIMAP.insertAll(
+       Persistent.EMPTY_SET_MULTIMAP.putAll(
            parameters.map((final Pair&lt;String,String&gt; kv) {
              checkArgument(TOKEN.parse(kv.fst).isNotEmpty);
              checkArgument(kv.fst.toLowerCase() != "q");
@@ -444,7 +444,7 @@ factory MediaRange(final String type, final String subtype, {final Charset chars
  
  parameters = firstNotNull(parameters, Persistent.EMPTY_SET_MULTIMAP);
  parameters = 
-     Persistent.EMPTY_SET_MULTIMAP.insertAll(
+     Persistent.EMPTY_SET_MULTIMAP.putAll(
          parameters.map((final Pair&lt;String,String&gt; kv) {
            checkArgument(TOKEN.parse(kv.fst).isNotEmpty);
            checkArgument(kv.fst.toLowerCase() != "q");

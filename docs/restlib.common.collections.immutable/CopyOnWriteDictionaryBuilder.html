@@ -37,13 +37,13 @@ class CopyOnWriteDictionaryBuilder&lt;K,V&gt; {
  final MutableDictionary _delegate = new MutableDictionary.hash();
  
  void insert(final K key, final V value) =&gt;
-     _delegate.insert(key, value);
+     _delegate.put(key, value);
  
  void insertAll(final Iterable&lt;Pair&lt;K,V&gt;&gt; pairs) =&gt;
-     _delegate.insertAll(pairs);
+     _delegate.putAll(pairs);
  
  void insertPair(final Pair&lt;K,V&gt; pair) =&gt;
-     _delegate.insertPair(pair);
+     _delegate.putPair(pair);
  
  ImmutableDictionary&lt;K,V&gt; build() =&gt;
      new _CopyOnWriteDictionary(new MutableDictionary.hash(pairs:_delegate));
@@ -70,7 +70,7 @@ void <strong>insert</strong>(<a href="../restlib.common.collections.immutable/Co
 <div class="doc">
 <pre class="source">
 void insert(final K key, final V value) =&gt;
-   _delegate.insert(key, value);
+   _delegate.put(key, value);
 </pre>
 </div>
 </div>
@@ -81,7 +81,7 @@ void <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collectio
 <div class="doc">
 <pre class="source">
 void insertAll(final Iterable&lt;Pair&lt;K,V&gt;&gt; pairs) =&gt;
-   _delegate.insertAll(pairs);
+   _delegate.putAll(pairs);
 </pre>
 </div>
 </div>
@@ -92,7 +92,7 @@ void <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.htm
 <div class="doc">
 <pre class="source">
 void insertPair(final Pair&lt;K,V&gt; pair) =&gt;
-   _delegate.insertPair(pair);
+   _delegate.putPair(pair);
 </pre>
 </div>
 </div>

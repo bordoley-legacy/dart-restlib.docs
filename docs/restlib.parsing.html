@@ -29,6 +29,18 @@
 <h2><strong>restlib.parsing</strong> library</h2>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="ALPHA">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>ALPHA</strong> <a class="anchor-link"
+            href="#ALPHA"
+            title="Permalink to ALPHA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher ALPHA = inRange('a', 'z') | inRange('A', 'Z')
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="ALPHA_NUMERIC">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>ALPHA_NUMERIC</strong> <a class="anchor-link"
@@ -37,7 +49,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         </h4>
         <div class="doc">
 <pre class="source">
-final RuneMatcher ALPHA_NUMERIC = inRange('a', 'z') | inRange('A', 'Z') | NUMERIC
+final RuneMatcher ALPHA_NUMERIC = ALPHA | NUMERIC
 </pre>
 </div>
 </div>
@@ -171,6 +183,18 @@ const <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 const RuneMatcher GLOB = const _SingleRuneMatcher(42)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HEXDIG">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>HEXDIG</strong> <a class="anchor-link"
+            href="#HEXDIG"
+            title="Permalink to HEXDIG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher HEXDIG = NUMERIC | anyOf("ABCDEF")
 </pre>
 </div>
 </div>

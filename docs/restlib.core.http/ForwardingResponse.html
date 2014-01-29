@@ -67,7 +67,7 @@ abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&g
  Option&lt;DateTime&gt; get lastModified =&gt;
      delegate.lastModified;
  
- Option&lt;Uri&gt; get location =&gt;
+ Option&lt;URI&gt; get location =&gt;
      delegate.location;
  
  FiniteSet&lt;ChallengeMessage&gt; get proxyAuthenticationChallenges =&gt;
@@ -104,7 +104,7 @@ abstract class ForwardingResponse&lt;T&gt; implements Forwarder, Response&lt;T&g
    final EntityTag entityTag,
    final DateTime expires,
    final DateTime lastModified,
-   final Uri location,
+   final URI location,
    final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
    final DateTime retryAfter,
    final UserAgent server,
@@ -349,13 +349,13 @@ Option&lt;DateTime&gt; get lastModified =&gt;
 </div>
 <div class="field"><h4 id="location">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Option.html">Option</a>&lt;Uri&gt;         <strong>location</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.net/URI.html">URI</a>&gt;         <strong>location</strong> <a class="anchor-link"
             href="#location"
             title="Permalink to ForwardingResponse&lt;T&gt;.location">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-Option&lt;Uri&gt; get location =&gt;
+Option&lt;URI&gt; get location =&gt;
    delegate.location;
 </pre>
 </div>
@@ -457,7 +457,7 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, Uri location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, <a href="../restlib.core.net/URI.html">URI</a> location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingResponse&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
@@ -474,7 +474,7 @@ Response with_({
  final EntityTag entityTag,
  final DateTime expires,
  final DateTime lastModified,
- final Uri location,
+ final URI location,
  final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
  final DateTime retryAfter,
  final UserAgent server,

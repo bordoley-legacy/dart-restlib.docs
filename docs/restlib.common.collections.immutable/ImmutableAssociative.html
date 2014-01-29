@@ -34,13 +34,13 @@
 <div class="doc">
 <pre class="source">
 abstract class ImmutableAssociative&lt;K,V&gt; implements Associative&lt;K,V&gt; {
- ImmutableAssociative&lt;K,V&gt; insertAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; pairs);
+ ImmutableAssociative&lt;K,V&gt; putAll(final Iterable&lt;Pair&lt;K, V&gt;&gt; pairs);
  
- ImmutableAssociative&lt;K,V&gt; insertAllFromMap(final Map&lt;K,V&gt; map);
+ ImmutableAssociative&lt;K,V&gt; putAllFromMap(final Map&lt;K,V&gt; map);
  
- ImmutableAssociative&lt;K,V&gt; insert(final K key, final V value);
+ ImmutableAssociative&lt;K,V&gt; put(final K key, final V value);
 
- ImmutableAssociative&lt;K,V&gt; insertPair(final Pair&lt;K,V&gt; pair);
+ ImmutableAssociative&lt;K,V&gt; putPair(final Pair&lt;K,V&gt; pair);
  
  ImmutableAssociative&lt;K,V&gt; removeAt(final K key);
 }
@@ -108,34 +108,34 @@ abstract bool <strong>containsValue</strong>(<a href="../restlib.common.collecti
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
 </div>
 </div>
-<div class="method"><h4 id="insert">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>insert</strong>(<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a> value) <a class="anchor-link" href="#insert"
-              title="Permalink to ImmutableAssociative&lt;K, V&gt;.insert">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAll">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt;&gt; pairs) <a class="anchor-link" href="#insertAll"
-              title="Permalink to ImmutableAssociative&lt;K, V&gt;.insertAll">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAllFromMap">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
-              title="Permalink to ImmutableAssociative&lt;K, V&gt;.insertAllFromMap">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertPair">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; pair) <a class="anchor-link" href="#insertPair"
-              title="Permalink to ImmutableAssociative&lt;K, V&gt;.insertPair">#</a></h4>
-<div class="doc">
-</div>
-</div>
 <div class="method inherited"><h4 id="mapValues">
 abstract <a href="../restlib.common.collections/Associative.html">Associative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a> value)) <a class="anchor-link" href="#mapValues"
               title="Permalink to ImmutableAssociative&lt;K, V&gt;.mapValues">#</a></h4>
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="put">
+abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>put</strong>(<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a> key, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a> value) <a class="anchor-link" href="#put"
+              title="Permalink to ImmutableAssociative&lt;K, V&gt;.put">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAll">
+abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>putAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt;&gt; pairs) <a class="anchor-link" href="#putAll"
+              title="Permalink to ImmutableAssociative&lt;K, V&gt;.putAll">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAllFromMap">
+abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>putAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; map) <a class="anchor-link" href="#putAllFromMap"
+              title="Permalink to ImmutableAssociative&lt;K, V&gt;.putAllFromMap">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putPair">
+abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; <strong>putPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableAssociative.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">V</a>&gt; pair) <a class="anchor-link" href="#putPair"
+              title="Permalink to ImmutableAssociative&lt;K, V&gt;.putPair">#</a></h4>
+<div class="doc">
 </div>
 </div>
 <div class="method"><h4 id="removeAt">

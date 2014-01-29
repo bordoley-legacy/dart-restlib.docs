@@ -82,7 +82,7 @@ final Parser&lt;ChallengeMessage&gt; CHALLENGE_MESSAGE =
          (final Iterable&lt;Option&lt;KeyValuePair&gt;&gt; pairs) =&gt; 
              new ParametersChallengeMessage._internal(
                  scheme, 
-                 Persistent.EMPTY_DICTIONARY.insertAll(
+                 Persistent.EMPTY_DICTIONARY.putAll(
                      pairs
                        .where((final Option&lt;KeyValuePair&gt; optionalPair) =&gt; 
                            optionalPair.isNotEmpty)
@@ -179,7 +179,7 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.
 final Parser&lt;Expectation&gt; EXPECTATION =
  KVP.sepBy1(OWS_SEMICOLON_OWS)
    .map((final Iterable&lt;KeyValuePair&gt; kvp) =&gt;
-       new Expectation._internal(Persistent.EMPTY_SEQUENCE_MULTIMAP.insertAll(kvp)))
+       new Expectation._internal(Persistent.EMPTY_SEQUENCE_MULTIMAP.putAll(kvp)))
 </pre>
 </div>
 </div>
@@ -241,7 +241,7 @@ final Parser&lt;MediaRange&gt; MEDIA_RANGE =
      final String subtype = e.elementAt(2).toLowerCase();
      Option&lt;Charset&gt; charset = Option.NONE;
      final SetMultimap&lt;String, String&gt; parameters = 
-         Persistent.EMPTY_SET_MULTIMAP.insertAll(
+         Persistent.EMPTY_SET_MULTIMAP.putAll(
              e.elementAt(3).where((final KeyValuePair kvp) {                
                final String key = kvp.fst.toLowerCase();
                
@@ -367,6 +367,12 @@ String pairIterableToString(final Iterable&lt;Pair&gt; entries) =&gt;
           <div class="type">
           <h4>
             <a href="restlib.core.data/ContentRange.html"><strong>ContentRange</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.data/Form.html"><strong>Form</strong></a>
           </h4>
           </div>
           

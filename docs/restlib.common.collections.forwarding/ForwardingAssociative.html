@@ -43,11 +43,17 @@ abstract class ForwardingAssociative&lt;K,V&gt; implements Forwarder, Associativ
  Iterable&lt;V&gt; operator[](final K key) =&gt;
      delegate[key];
  
+ Iterable&lt;V&gt; call(K key) =&gt;
+     delegate.call(key);
+ 
  bool containsKey(final K key) =&gt;
      delegate.containsKey(key);
  
  bool containsValue(final V value) =&gt;
      delegate.containsValue(value);
+ 
+ Associative&lt;K,dynamic&gt; mapValues(mapFunc(V value)) =&gt;
+     delegate.mapValues(mapFunc);
 }
 </pre>
 </div>
@@ -111,10 +117,15 @@ Iterable&lt;V&gt; operator[](final K key) =&gt;
 </div>
 <div>
 <h3>Methods</h3>
-<div class="method inherited"><h4 id="call">
-abstract Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">V</a>&gt; <strong>call</strong>(<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">K</a> key) <a class="anchor-link" href="#call"
+<div class="method"><h4 id="call">
+<button class="show-code">Code</button>
+Iterable&lt;<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">V</a>&gt; <strong>call</strong>(<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">K</a> key) <a class="anchor-link" href="#call"
               title="Permalink to ForwardingAssociative&lt;K, V&gt;.call">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+Iterable&lt;V&gt; call(K key) =&gt;
+   delegate.call(key);
+</pre>
 </div>
 </div>
 <div class="method"><h4 id="containsKey">
@@ -139,10 +150,15 @@ bool containsValue(final V value) =&gt;
 </pre>
 </div>
 </div>
-<div class="method inherited"><h4 id="mapValues">
-abstract <a href="../restlib.common.collections/Associative.html">Associative</a>&lt;<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">K</a>, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">V</a> value)) <a class="anchor-link" href="#mapValues"
+<div class="method"><h4 id="mapValues">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Associative.html">Associative</a>&lt;<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">K</a>, dynamic&gt; <strong>mapValues</strong>(mapFunc(<a href="../restlib.common.collections.forwarding/ForwardingAssociative.html">V</a> value)) <a class="anchor-link" href="#mapValues"
               title="Permalink to ForwardingAssociative&lt;K, V&gt;.mapValues">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections/Associative.html">Associative</a> </div><div class="doc">
+<div class="doc">
+<pre class="source">
+Associative&lt;K,dynamic&gt; mapValues(mapFunc(V value)) =&gt;
+   delegate.mapValues(mapFunc);
+</pre>
 </div>
 </div>
 </div>

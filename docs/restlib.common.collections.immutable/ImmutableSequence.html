@@ -48,16 +48,19 @@ abstract class ImmutableSequence&lt;E&gt; implements Sequence&lt;E&gt;, Immutabl
  
  ImmutableSequence&lt;E&gt; push(E value);
  
- ImmutableSequence&lt;E&gt; insertAll(final Iterable&lt;Pair&lt;int, E&gt;&gt; other);
+ ImmutableSequence&lt;E&gt; putAll(final Iterable&lt;Pair&lt;int, E&gt;&gt; other);
  
- ImmutableSequence&lt;E&gt; insert(final int key, final E value);
+ ImmutableSequence&lt;E&gt; put(final int key, final E value);
  
- ImmutableSequence&lt;E&gt; insertPair(final Pair&lt;int,E&gt; pair);
+ ImmutableSequence&lt;E&gt; putPair(final Pair&lt;int,E&gt; pair);
  
  ImmutableSequence&lt;E&gt; removeAt(final int key);
 }
 </pre>
 </div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.net/IPath.html">IPath</a></span></p>
 <h3>Implements</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative&lt;int, E&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableStack.html">ImmutableStack&lt;E&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections.immutable/ImmutableCollection.html">ImmutableCollection&lt;E&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.common.collections/Sequence.html">Sequence&lt;E&gt;</a></span></p>
@@ -401,30 +404,6 @@ abstract int <strong>indexOf</strong>(<a href="../restlib.common.collections.imm
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Sequence.html">Sequence</a> </div><div class="doc">
 </div>
 </div>
-<div class="method"><h4 id="insert">
-abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>insert</strong>(int key, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a> value) <a class="anchor-link" href="#insert"
-              title="Permalink to ImmutableSequence&lt;E&gt;.insert">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertAll">
-abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>insertAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;int, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt;&gt; other) <a class="anchor-link" href="#insertAll"
-              title="Permalink to ImmutableSequence&lt;E&gt;.insertAll">#</a></h4>
-<div class="doc">
-</div>
-</div>
-<div class="method inherited"><h4 id="insertAllFromMap">
-abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">V</a>&gt; <strong>insertAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">V</a>&gt; map) <a class="anchor-link" href="#insertAllFromMap"
-              title="Permalink to ImmutableSequence&lt;E&gt;.insertAllFromMap">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a> </div><div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="insertPair">
-abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>insertPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;int, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; pair) <a class="anchor-link" href="#insertPair"
-              title="Permalink to ImmutableSequence&lt;E&gt;.insertPair">#</a></h4>
-<div class="doc">
-</div>
-</div>
 <div class="method inherited"><h4 id="join">
 <button class="show-code">Code</button>
 String <strong>join</strong>([String separator = ""]) <a class="anchor-link" href="#join"
@@ -488,6 +467,30 @@ abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html
 abstract <a href="../restlib.common.collections.immutable/ImmutableStack.html">ImmutableStack</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>pushAll</strong>(Iterable&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; value) <a class="anchor-link" href="#pushAll"
               title="Permalink to ImmutableSequence&lt;E&gt;.pushAll">#</a></h4>
 <div class="inherited-from">inherited from <a href="../restlib.common.collections.immutable/ImmutableStack.html">ImmutableStack</a> </div><div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="put">
+abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>put</strong>(int key, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a> value) <a class="anchor-link" href="#put"
+              title="Permalink to ImmutableSequence&lt;E&gt;.put">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putAll">
+abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>putAll</strong>(Iterable&lt;<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;int, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt;&gt; other) <a class="anchor-link" href="#putAll"
+              title="Permalink to ImmutableSequence&lt;E&gt;.putAll">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="putAllFromMap">
+abstract <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">V</a>&gt; <strong>putAllFromMap</strong>(Map&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">K</a>, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">V</a>&gt; map) <a class="anchor-link" href="#putAllFromMap"
+              title="Permalink to ImmutableSequence&lt;E&gt;.putAllFromMap">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.common.collections.immutable/ImmutableAssociative.html">ImmutableAssociative</a> </div><div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="putPair">
+abstract <a href="../restlib.common.collections.immutable/ImmutableSequence.html">ImmutableSequence</a>&lt;<a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; <strong>putPair</strong>(<a href="../restlib.common.collections/Pair.html">Pair</a>&lt;int, <a href="../restlib.common.collections.immutable/ImmutableSequence.html">E</a>&gt; pair) <a class="anchor-link" href="#putPair"
+              title="Permalink to ImmutableSequence&lt;E&gt;.putPair">#</a></h4>
+<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="reduce">

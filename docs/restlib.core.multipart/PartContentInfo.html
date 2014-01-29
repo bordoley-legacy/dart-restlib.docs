@@ -41,7 +41,7 @@ abstract class PartContentInfo implements ContentInfo {
    Iterable&lt;ContentEncoding&gt; encodings,
    Iterable&lt;Language&gt; languages,
    int length,
-   Uri location,
+   URI location,
    MediaRange mediaRange,
    ContentRange range 
  });
@@ -113,13 +113,13 @@ Option&lt;int&gt; get length;
 </div>
 <div class="field inherited"><h4 id="location">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Option.html">Option</a>&lt;Uri&gt;         <strong>location</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.net/URI.html">URI</a>&gt;         <strong>location</strong> <a class="anchor-link"
             href="#location"
             title="Permalink to PartContentInfo.location">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> </div><div class="doc">
 <pre class="source">
-Option&lt;Uri&gt; get location;
+Option&lt;URI&gt; get location;
 </pre>
 </div>
 </div>
@@ -160,7 +160,7 @@ abstract String <strong>toString</strong>() <a class="anchor-link" href="#toStri
 </div>
 </div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.multipart/PartContentInfo.html">PartContentInfo</a> <strong>with_</strong>({<a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, Uri location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.multipart/PartContentInfo.html">PartContentInfo</a> <strong>with_</strong>({<a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, Iterable&lt;<a href="../restlib.core.data/ContentEncoding.html">ContentEncoding</a>&gt; encodings, Iterable&lt;<a href="../restlib.core.data/Language.html">Language</a>&gt; languages, int length, <a href="../restlib.core.net/URI.html">URI</a> location, <a href="../restlib.core.data/MediaRange.html">MediaRange</a> mediaRange, <a href="../restlib.core.data/ContentRange.html">ContentRange</a> range}) <a class="anchor-link" href="#with_"
               title="Permalink to PartContentInfo.with_">#</a></h4>
 <div class="doc">
 </div>

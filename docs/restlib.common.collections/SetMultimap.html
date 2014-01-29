@@ -35,6 +35,8 @@
 <pre class="source">
 abstract class SetMultimap&lt;K,V&gt; implements Multimap&lt;K,V,FiniteSet&lt;V&gt;&gt; {
  Dictionary&lt;K, FiniteSet&lt;V&gt;&gt; get dictionary;
+ 
+ SetMultimap&lt;K,V&gt; filterKeys(bool filterFunc(K key));
 }
 </pre>
 </div>
@@ -189,7 +191,7 @@ abstract <a href="../restlib.common.collections/SetMultimap.html">I</a> <strong>
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="any">
 abstract bool <strong>any</strong>(bool test(<a href="../restlib.common.collections/SetMultimap.html">E</a> element)) <a class="anchor-link" href="#any"
@@ -262,10 +264,10 @@ by
 of this every time it's iterated.</p>
 </div>
 </div>
-<div class="method inherited"><h4 id="filterKeys">
-abstract <a href="../restlib.common.collections/Multimap.html">Multimap</a>&lt;<a href="../restlib.common.collections/SetMultimap.html">K</a>, <a href="../restlib.common.collections/SetMultimap.html">V</a>, <a href="../restlib.common.collections/SetMultimap.html">I</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections/SetMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
+<div class="method"><h4 id="filterKeys">
+abstract <a href="../restlib.common.collections/SetMultimap.html">SetMultimap</a>&lt;<a href="../restlib.common.collections/SetMultimap.html">K</a>, <a href="../restlib.common.collections/SetMultimap.html">V</a>&gt; <strong>filterKeys</strong>(bool filterFunc(<a href="../restlib.common.collections/SetMultimap.html">K</a> key)) <a class="anchor-link" href="#filterKeys"
               title="Permalink to SetMultimap&lt;K, V&gt;.filterKeys">#</a></h4>
-<div class="inherited-from">inherited from <a href="../restlib.common.collections/Multimap.html">Multimap</a> </div><div class="doc">
+<div class="doc">
 </div>
 </div>
 <div class="method inherited"><h4 id="firstWhere">

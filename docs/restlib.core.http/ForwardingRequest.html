@@ -67,10 +67,10 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
  Option&lt;ChallengeMessage&gt; get proxyAuthorizationCredentials =&gt;
      delegate.proxyAuthorizationCredentials;
  
- Option&lt;Uri&gt; get referer =&gt;
+ Option&lt;URI&gt; get referer =&gt;
      delegate.referer;
  
- Uri get uri =&gt;
+ URI get uri =&gt;
      delegate.uri;
  
  Option&lt;UserAgent&gt; get userAgent =&gt;
@@ -91,8 +91,8 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
    final RequestPreconditions preconditions,
    final RequestPreferences preferences,
    final ChallengeMessage proxyAuthorizationCredentials,
-   final Uri referer,
-   final Uri uri,
+   final URI referer,
+   final URI uri,
    final UserAgent userAgent}) =&gt;
        _requestWith(
            this,
@@ -303,26 +303,26 @@ Option&lt;ChallengeMessage&gt; get proxyAuthorizationCredentials =&gt;
 </div>
 <div class="field"><h4 id="referer">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Option.html">Option</a>&lt;Uri&gt;         <strong>referer</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.net/URI.html">URI</a>&gt;         <strong>referer</strong> <a class="anchor-link"
             href="#referer"
             title="Permalink to ForwardingRequest&lt;T&gt;.referer">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-Option&lt;Uri&gt; get referer =&gt;
+Option&lt;URI&gt; get referer =&gt;
    delegate.referer;
 </pre>
 </div>
 </div>
 <div class="field"><h4 id="uri">
 <button class="show-code">Code</button>
-final Uri         <strong>uri</strong> <a class="anchor-link"
+final <a href="../restlib.core.net/URI.html">URI</a>         <strong>uri</strong> <a class="anchor-link"
             href="#uri"
             title="Permalink to ForwardingRequest&lt;T&gt;.uri">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-Uri get uri =&gt;
+URI get uri =&gt;
    delegate.uri;
 </pre>
 </div>
@@ -359,7 +359,7 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, Uri referer, Uri uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.net/URI.html">URI</a> uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequest&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
@@ -375,8 +375,8 @@ Request with_({
  final RequestPreconditions preconditions,
  final RequestPreferences preferences,
  final ChallengeMessage proxyAuthorizationCredentials,
- final Uri referer,
- final Uri uri,
+ final URI referer,
+ final URI uri,
  final UserAgent userAgent}) =&gt;
      _requestWith(
          this,

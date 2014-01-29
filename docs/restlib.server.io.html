@@ -108,13 +108,13 @@ Future&lt;Request&lt;String&gt;&gt; parseString(final Request request, final Str
 </div>
 <div class="method"><h4 id="virtualHostApplicationSupplier">
 <button class="show-code">Code</button>
-<a href="restlib.server.io/ApplicationSupplier.html">ApplicationSupplier</a> <strong>virtualHostApplicationSupplier</strong>(<a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.server.io/Application.html">Application</a>&gt; applicationForHost(String host), <a href="restlib.server.io/Application.html">Application</a> fallback) <a class="anchor-link" href="#virtualHostApplicationSupplier"
+<a href="restlib.server.io/ApplicationSupplier.html">ApplicationSupplier</a> <strong>virtualHostApplicationSupplier</strong>(<a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.server.io/Application.html">Application</a>&gt; applicationForHost(<a href="restlib.common.collections/Either.html">Either</a>&lt;<a href="restlib.core.net/DomainName.html">DomainName</a>, <a href="restlib.core.net/IPAddress.html">IPAddress</a>&gt; host), <a href="restlib.server.io/Application.html">Application</a> fallback) <a class="anchor-link" href="#virtualHostApplicationSupplier"
               title="Permalink to virtualHostApplicationSupplier">#</a></h4>
 <div class="doc">
 <pre class="source">
-ApplicationSupplier virtualHostApplicationSupplier(Option&lt;Application&gt; applicationForHost(String host), final Application fallback) =&gt;
+ApplicationSupplier virtualHostApplicationSupplier(Option&lt;Application&gt; applicationForHost(Either&lt;DomainName, IPAddress&gt; host), final Application fallback) =&gt;
    (final Request request) =&gt;
-       applicationForHost(request.uri.host)
+       applicationForHost(request.uri.authority.value.host)
          .orElse(fallback);
 </pre>
 </div>

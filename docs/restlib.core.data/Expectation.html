@@ -36,7 +36,7 @@
 class Expectation {
  static final Expectation EXPECTS_100_CONTINUE = 
      new Expectation._internal(
-         Persistent.EMPTY_SEQUENCE_MULTIMAP.insert("100-continue",""));
+         Persistent.EMPTY_SEQUENCE_MULTIMAP.put("100-continue",""));
  
  final Multimap&lt;String, String, dynamic&gt; expectations;
  
@@ -71,7 +71,7 @@ final <a href="../restlib.core.data/Expectation.html">Expectation</a>         <s
 <pre class="source">
 static final Expectation EXPECTS_100_CONTINUE = 
    new Expectation._internal(
-       Persistent.EMPTY_SEQUENCE_MULTIMAP.insert("100-continue",""))
+       Persistent.EMPTY_SEQUENCE_MULTIMAP.put("100-continue",""))
 </pre>
 </div>
 </div>

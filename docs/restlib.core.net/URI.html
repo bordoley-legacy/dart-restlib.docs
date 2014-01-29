@@ -1,0 +1,248 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>URI abstract class / restlib.core.net Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.net" data-type="URI">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.net.html">restlib.core.net</a> &rsaquo; <a href="../restlib.core.net/URI.html">URI</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>URI</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class URI extends IRI {  
+ static URI relativeReference(final URI base, final URI relative) =&gt;
+     _relativeReference(base, relative, _URI._builder, Path.EMPTY);
+ 
+ factory URI(
+     {final String scheme : "", 
+       final Authority authority, 
+       Path path, // FIXME: final and Path.EMPTY once its const
+       final String query : "", 
+       final String fragment : ""}) {
+   checkNotNull(scheme);
+   checkNotNull(query);
+   checkNotNull(fragment);
+   
+   if (scheme.isNotEmpty) {
+     checkArgument(_SCHEME.parse(scheme).isNotEmpty);
+   }
+   
+   if(query.isNotEmpty) {
+     checkArgument(_QUERY.parse(query).isNotEmpty);
+   }
+
+   if(fragment.isNotEmpty) {
+     checkArgument(_FRAGMENT.parse(query).isNotEmpty);
+   }
+   
+   path = firstNotNull(path, Path.EMPTY);
+   final URI retval = new _URI(scheme, new Option(authority), path, query, fragment);
+   checkArgument(_isValid(retval));
+   return retval;
+ }
+   
+ 
+ Option&lt;Authority&gt; get authority;
+ Path get path;
+ 
+ URI canonicalize();
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.net/IRI.html">IRI</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>URI</strong></span></p>
+<div>
+<h3>Static Methods</h3>
+<div class="method"><h4 id="relativeReference">
+<button class="show-code">Code</button>
+<a href="../restlib.core.net/URI.html">URI</a> <strong>relativeReference</strong>(<a href="../restlib.core.net/URI.html">URI</a> base, <a href="../restlib.core.net/URI.html">URI</a> relative) <a class="anchor-link" href="#relativeReference"
+              title="Permalink to URI.relativeReference">#</a></h4>
+<div class="doc">
+<pre class="source">
+static URI relativeReference(final URI base, final URI relative) =&gt;
+   _relativeReference(base, relative, _URI._builder, Path.EMPTY);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>URI</strong>({String scheme: "", <a href="../restlib.core.net/Authority.html">Authority</a> authority, <a href="../restlib.core.net/Path.html">Path</a> path, String query: "", String fragment: ""}) <a class="anchor-link" href="#"
+              title="Permalink to URI.URI">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory URI(
+   {final String scheme : "", 
+     final Authority authority, 
+     Path path, // FIXME: final and Path.EMPTY once its const
+     final String query : "", 
+     final String fragment : ""}) {
+ checkNotNull(scheme);
+ checkNotNull(query);
+ checkNotNull(fragment);
+ 
+ if (scheme.isNotEmpty) {
+   checkArgument(_SCHEME.parse(scheme).isNotEmpty);
+ }
+ 
+ if(query.isNotEmpty) {
+   checkArgument(_QUERY.parse(query).isNotEmpty);
+ }
+
+ if(fragment.isNotEmpty) {
+   checkArgument(_FRAGMENT.parse(query).isNotEmpty);
+ }
+ 
+ path = firstNotNull(path, Path.EMPTY);
+ final URI retval = new _URI(scheme, new Option(authority), path, query, fragment);
+ checkArgument(_isValid(retval));
+ return retval;
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="authority">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.core.net/Authority.html">Authority</a>&gt;         <strong>authority</strong> <a class="anchor-link"
+            href="#authority"
+            title="Permalink to URI.authority">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;Authority&gt; get authority;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="fragment">
+<button class="show-code">Code</button>
+final String         <strong>fragment</strong> <a class="anchor-link"
+            href="#fragment"
+            title="Permalink to URI.fragment">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+<pre class="source">
+String get fragment;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isAbsolute">
+<button class="show-code">Code</button>
+final bool         <strong>isAbsolute</strong> <a class="anchor-link"
+            href="#isAbsolute"
+            title="Permalink to URI.isAbsolute">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+<pre class="source">
+bool get isAbsolute;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="path">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.net/Path.html">Path</a>         <strong>path</strong> <a class="anchor-link"
+            href="#path"
+            title="Permalink to URI.path">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Path get path;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="query">
+<button class="show-code">Code</button>
+final String         <strong>query</strong> <a class="anchor-link"
+            href="#query"
+            title="Permalink to URI.query">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+<pre class="source">
+String get query;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="scheme">
+<button class="show-code">Code</button>
+final String         <strong>scheme</strong> <a class="anchor-link"
+            href="#scheme"
+            title="Permalink to URI.scheme">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+<pre class="source">
+String get scheme;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="canonicalize">
+abstract <a href="../restlib.core.net/URI.html">URI</a> <strong>canonicalize</strong>() <a class="anchor-link" href="#canonicalize"
+              title="Permalink to URI.canonicalize">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="toIRI">
+abstract <a href="../restlib.core.net/IRI.html">IRI</a> <strong>toIRI</strong>() <a class="anchor-link" href="#toIRI"
+              title="Permalink to URI.toIRI">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="toURI">
+abstract <a href="../restlib.core.net/URI.html">URI</a> <strong>toURI</strong>() <a class="anchor-link" href="#toURI"
+              title="Permalink to URI.toURI">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="toUri">
+abstract Uri <strong>toUri</strong>() <a class="anchor-link" href="#toUri"
+              title="Permalink to URI.toUri">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.core.net/IRI.html">IRI</a> </div><div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

@@ -1,0 +1,198 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>restlib.core.net Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.net">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="restlib.core.net.html">restlib.core.net</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>restlib.core.net</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="IRI_">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/IRI.html">IRI</a>&gt;         <strong>IRI_</strong> <a class="anchor-link"
+            href="#IRI_"
+            title="Permalink to IRI_">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;IRI&gt; IRI_ = _iriParser(
+   IRI_AUTHORITY_PARSER,
+   _I_PATH,
+   _I_QUERY,
+   _I_FRAGMENT,
+   _IRI._builder)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IRI_AUTHORITY_PARSER">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/Authority.html">Authority</a>&gt;         <strong>IRI_AUTHORITY_PARSER</strong> <a class="anchor-link"
+            href="#IRI_AUTHORITY_PARSER"
+            title="Permalink to IRI_AUTHORITY_PARSER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Authority&gt; IRI_AUTHORITY_PARSER =
+ _authorityParser(_I_USER_INFO, _I_HOST, IAuthority._builder)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="URI_">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/URI.html">URI</a>&gt;         <strong>URI_</strong> <a class="anchor-link"
+            href="#URI_"
+            title="Permalink to URI_">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;URI&gt; URI_ = _iriParser(
+   URI_AUTHORITY_PARSER,
+   _PATH,
+   _QUERY,
+   _FRAGMENT,
+   _URI._builder)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="URI_AUTHORITY_PARSER">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/Authority.html">Authority</a>&gt;         <strong>URI_AUTHORITY_PARSER</strong> <a class="anchor-link"
+            href="#URI_AUTHORITY_PARSER"
+            title="Permalink to URI_AUTHORITY_PARSER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Authority&gt; URI_AUTHORITY_PARSER = 
+ _authorityParser(_USER_INFO, _HOST, Authority._builder)
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="uriCodec">
+<button class="show-code">Code</button>
+Codec&lt;String, String&gt; <strong>uriCodec</strong>(bool safeCodepoints(int codePoint), Encoding encoding) <a class="anchor-link" href="#uriCodec"
+              title="Permalink to uriCodec">#</a></h4>
+<div class="doc">
+<pre class="source">
+Codec&lt;String, String&gt; uriCodec(bool safeCodepoints(int codePoint), final Encoding encoding) =&gt;
+   new _UriCodec(safeCodepoints, encoding);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="utf8codec">
+<button class="show-code">Code</button>
+Codec&lt;String, String&gt; <strong>utf8codec</strong>(bool safeCodepoints(int codePoint)) <a class="anchor-link" href="#utf8codec"
+              title="Permalink to utf8codec">#</a></h4>
+<div class="doc">
+<pre class="source">
+Codec&lt;String, String&gt; utf8codec(bool safeCodepoints(int codePoint)) =&gt;
+   uriCodec(safeCodepoints, UTF8);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Abstract Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/Authority.html"><strong>Authority</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/DomainName.html"><strong>DomainName</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IAuthority.html"><strong>IAuthority</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/InternationalDomainName.html"><strong>InternationalDomainName</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IPAddress.html"><strong>IPAddress</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IPath.html"><strong>IPath</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IRI.html"><strong>IRI</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/Path.html"><strong>Path</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/URI.html"><strong>URI</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IPv4Address.html"><strong>IPv4Address</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/IPv6Address.html"><strong>IPv6Address</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        
