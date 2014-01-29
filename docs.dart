@@ -17,6 +17,7 @@ import "package:restlib_parsing/parsing.dart";
 import "package:restlib_server/io.dart";
 import "package:restlib_server/server.dart";
 import "package:restlib_testing/testing.dart";
+import "package:restlib_testing/collections.dart";
 
 import "dart:async";
 import "dart:io";
@@ -41,7 +42,8 @@ void main() {
        "restlib.parsing",
        "restlib.server.io",
        "restlib.server",
-       "restlib.testing"];
+       "restlib.testing",
+       "restlib.testing.collections"];
   
   final List<String> arguments =
       ["--omit-generation-time", "--package-root", "./packages", "--include-lib", "${libs.join(",")}", "docs.dart"];

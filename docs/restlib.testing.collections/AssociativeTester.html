@@ -1,0 +1,248 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>AssociativeTester abstract class / restlib.testing.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.testing.collections" data-type="AssociativeTester">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.testing.collections.html">restlib.testing.collections</a> &rsaquo; <a href="../restlib.testing.collections/AssociativeTester.html">AssociativeTester</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>AssociativeTester</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class AssociativeTester {
+ dynamic get invalidKey;
+ Iterable&lt;int&gt; get testSizes;
+ 
+ void _doAssociativeTest(final String testDescription, func(Associative testData)) =&gt; 
+     group(testDescription, () =&gt; 
+         testSizes.forEach((final int size) =&gt; 
+             test("with Associative of size $size", () =&gt; 
+                 func(generateTestData(size)))));
+ 
+ dynamic generateTestData(int size);  
+ 
+ void testContainsKey(final Associative testData) {
+   testData.keys.forEach((final key) =&gt; 
+       expect(testData.containsKey(key), isTrue));
+   expect(testData.containsKey(invalidKey), isFalse);
+ }
+ 
+ void testContainValues(final Associative testCase) {
+   testCase.values.forEach((final value) =&gt;
+       expect(testCase.containsValue(value), isTrue));
+   expect(testCase.containsValue(invalidKey), isFalse);
+ }
+ 
+ void testMapValues(final Associative testCase) {
+   final Object mappedObject = new Object();
+   final Associative mapped = testCase.mapValues((value) =&gt; mappedObject);
+   
+   // Verify get values
+   mapped.values.forEach((final value) =&gt;
+       expect(value, equals(mappedObject)));
+   
+   // Verify get keys
+   expect(Persistent.EMPTY_SET.addAll(testCase.keys), equals(Persistent.EMPTY_SET.addAll(mapped.keys)));
+   
+   // Verify operator[]
+   testCase.keys.forEach((final key) =&gt; 
+       mapped[key].forEach((final value) =&gt;
+           expect(value, equals(mappedObject)))); 
+   
+   // Verify containsKey()
+   testCase.keys.forEach((final key) =&gt;
+       expect(mapped.containsKey(key), isTrue));
+   expect(mapped.containsKey(invalidKey), isFalse);
+   
+   // Verify containsValue()
+   testCase.values.forEach((final value) =&gt;
+       expect(mapped.containsValue(value), isFalse));
+   if (testCase.values.length &gt; 0) {
+     expect(mapped.containsValue(mappedObject), isTrue);
+   }
+ }
+ 
+ void testOperatorListAccess(final Associative testCase) {
+   expect(testCase[invalidKey], isEmpty);
+   testCase.keys.forEach((final dynamic key) =&gt; 
+       expect(testCase[key].isEmpty, isFalse)); 
+ }
+ 
+ void testAssociative () {
+   checkNotNull(invalidKey);
+   checkNotNull(testSizes);
+   
+   _doAssociativeTest("containsKey()", testContainsKey);
+   _doAssociativeTest("containsValue()", testContainValues);
+   _doAssociativeTest("mapValues()", testMapValues);
+   _doAssociativeTest("operator []", testOperatorListAccess);
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="invalidKey">
+<button class="show-code">Code</button>
+final         <strong>invalidKey</strong> <a class="anchor-link"
+            href="#invalidKey"
+            title="Permalink to AssociativeTester.invalidKey">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+dynamic get invalidKey;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="testSizes">
+<button class="show-code">Code</button>
+final Iterable&lt;int&gt;         <strong>testSizes</strong> <a class="anchor-link"
+            href="#testSizes"
+            title="Permalink to AssociativeTester.testSizes">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;int&gt; get testSizes;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="generateTestData">
+abstract dynamic <strong>generateTestData</strong>(int size) <a class="anchor-link" href="#generateTestData"
+              title="Permalink to AssociativeTester.generateTestData">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testAssociative">
+<button class="show-code">Code</button>
+void <strong>testAssociative</strong>() <a class="anchor-link" href="#testAssociative"
+              title="Permalink to AssociativeTester.testAssociative">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testAssociative () {
+ checkNotNull(invalidKey);
+ checkNotNull(testSizes);
+ 
+ _doAssociativeTest("containsKey()", testContainsKey);
+ _doAssociativeTest("containsValue()", testContainValues);
+ _doAssociativeTest("mapValues()", testMapValues);
+ _doAssociativeTest("operator []", testOperatorListAccess);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testContainsKey">
+<button class="show-code">Code</button>
+void <strong>testContainsKey</strong>(<a href="../restlib.common.collections/Associative.html">Associative</a> testData) <a class="anchor-link" href="#testContainsKey"
+              title="Permalink to AssociativeTester.testContainsKey">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testContainsKey(final Associative testData) {
+ testData.keys.forEach((final key) =&gt; 
+     expect(testData.containsKey(key), isTrue));
+ expect(testData.containsKey(invalidKey), isFalse);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testContainValues">
+<button class="show-code">Code</button>
+void <strong>testContainValues</strong>(<a href="../restlib.common.collections/Associative.html">Associative</a> testCase) <a class="anchor-link" href="#testContainValues"
+              title="Permalink to AssociativeTester.testContainValues">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testContainValues(final Associative testCase) {
+ testCase.values.forEach((final value) =&gt;
+     expect(testCase.containsValue(value), isTrue));
+ expect(testCase.containsValue(invalidKey), isFalse);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testMapValues">
+<button class="show-code">Code</button>
+void <strong>testMapValues</strong>(<a href="../restlib.common.collections/Associative.html">Associative</a> testCase) <a class="anchor-link" href="#testMapValues"
+              title="Permalink to AssociativeTester.testMapValues">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testMapValues(final Associative testCase) {
+ final Object mappedObject = new Object();
+ final Associative mapped = testCase.mapValues((value) =&gt; mappedObject);
+ 
+ // Verify get values
+ mapped.values.forEach((final value) =&gt;
+     expect(value, equals(mappedObject)));
+ 
+ // Verify get keys
+ expect(Persistent.EMPTY_SET.addAll(testCase.keys), equals(Persistent.EMPTY_SET.addAll(mapped.keys)));
+ 
+ // Verify operator[]
+ testCase.keys.forEach((final key) =&gt; 
+     mapped[key].forEach((final value) =&gt;
+         expect(value, equals(mappedObject)))); 
+ 
+ // Verify containsKey()
+ testCase.keys.forEach((final key) =&gt;
+     expect(mapped.containsKey(key), isTrue));
+ expect(mapped.containsKey(invalidKey), isFalse);
+ 
+ // Verify containsValue()
+ testCase.values.forEach((final value) =&gt;
+     expect(mapped.containsValue(value), isFalse));
+ if (testCase.values.length &gt; 0) {
+   expect(mapped.containsValue(mappedObject), isTrue);
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testOperatorListAccess">
+<button class="show-code">Code</button>
+void <strong>testOperatorListAccess</strong>(<a href="../restlib.common.collections/Associative.html">Associative</a> testCase) <a class="anchor-link" href="#testOperatorListAccess"
+              title="Permalink to AssociativeTester.testOperatorListAccess">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testOperatorListAccess(final Associative testCase) {
+ expect(testCase[invalidKey], isEmpty);
+ testCase.keys.forEach((final dynamic key) =&gt; 
+     expect(testCase[key].isEmpty, isFalse)); 
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

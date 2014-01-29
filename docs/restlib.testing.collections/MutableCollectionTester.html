@@ -1,0 +1,276 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>MutableCollectionTester abstract class / restlib.testing.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.testing.collections" data-type="MutableCollectionTester">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.testing.collections.html">restlib.testing.collections</a> &rsaquo; <a href="../restlib.testing.collections/MutableCollectionTester.html">MutableCollectionTester</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>MutableCollectionTester</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class MutableCollectionTester {
+ dynamic generateTestData(int size);
+ ElementGenerator get elementGenerator;
+ 
+ void testAdd() {
+   final int size = 1000;
+   final MutableCollection collection = generateTestData(size);
+   collection.clear();
+     
+   elementGenerator.reset();
+     
+   for (int i = 0; i &lt; size; i++) {
+     final next = elementGenerator.next();
+     collection.add(next);
+     expect(collection.contains(next), isTrue);
+     expect(collection.length, equals(i + 1));
+   }
+ }
+ 
+ void testAddAll() {
+   final int size = 1000;
+   final MutableCollection collection = generateTestData(size);
+   collection.clear();
+     
+   elementGenerator.reset();
+     
+   Array&lt;Pair&gt; array = new Array.ofSize(size);
+     
+   for (int i = 0; i &lt; size; i++) {
+     final next = elementGenerator.next();
+     array[i] = next;
+   }
+     
+   collection.addAll(array);
+   array.forEach((final element) =&gt;
+       expect(collection.contains(element), isTrue));
+ }
+ 
+ void testClear() {
+   final int size = 1000;
+   final MutableCollection collection = generateTestData(size);
+   collection.clear();
+     
+   elementGenerator.reset();
+     
+   for (int i = 0; i &lt; size; i++) {
+     final next = elementGenerator.next();
+     collection.add(next);
+   }
+     
+   collection.clear();
+   expect(collection, isEmpty);
+   expect(collection.length, equals(0));
+ }
+ 
+ void testRemove() {
+   final int size = 1000;
+   final MutableCollection collection = generateTestData(size);
+   collection.clear();
+     
+   elementGenerator.reset();
+     
+   Array&lt;Pair&gt; array = new Array.ofSize(size);
+     
+   for (int i = 0; i &lt; size; i++) {
+     final next = elementGenerator.next();
+     array[i] = next;
+   }
+     
+   collection.addAll(array);
+   array.forEach((final element) {
+     expect(collection.contains(element), isTrue);
+     final Option e = collection.remove(element);
+     expect(collection.contains(element), isFalse);
+     expect(e.first, equals(element));
+   });
+ }
+ 
+ void testMutableCollection() {
+   test("add()", testAdd);
+   test("addAll()", testAddAll);
+   test("clear()", testClear);
+   test("remove()", testRemove);    
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="elementGenerator">
+<button class="show-code">Code</button>
+final <a href="../restlib.testing.collections/ElementGenerator.html">ElementGenerator</a>         <strong>elementGenerator</strong> <a class="anchor-link"
+            href="#elementGenerator"
+            title="Permalink to MutableCollectionTester.elementGenerator">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+ElementGenerator get elementGenerator;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="generateTestData">
+abstract dynamic <strong>generateTestData</strong>(int size) <a class="anchor-link" href="#generateTestData"
+              title="Permalink to MutableCollectionTester.generateTestData">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testAdd">
+<button class="show-code">Code</button>
+void <strong>testAdd</strong>() <a class="anchor-link" href="#testAdd"
+              title="Permalink to MutableCollectionTester.testAdd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testAdd() {
+ final int size = 1000;
+ final MutableCollection collection = generateTestData(size);
+ collection.clear();
+   
+ elementGenerator.reset();
+   
+ for (int i = 0; i &lt; size; i++) {
+   final next = elementGenerator.next();
+   collection.add(next);
+   expect(collection.contains(next), isTrue);
+   expect(collection.length, equals(i + 1));
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testAddAll">
+<button class="show-code">Code</button>
+void <strong>testAddAll</strong>() <a class="anchor-link" href="#testAddAll"
+              title="Permalink to MutableCollectionTester.testAddAll">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testAddAll() {
+ final int size = 1000;
+ final MutableCollection collection = generateTestData(size);
+ collection.clear();
+   
+ elementGenerator.reset();
+   
+ Array&lt;Pair&gt; array = new Array.ofSize(size);
+   
+ for (int i = 0; i &lt; size; i++) {
+   final next = elementGenerator.next();
+   array[i] = next;
+ }
+   
+ collection.addAll(array);
+ array.forEach((final element) =&gt;
+     expect(collection.contains(element), isTrue));
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testClear">
+<button class="show-code">Code</button>
+void <strong>testClear</strong>() <a class="anchor-link" href="#testClear"
+              title="Permalink to MutableCollectionTester.testClear">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testClear() {
+ final int size = 1000;
+ final MutableCollection collection = generateTestData(size);
+ collection.clear();
+   
+ elementGenerator.reset();
+   
+ for (int i = 0; i &lt; size; i++) {
+   final next = elementGenerator.next();
+   collection.add(next);
+ }
+   
+ collection.clear();
+ expect(collection, isEmpty);
+ expect(collection.length, equals(0));
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testMutableCollection">
+<button class="show-code">Code</button>
+void <strong>testMutableCollection</strong>() <a class="anchor-link" href="#testMutableCollection"
+              title="Permalink to MutableCollectionTester.testMutableCollection">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testMutableCollection() {
+ test("add()", testAdd);
+ test("addAll()", testAddAll);
+ test("clear()", testClear);
+ test("remove()", testRemove);    
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testRemove">
+<button class="show-code">Code</button>
+void <strong>testRemove</strong>() <a class="anchor-link" href="#testRemove"
+              title="Permalink to MutableCollectionTester.testRemove">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testRemove() {
+ final int size = 1000;
+ final MutableCollection collection = generateTestData(size);
+ collection.clear();
+   
+ elementGenerator.reset();
+   
+ Array&lt;Pair&gt; array = new Array.ofSize(size);
+   
+ for (int i = 0; i &lt; size; i++) {
+   final next = elementGenerator.next();
+   array[i] = next;
+ }
+   
+ collection.addAll(array);
+ array.forEach((final element) {
+   expect(collection.contains(element), isTrue);
+   final Option e = collection.remove(element);
+   expect(collection.contains(element), isFalse);
+   expect(e.first, equals(element));
+ });
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

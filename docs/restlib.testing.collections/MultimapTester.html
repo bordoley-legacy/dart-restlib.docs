@@ -1,0 +1,109 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>MultimapTester abstract class / restlib.testing.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.testing.collections" data-type="MultimapTester">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.testing.collections.html">restlib.testing.collections</a> &rsaquo; <a href="../restlib.testing.collections/MultimapTester.html">MultimapTester</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>MultimapTester</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class MultimapTester {
+ Iterable&lt;int&gt; get testSizes;
+
+ void _doMultimapTest(final String testDescription, func(Multimap testData)) =&gt; 
+     group(testDescription, () =&gt; 
+         testSizes.forEach((final int size) =&gt; 
+             test("with Multimap of size $size", () =&gt; 
+                 func(generateTestData(size)))));
+ 
+ dynamic generateTestData(int size); 
+ 
+ void testGetDictionary(final Multimap multimap);
+
+ void testMultimap() {
+   checkNotNull(testSizes);
+   
+   _doMultimapTest("get dictionary", testGetDictionary);
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="testSizes">
+<button class="show-code">Code</button>
+final Iterable&lt;int&gt;         <strong>testSizes</strong> <a class="anchor-link"
+            href="#testSizes"
+            title="Permalink to MultimapTester.testSizes">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;int&gt; get testSizes;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="generateTestData">
+abstract dynamic <strong>generateTestData</strong>(int size) <a class="anchor-link" href="#generateTestData"
+              title="Permalink to MultimapTester.generateTestData">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testGetDictionary">
+abstract void <strong>testGetDictionary</strong>(<a href="../restlib.common.collections/Multimap.html">Multimap</a> multimap) <a class="anchor-link" href="#testGetDictionary"
+              title="Permalink to MultimapTester.testGetDictionary">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testMultimap">
+<button class="show-code">Code</button>
+void <strong>testMultimap</strong>() <a class="anchor-link" href="#testMultimap"
+              title="Permalink to MultimapTester.testMultimap">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testMultimap() {
+ checkNotNull(testSizes);
+ 
+ _doMultimapTest("get dictionary", testGetDictionary);
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

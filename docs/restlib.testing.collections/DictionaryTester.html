@@ -1,0 +1,174 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>DictionaryTester abstract class / restlib.testing.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.testing.collections" data-type="DictionaryTester">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.testing.collections.html">restlib.testing.collections</a> &rsaquo; <a href="../restlib.testing.collections/DictionaryTester.html">DictionaryTester</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>DictionaryTester</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class DictionaryTester {
+ dynamic get invalidKey;
+ Iterable&lt;int&gt; get testSizes;
+ 
+ void _doDictionaryTest(final String testDescription, func(Associative testData)) =&gt; 
+     group(testDescription, () =&gt; 
+         testSizes.forEach((final int size) =&gt; 
+             test("with Dictionary of size $size", () =&gt; 
+                 func(generateTestData(size)))));
+ 
+ dynamic generateTestData(int size);  
+ 
+ void testAsMap(final Dictionary dictionary) {
+   final Map map = dictionary.asMap();
+   expect(map.isEmpty, equals(dictionary.isEmpty));
+   expect(map.isNotEmpty, equals(dictionary.isNotEmpty));
+   map.keys.forEach((final key) {
+     expect(dictionary.containsKey(key), isTrue);
+     expect(map[key], equals(dictionary[key].value));
+   });
+   
+   expect(map.length, equals(dictionary.length));
+   map.values.forEach((final value) =&gt; 
+       expect(dictionary.containsValue(value), isTrue));
+   expect(() =&gt; map.addAll({}), throwsUnsupportedError);
+   expect(() =&gt; map.clear(), throwsUnsupportedError);
+   
+   dictionary.keys.forEach((final key) =&gt;
+       expect(map.containsKey(key), isTrue));
+   
+   dictionary.values.forEach((final value) =&gt; 
+       expect(map.containsValue(value), isTrue));
+
+   expect(() =&gt; map.putIfAbsent("",() =&gt; ""), throwsUnsupportedError);
+   expect(() =&gt; map.remove(""), throwsUnsupportedError);
+ }
+ 
+ void testDictionary() {
+   checkNotNull(invalidKey);
+   checkNotNull(testSizes);
+   
+   _doDictionaryTest("asMap()", testAsMap);
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="invalidKey">
+<button class="show-code">Code</button>
+final         <strong>invalidKey</strong> <a class="anchor-link"
+            href="#invalidKey"
+            title="Permalink to DictionaryTester.invalidKey">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+dynamic get invalidKey;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="testSizes">
+<button class="show-code">Code</button>
+final Iterable&lt;int&gt;         <strong>testSizes</strong> <a class="anchor-link"
+            href="#testSizes"
+            title="Permalink to DictionaryTester.testSizes">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;int&gt; get testSizes;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="generateTestData">
+abstract dynamic <strong>generateTestData</strong>(int size) <a class="anchor-link" href="#generateTestData"
+              title="Permalink to DictionaryTester.generateTestData">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testAsMap">
+<button class="show-code">Code</button>
+void <strong>testAsMap</strong>(<a href="../restlib.common.collections/Dictionary.html">Dictionary</a> dictionary) <a class="anchor-link" href="#testAsMap"
+              title="Permalink to DictionaryTester.testAsMap">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testAsMap(final Dictionary dictionary) {
+ final Map map = dictionary.asMap();
+ expect(map.isEmpty, equals(dictionary.isEmpty));
+ expect(map.isNotEmpty, equals(dictionary.isNotEmpty));
+ map.keys.forEach((final key) {
+   expect(dictionary.containsKey(key), isTrue);
+   expect(map[key], equals(dictionary[key].value));
+ });
+ 
+ expect(map.length, equals(dictionary.length));
+ map.values.forEach((final value) =&gt; 
+     expect(dictionary.containsValue(value), isTrue));
+ expect(() =&gt; map.addAll({}), throwsUnsupportedError);
+ expect(() =&gt; map.clear(), throwsUnsupportedError);
+ 
+ dictionary.keys.forEach((final key) =&gt;
+     expect(map.containsKey(key), isTrue));
+ 
+ dictionary.values.forEach((final value) =&gt; 
+     expect(map.containsValue(value), isTrue));
+
+ expect(() =&gt; map.putIfAbsent("",() =&gt; ""), throwsUnsupportedError);
+ expect(() =&gt; map.remove(""), throwsUnsupportedError);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testDictionary">
+<button class="show-code">Code</button>
+void <strong>testDictionary</strong>() <a class="anchor-link" href="#testDictionary"
+              title="Permalink to DictionaryTester.testDictionary">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testDictionary() {
+ checkNotNull(invalidKey);
+ checkNotNull(testSizes);
+ 
+ _doDictionaryTest("asMap()", testAsMap);
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

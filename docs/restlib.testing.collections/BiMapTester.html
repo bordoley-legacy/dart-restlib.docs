@@ -1,0 +1,121 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>BiMapTester abstract class / restlib.testing.collections Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.testing.collections" data-type="BiMapTester">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.testing.collections.html">restlib.testing.collections</a> &rsaquo; <a href="../restlib.testing.collections/BiMapTester.html">BiMapTester</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>BiMapTester</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class BiMapTester {
+ Iterable&lt;int&gt; get testSizes;
+ 
+ void _doBiMapTest(final String testDescription, func(BiMap testData, int size)) =&gt;
+     group(testDescription, () =&gt;
+         testSizes.forEach((final int size) =&gt; 
+             test("with BiMap of size $size", () =&gt; 
+                 func(generateTestData(size), size))));  
+
+ dynamic generateTestData(int size);
+
+ void testGetInverse(final BiMap testData, final int size) {
+   final BiMap inverse = testData.inverse;
+   testData.forEach((final Pair pair) =&gt; 
+       expect(inverse[pair.snd].value, equals(pair.fst))); 
+ }
+ 
+ void testBiMap() {
+   checkNotNull(testSizes);
+   
+   _doBiMapTest("get inverse", testGetInverse);
+ }
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="testSizes">
+<button class="show-code">Code</button>
+final Iterable&lt;int&gt;         <strong>testSizes</strong> <a class="anchor-link"
+            href="#testSizes"
+            title="Permalink to BiMapTester.testSizes">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;int&gt; get testSizes;
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="generateTestData">
+abstract dynamic <strong>generateTestData</strong>(int size) <a class="anchor-link" href="#generateTestData"
+              title="Permalink to BiMapTester.generateTestData">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="testBiMap">
+<button class="show-code">Code</button>
+void <strong>testBiMap</strong>() <a class="anchor-link" href="#testBiMap"
+              title="Permalink to BiMapTester.testBiMap">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testBiMap() {
+ checkNotNull(testSizes);
+ 
+ _doBiMapTest("get inverse", testGetInverse);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="testGetInverse">
+<button class="show-code">Code</button>
+void <strong>testGetInverse</strong>(<a href="../restlib.common.collections/BiMap.html">BiMap</a> testData, int size) <a class="anchor-link" href="#testGetInverse"
+              title="Permalink to BiMapTester.testGetInverse">#</a></h4>
+<div class="doc">
+<pre class="source">
+void testGetInverse(final BiMap testData, final int size) {
+ final BiMap inverse = testData.inverse;
+ testData.forEach((final Pair pair) =&gt; 
+     expect(inverse[pair.snd].value, equals(pair.fst))); 
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

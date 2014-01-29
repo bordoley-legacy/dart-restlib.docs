@@ -34,15 +34,16 @@
 <div class="doc">
 <pre class="source">
 class Warning {
- final Either&lt;HostPort, String&gt; warnAgent;
+ final Either&lt;Authority, String&gt; warnAgent;
  final int warnCode;
  final Option&lt;DateTime&gt; warnDate;
  final String warnText;
  
- factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final DateTime warnDate = null]) {
+ factory Warning.hostPort(final int warnCode, final Authority warnAgent, final String warnText, [final DateTime warnDate = null]) {
    checkArgument(warnCode &gt; 0);
    checkArgument(warnCode &lt;= 999);
    checkArgument(QUOTABLE.matchesAllOf(warnText));
+   checkArgument(warnAgent.userInfo.isEmpty);
    
    return new Warning._internal(warnCode, new Either.leftValue(warnAgent), warnText, new Option(warnDate));
  }
@@ -82,14 +83,15 @@ class Warning {
 <h3>Constructors</h3>
 <div class="method"><h4 id="hostPort">
 <button class="show-code">Code</button>
-factory <strong>Warning.hostPort</strong>(int warnCode, <a href="../restlib.core.data/HostPort.html">HostPort</a> warnAgent, String warnText, [DateTime warnDate = null]) <a class="anchor-link" href="#hostPort"
+factory <strong>Warning.hostPort</strong>(int warnCode, <a href="../restlib.core.net/Authority.html">Authority</a> warnAgent, String warnText, [DateTime warnDate = null]) <a class="anchor-link" href="#hostPort"
               title="Permalink to Warning.Warning.hostPort">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Warning.hostPort(final int warnCode, final HostPort warnAgent, final String warnText, [final DateTime warnDate = null]) {
+factory Warning.hostPort(final int warnCode, final Authority warnAgent, final String warnText, [final DateTime warnDate = null]) {
  checkArgument(warnCode &gt; 0);
  checkArgument(warnCode &lt;= 999);
  checkArgument(QUOTABLE.matchesAllOf(warnText));
+ checkArgument(warnAgent.userInfo.isEmpty);
  
  return new Warning._internal(warnCode, new Either.leftValue(warnAgent), warnText, new Option(warnDate));
 }
@@ -140,13 +142,13 @@ int get hashCode =&gt;
 </div>
 <div class="field"><h4 id="warnAgent">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.data/HostPort.html">HostPort</a>, String&gt;         <strong>warnAgent</strong> <a class="anchor-link"
+final <a href="../restlib.common.collections/Either.html">Either</a>&lt;<a href="../restlib.core.net/Authority.html">Authority</a>, String&gt;         <strong>warnAgent</strong> <a class="anchor-link"
             href="#warnAgent"
             title="Permalink to Warning.warnAgent">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-final Either&lt;HostPort, String&gt; warnAgent
+final Either&lt;Authority, String&gt; warnAgent
 </pre>
 </div>
 </div>
