@@ -1,0 +1,110 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>SetCookie class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="SetCookie">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/SetCookie.html">SetCookie</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>SetCookie</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class SetCookie {
+ final Cookie cookie;
+ final ImmutableSet&lt;CookieAttribute&gt; attributes;
+ 
+ SetCookie._internal(this.cookie, this.attributes);
+ 
+ String toString() {
+   final StringBuffer buffer = new StringBuffer();
+   buffer.write(cookie);
+   attributes.forEach((final CookieAttribute attr) =&gt;
+       buffer..write("; ")..write(attr));
+   return buffer.toString();
+ }
+     
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="attributes">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections.immutable/ImmutableSet.html">ImmutableSet</a>&lt;<a href="../restlib.core.data/CookieAttribute.html">CookieAttribute</a>&gt;         <strong>attributes</strong> <a class="anchor-link"
+            href="#attributes"
+            title="Permalink to SetCookie.attributes">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final ImmutableSet&lt;CookieAttribute&gt; attributes
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="cookie">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.data/Cookie.html">Cookie</a>         <strong>cookie</strong> <a class="anchor-link"
+            href="#cookie"
+            title="Permalink to SetCookie.cookie">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Cookie cookie
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to SetCookie.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() {
+ final StringBuffer buffer = new StringBuffer();
+ buffer.write(cookie);
+ attributes.forEach((final CookieAttribute attr) =&gt;
+     buffer..write("; ")..write(attr));
+ return buffer.toString();
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

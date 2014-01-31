@@ -56,19 +56,6 @@ final Parser&lt;IterableString&gt; BWS = OWS
 </pre>
 </div>
 </div>
-<div class="field"><h4 id="CHAR">
-<button class="show-code">Code</button>
-final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>CHAR</strong> <a class="anchor-link"
-            href="#CHAR"
-            title="Permalink to CHAR">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-final RuneMatcher CHAR =
- inRange("\u0001", "\u007F")
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="CTEXT">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>CTEXT</strong> <a class="anchor-link"
@@ -78,7 +65,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher CTEXT =
- WS | 
+ WSP | 
  inRange('\u0021', '\'') | 
  inRange('\u002A', '\u005B') |
  inRange('\u005D', '\u007E') |
@@ -110,7 +97,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher FIELD_VALUE = 
- WS | VCHAR | OBS_TEXT
+ WSP | VCHAR | OBS_TEXT
 </pre>
 </div>
 </div>
@@ -171,7 +158,7 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.parsi
         </h4>
         <div class="doc">
 <pre class="source">
-final Parser&lt;IterableString&gt; OWS = WS.many()
+final Parser&lt;IterableString&gt; OWS = WSP.many()
 </pre>
 </div>
 </div>
@@ -208,7 +195,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher QD_TEXT =
- WS |
+ WSP |
  isChar("\u0021") |
  inRange("\u0023", "\u005B") |
  inRange("\u005D", "\u007E") |
@@ -237,7 +224,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher QUOTED_CPAIR_CHAR =
- WS | VCHAR | OBS_TEXT
+ WSP | VCHAR | OBS_TEXT
 </pre>
 </div>
 </div>
@@ -250,7 +237,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher QUOTED_PAIR_CHAR = 
- WS | VCHAR | OBS_TEXT
+ WSP | VCHAR | OBS_TEXT
 </pre>
 </div>
 </div>
@@ -275,7 +262,7 @@ final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong
         <div class="doc">
 <pre class="source">
 final RuneMatcher REASON_PHRASE =
- WS | VCHAR | OBS_TEXT
+ WSP | VCHAR | OBS_TEXT
 </pre>
 </div>
 </div>
@@ -287,7 +274,7 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.parsi
         </h4>
         <div class="doc">
 <pre class="source">
-final Parser&lt;IterableString&gt; RWS = WS.many1()
+final Parser&lt;IterableString&gt; RWS = WSP.many1()
 </pre>
 </div>
 </div>
@@ -316,18 +303,6 @@ final Parser&lt;String&gt; TOKEN = TCHAR.many1().map(objectToString)
 </pre>
 </div>
 </div>
-<div class="field"><h4 id="VCHAR">
-<button class="show-code">Code</button>
-final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>VCHAR</strong> <a class="anchor-link"
-            href="#VCHAR"
-            title="Permalink to VCHAR">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-final RuneMatcher VCHAR = inRange("\u0021", "\u007E")
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="WORD">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <strong>WORD</strong> <a class="anchor-link"
@@ -336,22 +311,7 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;String&gt;         <st
         </h4>
         <div class="doc">
 <pre class="source">
-final Parser&lt;String&gt; WORD = 
- (TOKEN ^ QUOTED_STRING)
-   .map((final Either&lt;String, String&gt; e) =&gt;
-       e.value)
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="WS">
-<button class="show-code">Code</button>
-final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>WS</strong> <a class="anchor-link"
-            href="#WS"
-            title="Permalink to WS">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-final RuneMatcher WS = anyOf(" \t")
+final Parser&lt;String&gt; WORD = TOKEN | QUOTED_STRING
 </pre>
 </div>
 </div>

@@ -38,6 +38,7 @@ abstract class Request&lt;T&gt; {
    final ChallengeMessage authorizationCredentials,
    final Iterable&lt;CacheDirective&gt; cacheDirectives,
    final ContentInfo contentInfo,
+   final Iterable&lt;Cookie&gt; cookies,
    final Dictionary&lt;Header, dynamic&gt; customHeaders,
    final T entity,
    final Iterable&lt;Expectation&gt; expectations,
@@ -51,6 +52,7 @@ abstract class Request&lt;T&gt; {
            new Option(authorizationCredentials),
            Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
            firstNotNull(contentInfo, ContentInfo.NONE),
+           Persistent.EMPTY_SET.addAll(firstNotNull(cookies, EMPTY_LIST)),
            Persistent.EMPTY_DICTIONARY.putAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
            new Option(entity),
            Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
@@ -71,6 +73,8 @@ abstract class Request&lt;T&gt; {
  FiniteSet&lt;CacheDirective&gt; get cacheDirectives;
  
  ContentInfo get contentInfo;
+ 
+ FiniteSet&lt;Cookie&gt; get cookies;
  
  Dictionary&lt;Header, dynamic&gt; get customHeaders;
  
@@ -100,6 +104,7 @@ abstract class Request&lt;T&gt; {
    ChallengeMessage authorizationCredentials,
    Iterable&lt;CacheDirective&gt; cacheDirectives,
    ContentInfo contentInfo,
+   Iterable&lt;Cookie&gt; cookies,
    Dictionary&lt;Header, dynamic&gt; customHeaders,
    entity,
    Iterable&lt;Expectation&gt; expectations,
@@ -135,7 +140,7 @@ abstract class Request&lt;T&gt; {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Request</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, uri, {<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, <a href="../restlib.core.http/Request.html">T</a> entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#"
+factory <strong>Request</strong>(<a href="../restlib.core.http/Method.html">Method</a> method, uri, {<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, Iterable&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt; cookies, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, <a href="../restlib.core.http/Request.html">T</a> entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#"
               title="Permalink to Request&lt;T&gt;.Request">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -149,6 +154,7 @@ factory Request(final Method method, final uri, {
  final ChallengeMessage authorizationCredentials,
  final Iterable&lt;CacheDirective&gt; cacheDirectives,
  final ContentInfo contentInfo,
+ final Iterable&lt;Cookie&gt; cookies,
  final Dictionary&lt;Header, dynamic&gt; customHeaders,
  final T entity,
  final Iterable&lt;Expectation&gt; expectations,
@@ -162,6 +168,7 @@ factory Request(final Method method, final uri, {
          new Option(authorizationCredentials),
          Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
          firstNotNull(contentInfo, ContentInfo.NONE),
+         Persistent.EMPTY_SET.addAll(firstNotNull(cookies, EMPTY_LIST)),
          Persistent.EMPTY_DICTIONARY.putAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
          new Option(entity),
          Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
@@ -223,6 +230,18 @@ final <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <s
         <div class="doc">
 <pre class="source">
 ContentInfo get contentInfo;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="cookies">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt;         <strong>cookies</strong> <a class="anchor-link"
+            href="#cookies"
+            title="Permalink to Request&lt;T&gt;.cookies">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+FiniteSet&lt;Cookie&gt; get cookies;
 </pre>
 </div>
 </div>
@@ -371,7 +390,7 @@ abstract String <strong>toString</strong>() <a class="anchor-link" href="#toStri
 </div>
 </div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.net/URI.html">URI</a> uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, Iterable&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt; cookies, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.net/URI.html">URI</a> uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
               title="Permalink to Request&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 </div>

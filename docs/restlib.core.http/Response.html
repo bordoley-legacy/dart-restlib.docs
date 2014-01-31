@@ -51,7 +51,8 @@ abstract class Response&lt;T&gt; {
    final URI location,
    final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
    final DateTime retryAfter,
-   final UserAgent server,  
+   final UserAgent server, 
+   final Iterable&lt;SetCookie&gt; setCookies,
    final Iterable&lt;Header&gt; vary,
    final Iterable&lt;Warning&gt; warnings}) =&gt;
        new _ResponseImpl(
@@ -71,6 +72,7 @@ abstract class Response&lt;T&gt; {
            Persistent.EMPTY_SET.addAll(firstNotNull(proxyAuthenticationChallenges, EMPTY_LIST)),
            new Option(retryAfter),
            new Option(server),
+           Persistent.EMPTY_SET.addAll(firstNotNull(setCookies, EMPTY_LIST)),
            status,
            Persistent.EMPTY_SET.addAll(firstNotNull(vary, EMPTY_LIST)),
            Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(warnings, EMPTY_LIST)));
@@ -107,6 +109,8 @@ abstract class Response&lt;T&gt; {
  
  Option&lt;UserAgent&gt; get server;
  
+ FiniteSet&lt;SetCookie&gt; get setCookies;
+ 
  Status get status;
  
  FiniteSet&lt;Header&gt; get vary;
@@ -132,6 +136,7 @@ abstract class Response&lt;T&gt; {
    Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
    DateTime retryAfter,
    UserAgent server,
+   Iterable&lt;SetCookie&gt; setCookies,
    Status status,
    Iterable&lt;Header&gt; vary,
    Iterable&lt;Warning&gt; warnings});
@@ -153,6 +158,7 @@ abstract class Response&lt;T&gt; {
    bool proxyAuthenticationChallenges : false,
    bool retryAfter : false,
    bool server : false,
+   bool setCookies : false,
    bool vary : false,
    bool warnings : false});
 }
@@ -165,7 +171,7 @@ abstract class Response&lt;T&gt; {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Response</strong>(<a href="../restlib.core.http/Status.html">Status</a> status, {Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, <a href="../restlib.core.http/Response.html">T</a> entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, <a href="../restlib.core.net/URI.html">URI</a> location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#"
+factory <strong>Response</strong>(<a href="../restlib.core.http/Status.html">Status</a> status, {Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, <a href="../restlib.core.http/Response.html">T</a> entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, <a href="../restlib.core.net/URI.html">URI</a> location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, Iterable&lt;<a href="../restlib.core.data/SetCookie.html">SetCookie</a>&gt; setCookies, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#"
               title="Permalink to Response&lt;T&gt;.Response">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -192,7 +198,8 @@ factory Response(
  final URI location,
  final Iterable&lt;ChallengeMessage&gt; proxyAuthenticationChallenges,
  final DateTime retryAfter,
- final UserAgent server,  
+ final UserAgent server, 
+ final Iterable&lt;SetCookie&gt; setCookies,
  final Iterable&lt;Header&gt; vary,
  final Iterable&lt;Warning&gt; warnings}) =&gt;
      new _ResponseImpl(
@@ -212,6 +219,7 @@ factory Response(
          Persistent.EMPTY_SET.addAll(firstNotNull(proxyAuthenticationChallenges, EMPTY_LIST)),
          new Option(retryAfter),
          new Option(server),
+         Persistent.EMPTY_SET.addAll(firstNotNull(setCookies, EMPTY_LIST)),
          status,
          Persistent.EMPTY_SET.addAll(firstNotNull(vary, EMPTY_LIST)),
          Persistent.EMPTY_SEQUENCE.addAll(firstNotNull(warnings, EMPTY_LIST)));
@@ -413,6 +421,18 @@ Option&lt;UserAgent&gt; get server;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="setCookies">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/SetCookie.html">SetCookie</a>&gt;         <strong>setCookies</strong> <a class="anchor-link"
+            href="#setCookies"
+            title="Permalink to Response&lt;T&gt;.setCookies">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+FiniteSet&lt;SetCookie&gt; get setCookies;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="status">
 <button class="show-code">Code</button>
 final <a href="../restlib.core.http/Status.html">Status</a>         <strong>status</strong> <a class="anchor-link"
@@ -462,13 +482,13 @@ abstract String <strong>toString</strong>() <a class="anchor-link" href="#toStri
 </div>
 </div>
 <div class="method"><h4 id="with_">
-abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, <a href="../restlib.core.net/URI.html">URI</a> location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#with_"
+abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>with_</strong>({Iterable&lt;<a href="../restlib.core.data/RangeUnit.html">RangeUnit</a>&gt; acceptedRangeUnits, int age, Iterable&lt;<a href="../restlib.core.http/Method.html">Method</a>&gt; allowedMethods, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; authenticationChallenges, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, DateTime date, entity, <a href="../restlib.core.data/EntityTag.html">EntityTag</a> entityTag, DateTime expires, DateTime lastModified, <a href="../restlib.core.net/URI.html">URI</a> location, Iterable&lt;<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a>&gt; proxyAuthenticationChallenges, DateTime retryAfter, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> server, Iterable&lt;<a href="../restlib.core.data/SetCookie.html">SetCookie</a>&gt; setCookies, <a href="../restlib.core.http/Status.html">Status</a> status, Iterable&lt;<a href="../restlib.core.http/Header.html">Header</a>&gt; vary, Iterable&lt;<a href="../restlib.core.data/Warning.html">Warning</a>&gt; warnings}) <a class="anchor-link" href="#with_"
               title="Permalink to Response&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 </div>
 </div>
 <div class="method"><h4 id="without">
-abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>without</strong>({bool acceptedRangeUnits: false, bool age: false, bool allowedMethods: false, bool authenticationChallenges: false, bool cacheDirectives: false, bool contentInfo: false, bool customHeaders: false, bool date: false, bool entity: false, bool entityTag: false, bool expires: false, bool lastModified: false, bool location: false, bool proxyAuthenticationChallenges: false, bool retryAfter: false, bool server: false, bool vary: false, bool warnings: false}) <a class="anchor-link" href="#without"
+abstract <a href="../restlib.core.http/Response.html">Response</a> <strong>without</strong>({bool acceptedRangeUnits: false, bool age: false, bool allowedMethods: false, bool authenticationChallenges: false, bool cacheDirectives: false, bool contentInfo: false, bool customHeaders: false, bool date: false, bool entity: false, bool entityTag: false, bool expires: false, bool lastModified: false, bool location: false, bool proxyAuthenticationChallenges: false, bool retryAfter: false, bool server: false, bool setCookies: false, bool vary: false, bool warnings: false}) <a class="anchor-link" href="#without"
               title="Permalink to Response&lt;T&gt;.without">#</a></h4>
 <div class="doc">
 </div>

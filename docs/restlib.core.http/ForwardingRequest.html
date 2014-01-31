@@ -43,6 +43,9 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
  ContentInfo get contentInfo =&gt;
      delegate.contentInfo;
  
+ FiniteSet&lt;Cookie&gt; get cookies =&gt;
+     delegate.cookies;
+ 
  Dictionary&lt;Header, dynamic&gt; get customHeaders =&gt;
      delegate.customHeaders;
  
@@ -83,6 +86,7 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
    final ChallengeMessage authorizationCredentials,
    final Iterable&lt;CacheDirective&gt; cacheDirectives,
    final ContentInfo contentInfo,
+   final Iterable&lt;Cookie&gt; cookies,
    final Dictionary&lt;Header, dynamic&gt; customHeaders,
    final entity,
    final Iterable&lt;Expectation&gt; expectations,
@@ -99,6 +103,7 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
            authorizationCredentials,
            cacheDirectives, 
            contentInfo,
+           cookies,
            customHeaders,
            entity,
            expectations,
@@ -115,6 +120,7 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
    final bool authorizationCredentials : false,
    final bool cacheDirectives : false,
    final bool contentInfo : false,
+   final bool cookies : false,
    final bool customHeaders : false,
    final bool entity : false,
    final bool expectations : false,
@@ -129,6 +135,7 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
            authorizationCredentials,
            cacheDirectives, 
            contentInfo,
+           cookies,
            customHeaders,
            entity,
            expectations,
@@ -182,6 +189,19 @@ final <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a>         <s
 <pre class="source">
 ContentInfo get contentInfo =&gt;
    delegate.contentInfo;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="cookies">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt;         <strong>cookies</strong> <a class="anchor-link"
+            href="#cookies"
+            title="Permalink to ForwardingRequest&lt;T&gt;.cookies">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+FiniteSet&lt;Cookie&gt; get cookies =&gt;
+   delegate.cookies;
 </pre>
 </div>
 </div>
@@ -359,7 +379,7 @@ String toString() =&gt;
 </div>
 <div class="method"><h4 id="with_">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.net/URI.html">URI</a> uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
+<a href="../restlib.core.http/Request.html">Request</a> <strong>with_</strong>({<a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> authorizationCredentials, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; cacheDirectives, <a href="../restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo, Iterable&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt; cookies, <a href="../restlib.common.collections/Dictionary.html">Dictionary</a>&lt;<a href="../restlib.core.http/Header.html">Header</a>, dynamic&gt; customHeaders, entity, Iterable&lt;<a href="../restlib.core.data/Expectation.html">Expectation</a>&gt; expectations, <a href="../restlib.core.http/Method.html">Method</a> method, Iterable&lt;<a href="../restlib.core.data/CacheDirective.html">CacheDirective</a>&gt; pragmaCacheDirectives, <a href="../restlib.core.http/RequestPreconditions.html">RequestPreconditions</a> preconditions, <a href="../restlib.core.http/RequestPreferences.html">RequestPreferences</a> preferences, <a href="../restlib.core.data/ChallengeMessage.html">ChallengeMessage</a> proxyAuthorizationCredentials, <a href="../restlib.core.net/URI.html">URI</a> referer, <a href="../restlib.core.net/URI.html">URI</a> uri, <a href="../restlib.core.data/UserAgent.html">UserAgent</a> userAgent}) <a class="anchor-link" href="#with_"
               title="Permalink to ForwardingRequest&lt;T&gt;.with_">#</a></h4>
 <div class="doc">
 <pre class="source">
@@ -367,6 +387,7 @@ Request with_({
  final ChallengeMessage authorizationCredentials,
  final Iterable&lt;CacheDirective&gt; cacheDirectives,
  final ContentInfo contentInfo,
+ final Iterable&lt;Cookie&gt; cookies,
  final Dictionary&lt;Header, dynamic&gt; customHeaders,
  final entity,
  final Iterable&lt;Expectation&gt; expectations,
@@ -383,6 +404,7 @@ Request with_({
          authorizationCredentials,
          cacheDirectives, 
          contentInfo,
+         cookies,
          customHeaders,
          entity,
          expectations,
@@ -399,7 +421,7 @@ Request with_({
 </div>
 <div class="method"><h4 id="without">
 <button class="show-code">Code</button>
-<a href="../restlib.core.http/Request.html">Request</a> <strong>without</strong>({bool authorizationCredentials: false, bool cacheDirectives: false, bool contentInfo: false, bool customHeaders: false, bool entity: false, bool expectations: false, bool pragmaCacheDirectives: false, bool preconditions: false, bool preferences: false, bool proxyAuthorizationCredentials: false, bool referer: false, bool userAgent: false}) <a class="anchor-link" href="#without"
+<a href="../restlib.core.http/Request.html">Request</a> <strong>without</strong>({bool authorizationCredentials: false, bool cacheDirectives: false, bool contentInfo: false, bool cookies: false, bool customHeaders: false, bool entity: false, bool expectations: false, bool pragmaCacheDirectives: false, bool preconditions: false, bool preferences: false, bool proxyAuthorizationCredentials: false, bool referer: false, bool userAgent: false}) <a class="anchor-link" href="#without"
               title="Permalink to ForwardingRequest&lt;T&gt;.without">#</a></h4>
 <div class="doc">
 <pre class="source">
@@ -407,6 +429,7 @@ Request without({
  final bool authorizationCredentials : false,
  final bool cacheDirectives : false,
  final bool contentInfo : false,
+ final bool cookies : false,
  final bool customHeaders : false,
  final bool entity : false,
  final bool expectations : false,
@@ -421,6 +444,7 @@ Request without({
          authorizationCredentials,
          cacheDirectives, 
          contentInfo,
+         cookies,
          customHeaders,
          entity,
          expectations,

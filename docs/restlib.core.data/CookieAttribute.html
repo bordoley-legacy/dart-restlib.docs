@@ -1,0 +1,176 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>CookieAttribute abstract class / restlib.core.data Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.core.data" data-type="CookieAttribute">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.core.data.html">restlib.core.data</a> &rsaquo; <a href="../restlib.core.data/CookieAttribute.html">CookieAttribute</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>CookieAttribute</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class CookieAttribute {
+ static const CookieAttribute HTTP_ONLY = const _CookieHttpOnlyAttribute._internal();
+ static const CookieAttribute SECURE = const _CookieSecureAttribute._internal();
+ 
+ factory CookieAttribute.expiresOn(final DateTime date) =&gt;
+     new CookieExpiresAttribute._internal(checkNotNull(date));
+ 
+ factory CookieAttribute.extension(final String value) {
+   checkNotNull(value);
+   checkArgument(!value.startsWith("Expires=") || 
+       !value.startsWith("Max-Age=") ||
+       !value.startsWith("Domain=") ||
+       !value.startsWith("Path=") ||
+       value != "Secure" ||
+       value !="HttpOnly");
+   
+   checkArgument(_EXTENSION_VALUE.matchesAllOf(value));
+   
+   return new CookieExtensionAttribute._internal(value);
+ }
+ 
+ factory CookieAttribute.maxAge(final int maxAge) =&gt;
+     new CookieMaxAgeAttribute._internal(checkNotNull(maxAge));
+ 
+ factory CookieAttribute.domain(final DomainName domain) =&gt;
+     new CookieDomainAttribute._internal(checkNotNull(domain));
+ 
+ factory CookieAttribute.path(final Path path) =&gt;
+     new CookiePathAttribute._internal(checkNotNull(path));
+ 
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/CookieDomainAttribute.html">CookieDomainAttribute</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/CookieExpiresAttribute.html">CookieExpiresAttribute</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/CookieExtensionAttribute.html">CookieExtensionAttribute</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/CookieMaxAgeAttribute.html">CookieMaxAgeAttribute</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.core.data/CookiePathAttribute.html">CookiePathAttribute</a></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="HTTP_ONLY">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/CookieAttribute.html">CookieAttribute</a>         <strong>HTTP_ONLY</strong> <a class="anchor-link"
+            href="#HTTP_ONLY"
+            title="Permalink to CookieAttribute.HTTP_ONLY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CookieAttribute HTTP_ONLY = const _CookieHttpOnlyAttribute._internal()
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SECURE">
+<button class="show-code">Code</button>
+const <a href="../restlib.core.data/CookieAttribute.html">CookieAttribute</a>         <strong>SECURE</strong> <a class="anchor-link"
+            href="#SECURE"
+            title="Permalink to CookieAttribute.SECURE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CookieAttribute SECURE = const _CookieSecureAttribute._internal()
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="domain">
+<button class="show-code">Code</button>
+factory <strong>CookieAttribute.domain</strong>(<a href="../restlib.core.net/DomainName.html">DomainName</a> domain) <a class="anchor-link" href="#domain"
+              title="Permalink to CookieAttribute.CookieAttribute.domain">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory CookieAttribute.domain(final DomainName domain) =&gt;
+   new CookieDomainAttribute._internal(checkNotNull(domain));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="expiresOn">
+<button class="show-code">Code</button>
+factory <strong>CookieAttribute.expiresOn</strong>(DateTime date) <a class="anchor-link" href="#expiresOn"
+              title="Permalink to CookieAttribute.CookieAttribute.expiresOn">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory CookieAttribute.expiresOn(final DateTime date) =&gt;
+   new CookieExpiresAttribute._internal(checkNotNull(date));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="extension">
+<button class="show-code">Code</button>
+factory <strong>CookieAttribute.extension</strong>(String value) <a class="anchor-link" href="#extension"
+              title="Permalink to CookieAttribute.CookieAttribute.extension">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory CookieAttribute.extension(final String value) {
+ checkNotNull(value);
+ checkArgument(!value.startsWith("Expires=") || 
+     !value.startsWith("Max-Age=") ||
+     !value.startsWith("Domain=") ||
+     !value.startsWith("Path=") ||
+     value != "Secure" ||
+     value !="HttpOnly");
+ 
+ checkArgument(_EXTENSION_VALUE.matchesAllOf(value));
+ 
+ return new CookieExtensionAttribute._internal(value);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="maxAge">
+<button class="show-code">Code</button>
+factory <strong>CookieAttribute.maxAge</strong>(int maxAge) <a class="anchor-link" href="#maxAge"
+              title="Permalink to CookieAttribute.CookieAttribute.maxAge">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory CookieAttribute.maxAge(final int maxAge) =&gt;
+   new CookieMaxAgeAttribute._internal(checkNotNull(maxAge));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="path">
+<button class="show-code">Code</button>
+factory <strong>CookieAttribute.path</strong>(<a href="../restlib.core.net/Path.html">Path</a> path) <a class="anchor-link" href="#path"
+              title="Permalink to CookieAttribute.CookieAttribute.path">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory CookieAttribute.path(final Path path) =&gt;
+   new CookiePathAttribute._internal(checkNotNull(path));
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

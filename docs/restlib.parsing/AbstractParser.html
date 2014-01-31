@@ -45,8 +45,6 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
  Parser&lt;T&gt; operator|(final Parser&lt;T&gt; other) =&gt;
      new _OrParser(this, other);
  
-//  Parser&lt;T&gt; operator|(Parser&lt;T&gt; other);
- 
  Parser flatMap(Option f(T value)) =&gt;
      new _FlatMappedParser(this, f);
  

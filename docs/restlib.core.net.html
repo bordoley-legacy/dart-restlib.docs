@@ -42,6 +42,18 @@ final Parser&lt;Authority&gt; AUTHORITY =
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="DOMAIN_NAME">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/DomainName.html">DomainName</a>&gt;         <strong>DOMAIN_NAME</strong> <a class="anchor-link"
+            href="#DOMAIN_NAME"
+            title="Permalink to DOMAIN_NAME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;DomainName&gt; DOMAIN_NAME = _REG_NAME
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="I_AUTHORITY">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/Authority.html">Authority</a>&gt;         <strong>I_AUTHORITY</strong> <a class="anchor-link"
@@ -72,6 +84,28 @@ final Parser&lt;IRI&gt; IRI_ = _iriParser(
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="PATH">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/Path.html">Path</a>&gt;         <strong>PATH</strong> <a class="anchor-link"
+            href="#PATH"
+            title="Permalink to PATH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;Path&gt; PATH = 
+ _PATH_SEGMENT
+   .sepBy(FORWARD_SLASH)
+   .map(Path.EMPTY.addAll)
+   .map((final Path path) {
+     if ((path.length == 1) &amp;&amp; path.elementAt(0).isEmpty) {
+       return Path.EMPTY;
+     } else {
+       return path;
+     }
+   })
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="URI_">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/URI.html">URI</a>&gt;         <strong>URI_</strong> <a class="anchor-link"
@@ -82,7 +116,7 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.
 <pre class="source">
 final Parser&lt;URI&gt; URI_ = _iriParser(
    AUTHORITY,
-   _PATH,
+   PATH,
    _QUERY,
    _FRAGMENT,
    _URI._builder)
