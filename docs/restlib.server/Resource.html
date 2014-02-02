@@ -52,6 +52,14 @@ abstract class Resource&lt;T&gt; {
    return new _UniformResource._internal(delegate, allowedMethods);
  }
  
+ factory Resource.proxyAuthorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
+   final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+       Persistent.EMPTY_DICTIONARY.putAll(authorizer.map((final Authorizer authorizer) =&gt;
+           new Pair(authorizer.scheme, authorizer)));
+   
+   return new _ProxyAuthorizingResource&lt;T&gt; (delegate, authorizerMap);
+ }
+ 
  Route get route;
 
  Request filterRequest(final Request request);
@@ -105,6 +113,22 @@ factory <strong>Resource.byteRangeResource</strong>(<a href="../restlib.server/R
 <pre class="source">
 factory Resource.byteRangeResource(final Resource&lt;T&gt; delegate) =&gt;
    new _ByteRangeResource(delegate);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="proxyAuthorizingResource">
+<button class="show-code">Code</button>
+factory <strong>Resource.proxyAuthorizingResource</strong>(<a href="../restlib.server/Resource.html">Resource</a>&lt;<a href="../restlib.server/Resource.html">T</a>&gt; delegate, Iterable&lt;<a href="../restlib.server/Authorizer.html">Authorizer</a>&gt; authorizer) <a class="anchor-link" href="#proxyAuthorizingResource"
+              title="Permalink to Resource&lt;T&gt;.Resource.proxyAuthorizingResource">#</a></h4>
+<div class="doc">
+<pre class="source">
+factory Resource.proxyAuthorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
+ final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
+     Persistent.EMPTY_DICTIONARY.putAll(authorizer.map((final Authorizer authorizer) =&gt;
+         new Pair(authorizer.scheme, authorizer)));
+ 
+ return new _ProxyAuthorizingResource&lt;T&gt; (delegate, authorizerMap);
+}
 </pre>
 </div>
 </div>

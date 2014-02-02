@@ -43,7 +43,7 @@ abstract class ForwardingRequest&lt;T&gt; implements Forwarder, Request&lt;T&gt;
  ContentInfo get contentInfo =&gt;
      delegate.contentInfo;
  
- FiniteSet&lt;Cookie&gt; get cookies =&gt;
+ CookieMultimap get cookies =&gt;
      delegate.cookies;
  
  Dictionary&lt;Header, dynamic&gt; get customHeaders =&gt;
@@ -194,13 +194,13 @@ ContentInfo get contentInfo =&gt;
 </div>
 <div class="field"><h4 id="cookies">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt;         <strong>cookies</strong> <a class="anchor-link"
+final <a href="../restlib.core.data/CookieMultimap.html">CookieMultimap</a>         <strong>cookies</strong> <a class="anchor-link"
             href="#cookies"
             title="Permalink to ForwardingRequest&lt;T&gt;.cookies">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-FiniteSet&lt;Cookie&gt; get cookies =&gt;
+CookieMultimap get cookies =&gt;
    delegate.cookies;
 </pre>
 </div>

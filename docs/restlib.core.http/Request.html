@@ -52,7 +52,7 @@ abstract class Request&lt;T&gt; {
            new Option(authorizationCredentials),
            Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
            firstNotNull(contentInfo, ContentInfo.NONE),
-           Persistent.EMPTY_SET.addAll(firstNotNull(cookies, EMPTY_LIST)),
+           CookieMultimap.EMPTY.putAll(firstNotNull(cookies, EMPTY_LIST)),
            Persistent.EMPTY_DICTIONARY.putAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
            new Option(entity),
            Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
@@ -74,7 +74,7 @@ abstract class Request&lt;T&gt; {
  
  ContentInfo get contentInfo;
  
- FiniteSet&lt;Cookie&gt; get cookies;
+ CookieMultimap get cookies;
  
  Dictionary&lt;Header, dynamic&gt; get customHeaders;
  
@@ -168,7 +168,7 @@ factory Request(final Method method, final uri, {
          new Option(authorizationCredentials),
          Persistent.EMPTY_SET.addAll(firstNotNull(cacheDirectives, EMPTY_LIST)),
          firstNotNull(contentInfo, ContentInfo.NONE),
-         Persistent.EMPTY_SET.addAll(firstNotNull(cookies, EMPTY_LIST)),
+         CookieMultimap.EMPTY.putAll(firstNotNull(cookies, EMPTY_LIST)),
          Persistent.EMPTY_DICTIONARY.putAll(firstNotNull(customHeaders, Persistent.EMPTY_DICTIONARY)),
          new Option(entity),
          Persistent.EMPTY_SET.addAll(firstNotNull(expectations, EMPTY_LIST)),
@@ -235,13 +235,13 @@ ContentInfo get contentInfo;
 </div>
 <div class="field"><h4 id="cookies">
 <button class="show-code">Code</button>
-final <a href="../restlib.common.collections/FiniteSet.html">FiniteSet</a>&lt;<a href="../restlib.core.data/Cookie.html">Cookie</a>&gt;         <strong>cookies</strong> <a class="anchor-link"
+final <a href="../restlib.core.data/CookieMultimap.html">CookieMultimap</a>         <strong>cookies</strong> <a class="anchor-link"
             href="#cookies"
             title="Permalink to Request&lt;T&gt;.cookies">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-FiniteSet&lt;Cookie&gt; get cookies;
+CookieMultimap get cookies;
 </pre>
 </div>
 </div>

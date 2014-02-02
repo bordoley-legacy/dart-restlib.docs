@@ -54,6 +54,18 @@ final Parser&lt;DomainName&gt; DOMAIN_NAME = _REG_NAME
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="FRAGMENT_SAFE_CHARS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>FRAGMENT_SAFE_CHARS</strong> <a class="anchor-link"
+            href="#FRAGMENT_SAFE_CHARS"
+            title="Permalink to FRAGMENT_SAFE_CHARS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher FRAGMENT_SAFE_CHARS = QUERY_SAFE_CHARS
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="I_AUTHORITY">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/Authority.html">Authority</a>&gt;         <strong>I_AUTHORITY</strong> <a class="anchor-link"
@@ -103,6 +115,18 @@ final Parser&lt;Path&gt; PATH =
        return path;
      }
    })
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="QUERY_SAFE_CHARS">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>QUERY_SAFE_CHARS</strong> <a class="anchor-link"
+            href="#QUERY_SAFE_CHARS"
+            title="Permalink to QUERY_SAFE_CHARS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final RuneMatcher QUERY_SAFE_CHARS =  _PCHAR_SAFE_CHARS | anyOf("/?")
 </pre>
 </div>
 </div>

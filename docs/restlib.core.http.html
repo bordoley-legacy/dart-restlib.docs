@@ -127,13 +127,15 @@ final Parser&lt;Iterable&lt;Language&gt;&gt; CONTENT_LANGUAGE = LANGUAGE.sepBy(O
 </div>
 <div class="field"><h4 id="COOKIE">
 <button class="show-code">Code</button>
-final <a href="restlib.parsing/Parser.html">Parser</a>&lt;Iterable&lt;<a href="restlib.core.data/Cookie.html">Cookie</a>&gt;&gt;         <strong>COOKIE</strong> <a class="anchor-link"
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.data/CookieMultimap.html">CookieMultimap</a>&gt;         <strong>COOKIE</strong> <a class="anchor-link"
             href="#COOKIE"
             title="Permalink to COOKIE">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-final Parser&lt;Iterable&lt;Cookie&gt;&gt; COOKIE = COOKIE_PAIR.sepBy(SEMICOLON + SP)
+final Parser&lt;CookieMultimap&gt; COOKIE = 
+ COOKIE_PAIR.sepBy(SEMICOLON + SP).map((final Iterable&lt;Cookie&gt; cookies) =&gt;
+     CookieMultimap.EMPTY.putAll(cookies))
 </pre>
 </div>
 </div>

@@ -35,13 +35,21 @@
 <pre class="source">
 class CookieExtensionAttribute implements CookieAttribute {
  final String value;
+ 
  CookieExtensionAttribute._internal(this.value);
  
  int get hashCode =&gt;
-     super.hashCode;
+     value.hashCode;
  
- bool operator==(other) =&gt;
-     super == other;
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is CookieExtensionAttribute) {
+     return this.value == other.value;
+   } else {
+     return false;
+   }
+ }
  
  String toString() =&gt;
      "$value";
@@ -72,7 +80,7 @@ equality operator as well to maintain consistency.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 int get hashCode =&gt;
-   super.hashCode;
+   value.hashCode;
 </pre>
 </div>
 </div>
@@ -118,8 +126,15 @@ was modified.</p>
 the <a class="crossref" href="../restlib.core.data/CookieExtensionAttribute.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
-bool operator==(other) =&gt;
-   super == other;
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is CookieExtensionAttribute) {
+   return this.value == other.value;
+ } else {
+   return false;
+ }
+}
 </pre>
 </div>
 </div>

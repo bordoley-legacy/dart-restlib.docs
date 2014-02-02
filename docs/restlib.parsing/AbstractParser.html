@@ -86,13 +86,14 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
  }
  
  Parser&lt;Iterable&lt;T&gt;&gt; sepBy(final Parser delim) {
+   final Parser&lt;T&gt; safeParser = this.map((final T value) =&gt; value);
    final Parser&lt;Iterable&lt;T&gt;&gt; additional =
-       (delim + this)
+       (delim + safeParser)
          .map((final Iterable e) =&gt;
-             e.elementAt(1))
+             e.last) // Make sure its the last elements since delim can be a list parser
          .many();
          
-   return (this + additional)
+   return (safeParser + additional)
              .map((final Iterable e) =&gt;
                  // FIXME: PersistentList should support push since it implements Stack
                  [e.elementAt(0)]..addAll(e.elementAt(1)));
@@ -296,13 +297,14 @@ Option&lt;T&gt; parseFrom(StringIterator itr) {
 <div class="doc">
 <pre class="source">
 Parser&lt;Iterable&lt;T&gt;&gt; sepBy(final Parser delim) {
+ final Parser&lt;T&gt; safeParser = this.map((final T value) =&gt; value);
  final Parser&lt;Iterable&lt;T&gt;&gt; additional =
-     (delim + this)
+     (delim + safeParser)
        .map((final Iterable e) =&gt;
-           e.elementAt(1))
+           e.last) // Make sure its the last elements since delim can be a list parser
        .many();
        
- return (this + additional)
+ return (safeParser + additional)
            .map((final Iterable e) =&gt;
                // FIXME: PersistentList should support push since it implements Stack
                [e.elementAt(0)]..addAll(e.elementAt(1)));

@@ -29,6 +29,23 @@
 <h2><strong>restlib.server.io</strong> library</h2>
 <div>
 <h3>Functions</h3>
+<div class="method"><h4 id="parseForm">
+<button class="show-code">Code</button>
+Future&lt;<a href="restlib.core.http/Request.html">Request</a>&lt;<a href="restlib.core.data/Form.html">Form</a>&gt;&gt; <strong>parseForm</strong>(<a href="restlib.core.http/Request.html">Request</a> request, Stream&lt;List&lt;int&gt;&gt; msgStream) <a class="anchor-link" href="#parseForm"
+              title="Permalink to parseForm">#</a></h4>
+<div class="doc">
+<pre class="source">
+Future&lt;Request&lt;Form&gt;&gt; parseForm(final Request request, final Stream&lt;List&lt;int&gt;&gt; msgStream) =&gt;
+   parseString(request, msgStream)
+     .then((final Request&lt;String&gt; request) =&gt;
+         FORM.parse(request.entity.value)
+           .map((final Form form) =&gt;
+               request.with_(entity: form))
+           .orCompute(() =&gt; 
+               new Future.error("unable to parse form encoded data")));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="parseMultipart">
 <button class="show-code">Code</button>
 Future&lt;<a href="restlib.core.http/Request.html">Request</a>&lt;<a href="restlib.core.multipart/Multipart.html">Multipart</a>&gt;&gt; <strong>parseMultipart</strong>(<a href="restlib.core.http/Request.html">Request</a> request, Stream&lt;List&lt;int&gt;&gt; msgStream, <a href="restlib.common.collections/Option.html">Option</a>&lt;<a href="restlib.core.multipart/PartParser.html">PartParser</a>&gt; partParserProvider(<a href="restlib.core.http/ContentInfo.html">ContentInfo</a> contentInfo)) <a class="anchor-link" href="#parseMultipart"
