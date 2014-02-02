@@ -58,6 +58,8 @@ abstract class Parser&lt;T&gt; {
  
  Option&lt;T&gt; parse(String str);
  
+ T parseValue(String str);
+ 
  Option&lt;T&gt; parseFrom(StringIterator itr);
  
  Parser&lt;Iterable&lt;T&gt;&gt; sepBy(Parser delim);
@@ -145,6 +147,12 @@ abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a hr
 <div class="method"><h4 id="parseFrom">
 abstract <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.parsing/Parser.html">T</a>&gt; <strong>parseFrom</strong>(<a href="../restlib.parsing/StringIterator.html">StringIterator</a> itr) <a class="anchor-link" href="#parseFrom"
               title="Permalink to Parser&lt;T&gt;.parseFrom">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="parseValue">
+abstract <a href="../restlib.parsing/Parser.html">T</a> <strong>parseValue</strong>(String str) <a class="anchor-link" href="#parseValue"
+              title="Permalink to Parser&lt;T&gt;.parseValue">#</a></h4>
 <div class="doc">
 </div>
 </div>

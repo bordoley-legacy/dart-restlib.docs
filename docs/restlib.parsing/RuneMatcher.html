@@ -312,7 +312,7 @@ Option&lt;T&gt; parse(final String str) =&gt;
               title="Permalink to RuneMatcher.parseFrom">#</a></h4>
 <div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
 <pre class="source">
-Option&lt;T&gt; parseFrom(StringIterator itr) {
+Option&lt;T&gt; parseFrom(final StringIterator itr) {
  final int startIndex = itr.index;
  final Option&lt;T&gt; token = doParse(itr);
  if (token.isEmpty) {
@@ -320,6 +320,18 @@ Option&lt;T&gt; parseFrom(StringIterator itr) {
  }
  return token; 
 }
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="parseValue">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/RuneMatcher.html">T</a> <strong>parseValue</strong>(String str) <a class="anchor-link" href="#parseValue"
+              title="Permalink to RuneMatcher.parseValue">#</a></h4>
+<div class="inherited-from">inherited from <a href="../restlib.parsing/AbstractParser.html">AbstractParser</a> </div><div class="doc">
+<pre class="source">
+T parseValue(final String str) =&gt;
+   computeIfEmpty(parse(str), () =&gt;
+       throw new ArgumentError("Failed to parse $str")).first;
 </pre>
 </div>
 </div>

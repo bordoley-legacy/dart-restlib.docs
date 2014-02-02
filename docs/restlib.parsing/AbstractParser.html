@@ -76,7 +76,7 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
          e.first)
        .parseFrom(new StringIterator(str));
  
- Option&lt;T&gt; parseFrom(StringIterator itr) {
+ Option&lt;T&gt; parseFrom(final StringIterator itr) {
    final int startIndex = itr.index;
    final Option&lt;T&gt; token = doParse(itr);
    if (token.isEmpty) {
@@ -84,6 +84,10 @@ abstract class AbstractParser&lt;T&gt; implements Parser&lt;T&gt; {
    }
    return token; 
  }
+ 
+ T parseValue(final String str) =&gt;
+     computeIfEmpty(parse(str), () =&gt;
+         throw new ArgumentError("Failed to parse $str")).first;
  
  Parser&lt;Iterable&lt;T&gt;&gt; sepBy(final Parser delim) {
    final Parser&lt;T&gt; safeParser = this.map((final T value) =&gt; value);
@@ -279,7 +283,7 @@ Option&lt;T&gt; parse(final String str) =&gt;
               title="Permalink to AbstractParser&lt;T&gt;.parseFrom">#</a></h4>
 <div class="doc">
 <pre class="source">
-Option&lt;T&gt; parseFrom(StringIterator itr) {
+Option&lt;T&gt; parseFrom(final StringIterator itr) {
  final int startIndex = itr.index;
  final Option&lt;T&gt; token = doParse(itr);
  if (token.isEmpty) {
@@ -287,6 +291,18 @@ Option&lt;T&gt; parseFrom(StringIterator itr) {
  }
  return token; 
 }
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="parseValue">
+<button class="show-code">Code</button>
+<a href="../restlib.parsing/AbstractParser.html">T</a> <strong>parseValue</strong>(String str) <a class="anchor-link" href="#parseValue"
+              title="Permalink to AbstractParser&lt;T&gt;.parseValue">#</a></h4>
+<div class="doc">
+<pre class="source">
+T parseValue(final String str) =&gt;
+   computeIfEmpty(parse(str), () =&gt;
+       throw new ArgumentError("Failed to parse $str")).first;
 </pre>
 </div>
 </div>
