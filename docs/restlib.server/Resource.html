@@ -33,9 +33,7 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-abstract class Resource&lt;T&gt; {
- static const Resource NOT_FOUND = const _NotFoundResource();
- 
+abstract class Resource&lt;T&gt; {  
  factory Resource.authorizingResource(final Resource&lt;T&gt; delegate, final Iterable&lt;Authorizer&gt; authorizer) {
    final ImmutableDictionary&lt;String, Authorizer&gt; authorizerMap = 
        Persistent.EMPTY_DICTIONARY.putAll(authorizer.map((final Authorizer authorizer) =&gt;
@@ -72,21 +70,6 @@ abstract class Resource&lt;T&gt; {
 <h3>Subclasses</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../restlib.server/ForwardingResource.html">ForwardingResource&lt;T&gt;</a></span>, <span class="type-box"><span class="icon-class"></span><a href="../restlib.server.io/IOResource.html">IOResource&lt;T&gt;</a></span></p>
-<div>
-<h3>Static Properties</h3>
-<div class="field"><h4 id="NOT_FOUND">
-<button class="show-code">Code</button>
-const <a href="../restlib.server/Resource.html">Resource</a>         <strong>NOT_FOUND</strong> <a class="anchor-link"
-            href="#NOT_FOUND"
-            title="Permalink to Resource&lt;T&gt;.NOT_FOUND">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const Resource NOT_FOUND = const _NotFoundResource()
-</pre>
-</div>
-</div>
-</div>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="authorizingResource">

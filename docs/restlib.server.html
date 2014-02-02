@@ -476,38 +476,39 @@ final Future&lt;Response&gt; REDIRECTION_USE_PROXY = new Future.value(Status.RED
 </div>
 <div class="field"><h4 id="ROUTE">
 <button class="show-code">Code</button>
-<a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.server/Route.html">Route</a>&gt;         <strong>ROUTE</strong> <a class="anchor-link"
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.server/Route.html">Route</a>&gt;         <strong>ROUTE</strong> <a class="anchor-link"
             href="#ROUTE"
             title="Permalink to ROUTE">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-Parser&lt;Route&gt; ROUTE =
- _ROUTE_SEGMENT.sepBy(FORWARD_SLASH)
-   .map((final Iterable&lt;_RouteSegment&gt; e) {
-     // FIXME: Fix MutableHashSet and use it.
-     final Set&lt;String&gt; keys = new Set();
-     
-     _RouteSegment previous = null;
-     
-     for (final _RouteSegment seg in e) {
-       // Prevent duplicate keys in the route
-       if (((seg is _GlobSegment) || (seg is _ParameterSegment)) &amp;&amp;
-           keys.contains(seg.name)) {
-         return null; 
-       }
-       
-       // Prevent multiple glob segments one after another
-       if ((seg is _GlobSegment) &amp;&amp; (previous is _GlobSegment)) {
-         return null;
-       }
-       
-       previous = seg;
-       keys.add(seg.name);
+final Parser&lt;Route&gt; ROUTE = 
+ (PCHAR.orElse("") | _GLOB_SEGMENT | _PARAMETER_SEGMENT).sepBy(FORWARD_SLASH).map((final Iterable&lt;String&gt; e) {    
+   final MutableSet&lt;String&gt; keys = new MutableSet.hash();
+   Option&lt;String&gt; previous = Option.NONE;
+   
+   for (final String seg in e) {
+     // Prevent duplicate keys in the route
+     final Option&lt;String&gt; glob = _globSegment(seg);
+     final Option&lt;String&gt; parameter = _parameterSegment(seg);
+
+     if ((glob.isNotEmpty || parameter.isNotEmpty) &amp;&amp; keys.contains(seg.substring(1))) {
+       return null; 
      }
      
-     return new Route._internal(e);
-   })
+     glob.map(keys.add);
+     parameter.map(keys.add);
+     
+     // Prevent multiple glob segments one after another
+     if ((glob.isNotEmpty || parameter.isNotEmpty) &amp;&amp; previous.isNotEmpty) {
+       return null;
+     }
+     
+     previous = glob;
+   }
+   
+   return new _Route(Persistent.EMPTY_SEQUENCE.addAll(e));
+ })
 </pre>
 </div>
 </div>
@@ -832,16 +833,13 @@ final Future&lt;Response&gt; SUCCESS_RESET_CONTENT = new Future.value(Status.SUC
           
           <div class="type">
           <h4>
-            <a href="restlib.server/UniformResourceDelegate.html"><strong>UniformResourceDelegate&lt;T&gt;</strong></a>
+            <a href="restlib.server/Route.html"><strong>Route</strong></a>
           </h4>
           </div>
           
-</div>
-<div>
-<h3>Classes</h3>
           <div class="type">
           <h4>
-            <a href="restlib.server/Route.html"><strong>Route</strong></a>
+            <a href="restlib.server/UniformResourceDelegate.html"><strong>UniformResourceDelegate&lt;T&gt;</strong></a>
           </h4>
           </div>
           

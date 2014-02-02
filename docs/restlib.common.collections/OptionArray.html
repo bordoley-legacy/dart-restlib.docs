@@ -400,8 +400,8 @@ bool containsValue(E value) =&gt;
 <div class="inherited">
 <p>Returns the 
 <span class="param">index</span>th element.</p>
-<p>If <code>this</code> has fewer than 
-<span class="param">index</span> elements throws a <code>RangeError</code>.</p>
+<p>The 
+<span class="param">index</span> must be non-negative and less than <code>length</code>.</p>
 <p>Note: if <code>this</code> does not have a deterministic iteration order then the
 function may simply return any element without any iteration if there are
 at least 
