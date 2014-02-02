@@ -1,0 +1,289 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Router class / restlib.server.io Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.server.io" data-type="Router">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.server.io.html">restlib.server.io</a> &rsaquo; <a href="../restlib.server.io/Router.html">Router</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Router</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Router {
+ static const Router EMPTY = const Router._internal(Option.NONE, Persistent.EMPTY_DICTIONARY);
+ 
+ static String _routeSegmentToKey(final String segment) {
+   if (segment.startsWith("*")) {
+     return "*";
+   } else if (segment.startsWith(":")) {
+     return ":";
+   } else {
+     return segment;
+   }
+ }
+ 
+ final Option&lt;IOResource&gt; _resource;
+ final ImmutableDictionary&lt;String, Router&gt; _children;
+ 
+ const Router._internal(this._resource, this._children);
+
+ int get hashCode =&gt;
+     computeHashCode([_resource, _children]);
+ 
+ bool operator==(other) {
+   if (identical(this, other)) {
+     return true;
+   } else if (other is Router) {
+     return this._resource == other._resource &amp;&amp;
+         this._children == other._children;
+   }
+ }
+ 
+ Option&lt;IOResource&gt; operator[](final Path path) =&gt;
+     _doPathLookup(path);
+
+ Option&lt;IOResource&gt; _doPathLookup(final Sequence&lt;String&gt; path) {
+   if (path.isEmpty) {
+     return _resource;
+   } else {
+     Sequence&lt;String&gt; tail = path.subSequence(1, path.length - 1);
+
+     for(final Router nextRouter in _children[path.first]) {
+       for(final IOResource resource in nextRouter._doPathLookup(tail)) {
+         return new Option(resource);
+       }       
+     }
+     
+     for(final Router nextRouter in _children[":"]) {
+       for (final IOResource resource in nextRouter._doPathLookup(tail)) {
+         return new Option(resource);
+       }
+     }
+     
+     for(final Router nextRouter in _children["*"]) {
+       while(tail.length &gt; 0) {
+         final Sequence&lt;String&gt; newTail = tail.subSequence(1, tail.length - 1); 
+         
+         for(final Router childRouter in nextRouter._children[tail.first]){
+           return childRouter._doPathLookup(newTail);
+         }
+
+         tail = newTail;
+       }
+       return nextRouter._resource;
+     }
+     
+     return Option.NONE;
+   }
+ }
+ 
+ Option&lt;IOResource&gt; call(final Path path) =&gt;
+     this[path];
+ 
+ Router add(final IOResource resource) =&gt;
+     _doAdd(checkNotNull(checkNotNull(resource).route), resource);
+ 
+ Router addAll(Iterable&lt;IOResource&gt; resources) =&gt;
+     resources.fold(this, (final Router acc, final IOResource resource) =&gt; 
+         acc.add(resource)); 
+ 
+ Router _doAdd(final Sequence&lt;String&gt; route, final IOResource resource) {    
+   if (route.isEmpty) {
+     return new Router._internal(new Option(resource), this._children);
+   } else {
+     final String key = _routeSegmentToKey(route.first);
+     // FIXME: length should be optional;
+     // FIXME: subsequence should return ImmutableSequence
+     final Sequence&lt;String&gt; tail = route.subSequence(1, route.length-1);
+     
+     final Router newChild = _children[key]
+       .map((final Router next) =&gt;
+         next._doAdd(tail, resource))
+       .orCompute(() =&gt;
+           Router.EMPTY._doAdd(tail, resource));
+     return new Router._internal(this._resource, _children.put(key, newChild));
+   }
+ }
+ 
+ String toString() =&gt;
+     "\nRouter($_children)";
+}
+</pre>
+</div>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="EMPTY">
+<button class="show-code">Code</button>
+const <a href="../restlib.server.io/Router.html">Router</a>         <strong>EMPTY</strong> <a class="anchor-link"
+            href="#EMPTY"
+            title="Permalink to Router.EMPTY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const Router EMPTY = const Router._internal(Option.NONE, Persistent.EMPTY_DICTIONARY)
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to Router.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../restlib.server.io/Router.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt;
+   computeHashCode([_resource, _children]);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="[]">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.server.io/IOResource.html">IOResource</a>&gt; <strong>operator []</strong>(<a href="../restlib.core.net/Path.html">Path</a> path) <a class="anchor-link" href="#[]"
+              title="Permalink to Router.operator []">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option&lt;IOResource&gt; operator[](final Path path) =&gt;
+   _doPathLookup(path);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(other) <a class="anchor-link" href="#=="
+              title="Permalink to Router.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <code>Object</code>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../restlib.server.io/Router.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator==(other) {
+ if (identical(this, other)) {
+   return true;
+ } else if (other is Router) {
+   return this._resource == other._resource &amp;&amp;
+       this._children == other._children;
+ }
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="add">
+<button class="show-code">Code</button>
+<a href="../restlib.server.io/Router.html">Router</a> <strong>add</strong>(<a href="../restlib.server.io/IOResource.html">IOResource</a> resource) <a class="anchor-link" href="#add"
+              title="Permalink to Router.add">#</a></h4>
+<div class="doc">
+<pre class="source">
+Router add(final IOResource resource) =&gt;
+   _doAdd(checkNotNull(checkNotNull(resource).route), resource);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="addAll">
+<button class="show-code">Code</button>
+<a href="../restlib.server.io/Router.html">Router</a> <strong>addAll</strong>(Iterable&lt;<a href="../restlib.server.io/IOResource.html">IOResource</a>&gt; resources) <a class="anchor-link" href="#addAll"
+              title="Permalink to Router.addAll">#</a></h4>
+<div class="doc">
+<pre class="source">
+Router addAll(Iterable&lt;IOResource&gt; resources) =&gt;
+   resources.fold(this, (final Router acc, final IOResource resource) =&gt; 
+       acc.add(resource));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="call">
+<button class="show-code">Code</button>
+<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.server.io/IOResource.html">IOResource</a>&gt; <strong>call</strong>(<a href="../restlib.core.net/Path.html">Path</a> path) <a class="anchor-link" href="#call"
+              title="Permalink to Router.call">#</a></h4>
+<div class="doc">
+<pre class="source">
+Option&lt;IOResource&gt; call(final Path path) =&gt;
+   this[path];
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Router.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt;
+   "\nRouter($_children)";
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

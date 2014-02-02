@@ -484,6 +484,10 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.serve
 <pre class="source">
 final Parser&lt;Route&gt; ROUTE = 
  (PCHAR.orElse("") | _GLOB_SEGMENT | _PARAMETER_SEGMENT).sepBy(FORWARD_SLASH).map((final Iterable&lt;String&gt; e) {    
+   if (e.length == 1 &amp;&amp; e.first.isEmpty) {
+     return Route.EMPTY;
+   }
+   
    final MutableSet&lt;String&gt; keys = new MutableSet.hash();
    Option&lt;String&gt; previous = Option.NONE;
    

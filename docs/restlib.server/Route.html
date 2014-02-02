@@ -38,7 +38,6 @@ abstract class Route implements ImmutableSequence&lt;String&gt; {
  
  Route add(String value);
  Route addAll(Iterable&lt;String&gt; elements);
- bool matches(final URI uri);
  ImmutableDictionary&lt;String, String&gt; parsePathParameters(URI uri);
  Route push(String value);
  Route put(int key, String value);
@@ -458,12 +457,6 @@ function
 abstract <a href="../restlib.common.collections/Sequence.html">Sequence</a> <strong>mapValues</strong>(mapFunc(<a href="../restlib.server/Route.html">E</a> value)) <a class="anchor-link" href="#mapValues"
               title="Permalink to Route.mapValues">#</a></h4>
 <div class="inherited-from">inherited from <a href="../restlib.common.collections/Sequence.html">Sequence</a> </div><div class="doc">
-</div>
-</div>
-<div class="method"><h4 id="matches">
-abstract bool <strong>matches</strong>(<a href="../restlib.core.net/URI.html">URI</a> uri) <a class="anchor-link" href="#matches"
-              title="Permalink to Route.matches">#</a></h4>
-<div class="doc">
 </div>
 </div>
 <div class="method"><h4 id="parsePathParameters">

@@ -35,12 +35,12 @@
 <pre class="source">
 abstract class Application {
  factory Application(
-     final Iterable&lt;IOResource&gt; resources, 
+     Option&lt;IOResource&gt; resourceForPath(final Path path),
      {final IOResource defaultResource : IOResource.NOT_FOUND,
       Request requestFilter(Request request) : identity,
       Response responseFilter(Response response) : identity}) =&gt;
      new _ApplicationImpl(
-         Persistent.EMPTY_SEQUENCE.addAll(resources), defaultResource,
+         resourceForPath, defaultResource,
          requestFilter, responseFilter);
  
  Request filterRequest(final Request request);
@@ -57,7 +57,7 @@ abstract class Application {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Application</strong>(Iterable&lt;<a href="../restlib.server.io/IOResource.html">IOResource</a>&gt; resources, {<a href="../restlib.server.io/IOResource.html">IOResource</a> defaultResource: IOResource.NOT_FOUND, requestFilter: identity, responseFilter: identity}) <a class="anchor-link" href="#"
+factory <strong>Application</strong>(<a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.server.io/IOResource.html">IOResource</a>&gt; resourceForPath(<a href="../restlib.core.net/Path.html">Path</a> path), {<a href="../restlib.server.io/IOResource.html">IOResource</a> defaultResource: IOResource.NOT_FOUND, requestFilter: identity, responseFilter: identity}) <a class="anchor-link" href="#"
               title="Permalink to Application.Application">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -68,12 +68,12 @@ only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
 factory Application(
-   final Iterable&lt;IOResource&gt; resources, 
+   Option&lt;IOResource&gt; resourceForPath(final Path path),
    {final IOResource defaultResource : IOResource.NOT_FOUND,
     Request requestFilter(Request request) : identity,
     Response responseFilter(Response response) : identity}) =&gt;
    new _ApplicationImpl(
-       Persistent.EMPTY_SEQUENCE.addAll(resources), defaultResource,
+       resourceForPath, defaultResource,
        requestFilter, responseFilter);
 </pre>
 </div>
