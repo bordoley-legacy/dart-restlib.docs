@@ -34,7 +34,7 @@
 <div class="doc">
 <pre class="source">
 abstract class Authorizer {
- factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) =&gt;
+ factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(Request request, String username, String pwd)) =&gt;
      new _BasicAuthorizer(realm, authenticate);
      
  ChallengeMessage get authenticationChallenge;
@@ -51,11 +51,11 @@ abstract class Authorizer {
 <h3>Constructors</h3>
 <div class="method"><h4 id="basicAuth">
 <button class="show-code">Code</button>
-factory <strong>Authorizer.basicAuth</strong>(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) <a class="anchor-link" href="#basicAuth"
+factory <strong>Authorizer.basicAuth</strong>(String realm, Future&lt;bool&gt; authenticate(<a href="../restlib.core.http/Request.html">Request</a> request, String username, String pwd)) <a class="anchor-link" href="#basicAuth"
               title="Permalink to Authorizer.Authorizer.basicAuth">#</a></h4>
 <div class="doc">
 <pre class="source">
-factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(String username, String pwd)) =&gt;
+factory Authorizer.basicAuth(String realm, Future&lt;bool&gt; authenticate(Request request, String username, String pwd)) =&gt;
    new _BasicAuthorizer(realm, authenticate);
 </pre>
 </div>
