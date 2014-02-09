@@ -56,6 +56,17 @@ Iterable&lt;Pair&lt;Option/*&lt;T1&gt;*/, Option/*&lt;T2&gt;*/&gt;&gt; zipOption
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="zip">
+<button class="show-code">Code</button>
+Iterable&lt;<a href="restlib.common.collections/Pair.html">Pair</a>&gt; <strong>zip</strong>(Iterable fst, Iterable snd) <a class="anchor-link" href="#zip"
+              title="Permalink to zip">#</a></h4>
+<div class="doc">
+<pre class="source">
+Iterable&lt;Pair/*&lt;T1,T2&gt;*/&gt; zip(final Iterable/*&lt;T1&gt;*/ fst, final Iterable/*&lt;T2&gt;*/ snd) =&gt;
+   new _ZippedIterable(fst, snd);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="lastWhere">
 <button class="show-code">Code</button>
 <a href="restlib.common.collections/Option.html">Option</a> <strong>lastWhere</strong>(Iterable itr, bool test(value)) <a class="anchor-link" href="#lastWhere"
