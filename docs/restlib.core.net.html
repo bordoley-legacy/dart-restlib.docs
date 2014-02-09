@@ -54,6 +54,18 @@ final Parser&lt;DomainName&gt; DOMAIN_NAME = _REG_NAME
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="EMAIL_ADDRESS">
+<button class="show-code">Code</button>
+<a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/EmailAddress.html">EmailAddress</a>&gt;         <strong>EMAIL_ADDRESS</strong> <a class="anchor-link"
+            href="#EMAIL_ADDRESS"
+            title="Permalink to EMAIL_ADDRESS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Parser&lt;EmailAddress&gt; EMAIL_ADDRESS
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="FRAGMENT_SAFE_CHARS">
 <button class="show-code">Code</button>
 final <a href="restlib.parsing/RuneMatcher.html">RuneMatcher</a>         <strong>FRAGMENT_SAFE_CHARS</strong> <a class="anchor-link"
@@ -76,6 +88,18 @@ final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.
 <pre class="source">
 final Parser&lt;Authority&gt; I_AUTHORITY =
  _authorityParser(_I_USER_INFO, _I_HOST, IAuthority._builder)
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="INTERNATIONAL_DOMAIN_NAME">
+<button class="show-code">Code</button>
+final <a href="restlib.parsing/Parser.html">Parser</a>&lt;<a href="restlib.core.net/InternationalDomainName.html">InternationalDomainName</a>&gt;         <strong>INTERNATIONAL_DOMAIN_NAME</strong> <a class="anchor-link"
+            href="#INTERNATIONAL_DOMAIN_NAME"
+            title="Permalink to INTERNATIONAL_DOMAIN_NAME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Parser&lt;InternationalDomainName&gt; INTERNATIONAL_DOMAIN_NAME = _I_REG_NAME
 </pre>
 </div>
 </div>
@@ -244,6 +268,12 @@ Codec&lt;String, String&gt; utf8codec(bool safeCodepoints(int codePoint)) =&gt;
 </div>
 <div>
 <h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="restlib.core.net/EmailAddress.html"><strong>EmailAddress</strong></a>
+          </h4>
+          </div>
+          
           <div class="type">
           <h4>
             <a href="restlib.core.net/IPv4Address.html"><strong>IPv4Address</strong></a>
