@@ -12,6 +12,7 @@ import "package:restlib_http_connector/connector.dart";
 import "package:restlib_core/data.dart";
 import "package:restlib_core/data.media_ranges.dart";
 import "package:restlib_core/http.dart";
+import "package:restlib_core/http.future_responses.dart";
 import "package:restlib_core/http_syntax.dart";
 import "package:restlib_core/multipart.dart";
 import "package:restlib_core/net.dart";
@@ -41,6 +42,7 @@ void main() {
        "restlib.core.data",
        "restlib.core.data.media_ranges",
        "restlib.core.http",
+       "restlib.core.http.future_responses",
        "restlib.core.http_syntax",
        "restlib.core.multipart",
        "restlib.core.net",
