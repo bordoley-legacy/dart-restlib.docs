@@ -36,25 +36,7 @@
 class MediaRange implements Matcheable&lt;MediaRange&gt; {  
  static const MediaRange ANY = const MediaRange._internal("*", "*");
  static const MediaRange APPLICATION_ANY = const MediaRange._internal("application", "*");
- static const MediaRange APPLICATION_ATOM = const MediaRange._internal("application", "atom+xml");
- static final MediaRange APPLICATION_ATOM_ENTRY = MEDIA_RANGE.parseValue("application/atom+xml;type=entry");
- static final MediaRange APPLICATION_ATOM_FEED = MEDIA_RANGE.parseValue("application/atom+xml;type=feed");
- static const MediaRange APPLICATION_JSON = const MediaRange._internal("application", "json");
- static final MediaRange APPLICATION_JSON_ENTRY = MEDIA_RANGE.parseValue("application/json;type=entry");
- static final MediaRange APPLICATION_JSON_FEED = MEDIA_RANGE.parseValue("application/json;type=feed");
- static const MediaRange APPLICATION_OCTET_STREAM = const MediaRange._internal("application", "octet-stream");
- static const MediaRange APPLICATION_OPEN_SEARCH_DESCRIPTION_XML = const MediaRange._internal("application", "opensearchdescription+xml");
- static const MediaRange APPLICATION_WWW_FORM = const MediaRange._internal("application", "x-www-form-urlencoded");
- static const MediaRange APPLICATION_XML = const MediaRange._internal("application", "xml");
- static const MediaRange GOOGLE_PROTOCOL_BUFFER = const MediaRange._internal("application", "x-protobuf");
- static const MediaRange MULTIPART_BYTE_RANGE = const MediaRange._internal("multipart", "byteranges");
- static const MediaRange MULTIPART_FORM_DATA = const MediaRange._internal("multipart", "form-data");
- static const MediaRange MULTIPART_RELATED = const MediaRange._internal("multipart" , "related");
  static const MediaRange TEXT_ANY = const MediaRange._internal("text", "*");
- static const MediaRange TEXT_HTML = const MediaRange._internal("text", "html");
- static final MediaRange TEXT_HTML_ENTRY = MEDIA_RANGE.parseValue("text/html;type=entry");
- static final MediaRange TEXT_HTML_FEED = MEDIA_RANGE.parseValue("text/html;type=feed");
- static const MediaRange TEXT_PLAIN = const MediaRange._internal("text", "plain");     
 
  factory MediaRange(final String type, final String subtype, {final Charset charset, Multimap&lt;String,String, dynamic&gt; parameters}) {
    checkArgument(TOKEN.parse(type).isNotEmpty);
@@ -83,6 +65,12 @@ class MediaRange implements Matcheable&lt;MediaRange&gt; {
  final String type;
  final String subtype;
  final Multimap&lt;String, String, dynamic&gt; parameters;
+ 
+ // FIXME: Making this public so that we can have a library of media ranges. Maybe this should be in a internal library
+ // where we can strictly define the limits of use.
+ const MediaRange.constant(this.type, this.subtype) :
+   this.charset = Option.NONE,
+   this.parameters = Persistent.EMPTY_SET_MULTIMAP;
  
  const MediaRange._internal(this.type, this.subtype, [this.charset = Option.NONE, this.parameters = Persistent.EMPTY_SET_MULTIMAP]);
  
@@ -191,174 +179,6 @@ static const MediaRange APPLICATION_ANY = const MediaRange._internal("applicatio
 </pre>
 </div>
 </div>
-<div class="field"><h4 id="APPLICATION_ATOM">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM</strong> <a class="anchor-link"
-            href="#APPLICATION_ATOM"
-            title="Permalink to MediaRange.APPLICATION_ATOM">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_ATOM = const MediaRange._internal("application", "atom+xml")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_ATOM_ENTRY">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM_ENTRY</strong> <a class="anchor-link"
-            href="#APPLICATION_ATOM_ENTRY"
-            title="Permalink to MediaRange.APPLICATION_ATOM_ENTRY">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange APPLICATION_ATOM_ENTRY = MEDIA_RANGE.parseValue("application/atom+xml;type=entry")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_ATOM_FEED">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_ATOM_FEED</strong> <a class="anchor-link"
-            href="#APPLICATION_ATOM_FEED"
-            title="Permalink to MediaRange.APPLICATION_ATOM_FEED">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange APPLICATION_ATOM_FEED = MEDIA_RANGE.parseValue("application/atom+xml;type=feed")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_JSON">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON</strong> <a class="anchor-link"
-            href="#APPLICATION_JSON"
-            title="Permalink to MediaRange.APPLICATION_JSON">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_JSON = const MediaRange._internal("application", "json")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_JSON_ENTRY">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON_ENTRY</strong> <a class="anchor-link"
-            href="#APPLICATION_JSON_ENTRY"
-            title="Permalink to MediaRange.APPLICATION_JSON_ENTRY">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange APPLICATION_JSON_ENTRY = MEDIA_RANGE.parseValue("application/json;type=entry")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_JSON_FEED">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_JSON_FEED</strong> <a class="anchor-link"
-            href="#APPLICATION_JSON_FEED"
-            title="Permalink to MediaRange.APPLICATION_JSON_FEED">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange APPLICATION_JSON_FEED = MEDIA_RANGE.parseValue("application/json;type=feed")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_OCTET_STREAM">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_OCTET_STREAM</strong> <a class="anchor-link"
-            href="#APPLICATION_OCTET_STREAM"
-            title="Permalink to MediaRange.APPLICATION_OCTET_STREAM">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_OCTET_STREAM = const MediaRange._internal("application", "octet-stream")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_OPEN_SEARCH_DESCRIPTION_XML">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_OPEN_SEARCH_DESCRIPTION_XML</strong> <a class="anchor-link"
-            href="#APPLICATION_OPEN_SEARCH_DESCRIPTION_XML"
-            title="Permalink to MediaRange.APPLICATION_OPEN_SEARCH_DESCRIPTION_XML">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_OPEN_SEARCH_DESCRIPTION_XML = const MediaRange._internal("application", "opensearchdescription+xml")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_WWW_FORM">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_WWW_FORM</strong> <a class="anchor-link"
-            href="#APPLICATION_WWW_FORM"
-            title="Permalink to MediaRange.APPLICATION_WWW_FORM">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_WWW_FORM = const MediaRange._internal("application", "x-www-form-urlencoded")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="APPLICATION_XML">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>APPLICATION_XML</strong> <a class="anchor-link"
-            href="#APPLICATION_XML"
-            title="Permalink to MediaRange.APPLICATION_XML">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange APPLICATION_XML = const MediaRange._internal("application", "xml")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="GOOGLE_PROTOCOL_BUFFER">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>GOOGLE_PROTOCOL_BUFFER</strong> <a class="anchor-link"
-            href="#GOOGLE_PROTOCOL_BUFFER"
-            title="Permalink to MediaRange.GOOGLE_PROTOCOL_BUFFER">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange GOOGLE_PROTOCOL_BUFFER = const MediaRange._internal("application", "x-protobuf")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="MULTIPART_BYTE_RANGE">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_BYTE_RANGE</strong> <a class="anchor-link"
-            href="#MULTIPART_BYTE_RANGE"
-            title="Permalink to MediaRange.MULTIPART_BYTE_RANGE">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange MULTIPART_BYTE_RANGE = const MediaRange._internal("multipart", "byteranges")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="MULTIPART_FORM_DATA">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_FORM_DATA</strong> <a class="anchor-link"
-            href="#MULTIPART_FORM_DATA"
-            title="Permalink to MediaRange.MULTIPART_FORM_DATA">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange MULTIPART_FORM_DATA = const MediaRange._internal("multipart", "form-data")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="MULTIPART_RELATED">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>MULTIPART_RELATED</strong> <a class="anchor-link"
-            href="#MULTIPART_RELATED"
-            title="Permalink to MediaRange.MULTIPART_RELATED">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange MULTIPART_RELATED = const MediaRange._internal("multipart" , "related")
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="TEXT_ANY">
 <button class="show-code">Code</button>
 const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_ANY</strong> <a class="anchor-link"
@@ -368,54 +188,6 @@ const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <str
         <div class="doc">
 <pre class="source">
 static const MediaRange TEXT_ANY = const MediaRange._internal("text", "*")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="TEXT_HTML">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML</strong> <a class="anchor-link"
-            href="#TEXT_HTML"
-            title="Permalink to MediaRange.TEXT_HTML">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange TEXT_HTML = const MediaRange._internal("text", "html")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="TEXT_HTML_ENTRY">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML_ENTRY</strong> <a class="anchor-link"
-            href="#TEXT_HTML_ENTRY"
-            title="Permalink to MediaRange.TEXT_HTML_ENTRY">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange TEXT_HTML_ENTRY = MEDIA_RANGE.parseValue("text/html;type=entry")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="TEXT_HTML_FEED">
-<button class="show-code">Code</button>
-final <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_HTML_FEED</strong> <a class="anchor-link"
-            href="#TEXT_HTML_FEED"
-            title="Permalink to MediaRange.TEXT_HTML_FEED">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static final MediaRange TEXT_HTML_FEED = MEDIA_RANGE.parseValue("text/html;type=feed")
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="TEXT_PLAIN">
-<button class="show-code">Code</button>
-const <a href="../restlib.core.data/MediaRange.html">MediaRange</a>         <strong>TEXT_PLAIN</strong> <a class="anchor-link"
-            href="#TEXT_PLAIN"
-            title="Permalink to MediaRange.TEXT_PLAIN">#</a>
-        </h4>
-        <div class="doc">
-<pre class="source">
-static const MediaRange TEXT_PLAIN = const MediaRange._internal("text", "plain")
 </pre>
 </div>
 </div>
@@ -456,6 +228,18 @@ factory MediaRange(final String type, final String subtype, {final Charset chars
  return new MediaRange._internal(
      type.toLowerCase(), subtype.toLowerCase(), optionalCharset, parameters);
 }
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="constant">
+<button class="show-code">Code</button>
+const <strong>MediaRange.constant</strong>(String type, String subtype) <a class="anchor-link" href="#constant"
+              title="Permalink to MediaRange.MediaRange.constant">#</a></h4>
+<div class="doc">
+<pre class="source">
+const MediaRange.constant(this.type, this.subtype) :
+ this.charset = Option.NONE,
+ this.parameters = Persistent.EMPTY_SET_MULTIMAP;
 </pre>
 </div>
 </div>

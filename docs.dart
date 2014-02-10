@@ -8,6 +8,7 @@ import "package:restlib_common/objects.dart";
 import "package:restlib_common/preconditions.dart";
 import "package:restlib_http_connector/connector.dart";
 import "package:restlib_core/data.dart";
+import "package:restlib_core/data.media_ranges.dart";
 import "package:restlib_core/http.dart";
 import "package:restlib_core/http_syntax.dart";
 import "package:restlib_core/multipart.dart";
@@ -34,6 +35,7 @@ void main() {
        "restlib.common.preconditions",
        "restlib.connector.http",
        "restlib.core.data",
+       "restlib.core.data.media_ranges",
        "restlib.core.http",
        "restlib.core.http_syntax",
        "restlib.core.multipart",
