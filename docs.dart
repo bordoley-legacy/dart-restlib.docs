@@ -1,3 +1,5 @@
+import "package:restlib_atom/atom.dart";
+import "package:restlib_atom/atom.link_relationships.dart";
 import "package:restlib_common/async.dart";
 import "package:restlib_common/collections.dart";
 import "package:restlib_common/collections.forwarding.dart";
@@ -25,7 +27,9 @@ import "dart:io";
 
 void main() {
   final Iterable<String> libs = 
-      ["restlib.common.async",
+      ["restlib.atom",
+       "restlib.atom.link_relationships",
+       "restlib.common.async",
        "restlib.common.collections",
        "restlib.common.collections.forwarding",
        "restlib.common.collections.immutable",

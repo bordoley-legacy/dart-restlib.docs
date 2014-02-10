@@ -69,6 +69,12 @@ abstract class UniformResourceDelegate&lt;T&gt; {
  Future&lt;Response&gt; delete(Request request) =&gt;
      throw new UnimplementedError();
  
+ Request filterRequest(Request request) =&gt;
+     request;
+ 
+ Response filterResponse(Response response) =&gt;
+     response;
+ 
  Future&lt;Response&gt; get(Request request) =&gt;
      throw new UnimplementedError();
  
@@ -132,6 +138,28 @@ Future&lt;<a href="../restlib.core.http/Response.html">Response</a>&gt; <strong>
 <pre class="source">
 Future&lt;Response&gt; delete(Request request) =&gt;
    throw new UnimplementedError();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="filterRequest">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Request.html">Request</a> <strong>filterRequest</strong>(<a href="../restlib.core.http/Request.html">Request</a> request) <a class="anchor-link" href="#filterRequest"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.filterRequest">#</a></h4>
+<div class="doc">
+<pre class="source">
+Request filterRequest(Request request) =&gt;
+   request;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="filterResponse">
+<button class="show-code">Code</button>
+<a href="../restlib.core.http/Response.html">Response</a> <strong>filterResponse</strong>(<a href="../restlib.core.http/Response.html">Response</a> response) <a class="anchor-link" href="#filterResponse"
+              title="Permalink to UniformResourceDelegate&lt;T&gt;.filterResponse">#</a></h4>
+<div class="doc">
+<pre class="source">
+Response filterResponse(Response response) =&gt;
+   response;
 </pre>
 </div>
 </div>

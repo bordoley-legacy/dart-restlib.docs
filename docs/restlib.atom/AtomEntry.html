@@ -1,0 +1,265 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>AtomEntry&lt;T&gt; abstract class / restlib.atom Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="restlib.atom" data-type="AtomEntry&amp;lt;T&amp;gt;">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../restlib.atom.html">restlib.atom</a> &rsaquo; <a href="../restlib.atom/AtomEntry.html">AtomEntry&lt;T&gt;</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>AtomEntry&lt;T&gt;</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class AtomEntry&lt;T&gt; {
+ factory AtomEntry(
+     final IRI id,
+     final String title,
+     final DateTime updated, {
+       final Iterable&lt;AtomPerson&gt; authors: Persistent.EMPTY_SEQUENCE,
+       final Iterable &lt;AtomCategory&gt; categories: Persistent.EMPTY_SEQUENCE,
+       final T content,
+       final Iterable&lt;AtomPerson&gt; contributors: Persistent.EMPTY_SEQUENCE,
+       final Iterable&lt;AtomLink&gt; links: Persistent.EMPTY_SEQUENCE,
+       final DateTime published,
+       final String rights,
+       final AtomFeed source,
+       final String summary}) =&gt; 
+           new _AtomEntry(
+               authors, categories, new Option(content),
+               contributors, checkNotNull(id), links,
+               new Option(published), new Option(rights), new Option(source),
+               new Option(summary), checkNotNull(title), checkNotNull(updated));
+ 
+ Iterable&lt;AtomPerson&gt; get authors;
+ Iterable &lt;AtomCategory&gt; get categories;
+ Option&lt;T&gt; get content;
+ Iterable&lt;AtomPerson&gt; get contributors;
+ IRI get id;
+ Iterable&lt;AtomLink&gt; get links;
+ Option&lt;DateTime&gt; get published;
+ Option&lt;String&gt; get rights;
+ Option&lt;AtomFeed&gt; get source;
+ Option&lt;String&gt; get summary;
+ String get title;
+ DateTime get updated;
+}
+</pre>
+</div>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../restlib.atom/ForwardingAtomEntry.html">ForwardingAtomEntry&lt;T&gt;</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>AtomEntry</strong>(<a href="../restlib.core.net/IRI.html">IRI</a> id, String title, DateTime updated, {Iterable&lt;<a href="../restlib.atom/AtomPerson.html">AtomPerson</a>&gt; authors: Persistent.EMPTY_SEQUENCE, Iterable&lt;<a href="../restlib.atom/AtomCategory.html">AtomCategory</a>&gt; categories: Persistent.EMPTY_SEQUENCE, <a href="../restlib.atom/AtomEntry.html">T</a> content, Iterable&lt;<a href="../restlib.atom/AtomPerson.html">AtomPerson</a>&gt; contributors: Persistent.EMPTY_SEQUENCE, Iterable&lt;<a href="../restlib.atom/AtomLink.html">AtomLink</a>&gt; links: Persistent.EMPTY_SEQUENCE, DateTime published, String rights, <a href="../restlib.atom/AtomFeed.html">AtomFeed</a> source, String summary}) <a class="anchor-link" href="#"
+              title="Permalink to AtomEntry&lt;T&gt;.AtomEntry">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <code>Object</code> instance.</p>
+<p><code>Object</code> instances have no meaningful state, and are only useful
+through their identity. An <code>Object</code> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory AtomEntry(
+   final IRI id,
+   final String title,
+   final DateTime updated, {
+     final Iterable&lt;AtomPerson&gt; authors: Persistent.EMPTY_SEQUENCE,
+     final Iterable &lt;AtomCategory&gt; categories: Persistent.EMPTY_SEQUENCE,
+     final T content,
+     final Iterable&lt;AtomPerson&gt; contributors: Persistent.EMPTY_SEQUENCE,
+     final Iterable&lt;AtomLink&gt; links: Persistent.EMPTY_SEQUENCE,
+     final DateTime published,
+     final String rights,
+     final AtomFeed source,
+     final String summary}) =&gt; 
+         new _AtomEntry(
+             authors, categories, new Option(content),
+             contributors, checkNotNull(id), links,
+             new Option(published), new Option(rights), new Option(source),
+             new Option(summary), checkNotNull(title), checkNotNull(updated));
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="authors">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.atom/AtomPerson.html">AtomPerson</a>&gt;         <strong>authors</strong> <a class="anchor-link"
+            href="#authors"
+            title="Permalink to AtomEntry&lt;T&gt;.authors">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;AtomPerson&gt; get authors;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="categories">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.atom/AtomCategory.html">AtomCategory</a>&gt;         <strong>categories</strong> <a class="anchor-link"
+            href="#categories"
+            title="Permalink to AtomEntry&lt;T&gt;.categories">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable &lt;AtomCategory&gt; get categories;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="content">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.atom/AtomEntry.html">T</a>&gt;         <strong>content</strong> <a class="anchor-link"
+            href="#content"
+            title="Permalink to AtomEntry&lt;T&gt;.content">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;T&gt; get content;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="contributors">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.atom/AtomPerson.html">AtomPerson</a>&gt;         <strong>contributors</strong> <a class="anchor-link"
+            href="#contributors"
+            title="Permalink to AtomEntry&lt;T&gt;.contributors">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;AtomPerson&gt; get contributors;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="id">
+<button class="show-code">Code</button>
+final <a href="../restlib.core.net/IRI.html">IRI</a>         <strong>id</strong> <a class="anchor-link"
+            href="#id"
+            title="Permalink to AtomEntry&lt;T&gt;.id">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+IRI get id;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="links">
+<button class="show-code">Code</button>
+final Iterable&lt;<a href="../restlib.atom/AtomLink.html">AtomLink</a>&gt;         <strong>links</strong> <a class="anchor-link"
+            href="#links"
+            title="Permalink to AtomEntry&lt;T&gt;.links">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Iterable&lt;AtomLink&gt; get links;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="published">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;DateTime&gt;         <strong>published</strong> <a class="anchor-link"
+            href="#published"
+            title="Permalink to AtomEntry&lt;T&gt;.published">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;DateTime&gt; get published;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="rights">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;String&gt;         <strong>rights</strong> <a class="anchor-link"
+            href="#rights"
+            title="Permalink to AtomEntry&lt;T&gt;.rights">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;String&gt; get rights;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="source">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;<a href="../restlib.atom/AtomFeed.html">AtomFeed</a>&gt;         <strong>source</strong> <a class="anchor-link"
+            href="#source"
+            title="Permalink to AtomEntry&lt;T&gt;.source">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;AtomFeed&gt; get source;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="summary">
+<button class="show-code">Code</button>
+final <a href="../restlib.common.collections/Option.html">Option</a>&lt;String&gt;         <strong>summary</strong> <a class="anchor-link"
+            href="#summary"
+            title="Permalink to AtomEntry&lt;T&gt;.summary">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Option&lt;String&gt; get summary;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="title">
+<button class="show-code">Code</button>
+final String         <strong>title</strong> <a class="anchor-link"
+            href="#title"
+            title="Permalink to AtomEntry&lt;T&gt;.title">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get title;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="updated">
+<button class="show-code">Code</button>
+final DateTime         <strong>updated</strong> <a class="anchor-link"
+            href="#updated"
+            title="Permalink to AtomEntry&lt;T&gt;.updated">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+DateTime get updated;
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
