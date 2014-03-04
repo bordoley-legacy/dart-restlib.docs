@@ -1,63 +1,57 @@
-import "package:restlib_atom/atom.dart";
-import "package:restlib_atom/atom.link_relationships.dart";
-import "package:restlib_common/async.dart";
-import "package:restlib_common/collections.dart";
-import "package:restlib_common/collections.forwarding.dart";
-import "package:restlib_common/collections.immutable.dart";
-import "package:restlib_common/collections.mutable.dart";
-import "package:restlib_common/io.dart";
-import "package:restlib_common/objects.dart";
-import "package:restlib_common/preconditions.dart";
-import "package:restlib_http_connector/connector.dart";
-import "package:restlib_core/data.dart";
-import "package:restlib_core/data.media_ranges.dart";
-import "package:restlib_core/http.dart";
-import "package:restlib_core/http.future_responses.dart";
-import "package:restlib_core/http_syntax.dart";
-import "package:restlib_core/multipart.dart";
-import "package:restlib_core/net.dart";
-import "package:restlib_core/net.schemes.dart";
-import "package:restlib_parsing/parsing.dart";
-import "package:restlib_server/io.dart";
-import "package:restlib_server/server.dart";
-import "package:restlib_testing/testing.dart";
-import "package:restlib_testing/collections.dart";
-
-import "dart:async";
 import "dart:io";
+import "package:path/path.dart";
 
 void main() {
-  final Iterable<String> libs = 
-      ["restlib.atom",
-       "restlib.atom.link_relationships",
-       "restlib.common.async",
-       "restlib.common.collections",
-       "restlib.common.collections.forwarding",
-       "restlib.common.collections.immutable",
-       "restlib.common.collections.mutable",
-       "restlib.common.io",
-       "restlib.common.objects",
-       "restlib.common.preconditions",
-       "restlib.connector.http",
-       "restlib.core.data",
-       "restlib.core.data.media_ranges",
-       "restlib.core.http",
-       "restlib.core.http.future_responses",
-       "restlib.core.http_syntax",
-       "restlib.core.multipart",
-       "restlib.core.net",
-       "restlib.core.net.schemes",
-       "restlib.parsing",
-       "restlib.server.io",
-       "restlib.server",
-       "restlib.testing",
-       "restlib.testing.collections"];
-  
+  final Iterable<String> excludedLibs =
+      ["dart.pkg.collection.algorithms",
+       "dart.pkg.collection",
+       "dart.pkg.collection.equality",
+       "dart.pkg.collection.iterable_zip",
+       "dart.pkg.collection.priority_queue",
+       "dart.pkg.collection.wrappers",
+       "crypto",
+       "logging",
+       "mime",
+       "path",
+       "stack_trace",
+       "unittest",
+       "unittest.compact_vm_config",
+       "unittest.html_config",
+       "unittest.html_enhanced_config",
+       "unittest.html_individual_config",
+       "unittest.matcher",
+       "unittest.mirror_matchers",
+       "unittest.mock",
+       "unittest.vm_config",
+       "restlib.common.collections.internal",
+       "restlib.core.data.internal",
+       "restlib.core.http.internal"];
+
   final List<String> arguments =
-      ["--omit-generation-time", "--package-root", "./packages", "--include-lib", "${libs.join(",")}", "docs.dart"];
-  final String path = Platform.executable.substring(0, Platform.executable.lastIndexOf("/")) + "/dartdoc";
-  
-  Process.run(path, arguments)
-    .then((final ProcessResult r) => 
-        print (r.stdout.toString()));
+      ["-v",
+       "--package-root", "./packages",
+       "--start-page", "restlib",
+       "--no-include-sdk",
+       "--include-dependent-packages",
+       "--compile"]
+      ..addAll(excludedLibs.expand((final String lib) =>
+          ["--exclude-lib", lib]))
+      ..add("./");
+
+  final String executable = "docgen";
+
+  print( arguments.join(" "));
+
+  Process.run(executable, arguments, runInShell: true)
+    .then((final ProcessResult r) {
+      print(r.stdout.toString());
+      print (r.stderr.toString());
+
+      final String src = join(Directory.current.path, "dartdoc-viewer/client/out/");
+      final String dst = join(Directory.current.path, "docs");
+      new Directory(src).renameSync(dst);
+
+      final String docViewDir = join(Directory.current.path, "dartdoc-viewer");
+      new Directory(docViewDir).deleteSync(recursive: true);
+    });
 }

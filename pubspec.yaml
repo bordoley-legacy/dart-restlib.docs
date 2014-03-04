@@ -1,8 +1,11 @@
 name: restlib_docs
 description: A sample command-line application
 dependencies:
-  restlib_atom: 
+  path: any
+  restlib_atom:
     git: https://code.google.com/p/dart-restlib.atom/
+  restlib_client:
+    git: https://code.google.com/p/dart-restlib.client/
   restlib_common:
     git: https://code.google.com/p/dart-restlib.common/
   restlib_core:
