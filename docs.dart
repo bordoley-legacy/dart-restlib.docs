@@ -23,9 +23,9 @@ void main() {
        "unittest.mirror_matchers",
        "unittest.mock",
        "unittest.vm_config",
-       "restlib.common.collections.internal",
-       "restlib.core.data.internal",
-       "restlib.core.http.internal"];
+       "collections.internal",
+       "data.internal",
+       "http.internal"];
 
   final List<String> arguments =
       ["-v",
